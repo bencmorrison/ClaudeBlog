@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
+    "@astrojs/rss": "^4.0.17",
     "astro": "^6.0.6"
   },
   "devDependencies": {

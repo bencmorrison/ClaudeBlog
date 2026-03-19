@@ -127,21 +127,32 @@ Respond with ONLY a valid JSON object in this exact format:
   // Extract JSON from anywhere in the response — agents may think out loud before outputting it
   const jsonStr = extractJson(text);
 
+  // Parse and validate are separated so catch only handles SyntaxError from JSON.parse,
+  // not validation errors thrown below it.
+  let parsed: Record<string, unknown>;
   try {
-    const parsed = JSON.parse(jsonStr);
-    return {
-      agent: agentName,
-      title: parsed.title ?? "Untitled",
-      summary: parsed.summary ?? "",
-    };
+    parsed = JSON.parse(jsonStr);
   } catch {
-    console.error(`[Pitch] Failed to parse pitch from ${agentName}:`, text);
-    return {
-      agent: agentName,
-      title: `A post by ${agentName}`,
-      summary: "No summary available.",
-    };
+    console.error(`[Pitch] Failed to parse JSON from ${agentName}.\nRaw response:\n${text}`);
+    throw new Error(`JSON parse failed for ${agentName}`);
   }
+
+  // typeof guard before length check — String(123) passes length but isn't a valid field.
+  const titleRaw = parsed.title;
+  const summaryRaw = parsed.summary;
+  const title = typeof titleRaw === "string" ? titleRaw.trim() : "";
+  const summary = typeof summaryRaw === "string" ? summaryRaw.trim() : "";
+
+  // Reject missing, whitespace-only, or placeholder-length titles/summaries.
+  // Floor of 10 chars — anything shorter is almost certainly garbage (e.g. "Title", "N/A").
+  if (title.length < 10 || summary.length < 10) {
+    console.error(
+      `[Pitch] ${agentName} returned a bad pitch (title: "${title}", summary length: ${summary.length}).\nRaw response:\n${text}`
+    );
+    throw new Error(`Bad pitch format from ${agentName}`);
+  }
+
+  return { agent: agentName, title, summary };
 }
 
 // ─── Phase 2: Voting ──────────────────────────────────────────────────────────
@@ -410,14 +421,42 @@ async function main() {
 
   // ── Phase 1: Generate pitches (sequential + rate-limit retry) ───────────────
   log("Phase 1: Generating pitches...");
+
+  // Wraps generatePitch with a format-retry loop separate from withRateLimitRetry.
+  // withRateLimitRetry handles API-level errors (429, 5xx, network); this handles
+  // the case where the model returns malformed/missing JSON.
+  // Total attempts at getting a well-formed pitch before aborting.
+  const MAX_FORMAT_ATTEMPTS = 3;
+  async function generatePitchWithRetry(persona: (typeof PERSONAS)[0]): Promise<Pitch> {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        return await withRateLimitRetry(
+          `[Pitch] ${persona.name}`,
+          () => generatePitch(persona.name, persona.systemPrompt, memories)
+        );
+      } catch (err) {
+        // Only retry on format errors (bad/missing JSON from the model).
+        // API-level errors (rate limit, server error, network) are already
+        // handled by withRateLimitRetry — re-throw them immediately.
+        const isFormatError =
+          err instanceof Error &&
+          (err.message.startsWith("Bad pitch format") || err.message.startsWith("JSON parse failed"));
+
+        if (!isFormatError) throw err;
+
+        if (attempt >= MAX_FORMAT_ATTEMPTS - 1) {
+          console.error(`[Pitch] ${persona.name} failed after ${MAX_FORMAT_ATTEMPTS} attempts — aborting.`);
+          throw err;
+        }
+
+        console.warn(`[Pitch] ${persona.name} bad format — attempt ${attempt + 2}/${MAX_FORMAT_ATTEMPTS}...`);
+      }
+    }
+  }
+
   const pitches: Pitch[] = [];
   for (const persona of PERSONAS) {
-    pitches.push(
-      await withRateLimitRetry(
-        `[Pitch] ${persona.name}`,
-        () => generatePitch(persona.name, persona.systemPrompt, memories)
-      )
-    );
+    pitches.push(await generatePitchWithRetry(persona));
   }
 
   console.log("\nPitches received:");
@@ -522,6 +561,9 @@ async function main() {
         console.warn(
           `[Editor] Rejected (attempt ${attempt}/${MAX_EDITOR_RETRIES + 1}): ${decision.issues.join(", ")}`
         );
+        if (editorFeedback) {
+          console.warn(`[Editor] Feedback: ${editorFeedback}`);
+        }
         if (attempt === MAX_EDITOR_RETRIES + 1) {
           console.warn(
             `[Editor] All retries exhausted for ${writerName}. Trying next agent...`
