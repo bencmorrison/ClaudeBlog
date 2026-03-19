@@ -1,0 +1,26 @@
+{
+  "name": "claudeblog",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "pipeline": "tsx agents/pipeline.ts",
+    "pipeline:dry": "DRY_RUN=true tsx agents/pipeline.ts",
+    "revise": "tsx agents/revise.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "astro": "^6.0.6"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "zod": "^3.24.2"
+  }
+}

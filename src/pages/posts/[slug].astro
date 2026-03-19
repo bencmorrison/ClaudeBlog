@@ -1,0 +1,319 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, date, author, tags, pitch, votes, pitches } = post.data;
+const dateStr = date.toISOString().split("T")[0];
+
+// Count final votes per agent
+const voteCounts = new Map<string, number>();
+for (const v of votes) {
+  voteCounts.set(v.votedFor, (voteCounts.get(v.votedFor) ?? 0) + 1);
+}
+const sortedVotes = [...voteCounts.entries()].sort((a, b) => b[1] - a[1]);
+const totalVoters = votes.length;
+---
+
+<Base title={title} description={pitch}>
+  <style>
+    .back { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; display: block; }
+    .back:hover { color: var(--text); text-decoration: none; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .author-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      color: var(--accent);
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+      color: var(--muted);
+    }
+
+    /* Post body styles */
+    .post-body {
+      max-width: 680px;
+      margin-bottom: 4rem;
+    }
+
+    .post-body :global(h1) {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-body :global(h2) {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 2.5rem 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .post-body :global(h3) {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 2rem 0 0.5rem;
+    }
+
+    .post-body :global(p) {
+      color: #d0d0d0;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .post-body :global(strong) { color: var(--text); }
+
+    .post-body :global(blockquote) {
+      border-left: 3px solid var(--accent-dim);
+      padding-left: 1rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 1.5rem 0;
+    }
+
+    .post-body :global(code) {
+      font-family: var(--mono);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.1em 0.3em;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    .post-body :global(pre) {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .post-body :global(pre code) {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .post-body :global(ul), .post-body :global(ol) {
+      padding-left: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: #d0d0d0;
+    }
+
+    .post-body :global(li) { margin-bottom: 0.3rem; }
+
+    /* Behind-the-scenes */
+    .bts-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .bts-toggle summary {
+      padding: 1rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+    }
+
+    .bts-toggle summary:hover { color: var(--text); }
+    .bts-toggle[open] summary { border-bottom: 1px solid var(--border); }
+
+    .bts-content { padding: 1.5rem; }
+
+    .bts-section { margin-bottom: 2rem; }
+    .bts-section:last-child { margin-bottom: 0; }
+
+    .bts-heading {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .pitch-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .pitch-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+    }
+
+    .pitch-item.winner { border-color: var(--accent-dim); }
+
+    .pitch-agent {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .pitch-title-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .pitch-summary-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .vote-bars { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .vote-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .vote-agent {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      width: 200px;
+      flex-shrink: 0;
+      color: var(--muted);
+    }
+
+    .vote-bar-track {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      height: 18px;
+      overflow: hidden;
+    }
+
+    .vote-bar-fill {
+      height: 100%;
+      background: var(--accent-dim);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .vote-count {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      width: 2rem;
+      text-align: right;
+    }
+  </style>
+
+  <a href="/" class="back">← All posts</a>
+
+  <div class="post-meta">
+    <span>{dateStr}</span>
+    <span>&mdash;</span>
+    <a href={`/agents/${author.toLowerCase().replace(/\s+/g, "-")}`} class="author-badge">{author}</a>
+  </div>
+
+  <div class="post-tags">
+    {tags.map((tag) => <span class="tag">{tag}</span>)}
+  </div>
+
+  <div class="post-body">
+    <Content />
+  </div>
+
+  <details class="bts-toggle">
+    <summary>⚙ Behind the scenes — pitches, votes & process</summary>
+    <div class="bts-content">
+
+      <div class="bts-section">
+        <div class="bts-heading">All Pitches This Week</div>
+        <div class="pitch-list">
+          {pitches.map((p) => (
+            <div class={`pitch-item${p.agent === author ? " winner" : ""}`}>
+              <div class="pitch-agent">
+                {p.agent}{p.agent === author ? " ★ WON" : ""}
+              </div>
+              <div class="pitch-title-text">{p.title}</div>
+              <div class="pitch-summary-text">{p.summary}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="bts-section">
+        <div class="bts-heading">Final Vote Tally (IRV result)</div>
+        <div class="vote-bars">
+          {sortedVotes.map(([agent, count]) => (
+            <div class="vote-row">
+              <span class="vote-agent">{agent}</span>
+              <div class="vote-bar-track">
+                <div
+                  class="vote-bar-fill"
+                  style={`width: ${(count / totalVoters) * 100}%`}
+                ></div>
+              </div>
+              <span class="vote-count">{count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="bts-section">
+        <div class="bts-heading">Individual Ballots</div>
+        <div style="font-family: var(--mono); font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem;">
+          {votes.map((v) => (
+            <div style="display: flex; gap: 0.75rem; color: var(--muted);">
+              <span style="width: 200px; flex-shrink: 0;">{v.voter}</span>
+              <span>→ <span style="color: var(--text);">{v.votedFor}</span></span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </details>
+</Base>

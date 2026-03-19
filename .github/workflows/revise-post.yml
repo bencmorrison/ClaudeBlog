@@ -1,0 +1,83 @@
+name: Revise Blog Post
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  revise:
+    # Only run when a human requests changes (not approvals or comment-only reviews)
+    if: github.event.review.state == 'changes_requested'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config user.name "ClaudeBlog Bot"
+          git config user.email "claudeblog-bot@users.noreply.github.com"
+
+      - name: Find post file in PR
+        id: find_post
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          POST_FILE=$(gh pr view ${{ github.event.pull_request.number }} --json files \
+            --jq '.files[].path | select(startswith("src/content/posts/") and endswith(".md"))' \
+            | head -1)
+          echo "post_file=$POST_FILE" >> $GITHUB_OUTPUT
+          echo "Found post file: $POST_FILE"
+
+      - name: Build feedback from review body and line comments
+        id: build_feedback
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEW_BODY: ${{ github.event.review.body }}
+          REVIEW_ID: ${{ github.event.review.id }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Fetch line comments for this specific review
+          LINE_COMMENTS=$(gh api \
+            /repos/$REPO/pulls/$PR_NUMBER/reviews/$REVIEW_ID/comments \
+            --jq '[.[] | "- Line \(.line // .original_line): \"\(.body)\""] | join("\n")')
+
+          # Combine review body + line comments into one feedback document
+          FEEDBACK=""
+          if [ -n "$REVIEW_BODY" ]; then
+            FEEDBACK="Review summary:\n${REVIEW_BODY}"
+          fi
+          if [ -n "$LINE_COMMENTS" ]; then
+            FEEDBACK="${FEEDBACK}\n\nLine comments:\n${LINE_COMMENTS}"
+          fi
+
+          # Write to a temp file to avoid env var size limits
+          printf "%b" "$FEEDBACK" > /tmp/review_feedback.txt
+          echo "Feedback written:"
+          cat /tmp/review_feedback.txt
+
+      - name: Run revision
+        if: steps.find_post.outputs.post_file != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POST_FILE: ${{ steps.find_post.outputs.post_file }}
+          REVIEW_FEEDBACK_FILE: /tmp/review_feedback.txt
+        run: npx tsx agents/revise.ts
