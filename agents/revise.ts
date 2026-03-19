@@ -19,6 +19,7 @@ import { join } from "path";
 import { reviewPost } from "./editor.ts";
 import { MAX_EDITOR_RETRIES } from "./content-rules.ts";
 import { loadAllMemories, formatMemoriesForContext } from "./utils/memory.ts";
+import { withRateLimitRetry } from "./utils/retry.ts";
 import technologist from "./personas/the-technologist.ts";
 import philosopher from "./personas/the-philosopher.ts";
 import popCultureCritic from "./personas/the-pop-culture-critic.ts";
@@ -27,7 +28,9 @@ import storyteller from "./personas/the-storyteller.ts";
 
 const PERSONAS = [technologist, philosopher, popCultureCritic, scientist, storyteller];
 const MODEL = "claude-sonnet-4-6";
-const client = new Anthropic();
+// maxRetries: 0 — retry logic is owned exclusively by withRateLimitRetry
+// from utils/retry.ts, keeping behaviour consistent across all API calls.
+const client = new Anthropic({ maxRetries: 0 });
 
 function log(msg: string) {
   console.log(`\n${"─".repeat(60)}\n${msg}\n${"─".repeat(60)}`);
@@ -143,16 +146,22 @@ async function main() {
   let editorFeedback: string | undefined;
 
   for (let attempt = 1; attempt <= MAX_EDITOR_RETRIES + 1; attempt++) {
-    revisedBody = await revisePost(
-      authorName,
-      persona.systemPrompt,
-      originalBody,
-      reviewBody,
-      attempt > 1 ? editorFeedback : undefined,
-      memories
+    revisedBody = await withRateLimitRetry(
+      `[Revise] ${authorName} attempt ${attempt}`,
+      () => revisePost(
+        authorName,
+        persona.systemPrompt,
+        originalBody,
+        reviewBody,
+        attempt > 1 ? editorFeedback : undefined,
+        memories
+      )
     );
 
-    const decision = await reviewPost(revisedBody, authorName, attempt);
+    const decision = await withRateLimitRetry(
+      `[Editor] reviewPost attempt ${attempt}`,
+      () => reviewPost(revisedBody, authorName, attempt)
+    );
 
     if (decision.approved) {
       if (decision.softFlags.length > 0) {

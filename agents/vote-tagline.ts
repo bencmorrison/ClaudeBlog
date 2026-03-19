@@ -11,7 +11,9 @@ import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { loadAllMemories } from "./utils/memory.ts";
+import { extractJson } from "./utils/json.ts";
 import { runInstantRunoff } from "./utils/voting.ts";
+import { withRateLimitRetry } from "./utils/retry.ts";
 import type { RankedVote } from "./types.ts";
 
 import technologist from "./personas/the-technologist.ts";
@@ -24,7 +26,9 @@ const PERSONAS = [technologist, philosopher, popCultureCritic, scientist, storyt
 const MODEL = "claude-sonnet-4-6";
 const DRY_RUN = process.env.DRY_RUN === "true";
 
-const client = new Anthropic();
+// maxRetries: 0 — retry logic is owned exclusively by withRateLimitRetry
+// from utils/retry.ts, keeping behaviour consistent across all API calls.
+const client = new Anthropic({ maxRetries: 0 });
 
 function log(msg: string) {
   console.log(`\n${"─".repeat(60)}\n${msg}\n${"─".repeat(60)}`);
@@ -104,10 +108,8 @@ The array must contain ALL other agent names exactly as written.`,
   });
 
   const text = response.content.find((b) => b.type === "text")?.text ?? "{}";
-  const cleaned = text.replace(/^```json?\s*/i, "").replace(/```\s*$/, "").trim();
-
   try {
-    const parsed = JSON.parse(cleaned);
+    const parsed = JSON.parse(extractJson(text));
     const rankings: string[] = Array.isArray(parsed.rankings) ? parsed.rankings : [];
     const validNames = new Set(others.map((t) => t.agent));
     const validRankings = rankings.filter((r) => validNames.has(r));
@@ -126,23 +128,33 @@ The array must contain ALL other agent names exactly as written.`,
 async function main() {
   log(`ClaudeBlog — Tagline Vote${DRY_RUN ? " [DRY RUN]" : ""}`);
 
-  // Phase 1: All agents propose taglines in parallel
+  // Phase 1: Agents propose taglines sequentially to avoid exhausting the token budget
   log("Phase 1: Proposing taglines...");
-  const taglines = await Promise.all(
-    PERSONAS.map(async (persona) => ({
+  const taglines: Array<{ agent: string; tagline: string }> = [];
+  for (const persona of PERSONAS) {
+    taglines.push({
       agent: persona.name,
-      tagline: await proposeTagline(persona.name, persona.systemPrompt),
-    }))
-  );
+      tagline: await withRateLimitRetry(
+        `[Tagline] ${persona.name}`,
+        () => proposeTagline(persona.name, persona.systemPrompt)
+      ),
+    });
+  }
 
   console.log("\nTaglines proposed:");
   taglines.forEach((t) => console.log(`  ${t.agent}: "${t.tagline}"`));
 
-  // Phase 2: All agents vote in parallel
+  // Phase 2: Agents vote sequentially to avoid rate limits
   log("Phase 2: Voting...");
-  const votes: RankedVote[] = await Promise.all(
-    PERSONAS.map((persona) => castVote(persona.name, persona.systemPrompt, taglines))
-  );
+  const votes: RankedVote[] = [];
+  for (const persona of PERSONAS) {
+    votes.push(
+      await withRateLimitRetry(
+        `[Vote] ${persona.name}`,
+        () => castVote(persona.name, persona.systemPrompt, taglines)
+      )
+    );
+  }
 
   console.log("\nVotes cast:");
   votes.forEach((v) => console.log(`  ${v.voter}: [${v.rankings.join(" > ")}]`));

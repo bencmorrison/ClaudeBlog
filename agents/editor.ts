@@ -1,8 +1,12 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { CONTENT_RULES } from "./content-rules.ts";
+import { extractJson } from "./utils/json.ts";
 import type { EditorDecision } from "./types.ts";
 
-const client = new Anthropic();
+// maxRetries: 0 — retry logic is owned exclusively by withRateLimitRetry
+// from utils/retry.ts, used by callers (pipeline.ts, revise.ts) at their
+// call sites. This keeps retry semantics consistent across all API calls.
+const client = new Anthropic({ maxRetries: 0 });
 const MODEL = "claude-opus-4-6";
 
 const EDITOR_SYSTEM = `
@@ -42,13 +46,10 @@ export async function reviewPost(
     ],
   });
 
-  const text =
-    response.content[0].type === "text" ? response.content[0].text : "";
+  const text = response.content.find((b) => b.type === "text")?.text ?? "";
 
   try {
-    // Strip any accidental markdown code fences
-    const cleaned = text.replace(/^```json?\s*/i, "").replace(/```\s*$/, "").trim();
-    const parsed = JSON.parse(cleaned);
+    const parsed = JSON.parse(extractJson(text));
     return {
       approved: Boolean(parsed.approved),
       issues: Array.isArray(parsed.issues) ? parsed.issues : [],

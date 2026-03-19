@@ -23,6 +23,8 @@ import {
 import { runInstantRunoff } from "./utils/voting.ts";
 import { buildPostSlug } from "./utils/slugify.ts";
 import { runWithWebSearch } from "./utils/search.ts";
+import { extractJson } from "./utils/json.ts";
+import { withRateLimitRetry, sleep } from "./utils/retry.ts";
 import type {
   AgentMemory,
   Pitch,
@@ -49,7 +51,10 @@ const PERSONAS = [
 const MODEL = "claude-sonnet-4-6";
 const DRY_RUN = process.env.DRY_RUN === "true";
 
-const client = new Anthropic();
+// maxRetries: 0 — disable SDK auto-retry so withRateLimitRetry owns all retry
+// logic exclusively. With SDK default (2), each call is actually 3 attempts,
+// making withRateLimitRetry's maxRetries=5 result in up to 15 total requests.
+const client = new Anthropic({ maxRetries: 0 });
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -60,6 +65,8 @@ function todayISO(): string {
 function log(msg: string) {
   console.log(`\n${"─".repeat(60)}\n${msg}\n${"─".repeat(60)}`);
 }
+
+
 
 // ─── Phase 1: Pitch generation ───────────────────────────────────────────────
 
@@ -103,6 +110,10 @@ Respond with ONLY a valid JSON object in this exact format:
       userMessage: pitchMessage,
     });
   } catch (err) {
+    // Re-throw rate limit errors — the outer withRateLimitRetry wrapper handles
+    // the wait and retry. Firing a fallback into an exhausted token bucket
+    // immediately would just get another 429.
+    if (err instanceof Anthropic.RateLimitError) throw err;
     console.warn(`[Pitch] Web search failed for ${agentName}, falling back to no-search:`, err);
     const resp = await client.messages.create({
       model: MODEL,
@@ -113,13 +124,11 @@ Respond with ONLY a valid JSON object in this exact format:
     text = resp.content.find((b) => b.type === "text")?.text ?? "{}";
   }
 
-  const cleaned = text
-    .replace(/^```json?\s*/i, "")
-    .replace(/```\s*$/, "")
-    .trim();
+  // Extract JSON from anywhere in the response — agents may think out loud before outputting it
+  const jsonStr = extractJson(text);
 
   try {
-    const parsed = JSON.parse(cleaned);
+    const parsed = JSON.parse(jsonStr);
     return {
       agent: agentName,
       title: parsed.title ?? "Untitled",
@@ -179,15 +188,9 @@ The array must contain ALL other agent names exactly as written, ranked from mos
     ],
   });
 
-  const text =
-    response.content[0].type === "text" ? response.content[0].text : "{}";
-  const cleaned = text
-    .replace(/^```json?\s*/i, "")
-    .replace(/```\s*$/, "")
-    .trim();
-
+  const text = response.content.find((b) => b.type === "text")?.text ?? "{}";
   try {
-    const parsed = JSON.parse(cleaned);
+    const parsed = JSON.parse(extractJson(text));
     const rankings: string[] = Array.isArray(parsed.rankings)
       ? parsed.rankings
       : [];
@@ -256,6 +259,8 @@ Write a full blog post based on your pitch. Requirements:
       userMessage: writeMessage,
     });
   } catch (err) {
+    // Re-throw rate limit errors — same reasoning as generatePitch above.
+    if (err instanceof Anthropic.RateLimitError) throw err;
     console.warn(`[Write] Web search failed for ${agentName}, falling back to no-search:`, err);
     const resp = await client.messages.create({
       model: MODEL,
@@ -403,26 +408,34 @@ async function main() {
   // Load all memories
   const memories = loadAllMemories();
 
-  // ── Phase 1: Generate pitches ────────────────────────────────────────────
+  // ── Phase 1: Generate pitches (sequential + rate-limit retry) ───────────────
   log("Phase 1: Generating pitches...");
-  const pitches: Pitch[] = await Promise.all(
-    PERSONAS.map((persona) =>
-      generatePitch(persona.name, persona.systemPrompt, memories)
-    )
-  );
+  const pitches: Pitch[] = [];
+  for (const persona of PERSONAS) {
+    pitches.push(
+      await withRateLimitRetry(
+        `[Pitch] ${persona.name}`,
+        () => generatePitch(persona.name, persona.systemPrompt, memories)
+      )
+    );
+  }
 
   console.log("\nPitches received:");
   pitches.forEach((p) =>
     console.log(`  ${p.agent}: "${p.title}" — ${p.summary}`)
   );
 
-  // ── Phase 2: Cast votes ──────────────────────────────────────────────────
+  // ── Phase 2: Cast votes (sequential + rate-limit retry) ─────────────────────
   log("Phase 2: Casting votes...");
-  const votes: RankedVote[] = await Promise.all(
-    PERSONAS.map((persona) =>
-      castVote(persona.name, persona.systemPrompt, pitches, memories)
-    )
-  );
+  const votes: RankedVote[] = [];
+  for (const persona of PERSONAS) {
+    votes.push(
+      await withRateLimitRetry(
+        `[Vote] ${persona.name}`,
+        () => castVote(persona.name, persona.systemPrompt, pitches, memories)
+      )
+    );
+  }
 
   console.log("\nVotes cast:");
   votes.forEach((v) =>
@@ -446,7 +459,10 @@ async function main() {
 
   if (tiedCandidates.length > 1) {
     log(`[Tally] Tie detected between: ${tiedCandidates.join(", ")} — Editor breaks tie`);
-    winner = await breakTie(tiedCandidates, pitches);
+    winner = await withRateLimitRetry(
+      "[Editor] breakTie",
+      () => breakTie(tiedCandidates, pitches)
+    );
   }
 
   log(`Phase 3 result: Winner is "${winner}"`);
@@ -474,15 +490,21 @@ async function main() {
     const writerPitch = pitches.find((p) => p.agent === writerName)!;
 
     for (let attempt = 1; attempt <= MAX_EDITOR_RETRIES + 1; attempt++) {
-      postContent = await writePost(
-        writerName,
-        writerPersona.systemPrompt,
-        writerPitch,
-        memories,
-        attempt > 1 ? editorFeedback : undefined
+      postContent = await withRateLimitRetry(
+        `[Write] ${writerName}`,
+        () => writePost(
+          writerName,
+          writerPersona.systemPrompt,
+          writerPitch,
+          memories,
+          attempt > 1 ? editorFeedback : undefined
+        )
       );
 
-      const decision = await reviewPost(postContent, writerName, attempt);
+      const decision = await withRateLimitRetry(
+        `[Editor] reviewPost attempt ${attempt}`,
+        () => reviewPost(postContent, writerName, attempt)
+      );
 
       if (decision.approved) {
         approved = true;

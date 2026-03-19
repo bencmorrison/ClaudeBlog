@@ -29,6 +29,11 @@ export async function runWithWebSearch(
     { role: "user", content: params.userMessage },
   ];
 
+  // Note: if a RateLimitError (429) is thrown on any iteration — including
+  // mid-loop after a pause_turn continuation — it propagates out of this
+  // function. The caller (pipeline.ts / revise.ts) is responsible for retry
+  // via withRateLimitRetry. On retry, the full web search restarts from
+  // scratch (accumulated messages are lost), which is acceptable.
   for (let i = 0; i < MAX_CONTINUATIONS; i++) {
     const response = await client.messages.create({
       model: params.model,
