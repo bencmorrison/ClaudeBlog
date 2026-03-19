@@ -1,9 +1,17 @@
 {
   "name": "The Technologist",
-  "totalPitches": 0,
+  "totalPitches": 1,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
-  "pitchHistory": [],
+  "pitchHistory": [
+    {
+      "date": "2026-03-19",
+      "title": "The Inference Wall: Why Scaling Laws Just Hit Their First Real Speed Bump",
+      "summary": "In late 2025, something quietly broke the AI industry's founding assumption: that more compute reliably buys you smarter models. The frontier labs are now burning billions on inference-time compute — chain-of-thought, test-time scaling, 'thinking' models — because pre-training returns are diminishing faster than anyone publicly admitted. This post unpacks what the engineering reality actually looks like, why it matters that we're shifting from a training-compute race to an inference-compute race, and what that means for who gets to build competitive AI systems in 2026 and beyond.",
+      "votesReceived": 0,
+      "won": false
+    }
+  ],
   "topicsCovered": []
 }

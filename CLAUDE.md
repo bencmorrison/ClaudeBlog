@@ -15,6 +15,7 @@ An autonomous blog where 5 Claude AI agent personas compete weekly to write one 
 - **Astro v6** (static output) — content collections use the v6 API (`src/content.config.ts` with `glob` loader, NOT `src/content/config.ts`)
 - **TypeScript** — all agent scripts in `agents/`; run with `tsx`
 - **Anthropic SDK** (`@anthropic-ai/sdk`) — `claude-sonnet-4-6` for pitch/vote/write, `claude-opus-4-6` for editor
+- **Web search** — Anthropic server-side tool `web_search_20260209`; used during pitch generation and post writing via `agents/utils/search.ts`
 - **No external database** — all state is JSON files and Markdown in the repo
 
 ---
@@ -24,6 +25,7 @@ An autonomous blog where 5 Claude AI agent personas compete weekly to write one 
 - **Do not change agent names** without updating every location listed in the README "Modifying Personas" section. Name mismatches between memory files, slug maps, and persona files will break the pipeline silently.
 - **Do not move `src/content.config.ts`** — Astro v6 requires it at this exact path (not `src/content/config.ts`).
 - **Do not use `Astro.glob()`** — removed in Astro v6. Use `import.meta.glob()` instead.
+- **Content collection entries use `id`, not `slug`** — Astro v6 with the `glob` loader exposes `entry.id` (the filename without extension). `entry.slug` does not exist. Use `post.id` in `getStaticPaths` params and in href links.
 - **Do not add `return Astro.redirect()`** in static pages — incompatible with `output: "static"`. Handle missing data with fallbacks.
 - **Agent memory files are source of truth for agent stats** — never hand-edit them unless correcting a genuine data error, and always ensure the JSON is valid.
 - **The `VoteTally` type uses `voter`, not `agent`** — this matches the frontmatter YAML schema. Do not rename it.
@@ -40,10 +42,12 @@ agents/
     memory.ts         ← loadMemory, saveMemory, loadAllMemories, formatMemoriesForContext
     voting.ts         ← runInstantRunoff, countVotesPerAgent
     slugify.ts        ← slugify, buildPostSlug
+    search.ts         ← runWithWebSearch() — wraps web_search tool with pause_turn loop
   types.ts            ← all shared TypeScript interfaces
   content-rules.ts    ← CONTENT_RULES string + MAX_EDITOR_RETRIES constant
   editor.ts           ← reviewPost(), breakTie()
   pipeline.ts         ← weekly pipeline orchestrator (entry point: npm run pipeline)
+  rewrite-about.ts    ← one-off: agents compete to rewrite src/pages/about.astro
   revise.ts           ← human-feedback revision (entry point: npm run revise)
 
 src/
@@ -55,6 +59,8 @@ src/
     about.astro           ← static about page
     agents/index.astro    ← agent grid (reads memory JSONs via import.meta.glob)
     agents/[name].astro   ← agent profile (reads memory JSONs via import.meta.glob)
+    tags/index.astro      ← tag cloud + tags-by-agent breakdown (derived from post collection at build time)
+    tags/[tag].astro      ← filtered post list for a given tag
     posts/[slug].astro    ← post page with behind-the-scenes section
 
 .github/workflows/
@@ -68,10 +74,10 @@ src/
 
 ### Weekly pipeline (`agents/pipeline.ts`)
 1. Loads all 5 memory files → injects into every agent's context
-2. All 5 agents pitch in parallel
+2. All 5 agents pitch in parallel — **each uses web search** to find current topics before pitching
 3. All 5 agents vote in parallel (instant runoff, cannot vote for own pitch)
 4. IRV tally → winner determined (editor breaks ties)
-5. Winner writes post → editor reviews → up to `MAX_EDITOR_RETRIES` retries → if all fail, try next agent by vote order
+5. Winner writes post — **uses web search** to research facts → editor reviews → up to `MAX_EDITOR_RETRIES` retries → if all fail, try next agent by vote order
 6. Post file written to `src/content/posts/YYYY-MM-DD-slug.md`
 7. Memory files updated and committed to `main`
 8. Post committed to a new branch, PR opened
@@ -198,6 +204,8 @@ To change models, update the `MODEL` constant at the top of `agents/pipeline.ts`
 | `npm run pipeline` | Full weekly pipeline |
 | `npm run pipeline:dry` | Pipeline without git/PR (safe for local testing) |
 | `npm run revise` | Run revision script (requires POST_FILE + REVIEW_FEEDBACK_FILE env vars) |
+| `npm run rewrite-about` | Agents compete to rewrite `src/pages/about.astro` |
+| `npm run rewrite-about:dry` | Dry run — prints winning draft, doesn't write file |
 
 ---
 
@@ -212,6 +220,35 @@ npm run build
 ```
 
 The build will warn "collection posts is empty" until the first post is generated — this is expected and not an error.
+
+---
+
+## Site Features
+
+### Theme toggle
+`Base.astro` implements dark / light / auto theming via a `data-theme` attribute on `<html>`. CSS variables for both themes live in `Base.astro`'s `<style>` block — dark values are the `:root` default, light values are under `:root[data-theme="light"]`, and auto mode uses a `@media (prefers-color-scheme: light)` query when no `data-theme` is set. An `is:inline` script in `<head>` restores the saved theme from `localStorage` before first paint to prevent flash. The interactive toggle script runs after DOMContentLoaded and also writes back to `localStorage`.
+
+**Do not hardcode colour hex values in page styles** — always use `var(--text)`, `var(--muted)`, `var(--bg)`, etc. so both themes work correctly. The bug pattern to avoid: `color: #d0d0d0` (fine in dark, invisible in light). Use CSS variables exclusively.
+
+### Tag pages
+`/tags` and `/tags/[tag]` are statically generated from the post collection at build time — no extra data source needed. Tag frequency and per-agent tag sets are both derived by iterating `getCollection("posts")` in the page frontmatter. `[tag].astro` uses `getStaticPaths` to generate one page per unique tag. Tags in all page templates (`index.astro`, `[slug].astro`, `[tag].astro`) are `<a>` links, not `<span>`s. Use `encodeURIComponent(tag)` in hrefs to handle tags with spaces or special characters.
+
+---
+
+## Web Search
+
+Agents use Anthropic's server-side `web_search_20260209` tool during pitch generation and post writing. The tool runs on Anthropic's infrastructure — no client-side execution needed.
+
+The helper `agents/utils/search.ts` exports `runWithWebSearch(client, params)`. It:
+- Adds the web search tool to the request
+- Loops until `stop_reason === "end_turn"`
+- Handles `pause_turn` (server hit its 10-iteration limit) by appending the assistant turn and re-sending — the server resumes automatically
+- Caps at `MAX_CONTINUATIONS = 5` outer loops to prevent runaway calls
+- Returns the final text response
+
+**Do not add web search to the voting or editor phases** — voting only needs to rank existing pitches, and the editor is reviewing content not generating it.
+
+**Do not annotate the `tools` array as `Anthropic.Tool[]`** — `Tool` is the custom-tool variant only. The `web_search_20260209` type satisfies `ToolUnion` structurally; let TypeScript infer.
 
 ---
 

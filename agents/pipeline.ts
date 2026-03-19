@@ -22,6 +22,7 @@ import {
 } from "./utils/memory.ts";
 import { runInstantRunoff } from "./utils/voting.ts";
 import { buildPostSlug } from "./utils/slugify.ts";
+import { runWithWebSearch } from "./utils/search.ts";
 import type {
   AgentMemory,
   Pitch,
@@ -71,10 +72,7 @@ async function generatePitch(
 
   const memoryContext = formatMemoriesForContext(allMemories);
 
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 512,
-    system: `${systemPrompt}
+  const pitchSystem = `${systemPrompt}
 
 ---
 
@@ -86,21 +84,35 @@ ${memoryContext}
 
 ---
 
+You have access to web search. Use it to find current, relevant, interesting topics or recent
+developments in your domain before deciding on your pitch.
+
 Respond with ONLY a valid JSON object in this exact format:
 {
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
-}`,
-    messages: [
-      {
-        role: "user",
-        content: `It is ${todayISO()}. Please pitch a topic for this week's blog post. Remember: the other agents will vote on your pitch, so make it compelling. Stay true to your style and interests.`,
-      },
-    ],
-  });
+}`;
+  const pitchMessage = `It is ${todayISO()}. Search the web for recent, interesting topics in your domain, then pitch the most compelling one for this week's blog post. Remember: the other agents will vote on your pitch, so make it timely and compelling. Stay true to your style and interests.`;
 
-  const text =
-    response.content[0].type === "text" ? response.content[0].text : "{}";
+  let text: string;
+  try {
+    text = await runWithWebSearch(client, {
+      model: MODEL,
+      max_tokens: 1024,
+      system: pitchSystem,
+      userMessage: pitchMessage,
+    });
+  } catch (err) {
+    console.warn(`[Pitch] Web search failed for ${agentName}, falling back to no-search:`, err);
+    const resp = await client.messages.create({
+      model: MODEL,
+      max_tokens: 1024,
+      system: pitchSystem,
+      messages: [{ role: "user", content: pitchMessage }],
+    });
+    text = resp.content.find((b) => b.type === "text")?.text ?? "{}";
+  }
+
   const cleaned = text
     .replace(/^```json?\s*/i, "")
     .replace(/```\s*$/, "")
@@ -216,10 +228,7 @@ async function writePost(
     ? `\n\nPrevious attempt was rejected by the Editor with this feedback:\n${feedback}\nPlease address these issues in your rewrite.`
     : "";
 
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 4096,
-    system: `${systemPrompt}
+  const writeSystem = `${systemPrompt}
 
 ---
 Agent stats for context:
@@ -228,21 +237,34 @@ ${memoryContext}
 
 You have won this week's pitch competition with your topic: "${pitch.title}"
 
+You have access to web search. Use it to research current facts, statistics, recent developments,
+or examples relevant to your topic before writing. Ground your post in real, up-to-date information.
+
 Write a full blog post based on your pitch. Requirements:
 - Target length: 1000–1400 words (~5–7 minute read)
 - Write in Markdown format (use ## for section headings, **bold**, etc.)
 - Do NOT include frontmatter — just the body content starting with the title as an H1
 - Stay true to your writing persona's voice and style
-- The post must be original, engaging, and meet Australian publication standards${feedbackSection}`,
-    messages: [
-      {
-        role: "user",
-        content: `Write your blog post for the topic: "${pitch.title}"\n\nYour pitch summary was: ${pitch.summary}`,
-      },
-    ],
-  });
+- The post must be original, engaging, and meet Australian publication standards${feedbackSection}`;
+  const writeMessage = `Research and write your blog post for the topic: "${pitch.title}"\n\nYour pitch summary was: ${pitch.summary}\n\nUse web search to find current facts and examples to strengthen your post.`;
 
-  return response.content[0].type === "text" ? response.content[0].text : "";
+  try {
+    return await runWithWebSearch(client, {
+      model: MODEL,
+      max_tokens: 4096,
+      system: writeSystem,
+      userMessage: writeMessage,
+    });
+  } catch (err) {
+    console.warn(`[Write] Web search failed for ${agentName}, falling back to no-search:`, err);
+    const resp = await client.messages.create({
+      model: MODEL,
+      max_tokens: 4096,
+      system: writeSystem,
+      messages: [{ role: "user", content: writeMessage }],
+    });
+    return resp.content.find((b) => b.type === "text")?.text ?? "";
+  }
 }
 
 // ─── Frontmatter builder ──────────────────────────────────────────────────────
@@ -320,7 +342,7 @@ function updateMemories(
         title: myPitch.title,
       });
 
-      // Extract broad topic tags from pitch title/summary (simple keyword extraction)
+      // Extract broad topic tags from pitch title/summary using word-boundary matching
       const combined = `${myPitch.title} ${myPitch.summary}`.toLowerCase();
       const topicKeywords = [
         "ai", "space", "music", "film", "climate", "history", "philosophy",
@@ -328,7 +350,7 @@ function updateMemories(
         "science", "society", "internet", "gaming", "language", "ethics",
       ];
       for (const kw of topicKeywords) {
-        if (combined.includes(kw) && !memory.topicsCovered.includes(kw)) {
+        if (new RegExp(`\\b${kw}\\b`).test(combined) && !memory.topicsCovered.includes(kw)) {
           memory.topicsCovered.push(kw);
         }
       }
@@ -413,12 +435,14 @@ async function main() {
   let { winner, finalTally } = runInstantRunoff(votes, candidates);
 
   // Check for genuine tie (shouldn't happen with IRV but handle edge case)
-  const winnerCount = finalTally.filter((t) => t.votedFor === winner).length;
-  const tiedCandidates = [...new Set(
-    [...finalTally
-      .filter((t) => finalTally.filter((x) => x.votedFor === t.votedFor).length === winnerCount)
-      .map((t) => t.votedFor)]
-  )];
+  const tallyCounts = new Map<string, number>();
+  for (const t of finalTally) {
+    tallyCounts.set(t.votedFor, (tallyCounts.get(t.votedFor) ?? 0) + 1);
+  }
+  const winnerCount = tallyCounts.get(winner) ?? 0;
+  const tiedCandidates = [...tallyCounts.entries()]
+    .filter(([, count]) => count === winnerCount)
+    .map(([name]) => name);
 
   if (tiedCandidates.length > 1) {
     log(`[Tally] Tie detected between: ${tiedCandidates.join(", ")} — Editor breaks tie`);
@@ -499,13 +523,15 @@ async function main() {
   const titleMatch = postContent.match(/^#\s+(.+)$/m);
   const postTitle = titleMatch ? titleMatch[1].trim() : currentPitch.title;
 
-  // Simple tag extraction from pitch
+  // Tag extraction using word-boundary matching to avoid false substring matches
   const tagKeywords = [
     "AI", "technology", "philosophy", "science", "culture", "history",
     "film", "music", "biology", "space", "psychology", "ethics", "society",
   ];
   const combined = `${currentPitch.title} ${currentPitch.summary}`.toLowerCase();
-  const tags = tagKeywords.filter((t) => combined.includes(t.toLowerCase()));
+  const tags = tagKeywords.filter((t) =>
+    new RegExp(`\\b${t.toLowerCase()}\\b`).test(combined)
+  );
   if (tags.length === 0) tags.push("general");
 
   const frontmatter: PostFrontmatter = {

@@ -5,7 +5,7 @@ import Base from "../../layouts/Base.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -63,7 +63,10 @@ const totalVoters = votes.length;
       border-radius: 3px;
       padding: 0.1rem 0.4rem;
       color: var(--muted);
+      text-decoration: none;
     }
+
+    .tag:hover { color: var(--accent); text-decoration: none; }
 
     /* Post body styles */
     .post-body {
@@ -93,7 +96,7 @@ const totalVoters = votes.length;
     }
 
     .post-body :global(p) {
-      color: #d0d0d0;
+      color: var(--text);
       margin-bottom: 1.2rem;
       line-height: 1.8;
     }
@@ -135,7 +138,7 @@ const totalVoters = votes.length;
     .post-body :global(ul), .post-body :global(ol) {
       padding-left: 1.5rem;
       margin-bottom: 1.2rem;
-      color: #d0d0d0;
+      color: var(--text);
     }
 
     .post-body :global(li) { margin-bottom: 0.3rem; }
@@ -258,7 +261,7 @@ const totalVoters = votes.length;
   </div>
 
   <div class="post-tags">
-    {tags.map((tag) => <span class="tag">{tag}</span>)}
+    {tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">{tag}</a>)}
   </div>
 
   <div class="post-body">

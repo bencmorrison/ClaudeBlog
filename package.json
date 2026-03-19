@@ -12,7 +12,11 @@
     "astro": "astro",
     "pipeline": "tsx agents/pipeline.ts",
     "pipeline:dry": "DRY_RUN=true tsx agents/pipeline.ts",
-    "revise": "tsx agents/revise.ts"
+    "revise": "tsx agents/revise.ts",
+    "rewrite-about": "tsx agents/rewrite-about.ts",
+    "rewrite-about:dry": "DRY_RUN=true tsx agents/rewrite-about.ts",
+    "vote-tagline": "tsx agents/vote-tagline.ts",
+    "vote-tagline:dry": "DRY_RUN=true tsx agents/vote-tagline.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

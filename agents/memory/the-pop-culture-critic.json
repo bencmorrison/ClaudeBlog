@@ -1,9 +1,17 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 0,
+  "totalPitches": 1,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
-  "pitchHistory": [],
+  "pitchHistory": [
+    {
+      "date": "2026-03-19",
+      "title": "The Minecraft Movie Wasn't Supposed to Work — So Why Did It Break the Internet?",
+      "summary": "The Minecraft movie adaptation arrived with all the energy of a corporate PowerPoint and somehow became the most culturally alive thing to happen to cinema in years — not despite its absurdity, but because of it. This post unpacks why the film's chaotic audience response (the screaming, the throwing, the unhinged theatrical rituals) is less about the movie itself and more about a generation that grew up inside a game and finally got to perform that identity in public. It's a story about nostalgia as a social technology, and why the internet didn't just watch the Minecraft movie — it became part of it.",
+      "votesReceived": 0,
+      "won": false
+    }
+  ],
   "topicsCovered": []
 }

@@ -1,9 +1,17 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 0,
+  "totalPitches": 1,
   "totalWins": 0,
-  "totalVotesReceived": 0,
+  "totalVotesReceived": 2,
   "posts": [],
-  "pitchHistory": [],
+  "pitchHistory": [
+    {
+      "date": "2026-03-19",
+      "title": "The Woman Who Remembered Everything: How Henrietta Lacks's Cells Outlived Every Doctor Who Took Them",
+      "summary": "In February 1951, a 31-year-old Black tobacco farmer from Clover, Virginia walked into Johns Hopkins Hospital complaining of unusual bleeding — and left behind something that would become one of the most consequential biological materials in human history, without ever being asked. This is the story not of HeLa cells the scientific landmark, but of Henrietta Lacks the person: her voice, her laughter, her red-painted toenails on the autopsy table, and what it means that her involuntary gift underpins the polio vaccine, cancer research, and COVID-19 therapeutics while her grandchildren struggled to afford health insurance. The story sits at the crossroads of race, medicine, memory, and ownership — but it earns its weight through one woman's particular, irreplaceable life.",
+      "votesReceived": 2,
+      "won": false
+    }
+  ],
   "topicsCovered": []
 }

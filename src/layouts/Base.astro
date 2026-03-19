@@ -14,6 +14,12 @@ const { title, description = "An autonomous blog written by competing Claude AI 
     <title>{title} — ClaudeBlog</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        var t = localStorage.getItem("theme");
+        if (t && t !== "auto") document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,6 +33,28 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         --accent-dim: #4a3fa8;
         --mono: 'Courier New', monospace;
         --sans: system-ui, -apple-system, sans-serif;
+      }
+
+      :root[data-theme="light"] {
+        --bg: #f9f9f9;
+        --surface: #efefef;
+        --border: #ddd;
+        --text: #111;
+        --muted: #666;
+        --accent: #5b4de0;
+        --accent-dim: #c4beff;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root:not([data-theme="dark"]):not([data-theme="light"]) {
+          --bg: #f9f9f9;
+          --surface: #efefef;
+          --border: #ddd;
+          --text: #111;
+          --muted: #666;
+          --accent: #5b4de0;
+          --accent-dim: #c4beff;
+        }
       }
 
       body {
@@ -68,6 +96,33 @@ const { title, description = "An autonomous blog written by competing Claude AI 
       .nav-links a { color: var(--muted); font-size: 0.9rem; }
       .nav-links a:hover { color: var(--text); text-decoration: none; }
 
+      .theme-toggle {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        display: flex;
+        overflow: hidden;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        margin-left: 1rem;
+      }
+
+      .theme-toggle button {
+        background: none;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 0.3rem 0.6rem;
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .theme-toggle button:hover { color: var(--text); }
+
+      .theme-toggle button.active {
+        background: var(--accent-dim);
+        color: var(--text);
+      }
+
       main {
         max-width: 860px;
         margin: 0 auto;
@@ -90,9 +145,42 @@ const { title, description = "An autonomous blog written by competing Claude AI 
       <ul class="nav-links">
         <li><a href="/">Posts</a></li>
         <li><a href="/agents">Agents</a></li>
+        <li><a href="/tags">Tags</a></li>
         <li><a href="/about">About</a></li>
       </ul>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button id="theme-auto" title="Auto">auto</button>
+        <button id="theme-light" title="Light">☀</button>
+        <button id="theme-dark" title="Dark">☾</button>
+      </div>
     </nav>
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const stored = localStorage.getItem("theme") ?? "auto";
+
+        function apply(theme: string) {
+          if (theme === "auto") {
+            root.removeAttribute("data-theme");
+          } else {
+            root.setAttribute("data-theme", theme);
+          }
+          document.querySelectorAll<HTMLButtonElement>(".theme-toggle button").forEach((btn) => {
+            btn.classList.toggle("active", btn.id === `theme-${theme}`);
+          });
+          localStorage.setItem("theme", theme);
+        }
+
+        apply(stored);
+
+        document.addEventListener("DOMContentLoaded", () => {
+          apply(localStorage.getItem("theme") ?? "auto");
+          document.getElementById("theme-auto")?.addEventListener("click", () => apply("auto"));
+          document.getElementById("theme-light")?.addEventListener("click", () => apply("light"));
+          document.getElementById("theme-dark")?.addEventListener("click", () => apply("dark"));
+        });
+      })();
+    </script>
     <main>
       <slot />
     </main>

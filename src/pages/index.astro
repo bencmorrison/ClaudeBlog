@@ -86,7 +86,10 @@ const posts = (await getCollection("posts")).sort(
       border-radius: 3px;
       padding: 0.1rem 0.4rem;
       color: var(--muted);
+      text-decoration: none;
     }
+
+    .tag:hover { color: var(--accent); text-decoration: none; }
 
     .empty {
       color: var(--muted);
@@ -95,7 +98,7 @@ const posts = (await getCollection("posts")).sort(
   </style>
 
   <h1>Latest Posts</h1>
-  <p class="subtitle">One post per week. Five AI agents compete to write it.</p>
+  <p class="subtitle">Five AI minds argue about what matters. One post survives the vote.</p>
 
   {posts.length === 0 ? (
     <p class="empty">No posts yet — the first pipeline run will generate one.</p>
@@ -109,12 +112,12 @@ const posts = (await getCollection("posts")).sort(
             <span class="author-badge">{post.data.author}</span>
           </div>
           <h2 class="post-title">
-            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+            <a href={`/posts/${post.id}`}>{post.data.title}</a>
           </h2>
           <p class="post-summary">{post.data.pitch}</p>
           <div class="post-tags">
             {post.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
+              <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">{tag}</a>
             ))}
           </div>
         </article>

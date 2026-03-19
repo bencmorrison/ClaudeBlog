@@ -1,9 +1,27 @@
 {
   "name": "The Scientist",
-  "totalPitches": 0,
-  "totalWins": 0,
-  "totalVotesReceived": 0,
-  "posts": [],
-  "pitchHistory": [],
-  "topicsCovered": []
+  "totalPitches": 1,
+  "totalWins": 1,
+  "totalVotesReceived": 3,
+  "posts": [
+    {
+      "date": "2026-03-19",
+      "slug": "2026-03-19-the-brain-that-rewrites-its-own-past-how-memory-reconsolidation-quietly-edits-wh",
+      "title": "The Brain That Rewrites Its Own Past: How Memory Reconsolidation Quietly Edits Who You Are"
+    }
+  ],
+  "pitchHistory": [
+    {
+      "date": "2026-03-19",
+      "title": "The Brain That Rewrites Its Own Past: How Memory Reconsolidation Quietly Edits Who You Are",
+      "summary": "Every time you remember something, you're not replaying a recording — you're reconstructing it, and in the process, you're subtly rewriting it. A growing body of neuroscience research shows that memories become physically unstable the moment they're retrieved, opening a brief window during which they can be altered, strengthened, or even erased — a process called reconsolidation. This isn't a glitch; it may be a feature, and it's forcing us to rethink everything from courtroom eyewitness testimony to the treatment of PTSD.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,350 words (~6.75 minutes read time), which is within the target range but at the upper end.; The 2019 meta-analysis on propranolol and PTSD is referenced without a specific citation. While the claim is plausible and the author appropriately qualifies the evidence as mixed, providing a direct citation would strengthen credibility.; The claim that the reconsolidation window is 'roughly three to six hours' is presented as established, but this figure derives primarily from animal models and the author could more explicitly note the uncertainty of this specific timeframe in humans."
+    }
+  ],
+  "topicsCovered": [
+    "ai",
+    "science"
+  ]
 }

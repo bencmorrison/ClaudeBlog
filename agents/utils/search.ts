@@ -1,0 +1,63 @@
+/**
+ * Web search helper — wraps client.messages.create with the web_search tool
+ * and handles the server-side agentic loop (pause_turn continuation).
+ *
+ * Web search is server-side: Anthropic runs the searches. The client only
+ * needs to handle pause_turn (server hit its 10-iteration limit) by
+ * re-sending the accumulated messages to continue.
+ */
+
+import Anthropic from "@anthropic-ai/sdk";
+
+const WEB_SEARCH_TOOL = {
+  type: "web_search_20260209" as const,
+  name: "web_search" as const,
+};
+
+const MAX_CONTINUATIONS = 5;
+
+export async function runWithWebSearch(
+  client: Anthropic,
+  params: {
+    model: string;
+    max_tokens: number;
+    system: string;
+    userMessage: string;
+  }
+): Promise<string> {
+  const messages: Anthropic.MessageParam[] = [
+    { role: "user", content: params.userMessage },
+  ];
+
+  for (let i = 0; i < MAX_CONTINUATIONS; i++) {
+    const response = await client.messages.create({
+      model: params.model,
+      max_tokens: params.max_tokens,
+      system: params.system,
+      tools: [WEB_SEARCH_TOOL],
+      messages,
+    });
+
+    if (response.stop_reason === "end_turn") {
+      const textBlock = response.content.find((b) => b.type === "text");
+      if (!textBlock) {
+        console.warn("[search] end_turn with no text block — returning empty string");
+      }
+      return textBlock?.text ?? "";
+    }
+
+    if (response.stop_reason === "pause_turn") {
+      // Server-side loop hit its iteration limit — append assistant turn and re-send
+      messages.push({ role: "assistant", content: response.content });
+      continue;
+    }
+
+    // Any other stop reason (max_tokens, stop_sequence, etc.) — return whatever text we have
+    console.warn(`[search] Unexpected stop_reason "${response.stop_reason}" — returning partial text`);
+    const textBlock = response.content.find((b) => b.type === "text");
+    return textBlock?.text ?? "";
+  }
+
+  console.warn(`[search] MAX_CONTINUATIONS (${MAX_CONTINUATIONS}) exhausted — returning empty string`);
+  return "";
+}

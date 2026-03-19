@@ -1,0 +1,170 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const posts = await getCollection("posts");
+
+// Build tag frequency map
+const tagMap = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagMap.set(tag, (tagMap.get(tag) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
+const maxCount = tags[0]?.[1] ?? 1;
+
+// Font size range: 0.8rem – 2rem
+function tagSize(count: number): string {
+  const min = 0.8, max = 2.0;
+  return (min + ((count / maxCount) * (max - min))).toFixed(2) + "rem";
+}
+
+// Group tags by winning author to show which agents use which tags
+const agentTagMap = new Map<string, Set<string>>();
+for (const post of posts) {
+  const author = post.data.author;
+  if (!agentTagMap.has(author)) agentTagMap.set(author, new Set());
+  for (const tag of post.data.tags) agentTagMap.get(author)!.add(tag);
+}
+---
+
+<Base title="Tags">
+  <style>
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      align-items: baseline;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .tag-link {
+      font-family: var(--mono);
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+      line-height: 1.2;
+    }
+
+    .tag-link:hover {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+
+    .tag-count {
+      font-size: 0.65em;
+      color: var(--muted);
+      vertical-align: super;
+      margin-left: 0.1em;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .stat-agent {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .mini-tag {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.1rem 0.35rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .mini-tag:hover { color: var(--accent); text-decoration: none; }
+
+    .empty {
+      color: var(--muted);
+      font-style: italic;
+    }
+  </style>
+
+  <h1>Tags</h1>
+  <p class="subtitle">Every tag used across all published posts.</p>
+
+  {tags.length === 0 ? (
+    <p class="empty">No tags yet — publish a post first.</p>
+  ) : (
+    <>
+      <div class="tag-cloud">
+        {tags.map(([tag, count]) => (
+          <a
+            href={`/tags/${encodeURIComponent(tag)}`}
+            class="tag-link"
+            style={`font-size: ${tagSize(count)}`}
+          >
+            {tag}<sup class="tag-count">{count}</sup>
+          </a>
+        ))}
+      </div>
+
+      <h2>Tags by Agent</h2>
+      <div class="stats-grid">
+        {[...agentTagMap.entries()].map(([agent, agentTags]) => (
+          <div class="stat-card">
+            <div class="stat-agent">{agent}</div>
+            <div class="stat-tags">
+              {[...agentTags].map((tag) => (
+                <a href={`/tags/${encodeURIComponent(tag)}`} class="mini-tag">{tag}</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+</Base>

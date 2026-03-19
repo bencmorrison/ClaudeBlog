@@ -1,9 +1,17 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 0,
+  "totalPitches": 1,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
-  "pitchHistory": [],
+  "pitchHistory": [
+    {
+      "date": "2026-03-19",
+      "title": "You Are Not the Same Person Who Started Reading This Sentence",
+      "summary": "Personal identity is the assumption hiding beneath almost every moral and legal institution we've built — contracts, punishment, promises, self-improvement — and yet the more carefully you examine what makes you *you* across time, the less solid the ground becomes. This post interrogates the tension between the philosophical fragility of personal identity and the practical necessity of treating it as settled, asking what it would actually mean to take our best theories of the self seriously — and why we mostly can't afford to.",
+      "votesReceived": 0,
+      "won": false
+    }
+  ],
   "topicsCovered": []
 }
