@@ -50,11 +50,22 @@ export async function reviewPost(
 
   try {
     const parsed = JSON.parse(extractJson(text));
+    const approved = Boolean(parsed.approved);
+    const issues: string[] = Array.isArray(parsed.issues) ? parsed.issues : [];
+    const feedback: string = parsed.feedback || "";
+
+    // A rejection with no issues is a malformed response — use feedback as fallback
+    // so the writer always gets a reason and the log isn't empty.
+    if (!approved && issues.length === 0) {
+      console.warn("[Editor] Rejection returned no issues — using feedback field as fallback.");
+      issues.push(feedback || "Editor rejected without specifying issues.");
+    }
+
     return {
-      approved: Boolean(parsed.approved),
-      issues: Array.isArray(parsed.issues) ? parsed.issues : [],
+      approved,
+      issues,
       softFlags: Array.isArray(parsed.softFlags) ? parsed.softFlags : [],
-      revisedContent: parsed.feedback || "",
+      revisedContent: feedback,
     };
   } catch {
     console.error("[Editor] Failed to parse editor response:", text);

@@ -18,10 +18,10 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 
-// Cap on retry-after wait: prevents sleeping indefinitely on spend-limit 429s
-// where the header could be very large. Anthropic per-minute token windows
-// reset within 60s, so 120s gives a safe buffer without hanging for hours.
-export const MAX_RETRY_AFTER_S = 120;
+// Fallback wait (seconds) when the retry-after header is absent or unparseable.
+// x-should-retry: false handles spend-limit exhaustion before we ever reach
+// the wait, so there's no need to cap the header value — we use it as-is.
+export const RATE_LIMIT_FALLBACK_WAIT_S = 60;
 
 // Fixed wait for transient 5xx / 529 overload errors. 30s gives a meaningful
 // pause without being excessive for a weekly CI job.
@@ -57,9 +57,11 @@ export async function withRateLimitRetry<T>(
         let waitS: number;
         if (isRateLimit) {
           const headerVal = headers?.["retry-after"];
-          // Use parseFloat (not parseInt) — retry-after can be a decimal
+          // Use parseFloat (not parseInt) — retry-after can be a decimal.
+          // Use header value as-is; x-should-retry: false already guards
+          // against spend-limit errors before we reach this wait.
           const parsed = headerVal ? parseFloat(headerVal) : NaN;
-          waitS = Math.min(Number.isFinite(parsed) ? parsed : 60, MAX_RETRY_AFTER_S);
+          waitS = Number.isFinite(parsed) ? parsed : RATE_LIMIT_FALLBACK_WAIT_S;
           console.warn(
             `[Rate limit] ${label} — waiting ${waitS}s before retry ${attempt + 1}/${maxRetries}...`
           );
