@@ -51,19 +51,9 @@ export interface PostFrontmatter {
   pitches: Pitch[];
 }
 
-export interface PipelineResult {
-  date: string;
-  winner: string;
-  pitches: Pitch[];
-  votes: RankedVote[];
-  finalTally: VoteTally[];
-  postSlug: string;
-  postPath: string;
-}
-
 export interface EditorDecision {
   approved: boolean;
   issues: string[];
   softFlags: string[]; // soft guideline hits (present even on approval)
-  revisedContent?: string;
+  editorFeedback?: string; // detailed feedback from the editor (populated on rejection)
 }

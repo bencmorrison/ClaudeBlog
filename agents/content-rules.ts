@@ -20,13 +20,6 @@ WHAT IS ALLOWED:
 - Political topics and discussion (applying standard rules above)
 - Criticism of public figures when factually grounded and clearly labelled as opinion. Satire involving real, identifiable individuals is permitted only where satirical intent would be unambiguous to a reasonable reader — flag any satire that could plausibly be mistaken for factual reporting.
 - Edgy, provocative, or unconventional ideas — provided rules 1–5 are met
-
-When reviewing, respond with a JSON object:
-{
-  "approved": true | false,
-  "issues": ["list of specific issues found, empty if approved"],
-  "feedback": "detailed notes for the writer if rejected, empty string if approved"
-}
 `.trim();
 
 export const MAX_EDITOR_RETRIES = 2;

@@ -26,8 +26,11 @@ export function runInstantRunoff(
       if (top) counts.set(top, (counts.get(top) ?? 0) + 1);
     }
 
-    const total = votes.length;
-    const majority = Math.floor(total / 2) + 1;
+    // Majority must be based on active ballots (those still expressing a
+    // preference), not the original voter count. Exhausted ballots should not
+    // inflate the threshold and prevent a winner from being declared.
+    const activeBallots = currentRankings.filter((b) => b.preferences.length > 0).length;
+    const majority = Math.floor(activeBallots / 2) + 1;
 
     // Check for majority
     for (const [candidate, count] of counts) {
@@ -50,7 +53,10 @@ export function runInstantRunoff(
       }
     }
 
-    // If only one candidate remains (or all tied), pick highest count
+    // If only one or two candidates remain (or all tied), pick the one with
+    // the highest vote count. In a true tie the pipeline's downstream tie-
+    // detection will catch it and call breakTie — we just need to return a
+    // valid (non-empty) winner string here.
     if (remaining.size <= 2 || !toEliminate) {
       let maxCount = -1;
       let topCandidate = "";
@@ -60,6 +66,10 @@ export function runInstantRunoff(
           topCandidate = candidate;
         }
       }
+      // Defensive fallback: counts is initialised from remaining (always ≥1
+      // entry at this point), so topCandidate should always be set. Guard
+      // anyway to avoid returning an empty winner string.
+      if (!topCandidate) topCandidate = [...remaining][0];
       const finalTally = currentRankings.map((ballot) => ({
         voter: ballot.voter,
         votedFor: ballot.preferences[0] ?? "abstain",
@@ -75,14 +85,3 @@ export function runInstantRunoff(
   }
 }
 
-export function countVotesPerAgent(
-  finalTally: VoteTally[],
-  candidates: string[]
-): Map<string, number> {
-  const counts = new Map<string, number>();
-  for (const c of candidates) counts.set(c, 0);
-  for (const t of finalTally) {
-    counts.set(t.votedFor, (counts.get(t.votedFor) ?? 0) + 1);
-  }
-  return counts;
-}

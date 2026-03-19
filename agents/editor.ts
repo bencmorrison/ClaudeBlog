@@ -9,20 +9,18 @@ import type { EditorDecision } from "./types.ts";
 const client = new Anthropic({ maxRetries: 0 });
 const MODEL = "claude-opus-4-6";
 
+// CONTENT_RULES supplies the role description and rule set.
+// EDITOR_SYSTEM adds only the strict output-format instruction on top.
 const EDITOR_SYSTEM = `
-You are the Editor and Manager of a public-facing blog. Your role is to review submitted posts
-against the content rules and return a structured JSON decision.
-
 ${CONTENT_RULES}
 
-When reviewing, respond with ONLY a valid JSON object in this exact format:
+Respond with ONLY a valid JSON object — no markdown, no preamble, no text outside the JSON:
 {
   "approved": true | false,
-  "issues": ["hard rule violations — these cause rejection"],
-  "softFlags": ["soft guideline hits even if approved — e.g. word count, unsupported claims"],
+  "issues": ["hard rule violations — these cause rejection; empty array if approved"],
+  "softFlags": ["soft guideline hits even if approved — e.g. word count, unsupported claims; empty array if none"],
   "feedback": "detailed notes for the writer if rejected, empty string if approved"
 }
-No markdown, no preamble, no explanation outside the JSON.
 `.trim();
 
 export async function reviewPost(
@@ -36,7 +34,7 @@ export async function reviewPost(
 
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 1024,
+    max_tokens: 2048,
     system: EDITOR_SYSTEM,
     messages: [
       {
@@ -65,7 +63,7 @@ export async function reviewPost(
       approved,
       issues,
       softFlags: Array.isArray(parsed.softFlags) ? parsed.softFlags : [],
-      revisedContent: feedback,
+      editorFeedback: feedback,
     };
   } catch {
     console.error("[Editor] Failed to parse editor response:", text);
@@ -73,7 +71,7 @@ export async function reviewPost(
       approved: false,
       issues: ["Editor response parsing failed — treating as rejection."],
       softFlags: [],
-      revisedContent: "The editor could not parse your post. Please rewrite it clearly.",
+      editorFeedback: "The editor could not parse your post. Please rewrite it clearly.",
     };
   }
 }
@@ -103,10 +101,17 @@ Respond with ONLY the name of the winning agent, exactly as written. No other te
     ],
   });
 
-  const chosen =
-    response.content[0].type === "text"
-      ? response.content[0].text.trim()
-      : candidates[0];
+  let chosen: string;
+  if (response.content[0].type === "text") {
+    chosen = response.content[0].text.trim();
+  } else {
+    console.warn("[Editor] breakTie: response was not a text block — falling back to first candidate.");
+    chosen = candidates[0];
+  }
 
-  return candidates.includes(chosen) ? chosen : candidates[0];
+  if (!candidates.includes(chosen)) {
+    console.warn(`[Editor] breakTie: returned "${chosen}" which is not a valid candidate — falling back to first candidate.`);
+    return candidates[0];
+  }
+  return chosen;
 }

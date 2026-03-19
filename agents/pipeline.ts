@@ -73,7 +73,8 @@ function log(msg: string) {
 async function generatePitch(
   agentName: string,
   systemPrompt: string,
-  allMemories: AgentMemory[]
+  allMemories: AgentMemory[],
+  formatFeedback?: string
 ): Promise<Pitch> {
   log(`[Pitch] ${agentName} is pitching...`);
 
@@ -99,7 +100,10 @@ Respond with ONLY a valid JSON object in this exact format:
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
 }`;
-  const pitchMessage = `It is ${todayISO()}. Search the web for recent, interesting topics in your domain, then pitch the most compelling one for this week's blog post. Remember: the other agents will vote on your pitch, so make it timely and compelling. Stay true to your style and interests.`;
+  const baseMessage = `It is ${todayISO()}. Search the web for recent, interesting topics in your domain, then pitch the most compelling one for this week's blog post. Remember: the other agents will vote on your pitch, so make it timely and compelling. Stay true to your style and interests.`;
+  const pitchMessage = formatFeedback
+    ? `${formatFeedback}\n\n${baseMessage}`
+    : baseMessage;
 
   let text: string;
   try {
@@ -220,8 +224,13 @@ The array must contain ALL other agent names exactly as written, ranked from mos
     return { voter: agentName, rankings: validRankings };
   } catch {
     console.error(`[Vote] Failed to parse vote from ${agentName}:`, text);
-    // Fallback: random order of others
-    const fallback = others.map((p) => p.agent).sort(() => Math.random() - 0.5);
+    // Fallback: uniform random order via Fisher-Yates shuffle.
+    // Array.sort with a random comparator is biased — don't use it.
+    const fallback = others.map((p) => p.agent);
+    for (let i = fallback.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [fallback[i], fallback[j]] = [fallback[j], fallback[i]];
+    }
     return { voter: agentName, rankings: fallback };
   }
 }
@@ -252,18 +261,23 @@ ${memoryContext}
 You have won this week's pitch competition with your topic: "${pitch.title}"
 
 You have access to web search. Use it to research current facts, statistics, recent developments,
-or examples relevant to your topic before writing. Ground your post in real, up-to-date information.
+or examples relevant to your topic. Write the complete post in this response.
 
 Write a full blog post based on your pitch. Requirements:
 - Target length: 1000–1400 words (~5–7 minute read)
 - Write in Markdown format (use ## for section headings, **bold**, etc.)
 - Do NOT include frontmatter — just the body content starting with the title as an H1
 - Stay true to your writing persona's voice and style
-- The post must be original, engaging, and meet Australian publication standards${feedbackSection}`;
-  const writeMessage = `Research and write your blog post for the topic: "${pitch.title}"\n\nYour pitch summary was: ${pitch.summary}\n\nUse web search to find current facts and examples to strengthen your post.`;
+- The post must be original, engaging, and meet Australian publication standards
 
+IMPORTANT: Your final response must be the complete, finished blog post — not research notes,
+not an outline, not a statement of intent. Write the entire article. Do not say "I'll now write
+the post" or "let me draft this" — just write it.${feedbackSection}`;
+  const writeMessage = `Research and write your blog post for the topic: "${pitch.title}"\n\nYour pitch summary was: ${pitch.summary}\n\nUse web search to find current facts and examples, then write the complete finished blog post in this same response. Start with the # title as an H1.`;
+
+  let rawContent: string;
   try {
-    return await runWithWebSearch(client, {
+    rawContent = await runWithWebSearch(client, {
       model: MODEL,
       max_tokens: 4096,
       system: writeSystem,
@@ -279,8 +293,28 @@ Write a full blog post based on your pitch. Requirements:
       system: writeSystem,
       messages: [{ role: "user", content: writeMessage }],
     });
-    return resp.content.find((b) => b.type === "text")?.text ?? "";
+    rawContent = resp.content.find((b) => b.type === "text")?.text ?? "";
   }
+
+  // If the response doesn't look like a blog post (no H1 or too short), the model
+  // likely output a planning note instead of the actual article. Follow up to get the post.
+  const looksLikeBlogPost = /^#\s+\S/m.test(rawContent) && rawContent.length > 500;
+  if (!looksLikeBlogPost) {
+    console.warn(`[Write] ${agentName} returned a non-post response (${rawContent.length} chars) — requesting post directly`);
+    const followUpResp = await client.messages.create({
+      model: MODEL,
+      max_tokens: 4096,
+      system: writeSystem,
+      messages: [
+        { role: "user", content: writeMessage },
+        { role: "assistant", content: rawContent || "I have completed my research and am ready to write." },
+        { role: "user", content: "Please write the complete blog post now. Begin with the # title as an H1 heading. Write the full 1000–1400 word article — no preamble, no notes, just the post." },
+      ],
+    });
+    return followUpResp.content.find((b) => b.type === "text")?.text ?? rawContent;
+  }
+
+  return rawContent;
 }
 
 // ─── Frontmatter builder ──────────────────────────────────────────────────────
@@ -326,6 +360,9 @@ function updateMemories(
 ): void {
   const voteCounts = new Map<string, number>();
   for (const t of finalTally) {
+    // Skip abstain entries — they are not valid agent names and should not
+    // count toward any agent's vote total.
+    if (t.votedFor === "abstain") continue;
     voteCounts.set(t.votedFor, (voteCounts.get(t.votedFor) ?? 0) + 1);
   }
 
@@ -395,15 +432,21 @@ async function createPR(postPath: string, title: string, date: string): Promise<
   try {
     execSync(`git checkout -b ${branchName}`, { stdio: "inherit" });
     execSync(`git add "${postPath}"`, { stdio: "inherit" });
-    execSync(
-      `git commit -m "feat: add blog post — ${title} [${date}]"`,
-      { stdio: "inherit" }
-    );
+    // Pass title via env variable so shell metacharacters in AI-generated titles
+    // cannot break out of the string or inject shell commands.
+    execSync(`git commit -m "$COMMIT_MSG"`, {
+      stdio: "inherit",
+      env: { ...process.env, COMMIT_MSG: `feat: add blog post — ${title} [${date}]` },
+    });
     execSync(`git push origin ${branchName}`, { stdio: "inherit" });
-    execSync(
-      `gh pr create --title "Blog post: ${title}" --body "Automated weekly blog post generated by the ClaudeBlog pipeline. Review content before merging." --base main --head ${branchName}`,
-      { stdio: "inherit" }
-    );
+    execSync(`gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head ${branchName}`, {
+      stdio: "inherit",
+      env: {
+        ...process.env,
+        PR_TITLE: `Blog post: ${title}`,
+        PR_BODY: "Automated weekly blog post generated by the ClaudeBlog pipeline. Review content before merging.",
+      },
+    });
     log(`[PR] Pull request created for branch ${branchName}`);
   } catch (err) {
     console.error("[PR] Error creating PR:", err);
@@ -425,14 +468,27 @@ async function main() {
   // Wraps generatePitch with a format-retry loop separate from withRateLimitRetry.
   // withRateLimitRetry handles API-level errors (429, 5xx, network); this handles
   // the case where the model returns malformed/missing JSON.
-  // Total attempts at getting a well-formed pitch before aborting.
-  const MAX_FORMAT_ATTEMPTS = 3;
-  async function generatePitchWithRetry(persona: (typeof PERSONAS)[0]): Promise<Pitch> {
-    for (let attempt = 0; ; attempt++) {
+  //
+  // Attempt 1: normal request
+  // Attempt 2: notify the agent their response wasn't valid JSON + reiterate format
+  // Attempt 3: fresh full retry (no mention of prior failures)
+  // Attempt 4: notify again about malformed JSON + reiterate format
+  // All fail: skip the agent (return null) rather than crashing the pipeline
+  const MAX_FORMAT_ATTEMPTS = 4;
+  const FORMAT_FEEDBACK = `Your previous response was not valid JSON. Please respond with ONLY a raw JSON object — no markdown, no code blocks, no explanation. Required format:
+{
+  "title": "Your pitch title",
+  "summary": "2–3 sentences describing the post and why it would be interesting."
+}`;
+
+  async function generatePitchWithRetry(persona: (typeof PERSONAS)[0]): Promise<Pitch | null> {
+    for (let attempt = 0; attempt < MAX_FORMAT_ATTEMPTS; attempt++) {
+      // Odd attempts (index 1, 3): tell them what went wrong. Even attempts (index 0, 2): fresh start.
+      const formatFeedback = attempt % 2 === 1 ? FORMAT_FEEDBACK : undefined;
       try {
         return await withRateLimitRetry(
           `[Pitch] ${persona.name}`,
-          () => generatePitch(persona.name, persona.systemPrompt, memories)
+          () => generatePitch(persona.name, persona.systemPrompt, memories, formatFeedback)
         );
       } catch (err) {
         // Only retry on format errors (bad/missing JSON from the model).
@@ -444,19 +500,26 @@ async function main() {
 
         if (!isFormatError) throw err;
 
-        if (attempt >= MAX_FORMAT_ATTEMPTS - 1) {
-          console.error(`[Pitch] ${persona.name} failed after ${MAX_FORMAT_ATTEMPTS} attempts — aborting.`);
-          throw err;
+        if (attempt < MAX_FORMAT_ATTEMPTS - 1) {
+          console.warn(`[Pitch] ${persona.name} bad format — attempt ${attempt + 2}/${MAX_FORMAT_ATTEMPTS}...`);
+        } else {
+          console.warn(`[Pitch] ${persona.name} couldn't produce a valid pitch after ${MAX_FORMAT_ATTEMPTS} attempts — skipping. Better luck next week!`);
+          return null;
         }
-
-        console.warn(`[Pitch] ${persona.name} bad format — attempt ${attempt + 2}/${MAX_FORMAT_ATTEMPTS}...`);
       }
     }
+    return null;
   }
 
   const pitches: Pitch[] = [];
   for (const persona of PERSONAS) {
-    pitches.push(await generatePitchWithRetry(persona));
+    const pitch = await generatePitchWithRetry(persona);
+    if (pitch) pitches.push(pitch);
+  }
+
+  if (pitches.length < 2) {
+    console.error(`[Pipeline] Only ${pitches.length} valid pitch(es) — need at least 2 to run a vote. Aborting.`);
+    process.exit(1);
   }
 
   console.log("\nPitches received:");
@@ -465,9 +528,13 @@ async function main() {
   );
 
   // ── Phase 2: Cast votes (sequential + rate-limit retry) ─────────────────────
+  // Only agents who successfully pitched get to vote — skipped agents have no
+  // stake in the outcome and their vote would skew the tally.
   log("Phase 2: Casting votes...");
+  const pitchingAgentNames = new Set(pitches.map((p) => p.agent));
+  const votingPersonas = PERSONAS.filter((p) => pitchingAgentNames.has(p.name));
   const votes: RankedVote[] = [];
-  for (const persona of PERSONAS) {
+  for (const persona of votingPersonas) {
     votes.push(
       await withRateLimitRetry(
         `[Vote] ${persona.name}`,
@@ -483,12 +550,15 @@ async function main() {
 
   // ── Phase 3: Tally votes ─────────────────────────────────────────────────
   log("Phase 3: Tallying votes (Instant Runoff)...");
-  const candidates = PERSONAS.map((p) => p.name);
+  const candidates = pitches.map((p) => p.agent);
   let { winner, finalTally } = runInstantRunoff(votes, candidates);
 
-  // Check for genuine tie (shouldn't happen with IRV but handle edge case)
+  // Check for genuine tie (shouldn't happen with IRV but handle edge case).
+  // Exclude "abstain" entries — IRV emits these when a ballot exhausts all
+  // preferences; they are not real candidates and must not enter tie-breaking.
   const tallyCounts = new Map<string, number>();
   for (const t of finalTally) {
+    if (t.votedFor === "abstain") continue;
     tallyCounts.set(t.votedFor, (tallyCounts.get(t.votedFor) ?? 0) + 1);
   }
   const winnerCount = tallyCounts.get(winner) ?? 0;
@@ -508,25 +578,35 @@ async function main() {
 
   // ── Phase 4 + 5: Write post with editor review ───────────────────────────
   log("Phase 4: Writing post...");
-  const winnerPersona = PERSONAS.find((p) => p.name === winner)!;
-  const winningPitch = pitches.find((p) => p.agent === winner)!;
 
   let postContent = "";
   let approved = false;
   let editorFeedback: string | undefined;
   let editorSoftFlags: string[] = [];
   let currentWriter = winner;
-  let currentPersona = winnerPersona;
-  let currentPitch = winningPitch;
+  const initialPitch = pitches.find((p) => p.agent === winner);
+  if (!initialPitch) throw new Error(`[Pipeline] No pitch found for winner "${winner}" — data inconsistency.`);
+  let currentPitch: Pitch = initialPitch;
 
-  // Track which agents have been tried (winner first, then runner-up if all retries exhausted)
-  const agentOrder = [winner, ...candidates.filter((c) => c !== winner)];
+  // Track which agents have been tried (winner first, then others sorted by
+  // descending final-round vote count so the strongest runner-up is tried next).
+  // tallyCounts was built in Phase 3 and holds per-agent vote counts.
+  const agentOrder = [
+    winner,
+    ...candidates
+      .filter((c) => c !== winner)
+      .sort((a, b) => (tallyCounts.get(b) ?? 0) - (tallyCounts.get(a) ?? 0)),
+  ];
   let agentIndex = 0;
 
   while (!approved && agentIndex < agentOrder.length) {
     const writerName = agentOrder[agentIndex];
-    const writerPersona = PERSONAS.find((p) => p.name === writerName)!;
-    const writerPitch = pitches.find((p) => p.agent === writerName)!;
+    const writerPersona = PERSONAS.find((p) => p.name === writerName);
+    const writerPitch = pitches.find((p) => p.agent === writerName);
+    if (!writerPersona || !writerPitch) throw new Error(`[Pipeline] Missing persona or pitch for agent "${writerName}" — data inconsistency.`);
+    // Reset feedback so a previous agent's rejection reason isn't leaked to
+    // the next agent's first attempt.
+    editorFeedback = undefined;
 
     for (let attempt = 1; attempt <= MAX_EDITOR_RETRIES + 1; attempt++) {
       postContent = await withRateLimitRetry(
@@ -548,7 +628,6 @@ async function main() {
       if (decision.approved) {
         approved = true;
         currentWriter = writerName;
-        currentPersona = writerPersona;
         currentPitch = writerPitch;
         editorSoftFlags = decision.softFlags;
         if (editorSoftFlags.length > 0) {
@@ -557,7 +636,12 @@ async function main() {
         log(`[Editor] Post approved from ${writerName} on attempt ${attempt}`);
         break;
       } else {
-        editorFeedback = decision.revisedContent ?? decision.issues.join("; ");
+        // Normalise to undefined when empty so the falsy guard and writePost
+        // feedbackSection both behave correctly — an empty string would pass
+        // the `attempt > 1 ? editorFeedback : undefined` check and inject a
+        // rejection notice with no actual content into the next write prompt.
+        const rawFeedback = decision.editorFeedback || decision.issues.join("; ");
+        editorFeedback = rawFeedback || undefined;
         console.warn(
           `[Editor] Rejected (attempt ${attempt}/${MAX_EDITOR_RETRIES + 1}): ${decision.issues.join(", ")}`
         );
@@ -583,9 +667,17 @@ async function main() {
   // ── Build post file ──────────────────────────────────────────────────────
   log("Phase 6: Building post file...");
 
-  // Extract title from the post content (first H1)
+  // Extract title from the post content (first H1), then strip any inline
+  // Markdown formatting so the title field doesn't contain literal * _ `
+  // characters in the YAML frontmatter and HTML <title> tag.
   const titleMatch = postContent.match(/^#\s+(.+)$/m);
-  const postTitle = titleMatch ? titleMatch[1].trim() : currentPitch.title;
+  const rawTitle = titleMatch ? titleMatch[1].trim() : currentPitch.title;
+  const postTitle = rawTitle
+    .replace(/\*\*(.*?)\*\*/g, "$1")  // **bold**
+    .replace(/__(.*?)__/g, "$1")      // __bold__
+    .replace(/\*(.*?)\*/g, "$1")      // *italic*
+    .replace(/_(.*?)_/g, "$1")        // _italic_
+    .replace(/`(.*?)`/g, "$1");       // `code`
 
   // Tag extraction using word-boundary matching to avoid false substring matches
   const tagKeywords = [
@@ -604,7 +696,12 @@ async function main() {
     author: currentWriter,
     tags,
     pitch: currentPitch.summary,
-    votes: finalTally.map((t) => ({ voter: t.voter, votedFor: t.votedFor })),
+    // Filter abstain entries — IRV emits these when a ballot exhausts all
+    // preferences. They are not valid agent names and must not appear in the
+    // published post frontmatter.
+    votes: finalTally
+      .filter((t) => t.votedFor !== "abstain")
+      .map((t) => ({ voter: t.voter, votedFor: t.votedFor })),
     pitches,
   };
 

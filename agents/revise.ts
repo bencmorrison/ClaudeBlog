@@ -120,7 +120,7 @@ async function main() {
   }
 
   const postPath = join(process.cwd(), postFile);
-  const originalContent = readFileSync(postPath, "utf-8");
+  const originalContent = readFileSync(postPath, "utf-8").replace(/\r\n/g, "\n");
   const frontmatter = parseFrontmatter(originalContent);
   const frontmatterBlock = extractFrontmatterBlock(originalContent);
   const originalBody = extractBody(originalContent);
@@ -171,7 +171,8 @@ async function main() {
       log(`[Editor] Revision approved on attempt ${attempt}`);
       break;
     } else {
-      editorFeedback = decision.revisedContent ?? decision.issues.join("; ");
+      const rawFeedback = decision.editorFeedback || decision.issues.join("; ");
+      editorFeedback = rawFeedback || undefined;
       console.warn(`[Editor] Rejected (attempt ${attempt}): ${decision.issues.join(", ")}`);
     }
   }
@@ -188,8 +189,8 @@ async function main() {
   // Commit the revision
   execSync(`git add "${postPath}"`, { stdio: "inherit" });
   execSync(
-    `git commit -m "revision: address human review feedback [${authorName}]"`,
-    { stdio: "inherit" }
+    `git commit -m "revision: address human review feedback [$AUTHOR_NAME]"`,
+    { stdio: "inherit", env: { ...process.env, AUTHOR_NAME: authorName } }
   );
   execSync("git push", { stdio: "inherit" });
 

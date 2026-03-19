@@ -6,8 +6,8 @@
  * predictable across pipeline.ts, revise.ts, and editor.ts.
  *
  * Retries on:
- *   - RateLimitError (429) — waits exactly retry-after seconds, capped at
- *     MAX_RETRY_AFTER_S to avoid sleeping indefinitely on spend-limit errors.
+ *   - RateLimitError (429) — waits exactly retry-after seconds (header value
+ *     used as-is; x-should-retry: false guards against spend-limit hangs).
  *   - InternalServerError (5xx / 529) — waits INTERNAL_ERROR_WAIT_S seconds.
  *   - APIConnectionError — transient network failures (DNS hiccups, dropped
  *     connections on CI runners); waits INTERNAL_ERROR_WAIT_S seconds.
@@ -29,6 +29,17 @@ export const INTERNAL_ERROR_WAIT_S = 30;
 
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export function formatDuration(seconds: number): string {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.round(seconds % 60);
+  const parts: string[] = [];
+  if (h > 0) parts.push(`${h}h`);
+  if (m > 0) parts.push(`${m}m`);
+  if (s > 0 || parts.length === 0) parts.push(`${s}s`);
+  return parts.join(" ");
 }
 
 export async function withRateLimitRetry<T>(
@@ -63,17 +74,17 @@ export async function withRateLimitRetry<T>(
           const parsed = headerVal ? parseFloat(headerVal) : NaN;
           waitS = Number.isFinite(parsed) ? parsed : RATE_LIMIT_FALLBACK_WAIT_S;
           console.warn(
-            `[Rate limit] ${label} — waiting ${waitS}s before retry ${attempt + 1}/${maxRetries}...`
+            `[Rate limit] ${label} — waiting ${formatDuration(waitS)} before retry ${attempt + 1}/${maxRetries}...`
           );
         } else if (isServerError) {
           waitS = INTERNAL_ERROR_WAIT_S;
           console.warn(
-            `[Server error] ${label} — waiting ${waitS}s before retry ${attempt + 1}/${maxRetries}...`
+            `[Server error] ${label} — waiting ${formatDuration(waitS)} before retry ${attempt + 1}/${maxRetries}...`
           );
         } else {
           waitS = INTERNAL_ERROR_WAIT_S;
           console.warn(
-            `[Connection error] ${label} — waiting ${waitS}s before retry ${attempt + 1}/${maxRetries}...`
+            `[Connection error] ${label} — waiting ${formatDuration(waitS)} before retry ${attempt + 1}/${maxRetries}...`
           );
         }
 
@@ -84,5 +95,7 @@ export async function withRateLimitRetry<T>(
       throw err;
     }
   }
-  throw new Error(`[withRateLimitRetry] ${label} — max retries (${maxRetries}) exceeded`);
+  // All retries exhausted — the final attempt's error was re-thrown above.
+  // This line is unreachable but satisfies TypeScript's return analysis.
+  throw new Error(`[withRateLimitRetry] ${label} — exhausted ${maxRetries} retries`);
 }
