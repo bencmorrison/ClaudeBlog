@@ -14,11 +14,14 @@ import { execSync } from "child_process";
 import { writeFileSync } from "fs";
 import { join } from "path";
 import { reviewPost, breakTie } from "./editor.ts";
+import { factCheckPost } from "./fact-checker.ts";
 import { MAX_EDITOR_RETRIES } from "./content-rules.ts";
 import {
   loadAllMemories,
   saveMemory,
   formatMemoriesForContext,
+  loadFactCheckerMemory,
+  saveFactCheckerMemory,
 } from "./utils/memory.ts";
 import { runInstantRunoff } from "./utils/voting.ts";
 import { buildPostSlug } from "./utils/slugify.ts";
@@ -246,13 +249,14 @@ async function writePost(
   systemPrompt: string,
   pitch: Pitch,
   allMemories: AgentMemory[],
-  feedback?: string
+  feedback?: string,
+  feedbackHeader = "Previous attempt was rejected by the Editor with this feedback:"
 ): Promise<string> {
   log(`[Write] ${agentName} is writing the post...`);
 
   const memoryContext = formatMemoriesForContext(allMemories);
   const feedbackSection = feedback
-    ? `\n\nPrevious attempt was rejected by the Editor with this feedback:\n${feedback}\nPlease address these issues in your rewrite.`
+    ? `\n\n${feedbackHeader}\n${feedback}\nPlease address these issues in your rewrite.`
     : "";
 
   // ── Phase A: Research (web search) ─────────────────────────────────────────
@@ -328,6 +332,20 @@ Write a full blog post based on your pitch and the research provided. Requiremen
 
 // ─── Frontmatter builder ──────────────────────────────────────────────────────
 
+function buildFactCheckYaml(fc: PostFrontmatter["factCheck"]): string {
+  if (!fc || fc.issuesFound === 0) return "";
+  // Strip newlines from note strings — a note containing \n would break YAML structure
+  const safeNotes = fc.notes.map((n) => n.replace(/\n/g, " ").replace(/"/g, '\\"'));
+  const notesYaml = safeNotes.length > 0
+    ? safeNotes.map((n) => `    - "${n}"`).join("\n")
+    : "";
+  // Use `notes: []` inline when empty to produce valid YAML
+  const notesLine = safeNotes.length > 0
+    ? `  notes:\n${notesYaml}`
+    : "  notes: []";
+  return `\nfactCheck:\n  issuesFound: ${fc.issuesFound}\n  issuesResolved: ${fc.issuesResolved}\n${notesLine}`;
+}
+
 function buildFrontmatter(data: PostFrontmatter): string {
   const tagsYaml = data.tags.map((t) => `  - "${t}"`).join("\n");
   const votesYaml = data.votes
@@ -339,6 +357,7 @@ function buildFrontmatter(data: PostFrontmatter): string {
         `  - agent: "${p.agent}"\n    title: "${p.title.replace(/"/g, '\\"')}"\n    summary: "${p.summary.replace(/"/g, '\\"')}"`
     )
     .join("\n");
+  const factCheckYaml = buildFactCheckYaml(data.factCheck);
 
   return `---
 title: "${data.title.replace(/"/g, '\\"')}"
@@ -350,7 +369,7 @@ pitch: "${data.pitch.replace(/"/g, '\\"')}"
 votes:
 ${votesYaml}
 pitches:
-${pitchesYaml}
+${pitchesYaml}${factCheckYaml}
 ---
 
 `;
@@ -673,6 +692,63 @@ async function main() {
     process.exit(1);
   }
 
+  // ── Phase 5: Fact checking ───────────────────────────────────────────────
+  log("Phase 5: Fact checking...");
+
+  const approvedPersona = PERSONAS.find((p) => p.name === currentWriter)!;
+
+  let factCheckResult = await withRateLimitRetry(
+    `[FactChecker] ${currentWriter}`,
+    () => factCheckPost(postContent, currentWriter, 1)
+  );
+
+  let factCheckIssuesFound = factCheckResult.issues.length;
+  let factCheckIssuesResolved = 0;
+
+  if (factCheckResult.issues.length > 0) {
+    log(`[FactChecker] ${factCheckResult.issues.length} issue(s) found — giving ${currentWriter} one revision attempt`);
+
+    // Writer gets one revision attempt to address fact checker feedback
+    const revisedContent = await withRateLimitRetry(
+      `[Write] ${currentWriter} (fact-check revision)`,
+      () => writePost(
+        currentWriter, approvedPersona.systemPrompt, currentPitch, memories,
+        factCheckResult.feedback,
+        "The Fact Checker flagged the following factual issues that need to be addressed:"
+      )
+    );
+
+    // Revision must pass the editor before replacing the approved post
+    const revisedEditorDecision = await withRateLimitRetry(
+      "[Editor] fact-check revision",
+      () => reviewPost(revisedContent, currentWriter, 1)
+    );
+
+    if (revisedEditorDecision.approved) {
+      // Fact check the revision — remaining issues become the notes
+      const recheck = await withRateLimitRetry(
+        `[FactChecker] ${currentWriter} recheck`,
+        () => factCheckPost(revisedContent, currentWriter, 2)
+      );
+      factCheckIssuesResolved = Math.max(0, factCheckIssuesFound - recheck.issues.length);
+      factCheckResult = recheck;
+      postContent = revisedContent;
+      editorSoftFlags = revisedEditorDecision.softFlags;
+      log(`[FactChecker] Revision resolved ${factCheckIssuesResolved}/${factCheckIssuesFound} issue(s). Remaining: ${recheck.issues.length}`);
+    } else {
+      console.warn("[FactChecker] Revision rejected by editor — keeping original approved content, all fact check issues recorded as notes");
+    }
+  }
+
+  // Only record factCheck in frontmatter if issues were found
+  const factCheckData: PostFrontmatter["factCheck"] = factCheckIssuesFound > 0
+    ? {
+        issuesFound: factCheckIssuesFound,
+        issuesResolved: factCheckIssuesResolved,
+        notes: factCheckResult.issues,
+      }
+    : undefined;
+
   // ── Build post file ──────────────────────────────────────────────────────
   log("Phase 6: Building post file...");
 
@@ -712,6 +788,7 @@ async function main() {
       .filter((t) => t.votedFor !== "abstain")
       .map((t) => ({ voter: t.voter, votedFor: t.votedFor })),
     pitches,
+    factCheck: factCheckData,
   };
 
   const postSlug = buildPostSlug(date, postTitle);
@@ -725,6 +802,22 @@ async function main() {
   // ── Update memories (commit directly to main) ────────────────────────────
   log("Updating agent memory files...");
   updateMemories(memories, pitches, finalTally, currentWriter, postSlug, date, editorSoftFlags);
+
+  // Update fact checker memory
+  const fcMemory = loadFactCheckerMemory();
+  fcMemory.totalPostsChecked += 1;
+  fcMemory.totalIssuesFound += factCheckIssuesFound;
+  fcMemory.totalIssuesResolved += factCheckIssuesResolved;
+  fcMemory.postHistory.push({
+    date,
+    slug: postSlug,
+    title: postTitle,
+    author: currentWriter,
+    issuesFound: factCheckIssuesFound,
+    issuesResolved: factCheckIssuesResolved,
+    notes: factCheckResult.issues,
+  });
+  saveFactCheckerMemory(fcMemory);
 
   if (!DRY_RUN) {
     try {

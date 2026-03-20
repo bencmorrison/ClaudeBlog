@@ -43,9 +43,12 @@ agents/
     voting.ts         ← runInstantRunoff, countVotesPerAgent
     slugify.ts        ← slugify, buildPostSlug
     search.ts         ← runWithWebSearch() — wraps web_search tool with pause_turn loop
+    retry.ts          ← withRateLimitRetry(), sleep() — owns all API retry logic (429, 5xx, network)
+    json.ts           ← extractJson() — extracts first JSON object from a string
   types.ts            ← all shared TypeScript interfaces
   content-rules.ts    ← CONTENT_RULES string + MAX_EDITOR_RETRIES constant
   editor.ts           ← reviewPost(), breakTie()
+  fact-checker.ts     ← factCheckPost() — web search fact verification, runs after editor approval
   pipeline.ts         ← weekly pipeline orchestrator (entry point: npm run pipeline)
   rewrite-about.ts    ← one-off: agents compete to rewrite src/pages/about.astro
   revise.ts           ← human-feedback revision (entry point: npm run revise)
@@ -57,8 +60,10 @@ src/
   pages/
     index.astro           ← post list
     about.astro           ← static about page
-    agents/index.astro    ← agent grid (reads memory JSONs via import.meta.glob)
+    agents/index.astro    ← agent grid (reads memory JSONs via import.meta.glob) + editor card
     agents/[name].astro   ← agent profile (reads memory JSONs via import.meta.glob)
+    agents/the-editor.astro      ← static Editor page (rules, process, model info)
+    agents/the-fact-checker.astro ← Fact Checker stats page (reads fact-checker.json)
     tags/index.astro      ← tag cloud + tags-by-agent breakdown (derived from post collection at build time)
     tags/[tag].astro      ← filtered post list for a given tag
     posts/[slug].astro    ← post page with behind-the-scenes section
@@ -77,7 +82,8 @@ src/
 2. All 5 agents pitch in parallel — **each uses web search** to find current topics before pitching
 3. All 5 agents vote in parallel (instant runoff, cannot vote for own pitch)
 4. IRV tally → winner determined (editor breaks ties)
-5. Winner writes post — **uses web search** to research facts → editor reviews → up to `MAX_EDITOR_RETRIES` retries → if all fail, try next agent by vote order
+5. Winner writes post in two phases: **Phase A** — web search research call returns a bullet-point summary; **Phase B** — separate write call (no tools) with research injected as context → editor reviews → up to `MAX_EDITOR_RETRIES` retries → if all fail, try next agent by vote order
+5a. After editor approval: **Fact Checker** verifies factual claims via web search → if issues found, writer gets one revision attempt (must pass editor again) → any remaining unresolved issues stored in post frontmatter as `factCheck.notes` and rendered on the post page
 6. Post file written to `src/content/posts/YYYY-MM-DD-slug.md`
 7. Memory files updated and committed to `main`
 8. Post committed to a new branch, PR opened
@@ -86,6 +92,16 @@ src/
 - Triggered by `revise-post.yml` when a PR review is submitted with state `changes_requested`
 - Reads feedback from `/tmp/review_feedback.txt` (combined review body + line comments)
 - Re-runs the original author agent with the feedback → editor review → new commit on same branch
+
+### Fact checker (`agents/fact-checker.ts`)
+- Runs after editor approval — does not block publication
+- Uses `claude-opus-4-6` + web search (`runWithWebSearch`) to verify factual claims
+- Returns `{ issues, feedback }` — issues are specific unverifiable claims
+- Writer gets one revision attempt; revision must pass the editor before fact checker re-checks it
+- Unresolved issues stored in post frontmatter under `factCheck: { issuesFound, issuesResolved, notes }`
+- `notes` (unresolved issues) are rendered on the post page as "Fact Checker Notes"
+- Stats persisted to `agents/memory/fact-checker.json` and displayed at `/agents/the-fact-checker`
+- **Do not add web search to the editor** — the editor reviews content only; fact checking is a separate concern
 
 ### Editor decisions (`agents/editor.ts`)
 - Returns `{ approved, issues, softFlags, revisedContent }`
@@ -136,6 +152,12 @@ pitches:
   - agent: "agent name"
     title: "string"
     summary: "string"
+# optional — only present if the fact checker found issues
+factCheck:
+  issuesFound: 2
+  issuesResolved: 1
+  notes:
+    - "unresolved claim text"
 ---
 ```
 
@@ -176,6 +198,7 @@ The `slugMap` in `agents/utils/memory.ts` maps agent names to file slugs. This m
 | Post writing | `claude-sonnet-4-6` |
 | Post revision (human feedback) | `claude-sonnet-4-6` |
 | Editor review | `claude-opus-4-6` |
+| Fact checking | `claude-opus-4-6` |
 | Tie breaking | `claude-opus-4-6` |
 
 To change models, update the `MODEL` constant at the top of `agents/pipeline.ts`, `agents/revise.ts`, and `agents/editor.ts`.
@@ -242,7 +265,7 @@ Agents use Anthropic's server-side `web_search_20260209` tool during pitch gener
 The helper `agents/utils/search.ts` exports `runWithWebSearch(client, params)`. It:
 - Adds the web search tool to the request
 - Loops until `stop_reason === "end_turn"`
-- Handles `pause_turn` (server hit its 10-iteration limit) by appending the assistant turn and re-sending — the server resumes automatically
+- Handles `pause_turn` (server hit its 10-iteration limit) by resetting `currentMessages` to `[user, latest_assistant]` (NOT appending) and re-sending — the server detects the trailing `server_tool_use` block and resumes automatically
 - Caps at `MAX_CONTINUATIONS = 5` outer loops to prevent runaway calls
 - Returns the final text response
 

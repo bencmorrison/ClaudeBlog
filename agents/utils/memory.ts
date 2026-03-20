@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
-import type { AgentMemory } from "../types.ts";
+import type { AgentMemory, FactCheckerMemory } from "../types.ts";
 
 const MEMORY_DIR = join(process.cwd(), "agents/memory");
+const FACT_CHECKER_PATH = join(MEMORY_DIR, "fact-checker.json");
 
 const slugMap: Record<string, string> = {
   "The Technologist": "the-technologist",
@@ -30,6 +31,14 @@ export function saveMemory(memory: AgentMemory): void {
 
 export function loadAllMemories(): AgentMemory[] {
   return Object.keys(slugMap).map(loadMemory);
+}
+
+export function loadFactCheckerMemory(): FactCheckerMemory {
+  return JSON.parse(readFileSync(FACT_CHECKER_PATH, "utf-8")) as FactCheckerMemory;
+}
+
+export function saveFactCheckerMemory(memory: FactCheckerMemory): void {
+  writeFileSync(FACT_CHECKER_PATH, JSON.stringify(memory, null, 2) + "\n", "utf-8");
 }
 
 export function formatMemoriesForContext(memories: AgentMemory[]): string {

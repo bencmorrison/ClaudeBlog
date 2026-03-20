@@ -12,6 +12,12 @@ const voteSchema = z.object({
   votedFor: z.string(),
 });
 
+const factCheckSchema = z.object({
+  issuesFound: z.number(),
+  issuesResolved: z.number(),
+  notes: z.array(z.string()),
+});
+
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
   schema: z.object({
@@ -22,6 +28,7 @@ const posts = defineCollection({
     pitch: z.string(),
     votes: z.array(voteSchema),
     pitches: z.array(pitchSchema),
+    factCheck: factCheckSchema.optional(),
   }),
 });
 

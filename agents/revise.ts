@@ -17,8 +17,14 @@ import { readFileSync, writeFileSync } from "fs";
 import { execSync } from "child_process";
 import { join } from "path";
 import { reviewPost } from "./editor.ts";
+import { factCheckPost } from "./fact-checker.ts";
 import { MAX_EDITOR_RETRIES } from "./content-rules.ts";
-import { loadAllMemories, formatMemoriesForContext } from "./utils/memory.ts";
+import {
+  loadAllMemories,
+  formatMemoriesForContext,
+  loadFactCheckerMemory,
+  saveFactCheckerMemory,
+} from "./utils/memory.ts";
 import { withRateLimitRetry } from "./utils/retry.ts";
 import technologist from "./personas/the-technologist.ts";
 import philosopher from "./personas/the-philosopher.ts";
@@ -62,6 +68,51 @@ function extractFrontmatterBlock(content: string): string {
   return match ? match[1] : "";
 }
 
+// Replace or insert factCheck block in a frontmatter string.
+// Uses a line-based approach to avoid regex fragility with LLM-generated note strings.
+function updateFrontmatterFactCheck(
+  frontmatterBlock: string,
+  factCheck: { issuesFound: number; issuesResolved: number; notes: string[] } | undefined
+): string {
+  // Strip the surrounding --- markers to work on the inner YAML lines
+  const inner = frontmatterBlock.slice(4, -5); // removes leading "---\n" and trailing "\n---\n"
+  const lines = inner.split("\n");
+
+  // Remove any existing factCheck block — identified as a top-level key followed by indented lines
+  const cleanLines: string[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    if (lines[i].startsWith("factCheck:")) {
+      i++;
+      while (i < lines.length && (lines[i].startsWith(" ") || lines[i].startsWith("\t") || lines[i] === "")) {
+        i++;
+      }
+    } else {
+      cleanLines.push(lines[i]);
+      i++;
+    }
+  }
+
+  if (!factCheck || factCheck.issuesFound === 0) {
+    return `---\n${cleanLines.join("\n")}\n---\n`;
+  }
+
+  // Sanitize note strings — strip newlines to prevent YAML structure corruption
+  const safeNotes = factCheck.notes.map((n) => n.replace(/\n/g, " ").replace(/"/g, '\\"'));
+  const notesLine = safeNotes.length > 0
+    ? `  notes:\n${safeNotes.map((n) => `    - "${n}"`).join("\n")}`
+    : "  notes: []";
+
+  const factCheckLines = [
+    "factCheck:",
+    `  issuesFound: ${factCheck.issuesFound}`,
+    `  issuesResolved: ${factCheck.issuesResolved}`,
+    notesLine,
+  ];
+
+  return `---\n${cleanLines.join("\n")}\n${factCheckLines.join("\n")}\n---\n`;
+}
+
 // ─── Revision writer ──────────────────────────────────────────────────────────
 
 async function revisePost(
@@ -70,11 +121,15 @@ async function revisePost(
   originalBody: string,
   humanFeedback: string,
   editorFeedback: string | undefined,
-  memories: ReturnType<typeof loadAllMemories>
+  memories: ReturnType<typeof loadAllMemories>,
+  factCheckerFeedback?: string
 ): Promise<string> {
   const memoryContext = formatMemoriesForContext(memories);
   const editorSection = editorFeedback
     ? `\n\nThe editor also flagged the following issues in a previous revision:\n${editorFeedback}\nPlease address these too.`
+    : "";
+  const factCheckerSection = factCheckerFeedback
+    ? `\n\nThe Fact Checker flagged the following factual issues that also need to be addressed:\n${factCheckerFeedback}`
     : "";
 
   const response = await client.messages.create({
@@ -90,7 +145,7 @@ ${memoryContext}
 Your blog post was reviewed by a human editor who has requested changes before it can be published.
 Revise your post to address their feedback while staying true to your voice and style.
 Keep the same topic and general direction — this is a revision, not a rewrite from scratch.
-Target length: 1000–1400 words. Return the full revised post in Markdown, starting with the H1 title.${editorSection}`,
+Target length: 1000–1400 words. Return the full revised post in Markdown, starting with the H1 title.${editorSection}${factCheckerSection}`,
     messages: [
       {
         role: "user",
@@ -182,12 +237,72 @@ async function main() {
     process.exit(1);
   }
 
-  // Write revised file (preserve original frontmatter)
-  writeFileSync(postPath, frontmatterBlock + revisedBody, "utf-8");
+  // ── Fact check the approved revision ─────────────────────────────────────
+  log("Fact checking revised post...");
+
+  let factCheckResult = await withRateLimitRetry(
+    `[FactChecker] ${authorName}`,
+    () => factCheckPost(revisedBody, authorName, 1)
+  );
+
+  let factCheckIssuesFound = factCheckResult.issues.length;
+  let factCheckIssuesResolved = 0;
+
+  if (factCheckResult.issues.length > 0) {
+    log(`[FactChecker] ${factCheckResult.issues.length} issue(s) found — giving ${authorName} one revision attempt`);
+
+    const furtherRevised = await withRateLimitRetry(
+      `[Revise] ${authorName} (fact-check revision)`,
+      () => revisePost(authorName, persona.systemPrompt, revisedBody, reviewBody, undefined, memories, factCheckResult.feedback)
+    );
+
+    const furtherEditorDecision = await withRateLimitRetry(
+      "[Editor] fact-check revision",
+      () => reviewPost(furtherRevised, authorName, 1)
+    );
+
+    if (furtherEditorDecision.approved) {
+      const recheck = await withRateLimitRetry(
+        `[FactChecker] ${authorName} recheck`,
+        () => factCheckPost(furtherRevised, authorName, 2)
+      );
+      factCheckIssuesResolved = Math.max(0, factCheckIssuesFound - recheck.issues.length);
+      factCheckResult = recheck;
+      revisedBody = furtherRevised;
+      log(`[FactChecker] Revision resolved ${factCheckIssuesResolved}/${factCheckIssuesFound} issue(s). Remaining: ${recheck.issues.length}`);
+    } else {
+      console.warn("[FactChecker] Further revision rejected by editor — keeping earlier approved revision, all fact check issues recorded as notes");
+    }
+  }
+
+  const factCheckData = factCheckIssuesFound > 0
+    ? { issuesFound: factCheckIssuesFound, issuesResolved: factCheckIssuesResolved, notes: factCheckResult.issues }
+    : undefined;
+
+  const updatedFrontmatter = updateFrontmatterFactCheck(frontmatterBlock, factCheckData);
+
+  // Write revised file first — memory update follows so a write failure doesn't corrupt stats
+  writeFileSync(postPath, updatedFrontmatter + revisedBody, "utf-8");
+
+  // Update fact checker memory
+  const fcMemory = loadFactCheckerMemory();
+  fcMemory.totalPostsChecked += 1;
+  fcMemory.totalIssuesFound += factCheckIssuesFound;
+  fcMemory.totalIssuesResolved += factCheckIssuesResolved;
+  fcMemory.postHistory.push({
+    date: frontmatter["date"] ?? new Date().toISOString().split("T")[0],
+    slug: postFile.replace(/^src\/content\/posts\//, "").replace(/\.md$/, ""),
+    title: frontmatter["title"] ?? "Unknown",
+    author: authorName,
+    issuesFound: factCheckIssuesFound,
+    issuesResolved: factCheckIssuesResolved,
+    notes: factCheckResult.issues,
+  });
+  saveFactCheckerMemory(fcMemory);
   log(`[File] Revised post written to ${postFile}`);
 
   // Commit the revision
-  execSync(`git add "${postPath}"`, { stdio: "inherit" });
+  execSync(`git add "${postPath}" agents/memory/fact-checker.json`, { stdio: "inherit" });
   execSync(
     `git commit -m "revision: address human review feedback [$AUTHOR_NAME]"`,
     { stdio: "inherit", env: { ...process.env, AUTHOR_NAME: authorName } }

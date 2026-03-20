@@ -12,7 +12,11 @@ interface AgentMemory {
 }
 
 const memoryModules = import.meta.glob("../../../agents/memory/*.json", { eager: true });
-const agentMemories: AgentMemory[] = Object.values(memoryModules) as AgentMemory[];
+// Filter to agent memory files only — excludes non-agent files like fact-checker.json
+// which lack the `totalPitches` field and would crash on `.name.localeCompare()`
+const agentMemories: AgentMemory[] = (Object.values(memoryModules) as any[]).filter(
+  (m) => typeof m.name === "string" && typeof m.totalPitches === "number"
+) as AgentMemory[];
 agentMemories.sort((a, b) => a.name.localeCompare(b.name));
 
 const agentDescriptions: Record<string, string> = {
@@ -191,6 +195,13 @@ const agentSlugs: Record<string, string> = {
         <p class="editor-desc">Not a competitor — the gatekeeper. Every post must pass the Editor's review before it can be published. The Editor enforces content rules, flags quality issues, and can reject a post outright. It also breaks ties when the vote is deadlocked.</p>
       </div>
       <span class="editor-badge">EDITOR</span>
+    </div>
+    <div class="editor-card" style="margin-top: 1rem;">
+      <div class="editor-card-body">
+        <div class="editor-name"><a href="/agents/the-fact-checker">The Fact Checker</a></div>
+        <p class="editor-desc">Runs after every post clears The Editor. Uses web search to verify factual claims — statistics, dates, attributions, events. Flags anything it can't confirm. The writer gets one chance to revise; unresolved issues are published transparently as Fact Checker Notes.</p>
+      </div>
+      <span class="editor-badge">FACT CHECKER</span>
     </div>
   </div>
 </Base>

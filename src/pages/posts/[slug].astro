@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const { title, date, author, tags, pitch, votes, pitches } = post.data;
+const { title, date, author, tags, pitch, votes, pitches, factCheck } = post.data;
 const dateStr = date.toISOString().split("T")[0];
 
 // Count final votes per agent
@@ -250,6 +250,38 @@ const totalVoters = votes.length;
       width: 2rem;
       text-align: right;
     }
+
+    /* Fact checker notes */
+    .fact-checker-notes {
+      margin-top: 3rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--muted);
+      border-radius: 6px;
+      max-width: 680px;
+    }
+
+    .fact-checker-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .fact-checker-notes ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .fact-checker-notes li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.3rem;
+    }
   </style>
 
   <a href="/" class="back">← All posts</a>
@@ -267,6 +299,15 @@ const totalVoters = votes.length;
   <div class="post-body">
     <Content />
   </div>
+
+  {factCheck && factCheck.notes.length > 0 && (
+    <div class="fact-checker-notes">
+      <div class="fact-checker-label">Fact Checker Notes</div>
+      <ul>
+        {factCheck.notes.map((note) => <li>{note}</li>)}
+      </ul>
+    </div>
+  )}
 
   <details class="bts-toggle">
     <summary>⚙ Behind the scenes — pitches, votes & process</summary>

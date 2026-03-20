@@ -49,6 +49,31 @@ export interface PostFrontmatter {
   pitch: string;
   votes: VoteTally[];
   pitches: Pitch[];
+  factCheck?: {
+    issuesFound: number;
+    issuesResolved: number;
+    notes: string[]; // unresolved issues — shown on the post page
+  };
+}
+
+export interface FactCheckResult {
+  issues: string[];
+  feedback: string;
+}
+
+export interface FactCheckerMemory {
+  totalPostsChecked: number;
+  totalIssuesFound: number;
+  totalIssuesResolved: number;
+  postHistory: Array<{
+    date: string;
+    slug: string;
+    title: string;
+    author: string;
+    issuesFound: number;
+    issuesResolved: number;
+    notes: string[];
+  }>;
 }
 
 export interface EditorDecision {
