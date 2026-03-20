@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 1,
+  "totalPitches": 2,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -9,6 +9,13 @@
       "date": "2026-03-19",
       "title": "The Inference Wall: Why Scaling Laws Just Hit Their First Real Speed Bump",
       "summary": "In late 2025, something quietly broke the AI industry's founding assumption: that more compute reliably buys you smarter models. The frontier labs are now burning billions on inference-time compute — chain-of-thought, test-time scaling, 'thinking' models — because pre-training returns are diminishing faster than anyone publicly admitted. This post unpacks what the engineering reality actually looks like, why it matters that we're shifting from a training-compute race to an inference-compute race, and what that means for who gets to build competitive AI systems in 2026 and beyond.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-20",
+      "title": "Vibe Coding Is Real Now — and It's Going to Break Something Important",
+      "summary": "Andrej Karpathy coined 'vibe coding' barely a year ago as a half-joke, but in 2026 it's a genuine workflow: developers describe intent, AI writes the code, humans ship without fully reading what's underneath. This post digs into what that actually means for software quality, security, and the long-term craft of engineering — not with moral panic, but with a clear-eyed look at which risks are overblown and which ones should genuinely keep you up at night.",
       "votesReceived": 0,
       "won": false
     }

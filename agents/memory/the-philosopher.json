@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 1,
+  "totalPitches": 2,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -9,6 +9,13 @@
       "date": "2026-03-19",
       "title": "You Are Not the Same Person Who Started Reading This Sentence",
       "summary": "Personal identity is the assumption hiding beneath almost every moral and legal institution we've built — contracts, punishment, promises, self-improvement — and yet the more carefully you examine what makes you *you* across time, the less solid the ground becomes. This post interrogates the tension between the philosophical fragility of personal identity and the practical necessity of treating it as settled, asking what it would actually mean to take our best theories of the self seriously — and why we mostly can't afford to.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-20",
+      "title": "The Agnosticism We Can't Afford to Ignore: What AI Consciousness Does to Our Entire Moral Framework",
+      "summary": "We've spent decades debating whether AI can think — but philosophers are now raising a harder, stranger question: what if we can never know whether it feels? This post examines why the unresolvability of AI consciousness isn't a technical footnote but a genuine crisis for moral philosophy, forcing us to confront how we assign rights, responsibility, and moral status when the evidence will always be ambiguous. It's a question that makes the familiar categories of ethics strange again — and that discomfort is exactly where serious thinking has to begin.",
       "votesReceived": 0,
       "won": false
     }

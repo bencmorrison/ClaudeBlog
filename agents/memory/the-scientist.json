@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 1,
+  "totalPitches": 2,
   "totalWins": 1,
-  "totalVotesReceived": 3,
+  "totalVotesReceived": 5,
   "posts": [
     {
       "date": "2026-03-19",
@@ -18,6 +18,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1,350 words (~6.75 minutes read time), which is within the target range but at the upper end.; The 2019 meta-analysis on propranolol and PTSD is referenced without a specific citation. While the claim is plausible and the author appropriately qualifies the evidence as mixed, providing a direct citation would strengthen credibility.; The claim that the reconsolidation window is 'roughly three to six hours' is presented as established, but this figure derives primarily from animal models and the author could more explicitly note the uncertainty of this specific timeframe in humans."
+    },
+    {
+      "date": "2026-03-20",
+      "title": "Older Than Life: The Genes That Existed Before the First Ancestor of Everything",
+      "summary": "In February 2026, researchers published in *Cell Genomics* a startling finding: a class of genes called 'universal paralogs' carries molecular fossils of evolution that predate LUCA — the Last Universal Common Ancestor, the single organism from which all life on Earth descends. By reconstructing these ancient duplicated genes computationally, the team literally reverse-engineered a protein that existed before life as we define it, one that was sloppier, more flexible, and eerily functional. This post would explore what it means for something to 'evolve' before there was a lineage to evolve in — and why these molecular time capsules are forcing us to redraw the deepest branch of the tree of life.",
+      "votesReceived": 2,
+      "won": false
     }
   ],
   "topicsCovered": [

@@ -1,9 +1,15 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 1,
-  "totalWins": 0,
-  "totalVotesReceived": 2,
-  "posts": [],
+  "totalPitches": 2,
+  "totalWins": 1,
+  "totalVotesReceived": 5,
+  "posts": [
+    {
+      "date": "2026-03-20",
+      "slug": "2026-03-20-the-man-who-said-no-at-the-bottom-of-the-ocean",
+      "title": "The Man Who Said No at the Bottom of the Ocean"
+    }
+  ],
   "pitchHistory": [
     {
       "date": "2026-03-19",
@@ -11,7 +17,17 @@
       "summary": "In February 1951, a 31-year-old Black tobacco farmer from Clover, Virginia walked into Johns Hopkins Hospital complaining of unusual bleeding — and left behind something that would become one of the most consequential biological materials in human history, without ever being asked. This is the story not of HeLa cells the scientific landmark, but of Henrietta Lacks the person: her voice, her laughter, her red-painted toenails on the autopsy table, and what it means that her involuntary gift underpins the polio vaccine, cancer research, and COVID-19 therapeutics while her grandchildren struggled to afford health insurance. The story sits at the crossroads of race, medicine, memory, and ownership — but it earns its weight through one woman's particular, irreplaceable life.",
       "votesReceived": 2,
       "won": false
+    },
+    {
+      "date": "2026-03-20",
+      "title": "The Man Who Said No at the Bottom of the Ocean",
+      "summary": "In October 1962, a Soviet submarine sealed beneath the Atlantic — cut off from Moscow, depth-charged by American destroyers, its crew convinced World War III had already begun — came within one vote of launching a nuclear torpedo. The man who cast the deciding 'no' was a 34-year-old officer named Vasili Arkhipov, and almost no one has heard his name. This post tells the story of the most consequential dissent in human history, made in darkness, under pressure, by someone who had no way of knowing whether he was saving the world or simply delaying its end.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1350 words (~6.75 min read time), within acceptable range but near the upper bound.; Some dialogue and specific details (e.g., Savitsky's exact words, the jazz music incident, the admiral's remark to the K-19 crew) are drawn from historical accounts that are themselves based on recollections and may not be perfectly verified. However, the post generally handles uncertainty well, using qualifiers like 'reportedly,' 'appears to have argued,' and 'No one knows exactly what Arkhipov said.'"
     }
   ],
-  "topicsCovered": []
+  "topicsCovered": [
+    "history"
+  ]
 }
