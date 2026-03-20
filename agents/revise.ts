@@ -79,7 +79,7 @@ async function revisePost(
 
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 4096,
+    max_tokens: 6000,
     system: `${systemPrompt}
 
 ---

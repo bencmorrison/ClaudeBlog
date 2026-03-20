@@ -114,10 +114,14 @@ Respond with ONLY a valid JSON object in this exact format:
       userMessage: pitchMessage,
     });
   } catch (err) {
-    // Re-throw rate limit errors — the outer withRateLimitRetry wrapper handles
-    // the wait and retry. Firing a fallback into an exhausted token bucket
-    // immediately would just get another 429.
-    if (err instanceof Anthropic.RateLimitError) throw err;
+    // Re-throw transient API errors — the outer withRateLimitRetry wrapper handles
+    // waits and retries. Falling back to no-search on a 429/529 would immediately
+    // hit the same overloaded bucket.
+    if (
+      err instanceof Anthropic.RateLimitError ||
+      err instanceof Anthropic.InternalServerError ||
+      err instanceof Anthropic.APIConnectionError
+    ) throw err;
     console.warn(`[Pitch] Web search failed for ${agentName}, falling back to no-search:`, err);
     const resp = await client.messages.create({
       model: MODEL,
@@ -251,6 +255,47 @@ async function writePost(
     ? `\n\nPrevious attempt was rejected by the Editor with this feedback:\n${feedback}\nPlease address these issues in your rewrite.`
     : "";
 
+  // ── Phase A: Research (web search) ─────────────────────────────────────────
+  // Separate research from writing so each call has one unambiguous job.
+  // Asking the model to research AND write in a single agentic loop causes it
+  // to treat them as two sequential tasks and output a planning note at end_turn
+  // instead of the actual post.
+  const researchSystem = `${systemPrompt}
+
+---
+Agent stats for context:
+${memoryContext}
+---
+
+You have won this week's pitch competition with your topic: "${pitch.title}"
+
+Use web search to research current facts, statistics, recent developments, quotes, and
+compelling examples for your topic. Return a structured research summary — bullet points
+covering key findings, supporting data, interesting angles, and any counterintuitive details.
+
+Return ONLY the research summary. The actual blog post will be written separately.`;
+
+  let researchSummary = "";
+  try {
+    researchSummary = await runWithWebSearch(client, {
+      model: MODEL,
+      max_tokens: 2048,
+      system: researchSystem,
+      userMessage: `Research this topic: "${pitch.title}"\n\nPitch summary: ${pitch.summary}\n\nReturn a bullet-point research summary with the key facts, data, and examples you found.`,
+    });
+    if (researchSummary) {
+      log(`[Write] Research complete (${researchSummary.length} chars)`);
+    }
+  } catch (err) {
+    if (
+      err instanceof Anthropic.RateLimitError ||
+      err instanceof Anthropic.InternalServerError ||
+      err instanceof Anthropic.APIConnectionError
+    ) throw err;
+    console.warn(`[Write] Research phase failed for ${agentName}, proceeding without research:`, err);
+  }
+
+  // ── Phase B: Write (no tools, research injected as context) ────────────────
   const writeSystem = `${systemPrompt}
 
 ---
@@ -260,61 +305,25 @@ ${memoryContext}
 
 You have won this week's pitch competition with your topic: "${pitch.title}"
 
-You have access to web search. Use it to research current facts, statistics, recent developments,
-or examples relevant to your topic. Write the complete post in this response.
-
-Write a full blog post based on your pitch. Requirements:
+Write a full blog post based on your pitch and the research provided. Requirements:
 - Target length: 1000–1400 words (~5–7 minute read)
 - Write in Markdown format (use ## for section headings, **bold**, etc.)
 - Do NOT include frontmatter — just the body content starting with the title as an H1
 - Stay true to your writing persona's voice and style
-- The post must be original, engaging, and meet Australian publication standards
+- The post must be original, engaging, and meet Australian publication standards${feedbackSection}`;
 
-IMPORTANT: Your final response must be the complete, finished blog post — not research notes,
-not an outline, not a statement of intent. Write the entire article. Do not say "I'll now write
-the post" or "let me draft this" — just write it.${feedbackSection}`;
-  const writeMessage = `Research and write your blog post for the topic: "${pitch.title}"\n\nYour pitch summary was: ${pitch.summary}\n\nUse web search to find current facts and examples, then write the complete finished blog post in this same response. Start with the # title as an H1.`;
+  const writeMessage = researchSummary
+    ? `Here is your research for: "${pitch.title}"\n\n${researchSummary}\n\n---\n\nYour pitch summary: ${pitch.summary}\n\nNow write the complete blog post. Start with # as an H1 title and write the full 1000–1400 word article.`
+    : `Write your complete blog post for: "${pitch.title}"\n\nYour pitch summary: ${pitch.summary}\n\nStart with # as an H1 title and write the full 1000–1400 word article.`;
 
-  let rawContent: string;
-  try {
-    rawContent = await runWithWebSearch(client, {
-      model: MODEL,
-      max_tokens: 4096,
-      system: writeSystem,
-      userMessage: writeMessage,
-    });
-  } catch (err) {
-    // Re-throw rate limit errors — same reasoning as generatePitch above.
-    if (err instanceof Anthropic.RateLimitError) throw err;
-    console.warn(`[Write] Web search failed for ${agentName}, falling back to no-search:`, err);
-    const resp = await client.messages.create({
-      model: MODEL,
-      max_tokens: 4096,
-      system: writeSystem,
-      messages: [{ role: "user", content: writeMessage }],
-    });
-    rawContent = resp.content.find((b) => b.type === "text")?.text ?? "";
-  }
+  const resp = await client.messages.create({
+    model: MODEL,
+    max_tokens: 6000,
+    system: writeSystem,
+    messages: [{ role: "user", content: writeMessage }],
+  });
 
-  // If the response doesn't look like a blog post (no H1 or too short), the model
-  // likely output a planning note instead of the actual article. Follow up to get the post.
-  const looksLikeBlogPost = /^#\s+\S/m.test(rawContent) && rawContent.length > 500;
-  if (!looksLikeBlogPost) {
-    console.warn(`[Write] ${agentName} returned a non-post response (${rawContent.length} chars) — requesting post directly`);
-    const followUpResp = await client.messages.create({
-      model: MODEL,
-      max_tokens: 4096,
-      system: writeSystem,
-      messages: [
-        { role: "user", content: writeMessage },
-        { role: "assistant", content: rawContent || "I have completed my research and am ready to write." },
-        { role: "user", content: "Please write the complete blog post now. Begin with the # title as an H1 heading. Write the full 1000–1400 word article — no preamble, no notes, just the post." },
-      ],
-    });
-    return followUpResp.content.find((b) => b.type === "text")?.text ?? rawContent;
-  }
-
-  return rawContent;
+  return resp.content.find((b) => b.type === "text")?.text ?? "";
 }
 
 // ─── Frontmatter builder ──────────────────────────────────────────────────────

@@ -25,20 +25,25 @@ export async function runWithWebSearch(
     userMessage: string;
   }
 ): Promise<string> {
-  const messages: Anthropic.MessageParam[] = [
-    { role: "user", content: params.userMessage },
-  ];
-
   // Note: if a RateLimitError (429) is thrown on any iteration — including
   // mid-loop after a pause_turn continuation — it propagates out of this
   // function. The caller (pipeline.ts / revise.ts) is responsible for retry
   // via withRateLimitRetry. On retry, the full web search restarts from
-  // scratch (accumulated messages are lost), which is acceptable.
+  // scratch, which is acceptable.
+  //
   // Track the longest text block seen across all iterations. The model sometimes
   // outputs its primary content (full article or JSON pitch) in a pause_turn
   // response and then only a brief planning note on the final end_turn — taking
   // the longest text block recovers the real content in those cases.
   let longestText = "";
+
+  // Per official API docs, pause_turn continuation must always send
+  // [original_user, latest_assistant] — not an ever-growing append chain.
+  // Appending would create consecutive assistant messages on the second
+  // continuation, which is invalid and confuses the server-side loop.
+  let currentMessages: Anthropic.MessageParam[] = [
+    { role: "user", content: params.userMessage },
+  ];
 
   for (let i = 0; i < MAX_CONTINUATIONS; i++) {
     const response = await client.messages.create({
@@ -46,7 +51,7 @@ export async function runWithWebSearch(
       max_tokens: params.max_tokens,
       system: params.system,
       tools: [WEB_SEARCH_TOOL],
-      messages,
+      messages: currentMessages,
     });
 
     const textBlock = response.content.find((b) => b.type === "text");
@@ -64,8 +69,12 @@ export async function runWithWebSearch(
     }
 
     if (response.stop_reason === "pause_turn") {
-      // Server-side loop hit its iteration limit — append assistant turn and re-send
-      messages.push({ role: "assistant", content: response.content });
+      // Reset to [user, latest_assistant] — the official pause_turn continuation
+      // pattern. The server detects the trailing server_tool_use block and resumes.
+      currentMessages = [
+        { role: "user", content: params.userMessage },
+        { role: "assistant", content: response.content },
+      ];
       continue;
     }
 
