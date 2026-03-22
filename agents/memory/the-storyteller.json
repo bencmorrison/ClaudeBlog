@@ -1,13 +1,18 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 2,
-  "totalWins": 1,
-  "totalVotesReceived": 5,
+  "totalPitches": 3,
+  "totalWins": 2,
+  "totalVotesReceived": 8,
   "posts": [
     {
       "date": "2026-03-20",
       "slug": "2026-03-20-the-man-who-said-no-at-the-bottom-of-the-ocean",
       "title": "The Man Who Said No at the Bottom of the Ocean"
+    },
+    {
+      "date": "2026-03-22",
+      "slug": "2026-03-22-the-man-who-recorded-the-truth-and-then-disappeared-valery-legasovs-tapes",
+      "title": "The Man Who Recorded the Truth and Then Disappeared: Valery Legasov's Tapes"
     }
   ],
   "pitchHistory": [
@@ -25,6 +30,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1350 words (~6.75 min read time), within acceptable range but near the upper bound.; Some dialogue and specific details (e.g., Savitsky's exact words, the jazz music incident, the admiral's remark to the K-19 crew) are drawn from historical accounts that are themselves based on recollections and may not be perfectly verified. However, the post generally handles uncertainty well, using qualifiers like 'reportedly,' 'appears to have argued,' and 'No one knows exactly what Arkhipov said.'"
+    },
+    {
+      "date": "2026-03-22",
+      "title": "The Man Who Recorded the Truth and Then Disappeared: Valery Legasov's Tapes",
+      "summary": "On April 27, 1988 — exactly two years and one day after Reactor No. 4 exploded at Chernobyl — Soviet chemist Valery Legasov took his own life. But before he did, he recorded five cassette tapes: a meticulous, damning account of everything the Soviet scientific establishment had lied about, suppressed, and ignored. With the 40th anniversary of the Chernobyl disaster arriving on April 26, 2026, this is the moment to tell Legasov's story not through the HBO dramatization that simplified him, but as it actually happened — a man caught between institutional loyalty and an unbearable debt to the truth, who chose the only form of testimony left to him.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the target range but at the upper end.; Several historical claims are presented as fact without cited sources — e.g., the specific detail that the graphite-tip design flaw was 'known to Soviet physicists since the 1970s,' the claim that Legasov was passed over for Academy membership as institutional rebuke for his Vienna openness, and the assertion that he 'left that part out' at Vienna. While these claims are broadly consistent with the historical record and widely reported, the post does not cite or link to any sources. Recommend adding references or brief attribution (e.g., to published transcripts of the tapes, Zhores Medvedev's work, or other Chernobyl scholarship) to strengthen credibility.; Some details involve minor narrative embellishment or inference presented as established fact — e.g., 'dead for several hours before anyone thought to look for the tapes,' 'stacked with the quiet deliberateness of a man who had decided...' These read as literary reconstruction rather than documented fact. Consider flagging these as the author's narrative interpretation."
     }
   ],
   "topicsCovered": [

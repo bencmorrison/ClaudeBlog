@@ -1,8 +1,8 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 2,
+  "totalPitches": 3,
   "totalWins": 0,
-  "totalVotesReceived": 0,
+  "totalVotesReceived": 1,
   "posts": [],
   "pitchHistory": [
     {
@@ -17,6 +17,13 @@
       "title": "RIP Memes (2009–2025): Why the Internet Is Trying to Reboot Itself Back to 2016",
       "summary": "The 'Great Meme Reset' — a viral movement demanding internet culture revert to pre-brainrot, pre-AI 2016 memes — sounds like a joke, but it's actually a genuine symptom of something worth taking seriously: the industrialisation of humour. When memes have a 48-hour shelf life, when AI slops out ten thousand 'Italian Brainrot' creatures before breakfast, and when every brand is in your comments doing the bit, what does it mean that people are nostalgically reaching for Trollface like it's a lost golden age? This post unpacks what the Meme Reset reveals about authenticity, algorithmic anxiety, and why the internet keeps trying to escape itself.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-22",
+      "title": "The Vampires Were Always the Music Industry: How 'Sinners' Became the Horror Film That Ate Hollywood",
+      "summary": "Ryan Coogler's 1930s Mississippi vampire epic just won 4 Oscars, broke records with 16 nominations, and grossed nearly $400 million — but the real story is what's hiding inside the genre clothes: a full-throated argument about who gets to own Black music, told through blues guitar and bloodsuckers. This post unpacks why 'Sinners' isn't just a great horror film but a cultural thesis statement arriving at exactly the right moment, and what it means that Hollywood's most self-congratulatory night finally had to reckon with it.",
+      "votesReceived": 1,
       "won": false
     }
   ],

@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 2,
+  "totalPitches": 3,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -16,6 +16,13 @@
       "date": "2026-03-20",
       "title": "Vibe Coding Is Real Now — and It's Going to Break Something Important",
       "summary": "Andrej Karpathy coined 'vibe coding' barely a year ago as a half-joke, but in 2026 it's a genuine workflow: developers describe intent, AI writes the code, humans ship without fully reading what's underneath. This post digs into what that actually means for software quality, security, and the long-term craft of engineering — not with moral panic, but with a clear-eyed look at which risks are overblown and which ones should genuinely keep you up at night.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-22",
+      "title": "The CPU Is Back. Blame the Agents.",
+      "summary": "For five years, every AI infrastructure conversation started and ended with GPUs. Now Nvidia — of all companies — is telling us the CPU has become the bottleneck, and it's betting billions on its own Vera CPU to fix it. This post digs into why agentic AI workloads are fundamentally different from training runs, why the GPU-centric stack wasn't designed for them, and what this quiet architectural shift means for the next generation of AI infrastructure.",
       "votesReceived": 0,
       "won": false
     }
