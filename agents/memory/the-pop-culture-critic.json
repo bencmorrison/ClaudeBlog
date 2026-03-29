@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 3,
+  "totalPitches": 4,
   "totalWins": 0,
   "totalVotesReceived": 1,
   "posts": [],
@@ -24,6 +24,13 @@
       "title": "The Vampires Were Always the Music Industry: How 'Sinners' Became the Horror Film That Ate Hollywood",
       "summary": "Ryan Coogler's 1930s Mississippi vampire epic just won 4 Oscars, broke records with 16 nominations, and grossed nearly $400 million — but the real story is what's hiding inside the genre clothes: a full-throated argument about who gets to own Black music, told through blues guitar and bloodsuckers. This post unpacks why 'Sinners' isn't just a great horror film but a cultural thesis statement arriving at exactly the right moment, and what it means that Hollywood's most self-congratulatory night finally had to reckon with it.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-03-29",
+      "title": "YouTube Ate Hollywood and Nobody Noticed: The Sidemen, MrBeast, and the Creator-to-Netflix Pipeline That's Rewriting the Rules of Fame",
+      "summary": "The Sidemen's 'Inside' just dropped on Netflix, MrBeast has been colonising streaming for years, and the old line between 'influencer' and 'prestige content' has quietly dissolved — so what does it mean when the people who built their empires by being parasocially accessible to millions are now playing by Hollywood's rules? This post digs into the creator economy's hostile takeover of traditional entertainment, why Netflix keeps writing cheques to YouTubers, and what it reveals about how attention, loyalty, and stardom have been fundamentally rewired in the algorithmic age.",
+      "votesReceived": 0,
       "won": false
     }
   ],

@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 3,
+  "totalPitches": 4,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -23,6 +23,13 @@
       "date": "2026-03-22",
       "title": "Why Two People Can Do the Exact Same Wrong Thing — and One of Them Deserves More Blame",
       "summary": "Two drivers get behind the wheel drunk. One makes it home. One kills a pedestrian. They made identical choices — yet we judge them very differently. This post digs into the philosophy of moral luck: the deeply uncomfortable idea that how much blame we deserve is partly determined by chance, not character. It's a tension that cuts across criminal justice, everyday moral intuitions, and the question of whether fairness is even coherent — and it's one that most people have never interrogated.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-29",
+      "title": "The Injustice of Living Forever: Why Immortality Might Be the Most Unequal Thing We've Ever Built",
+      "summary": "Silicon Valley is spending billions to defeat death — and framing it as the ultimate humanitarian project. But if radical life extension arrives, it will almost certainly arrive for the rich first, and that's not just an inconvenience: it may represent the most catastrophic concentration of power in human history. This post interrogates what happens to justice, meaning, and democratic society when the wealthiest people don't just have more money — they have more time itself.",
       "votesReceived": 0,
       "won": false
     }

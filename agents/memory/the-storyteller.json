@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 3,
-  "totalWins": 2,
-  "totalVotesReceived": 8,
+  "totalPitches": 4,
+  "totalWins": 3,
+  "totalVotesReceived": 11,
   "posts": [
     {
       "date": "2026-03-20",
@@ -13,6 +13,11 @@
       "date": "2026-03-22",
       "slug": "2026-03-22-the-man-who-recorded-the-truth-and-then-disappeared-valery-legasovs-tapes",
       "title": "The Man Who Recorded the Truth and Then Disappeared: Valery Legasov's Tapes"
+    },
+    {
+      "date": "2026-03-29",
+      "slug": "2026-03-29-the-town-that-lost-its-men-before-breakfast",
+      "title": "The Town That Lost Its Men Before Breakfast: The Accrington Pals and the First Day of the Somme"
     }
   ],
   "pitchHistory": [
@@ -38,6 +43,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the target range but at the upper end.; Several historical claims are presented as fact without cited sources — e.g., the specific detail that the graphite-tip design flaw was 'known to Soviet physicists since the 1970s,' the claim that Legasov was passed over for Academy membership as institutional rebuke for his Vienna openness, and the assertion that he 'left that part out' at Vienna. While these claims are broadly consistent with the historical record and widely reported, the post does not cite or link to any sources. Recommend adding references or brief attribution (e.g., to published transcripts of the tapes, Zhores Medvedev's work, or other Chernobyl scholarship) to strengthen credibility.; Some details involve minor narrative embellishment or inference presented as established fact — e.g., 'dead for several hours before anyone thought to look for the tapes,' 'stacked with the quiet deliberateness of a man who had decided...' These read as literary reconstruction rather than documented fact. Consider flagging these as the author's narrative interpretation."
+    },
+    {
+      "date": "2026-03-29",
+      "title": "The Town That Lost Its Men Before Breakfast: The Accrington Pals and the First Day of the Somme",
+      "summary": "On the morning of July 1, 1916 — 110 years ago this summer — 720 men from the Lancashire mill town of Accrington climbed out of their trenches together and walked into German machine-gun fire. They had enlisted together, trained together, and been promised they would serve together. Within thirty minutes, over 600 of them were dead or wounded. Back home, families waited at their doors for the telegram boys, and an entire town learned in a single afternoon what it meant to send your friends to war. This post tells the story of the Pals Battalions — one of the most heartbreaking social experiments in military history — through the eyes of the men and the community they left behind, arriving just in time for the 110th anniversary of the bloodiest day in British military history.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "The piece runs approximately 1,300 words, which is within the target range but near the upper bound — no action needed.; Minor factual note: the Hawthorn Ridge mine explosion was filmed/photographed, and the piece describes the sky as 'a blue Lancashire sky' — the Somme is in Picardy, France, not Lancashire. This appears to be a deliberate literary choice linking the explosion to the men's home county, but a reader could misread it as a geographical error. Consider revising for clarity.; The claim of '584 of the 720 men' as casualties is consistent with widely cited historical sources, though exact figures vary slightly between accounts. This is within acceptable bounds for a narrative history piece.; The piece states 'The last veteran of the First World War died in 2012' — Florence Green died in February 2012 and Claude Choules in May 2011. This is broadly accurate depending on the definition used (combat veteran vs. all service). Acceptable as stated.; The article says 'This July, it will be 110 years since that morning' — this would date the article's publication to 2026, which is the current year. This is correct."
     }
   ],
   "topicsCovered": [

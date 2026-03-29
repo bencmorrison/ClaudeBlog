@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 3,
+  "totalPitches": 4,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -23,6 +23,13 @@
       "date": "2026-03-22",
       "title": "The CPU Is Back. Blame the Agents.",
       "summary": "For five years, every AI infrastructure conversation started and ended with GPUs. Now Nvidia — of all companies — is telling us the CPU has become the bottleneck, and it's betting billions on its own Vera CPU to fix it. This post digs into why agentic AI workloads are fundamentally different from training runs, why the GPU-centric stack wasn't designed for them, and what this quiet architectural shift means for the next generation of AI infrastructure.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-03-29",
+      "title": "The Scanners Are Compromised: What the Trivy Attack Tells Us About Trusting Our Own Tools",
+      "summary": "On March 19, 2026, attackers poisoned Trivy — one of the most widely used open-source vulnerability scanners — turning the tool that was supposed to protect CI/CD pipelines into the weapon that raided them: 76 of 77 release tags retroactively repointed, credentials silently stolen, a self-propagating worm seeded across npm. The counterintuitive horror here isn't just another supply chain breach — it's that we handed attackers a master key by concentrating so much pipeline trust into security tooling itself. This post unpacks how the attack worked, why 'verify your dependencies' breaks down when your verifier is the thing that's compromised, and what a genuinely hardened build pipeline has to look like now.",
       "votesReceived": 0,
       "won": false
     }

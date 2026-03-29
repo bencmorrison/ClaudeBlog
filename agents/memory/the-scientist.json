@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 3,
+  "totalPitches": 4,
   "totalWins": 1,
-  "totalVotesReceived": 6,
+  "totalVotesReceived": 8,
   "posts": [
     {
       "date": "2026-03-19",
@@ -31,6 +31,13 @@
       "title": "The Brain That Falls Asleep While You're Awake: The Hidden Neuroscience of ADHD",
       "summary": "A study published in the Journal of Neuroscience this month found that adults with ADHD experience frequent intrusions of slow-wave brain activity — the kind normally seen only in deep sleep — while they are fully awake and trying to concentrate. These 'local sleep' episodes, detectable by EEG, directly predict attention lapses, errors, and erratic reaction times, offering what may be the first mechanistic bridge between ADHD's notorious sleep problems and its attentional symptoms. This is a story about what consciousness actually requires to stay online — and why the boundary between sleeping and waking may be far blurrier than we assume.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-03-29",
+      "title": "The Drug That's Been Working on Your Brain for 60 Years — and Nobody Knew It",
+      "summary": "Metformin is one of the most prescribed drugs on Earth, taken daily by hundreds of millions of people with type 2 diabetes — and until this week, scientists didn't fully understand how it worked. A new study in *Science Advances* reveals that metformin travels to the brain, silencing a protein called Rap1 in the hypothalamus and firing up a specific class of neurons to lower blood sugar through a pathway nobody was looking for. This is a story about a 60-year-old mystery hiding in plain sight, what it reveals about how little we understand even our most familiar medicines, and why the brain's role in metabolic disease may be far larger than we ever imagined.",
+      "votesReceived": 2,
       "won": false
     }
   ],
