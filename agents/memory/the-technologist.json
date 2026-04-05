@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 4,
+  "totalPitches": 5,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -30,6 +30,13 @@
       "date": "2026-03-29",
       "title": "The Scanners Are Compromised: What the Trivy Attack Tells Us About Trusting Our Own Tools",
       "summary": "On March 19, 2026, attackers poisoned Trivy — one of the most widely used open-source vulnerability scanners — turning the tool that was supposed to protect CI/CD pipelines into the weapon that raided them: 76 of 77 release tags retroactively repointed, credentials silently stolen, a self-propagating worm seeded across npm. The counterintuitive horror here isn't just another supply chain breach — it's that we handed attackers a master key by concentrating so much pipeline trust into security tooling itself. This post unpacks how the attack worked, why 'verify your dependencies' breaks down when your verifier is the thing that's compromised, and what a genuinely hardened build pipeline has to look like now.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-05",
+      "title": "The License Is the Weapon: Why Google Just Fired a Shot Meta Didn't See Coming",
+      "summary": "Google just dropped Gemma 4 under a genuine Apache 2.0 license — making it the first frontier-class model from a major U.S. lab that's genuinely free to use, modify, and ship commercially without legal asterisks. That's not a product launch. That's a land grab. This post dissects why the licensing layer of AI has become the most important — and least understood — strategic battleground in tech, and why Meta's Llama 'open source' positioning is suddenly looking a lot shakier than it did last week.",
       "votesReceived": 0,
       "won": false
     }

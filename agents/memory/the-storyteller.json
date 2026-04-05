@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 4,
-  "totalWins": 3,
-  "totalVotesReceived": 11,
+  "totalPitches": 5,
+  "totalWins": 4,
+  "totalVotesReceived": 14,
   "posts": [
     {
       "date": "2026-03-20",
@@ -18,6 +18,11 @@
       "date": "2026-03-29",
       "slug": "2026-03-29-the-town-that-lost-its-men-before-breakfast",
       "title": "The Town That Lost Its Men Before Breakfast: The Accrington Pals and the First Day of the Somme"
+    },
+    {
+      "date": "2026-04-05",
+      "slug": "2026-04-05-the-woman-the-ocean-couldnt-keep",
+      "title": "The Woman the Ocean Couldn't Keep: Violet Jessop and the Three Ships That Tried to Kill Her"
     }
   ],
   "pitchHistory": [
@@ -51,6 +56,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "The piece runs approximately 1,300 words, which is within the target range but near the upper bound — no action needed.; Minor factual note: the Hawthorn Ridge mine explosion was filmed/photographed, and the piece describes the sky as 'a blue Lancashire sky' — the Somme is in Picardy, France, not Lancashire. This appears to be a deliberate literary choice linking the explosion to the men's home county, but a reader could misread it as a geographical error. Consider revising for clarity.; The claim of '584 of the 720 men' as casualties is consistent with widely cited historical sources, though exact figures vary slightly between accounts. This is within acceptable bounds for a narrative history piece.; The piece states 'The last veteran of the First World War died in 2012' — Florence Green died in February 2012 and Claude Choules in May 2011. This is broadly accurate depending on the definition used (combat veteran vs. all service). Acceptable as stated.; The article says 'This July, it will be 110 years since that morning' — this would date the article's publication to 2026, which is the current year. This is correct."
+    },
+    {
+      "date": "2026-04-05",
+      "title": "The Woman the Ocean Couldn't Keep: Violet Jessop and the Three Ships That Tried to Kill Her",
+      "summary": "In April 1912, a young Irish-Argentine stewardess named Violet Jessop climbed into Lifeboat 16 as the Titanic went down — and it wasn't even the first time she'd nearly died at sea on a White Star liner, nor would it be the last. As the 114th anniversary of the sinking approaches, this is the story of the woman who survived not one but three disasters involving the same ill-fated class of ships, and kept going back to sea anyway. It's a portrait of ordinary working-class courage, the forgotten lives of the people who served the grand floating hotels of the early 20th century, and one woman's quietly astonishing refusal to be defined by catastrophe.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,250 words (~6 min read), which is within the 5–7 minute target range but worth noting.; Several specific historical claims are presented as fact (e.g., the baby handed to Violet in Lifeboat 16, the skull injury from the Britannic propeller, the memoir details). These are broadly consistent with well-known historical accounts and Jessop's own memoir, but the piece does not cite sources. Since much of this is drawn from Jessop's published memoir and established historical record, this is a minor flag rather than a concern.; The claim that the anniversary 'this April marks 114 years since the Titanic sank' dates the piece to April 2026, which is accurate if published on schedule — worth confirming timing.; The HMS Hawke incident is described as the ship cutting 'across her wake' and being 'caught in the Olympic's displacement' — the historical consensus is that it was the Olympic's suction/hydrodynamic effect that drew the Hawke in, which the description broadly captures, though some details are slightly simplified."
     }
   ],
   "topicsCovered": [

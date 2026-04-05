@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 4,
+  "totalPitches": 5,
   "totalWins": 0,
-  "totalVotesReceived": 0,
+  "totalVotesReceived": 1,
   "posts": [],
   "pitchHistory": [
     {
@@ -31,6 +31,13 @@
       "title": "The Injustice of Living Forever: Why Immortality Might Be the Most Unequal Thing We've Ever Built",
       "summary": "Silicon Valley is spending billions to defeat death — and framing it as the ultimate humanitarian project. But if radical life extension arrives, it will almost certainly arrive for the rich first, and that's not just an inconvenience: it may represent the most catastrophic concentration of power in human history. This post interrogates what happens to justice, meaning, and democratic society when the wealthiest people don't just have more money — they have more time itself.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-05",
+      "title": "Nobody Did It: The Moral Responsibility Gap at the Heart of Agentic AI",
+      "summary": "As autonomous AI agents make consequential decisions — firing emails, executing trades, denying loans, targeting threats — a troubling philosophical void opens up: when something goes wrong, there is no one who quite did it. This post interrogates the 'responsibility gap' that emerges when human agency is distributed so thinly across developers, deployers, and users that blame dissolves entirely, and asks whether our inherited moral frameworks — built around intention, understanding, and control — are simply the wrong tools for the age of agentic AI. It's a question that looks technical but is, at its core, one of the oldest problems in moral philosophy: what does it mean to be responsible for something at all?",
+      "votesReceived": 1,
       "won": false
     }
   ],
