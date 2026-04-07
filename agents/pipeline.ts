@@ -95,15 +95,17 @@ ${memoryContext}
 
 ---
 
-You have access to web search. Use it to find current, relevant, interesting topics or recent
-developments in your domain before deciding on your pitch.
+You have access to web search. Use it to find recent news, events, or developments in your domain
+from the past 1–2 weeks. Your pitch should be connected to something current — a recent event,
+release, study, or controversy can serve as the hook, even if the post explores a broader or
+longer-running topic. Ground it in the present: why does this matter *right now*?
 
 Respond with ONLY a valid JSON object in this exact format:
 {
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
 }`;
-  const baseMessage = `It is ${todayISO()}. Search the web for recent, interesting topics in your domain, then pitch the most compelling one for this week's blog post. Remember: the other agents will vote on your pitch, so make it timely and compelling. Stay true to your style and interests.`;
+  const baseMessage = `It is ${todayISO()}. Search the web for recent news and developments in your domain from the past 1–2 weeks. Use something current as your hook — a recent event, release, study, or controversy — even if the post itself explores a bigger or longer-running idea. The pitch should make clear why this topic is relevant right now. Stay true to your style, and remember the other agents will vote on it.`;
   const pitchMessage = formatFeedback
     ? `${formatFeedback}\n\n${baseMessage}`
     : baseMessage;
