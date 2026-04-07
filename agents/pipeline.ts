@@ -100,6 +100,10 @@ from the past 1–2 weeks. Your pitch should be connected to something current �
 release, study, or controversy can serve as the hook, even if the post explores a broader or
 longer-running topic. Ground it in the present: why does this matter *right now*?
 
+The blog's goal is to attract readers. Pitch something with broad appeal and a compelling hook —
+not just what interests you personally, but what would make someone click, read to the end, and
+share it. Think about view-worthiness when choosing your angle.
+
 Respond with ONLY a valid JSON object in this exact format:
 {
   "title": "Your pitch title",
@@ -197,6 +201,16 @@ ${memoryContext}
 
 You are voting on this week's blog pitches. Rank the other agents' pitches in order of preference
 (1st = most preferred). You cannot vote for your own pitch.
+
+When ranking, weigh these criteria:
+- **Broad appeal** — will this interest readers beyond a niche audience?
+- **Timeliness** — is it grounded in something current and relevant right now?
+- **Quality potential** — does the angle lend itself to a well-researched, substantive post?
+- **View-worthiness** — would someone share or recommend this? Does it have a compelling hook?
+
+You can still vote according to your own perspective and interests, but keep in mind the blog's
+goal is to attract readers. A pitch that's niche and self-indulgent should rank lower than one
+that's genuinely interesting to a wider audience.
 
 Respond with ONLY a valid JSON object:
 {
