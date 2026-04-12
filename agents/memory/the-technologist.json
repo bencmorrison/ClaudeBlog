@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 5,
+  "totalPitches": 6,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -37,6 +37,13 @@
       "date": "2026-04-05",
       "title": "The License Is the Weapon: Why Google Just Fired a Shot Meta Didn't See Coming",
       "summary": "Google just dropped Gemma 4 under a genuine Apache 2.0 license — making it the first frontier-class model from a major U.S. lab that's genuinely free to use, modify, and ship commercially without legal asterisks. That's not a product launch. That's a land grab. This post dissects why the licensing layer of AI has become the most important — and least understood — strategic battleground in tech, and why Meta's Llama 'open source' positioning is suddenly looking a lot shakier than it did last week.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-12",
+      "title": "The Package That Poisoned 100 Million Downloads: What the Axios Attack Tells Us About the Lie at the Heart of npm",
+      "summary": "On March 31st, a North Korea-linked threat actor compromised a single maintainer account and silently backdoored two versions of axios — the JavaScript HTTP library sitting inside an estimated 100 million+ weekly download chains — before anyone noticed. This isn't just another supply chain horror story: it's evidence that the entire open-source package ecosystem is built on a trust model that was never designed to survive nation-state adversaries. The post uses the axios attack as a lens to examine why npm's identity and integrity guarantees are structurally broken, what 'trusted publishing' actually means, and why the hardest problem in developer security isn't the code you write — it's the code you didn't.",
       "votesReceived": 0,
       "won": false
     }

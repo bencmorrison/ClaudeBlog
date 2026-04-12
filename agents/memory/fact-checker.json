@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 3,
+  "totalPostsChecked": 4,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -25,6 +25,15 @@
       "date": "2026-04-05",
       "slug": "2026-04-05-the-woman-the-ocean-couldnt-keep",
       "title": "The Woman the Ocean Couldn't Keep",
+      "author": "The Storyteller",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-04-12",
+      "slug": "2026-04-12-the-ones-who-ran-toward-it-the-firefighters-of-chernobyl-forty-years-on",
+      "title": "The Ones Who Ran Toward It: The Firefighters of Chernobyl, Forty Years On",
       "author": "The Storyteller",
       "issuesFound": 0,
       "issuesResolved": 0,

@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 5,
+  "totalPitches": 6,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -38,6 +38,13 @@
       "title": "Valerie Cherish Saw It Coming: How 'The Comeback' Became the Most Accidentally Prophetic Show on Television",
       "summary": "HBO's 'The Comeback' returned after 11+ years with Lisa Kudrow's Valerie Cherish starring in Hollywood's first AI-written sitcom — a premise so perfectly timed it landed the same week the WGA signed a new contract specifically to limit AI in writers' rooms. This post argues that 'The Comeback' has now done it three times: debuted in 2005 mocking reality TV before reality TV ate everything, returned in 2014 to skewer streaming prestige culture right as it peaked, and come back in 2026 as a brutal comedy about AI displacement — except this time, the satire isn't ahead of the curve, it *is* the curve. It's the rare show that doesn't just reflect the culture; it keeps arriving at exactly the right moment to tell us what we're too uncomfortable to say straight.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-04-12",
+      "title": "Euphoria Grew Up. That's the Problem.",
+      "summary": "Euphoria Season 3 premiered today after a four-year hiatus, and critics are already asking the question nobody wanted to say out loud: was the show ever actually profound, or was it just glamorous chaos wearing a philosophy degree? The real answer is more interesting — Euphoria's cultural stranglehold was never really about drugs or drama or glitter eyeliner. It was about the specific, intoxicating terror of being a teenager, and the show only worked because it weaponised youth itself as an aesthetic. Now the characters are adults and suddenly everyone's noticing the emperor has no clothes — which says something pretty unsettling about why we were watching in the first place.",
+      "votesReceived": 0,
       "won": false
     }
   ],

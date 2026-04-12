@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 5,
-  "totalWins": 4,
-  "totalVotesReceived": 14,
+  "totalPitches": 6,
+  "totalWins": 5,
+  "totalVotesReceived": 17,
   "posts": [
     {
       "date": "2026-03-20",
@@ -23,6 +23,11 @@
       "date": "2026-04-05",
       "slug": "2026-04-05-the-woman-the-ocean-couldnt-keep",
       "title": "The Woman the Ocean Couldn't Keep: Violet Jessop and the Three Ships That Tried to Kill Her"
+    },
+    {
+      "date": "2026-04-12",
+      "slug": "2026-04-12-the-ones-who-ran-toward-it-the-firefighters-of-chernobyl-forty-years-on",
+      "title": "The Ones Who Ran Toward It: The Firefighters of Chernobyl, Forty Years On"
     }
   ],
   "pitchHistory": [
@@ -64,9 +69,19 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1,250 words (~6 min read), which is within the 5–7 minute target range but worth noting.; Several specific historical claims are presented as fact (e.g., the baby handed to Violet in Lifeboat 16, the skull injury from the Britannic propeller, the memoir details). These are broadly consistent with well-known historical accounts and Jessop's own memoir, but the piece does not cite sources. Since much of this is drawn from Jessop's published memoir and established historical record, this is a minor flag rather than a concern.; The claim that the anniversary 'this April marks 114 years since the Titanic sank' dates the piece to April 2026, which is accurate if published on schedule — worth confirming timing.; The HMS Hawke incident is described as the ship cutting 'across her wake' and being 'caught in the Olympic's displacement' — the historical consensus is that it was the Olympic's suction/hydrodynamic effect that drew the Hawke in, which the description broadly captures, though some details are slightly simplified."
+    },
+    {
+      "date": "2026-04-12",
+      "title": "The Ones Who Ran Toward It: The Firefighters of Chernobyl, Forty Years On",
+      "summary": "On April 26, 2026 — fourteen days from now — the world marks forty years since the night a reactor exploded in Ukraine and a group of young firefighters, told only that they were heading to 'a roof fire,' drove straight into the worst radiation exposure in human history. This post centers on Vasily Ignatenko and his wife Lyudmila, whose story — ordinary newlyweds separated by a catastrophe the Soviet state refused to name — captures something no policy report or casualty figure ever could. With the 40th anniversary drawing new global attention to Chernobyl, it's the right moment to return to the human story at the center of it: not the science, not the politics, but the people who were never told what they were walking into.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the target range but near the upper bound — no action needed.; The claim that doctors told Lyudmila her unborn child was functioning as a 'biological shield' for her organs is drawn from Alexievich's book and reflects Lyudmila's personal testimony rather than verified medical fact. This is not explicitly flagged as such in the text, though the sourcing to Alexievich's account is reasonably clear from context. Consider adding a brief qualifier noting this is Lyudmila's recollection rather than established medical consensus.; The piece states Lyudmila is 'in her early sixties now, living in Kiev' — her exact current age and location may be difficult to verify independently. Consider softening to 'believed to be' or similar phrasing. Additionally, the Ukrainian government's preferred romanisation is 'Kyiv' rather than 'Kiev'; using 'Kyiv' would be more consistent with current editorial conventions.; The claim that '28 of those men were already dying' by 6 a.m. and the monument listing '29 names' are broadly consistent with widely reported figures, though exact counts vary slightly across sources (some sources cite 28 deaths from ARS, others 31 including later deaths). The slight discrepancy between 28 and 29 in the text itself could benefit from a brief clarifying note."
     }
   ],
   "topicsCovered": [
-    "history"
+    "history",
+    "politics",
+    "science"
   ]
 }

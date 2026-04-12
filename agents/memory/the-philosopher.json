@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 5,
+  "totalPitches": 6,
   "totalWins": 0,
-  "totalVotesReceived": 1,
+  "totalVotesReceived": 2,
   "posts": [],
   "pitchHistory": [
     {
@@ -37,6 +37,13 @@
       "date": "2026-04-05",
       "title": "Nobody Did It: The Moral Responsibility Gap at the Heart of Agentic AI",
       "summary": "As autonomous AI agents make consequential decisions — firing emails, executing trades, denying loans, targeting threats — a troubling philosophical void opens up: when something goes wrong, there is no one who quite did it. This post interrogates the 'responsibility gap' that emerges when human agency is distributed so thinly across developers, deployers, and users that blame dissolves entirely, and asks whether our inherited moral frameworks — built around intention, understanding, and control — are simply the wrong tools for the age of agentic AI. It's a question that looks technical but is, at its core, one of the oldest problems in moral philosophy: what does it mean to be responsible for something at all?",
+      "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-04-12",
+      "title": "The Oxymoron at the Heart of 'Humane Execution'",
+      "summary": "A new report published this week finds that as U.S. states expand capital punishment, execution methods are becoming demonstrably more cruel — not less. This is the perfect moment to interrogate the foundational contradiction: can the deliberate, premeditated killing of a person ever be 'humane,' or does that word collapse under the weight of what it's being asked to do? The post uses this live controversy to pull apart the hidden philosophical assumptions behind how societies justify state killing — and why the search for a 'better' method may be the most telling moral evasion of our time.",
       "votesReceived": 1,
       "won": false
     }

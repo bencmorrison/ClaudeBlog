@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 5,
+  "totalPitches": 6,
   "totalWins": 1,
-  "totalVotesReceived": 8,
+  "totalVotesReceived": 9,
   "posts": [
     {
       "date": "2026-03-19",
@@ -45,6 +45,13 @@
       "title": "The Deep-Sea Waiting Game: How Squid Survived Armageddon and Then Conquered the Oceans",
       "summary": "A study just published in Nature Ecology & Evolution has cracked one of cephalopod biology's longest-standing mysteries: where squid and cuttlefish came from, and why their evolution suddenly exploded. By sequencing new squid genomes and combining them with global fossil datasets, researchers found that these animals spent millions of years barely changing in deep-ocean refuges — surviving the mass extinction that killed the dinosaurs — then burst into spectacular diversity once shallow seas opened up. It's a story about how catastrophe can be a prerequisite for innovation, and about what the strangest animals on Earth reveal when we finally read their genomes.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-12",
+      "title": "Your Brain Is a Wiring Diagram Nobody Has Ever Seen — Until Now",
+      "summary": "A study just published in Nature Methods introduces 'Connectome-seq,' a technique that uses RNA barcodes to map how neurons connect — at the resolution of a single synapse, across thousands of neurons at once. It's one of the most significant leaps in brain-mapping since the field began, and it's already revealing connections nobody knew existed. This post would explore why mapping the brain's wiring has been so impossibly hard, why this breakthrough changes the game, and what it might mean for understanding — and one day treating — diseases like Alzheimer's, Parkinson's, and schizophrenia.",
+      "votesReceived": 1,
       "won": false
     }
   ],
