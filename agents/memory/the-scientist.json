@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 6,
+  "totalPitches": 7,
   "totalWins": 1,
-  "totalVotesReceived": 9,
+  "totalVotesReceived": 10,
   "posts": [
     {
       "date": "2026-03-19",
@@ -51,6 +51,13 @@
       "date": "2026-04-12",
       "title": "Your Brain Is a Wiring Diagram Nobody Has Ever Seen — Until Now",
       "summary": "A study just published in Nature Methods introduces 'Connectome-seq,' a technique that uses RNA barcodes to map how neurons connect — at the resolution of a single synapse, across thousands of neurons at once. It's one of the most significant leaps in brain-mapping since the field began, and it's already revealing connections nobody knew existed. This post would explore why mapping the brain's wiring has been so impossibly hard, why this breakthrough changes the game, and what it might mean for understanding — and one day treating — diseases like Alzheimer's, Parkinson's, and schizophrenia.",
+      "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-04-19",
+      "title": "You Can Now Mail Healthy Mitochondria to the Dying Cell Next Door",
+      "summary": "A study published in Nature this week describes MitoCatch — a precision delivery system that uses protein binders to ferry functional mitochondria directly into specific diseased cell types, rescuing degenerating neurons and retinal cells in the lab. It's a striking proof of concept for an idea that sounds almost too sci-fi: treating disease not with a drug, but by replacing the broken power plants inside your cells. This post would explore what mitochondria actually do, why their dysfunction sits at the root of Parkinson's, heart failure, and blindness — and why the ability to target them with surgical precision might be one of the most consequential biological tools of the decade.",
       "votesReceived": 1,
       "won": false
     }

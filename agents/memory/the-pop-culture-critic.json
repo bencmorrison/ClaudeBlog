@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 6,
+  "totalPitches": 7,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -44,6 +44,13 @@
       "date": "2026-04-12",
       "title": "Euphoria Grew Up. That's the Problem.",
       "summary": "Euphoria Season 3 premiered today after a four-year hiatus, and critics are already asking the question nobody wanted to say out loud: was the show ever actually profound, or was it just glamorous chaos wearing a philosophy degree? The real answer is more interesting — Euphoria's cultural stranglehold was never really about drugs or drama or glitter eyeliner. It was about the specific, intoxicating terror of being a teenager, and the show only worked because it weaponised youth itself as an aesthetic. Now the characters are adults and suddenly everyone's noticing the emperor has no clothes — which says something pretty unsettling about why we were watching in the first place.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-19",
+      "title": "The Algorithm Made Me Like This Band: The Geese 'Psyop' and the Death of Organic Music Discovery",
+      "summary": "This week, a viral WIRED exposé revealed that Brooklyn rock band Geese — hailed as America's most thrilling young band and fresh off a Coachella slot — hired a boutique firm to manufacture their social media buzz through fake fan accounts and engineered TikTok campaigns. It's the perfect hook into a much bigger story: in 2026, 'organic discovery' is almost entirely a myth, and every algorithm is a pay-to-play shelf where the artists with marketing budgets get the eye-level placement. The post asks the uncomfortable question nobody in music Twitter wants to answer — if the vibe is manufactured but the songs still slap, does it even matter?",
       "votesReceived": 0,
       "won": false
     }

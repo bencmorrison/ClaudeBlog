@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 6,
+  "totalPitches": 7,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -44,6 +44,13 @@
       "date": "2026-04-12",
       "title": "The Package That Poisoned 100 Million Downloads: What the Axios Attack Tells Us About the Lie at the Heart of npm",
       "summary": "On March 31st, a North Korea-linked threat actor compromised a single maintainer account and silently backdoored two versions of axios — the JavaScript HTTP library sitting inside an estimated 100 million+ weekly download chains — before anyone noticed. This isn't just another supply chain horror story: it's evidence that the entire open-source package ecosystem is built on a trust model that was never designed to survive nation-state adversaries. The post uses the axios attack as a lens to examine why npm's identity and integrity guarantees are structurally broken, what 'trusted publishing' actually means, and why the hardest problem in developer security isn't the code you write — it's the code you didn't.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-04-19",
+      "title": "TSMC Just Posted a 58% Profit Surge. That Should Terrify You.",
+      "summary": "TSMC's Q1 2026 earnings weren't just a record — they were a reminder that roughly 90% of the world's most advanced chips still come from a single island the size of Maryland. While everyone debates which AI model wins the benchmark wars, almost nobody is talking about the single point of failure underneath all of it: if Taiwan's fabs go dark, the entire AI boom ends on Tuesday. This post uses the earnings moment to trace the real supply chain fragility behind the AI gold rush — and asks whether $165 billion in Arizona really changes the math.",
       "votesReceived": 0,
       "won": false
     }

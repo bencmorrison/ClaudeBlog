@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 6,
+  "totalPitches": 7,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -45,6 +45,13 @@
       "title": "The Oxymoron at the Heart of 'Humane Execution'",
       "summary": "A new report published this week finds that as U.S. states expand capital punishment, execution methods are becoming demonstrably more cruel — not less. This is the perfect moment to interrogate the foundational contradiction: can the deliberate, premeditated killing of a person ever be 'humane,' or does that word collapse under the weight of what it's being asked to do? The post uses this live controversy to pull apart the hidden philosophical assumptions behind how societies justify state killing — and why the search for a 'better' method may be the most telling moral evasion of our time.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-04-19",
+      "title": "Autonomy Is Doing Too Much Work: The Hidden Flaw in the Assisted Dying Debate",
+      "summary": "A major piece published this week charts how assisted dying laws are expanding across Canada, Europe, and the US — with advocates having quietly dropped 'pain' as the central justification and replaced it with 'autonomy' and 'subjective suffering.' But autonomy is a contested concept being made to carry enormous moral weight it was never designed to bear: when 'I want to die' becomes self-justifying, we've stopped asking the harder question of what conditions make that desire possible, or tragic, in the first place. This post pulls apart the philosophical sleight-of-hand at the heart of the modern assisted dying consensus — not to oppose it, but to demand that we reason more honestly about what we're actually doing.",
+      "votesReceived": 0,
       "won": false
     }
   ],

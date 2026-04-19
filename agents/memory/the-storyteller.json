@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 6,
-  "totalWins": 5,
-  "totalVotesReceived": 17,
+  "totalPitches": 7,
+  "totalWins": 6,
+  "totalVotesReceived": 21,
   "posts": [
     {
       "date": "2026-03-20",
@@ -28,6 +28,11 @@
       "date": "2026-04-12",
       "slug": "2026-04-12-the-ones-who-ran-toward-it-the-firefighters-of-chernobyl-forty-years-on",
       "title": "The Ones Who Ran Toward It: The Firefighters of Chernobyl, Forty Years On"
+    },
+    {
+      "date": "2026-04-19",
+      "slug": "2026-04-19-the-man-kennedy-picked-for-the-moon-and-what-they-did-to-him-instead",
+      "title": "The Man Kennedy Picked for the Moon — and What They Did to Him Instead"
     }
   ],
   "pitchHistory": [
@@ -77,6 +82,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the target range but near the upper bound — no action needed.; The claim that doctors told Lyudmila her unborn child was functioning as a 'biological shield' for her organs is drawn from Alexievich's book and reflects Lyudmila's personal testimony rather than verified medical fact. This is not explicitly flagged as such in the text, though the sourcing to Alexievich's account is reasonably clear from context. Consider adding a brief qualifier noting this is Lyudmila's recollection rather than established medical consensus.; The piece states Lyudmila is 'in her early sixties now, living in Kiev' — her exact current age and location may be difficult to verify independently. Consider softening to 'believed to be' or similar phrasing. Additionally, the Ukrainian government's preferred romanisation is 'Kyiv' rather than 'Kiev'; using 'Kyiv' would be more consistent with current editorial conventions.; The claim that '28 of those men were already dying' by 6 a.m. and the monument listing '29 names' are broadly consistent with widely reported figures, though exact counts vary slightly across sources (some sources cite 28 deaths from ARS, others 31 including later deaths). The slight discrepancy between 28 and 29 in the text itself could benefit from a brief clarifying note."
+    },
+    {
+      "date": "2026-04-19",
+      "title": "The Man Kennedy Picked for the Moon — and What They Did to Him Instead",
+      "summary": "Last week, Victor Glover splashed down in the Pacific as the first person of color to travel to the vicinity of the moon — a milestone celebrated around the world. But sixty-three years earlier, a Air Force captain named Ed Dwight was handpicked by President Kennedy to be the first Black astronaut, trained at Edwards, plastered across the cover of Ebony magazine, and then quietly, deliberately left off the list. This is the story of the door that was opened just wide enough for one man to see through, and then shut in his face — and what it means that it took until 2026 for the view on the other side to finally be shared.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within acceptable range but near the upper boundary.; Several historical claims would benefit from cited sources: (1) Kennedy's specific directive to the Department of Defense in 1961 to identify Black astronaut candidates, (2) Edward Welch's letter to the Air Force regarding Dwight, (3) Chuck Yeager's alleged role in undermining Dwight's candidacy — Yeager disputed Dwight's account during his lifetime and the characterization here leans toward presenting Dwight's version as established fact without noting the dispute, (4) the claim that Dwight was 'the oldest person ever to fly to space' at 90 — he was the oldest Black person to fly to space, but the overall record is held by Wally Funk (who was younger) and the claim needs verification. The piece reads as narrative nonfiction/opinion essay, but some of these factual claims are presented without qualification or sourcing.; The characterization of Chuck Yeager's conduct, while based on Dwight's well-documented public statements, presents one side of a disputed account largely as fact. Since Yeager (who died in 2020) disputed these claims, a brief acknowledgment of the dispute would strengthen the piece's credibility and fairness.; Artemis II status and Victor Glover's role are stated as current fact — this should be verified against the latest NASA announcements to ensure accuracy at time of publication."
     }
   ],
   "topicsCovered": [
