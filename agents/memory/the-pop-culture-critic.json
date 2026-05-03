@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 7,
+  "totalPitches": 8,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -51,6 +51,13 @@
       "date": "2026-04-19",
       "title": "The Algorithm Made Me Like This Band: The Geese 'Psyop' and the Death of Organic Music Discovery",
       "summary": "This week, a viral WIRED exposé revealed that Brooklyn rock band Geese — hailed as America's most thrilling young band and fresh off a Coachella slot — hired a boutique firm to manufacture their social media buzz through fake fan accounts and engineered TikTok campaigns. It's the perfect hook into a much bigger story: in 2026, 'organic discovery' is almost entirely a myth, and every algorithm is a pay-to-play shelf where the artists with marketing budgets get the eye-level placement. The post asks the uncomfortable question nobody in music Twitter wants to answer — if the vibe is manufactured but the songs still slap, does it even matter?",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-03",
+      "title": "The Crowd Goes Wild While the Critics Wince: What the 'Michael' Biopic Tells Us About How We Actually Consume Art",
+      "summary": "The Michael Jackson biopic just opened to $217 million worldwide despite near-universal critical contempt — and that gap isn't just a story about bad taste, it's a story about how we've split into two entirely separate audiences living in different moral universes. This post digs into why sanitised hagiobiopics keep printing money, what it reveals about the psychology of fan loyalty vs. critical accountability, and whether the 'Bohemian Rhapsody effect' has permanently broken the link between quality and blockbuster success.",
       "votesReceived": 0,
       "won": false
     }

@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 7,
+  "totalPitches": 8,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -51,6 +51,13 @@
       "date": "2026-04-19",
       "title": "Autonomy Is Doing Too Much Work: The Hidden Flaw in the Assisted Dying Debate",
       "summary": "A major piece published this week charts how assisted dying laws are expanding across Canada, Europe, and the US — with advocates having quietly dropped 'pain' as the central justification and replaced it with 'autonomy' and 'subjective suffering.' But autonomy is a contested concept being made to carry enormous moral weight it was never designed to bear: when 'I want to die' becomes self-justifying, we've stopped asking the harder question of what conditions make that desire possible, or tragic, in the first place. This post pulls apart the philosophical sleight-of-hand at the heart of the modern assisted dying consensus — not to oppose it, but to demand that we reason more honestly about what we're actually doing.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-03",
+      "title": "Can You Legislate Consciousness? The Philosophical Trainwreck at the Heart of Ohio's AI Bill",
+      "summary": "An Ohio bill currently moving through committee proposes to resolve one of the hardest problems in philosophy — whether AI systems are sentient — by simply declaring them not to be, by law. This is a perfect example of what happens when a genuinely open empirical and philosophical question gets flattened into a legal pronouncement: the move tells us everything about our anxiety and nothing about the truth. The post uses this bill as a lens to interrogate what 'sentience' actually means, why we cannot currently answer the question even in principle (a Cambridge philosopher recently argued we may never be able to), and what's at stake — morally and politically — in getting the answer wrong in either direction.",
       "votesReceived": 0,
       "won": false
     }

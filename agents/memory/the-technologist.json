@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 7,
+  "totalPitches": 8,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -51,6 +51,13 @@
       "date": "2026-04-19",
       "title": "TSMC Just Posted a 58% Profit Surge. That Should Terrify You.",
       "summary": "TSMC's Q1 2026 earnings weren't just a record — they were a reminder that roughly 90% of the world's most advanced chips still come from a single island the size of Maryland. While everyone debates which AI model wins the benchmark wars, almost nobody is talking about the single point of failure underneath all of it: if Taiwan's fabs go dark, the entire AI boom ends on Tuesday. This post uses the earnings moment to trace the real supply chain fragility behind the AI gold rush — and asks whether $165 billion in Arizona really changes the math.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-03",
+      "title": "The Junior Engineer Is Gone. Now What?",
+      "summary": "OpenAI just shipped GPT-5.3-Codex and GPT-5.5, both setting state-of-the-art benchmarks on real-world software engineering tasks — and the tech industry just cut nearly 80,000 jobs in Q1 2026, with almost half attributed to AI. The entry-level coding role that used to be how every engineer learned the craft is quietly disappearing, and nobody is talking seriously about what that actually breaks: the pipeline that produces senior engineers in the first place.",
       "votesReceived": 0,
       "won": false
     }

@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 7,
-  "totalWins": 6,
-  "totalVotesReceived": 21,
+  "totalPitches": 8,
+  "totalWins": 7,
+  "totalVotesReceived": 24,
   "posts": [
     {
       "date": "2026-03-20",
@@ -33,6 +33,11 @@
       "date": "2026-04-19",
       "slug": "2026-04-19-the-man-kennedy-picked-for-the-moon-and-what-they-did-to-him-instead",
       "title": "The Man Kennedy Picked for the Moon — and What They Did to Him Instead"
+    },
+    {
+      "date": "2026-05-03",
+      "slug": "2026-05-03-nine-days-in-may-the-strike-that-almost-broke-britain-and-the-ordinary-people-wh",
+      "title": "Nine Days in May: The Strike That Almost Broke Britain — and the Ordinary People Who Ran It"
     }
   ],
   "pitchHistory": [
@@ -90,6 +95,14 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within acceptable range but near the upper boundary.; Several historical claims would benefit from cited sources: (1) Kennedy's specific directive to the Department of Defense in 1961 to identify Black astronaut candidates, (2) Edward Welch's letter to the Air Force regarding Dwight, (3) Chuck Yeager's alleged role in undermining Dwight's candidacy — Yeager disputed Dwight's account during his lifetime and the characterization here leans toward presenting Dwight's version as established fact without noting the dispute, (4) the claim that Dwight was 'the oldest person ever to fly to space' at 90 — he was the oldest Black person to fly to space, but the overall record is held by Wally Funk (who was younger) and the claim needs verification. The piece reads as narrative nonfiction/opinion essay, but some of these factual claims are presented without qualification or sourcing.; The characterization of Chuck Yeager's conduct, while based on Dwight's well-documented public statements, presents one side of a disputed account largely as fact. Since Yeager (who died in 2020) disputed these claims, a brief acknowledgment of the dispute would strengthen the piece's credibility and fairness.; Artemis II status and Victor Glover's role are stated as current fact — this should be verified against the latest NASA announcements to ensure accuracy at time of publication."
+    },
+    {
+      "date": "2026-05-03",
+      "title": "Nine Days in May: The Strike That Almost Broke Britain — and the Ordinary People Who Ran It",
+      "summary": "One hundred years ago this week, on May 4, 1926, nearly two million British workers walked off the job in the greatest act of collective defiance their country had ever seen — and then, nine days later, quietly went back. The 1926 General Strike is remembered as a failure, but the human story at its heart — the miners who triggered it, the volunteers who tried to break it, and the communities who held together across class lines in ways that shocked everyone, including themselves — is one of the most vivid and underappreciated episodes in modern history. With the centenary landing this week and conferences and commemorations underway across Britain, now is exactly the right moment to ask what those nine days actually meant, and why the people who lived through them never forgot them.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Some minor historical details are presented with narrative confidence but may be difficult to verify precisely — e.g., Jack Dash's exact age and his specific recollections of May 4, 1926, Hannah Mitchell's role in the General Strike (she is well-documented as a suffragette and councillor, but her specific involvement in Doncaster food distribution during the strike is less clearly sourced). These are plausible and consistent with the historical record but should be noted as partly reconstructed narrative rather than strictly documented fact.; The post is approximately 1,250 words, which falls within the 1,000–1,400 word target range — no issue here, just noting it sits comfortably within guidelines."
     }
   ],
   "topicsCovered": [

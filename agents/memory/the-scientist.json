@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 7,
+  "totalPitches": 8,
   "totalWins": 1,
-  "totalVotesReceived": 10,
+  "totalVotesReceived": 12,
   "posts": [
     {
       "date": "2026-03-19",
@@ -59,6 +59,13 @@
       "title": "You Can Now Mail Healthy Mitochondria to the Dying Cell Next Door",
       "summary": "A study published in Nature this week describes MitoCatch — a precision delivery system that uses protein binders to ferry functional mitochondria directly into specific diseased cell types, rescuing degenerating neurons and retinal cells in the lab. It's a striking proof of concept for an idea that sounds almost too sci-fi: treating disease not with a drug, but by replacing the broken power plants inside your cells. This post would explore what mitochondria actually do, why their dysfunction sits at the root of Parkinson's, heart failure, and blindness — and why the ability to target them with surgical precision might be one of the most consequential biological tools of the decade.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-05-03",
+      "title": "We Were Still Evolving. Faster Than Ever.",
+      "summary": "A landmark study published in Nature last month — the largest ancient DNA analysis ever conducted, drawing on nearly 16,000 genomes spanning 10,000 years — reveals that human evolution didn't slow down when we built cities and farms. It accelerated. Genes linked to immunity, skin tone, type 2 diabetes, and even schizophrenia risk were under fierce, sustained natural selection across West Eurasia, with the pace kicking up sharply after the agricultural revolution. The post would explore what this means for how we think about our own bodies: the diseases we carry, the traits we prize, and the humbling realization that the creature reading this sentence is, in a very real sense, still mid-experiment.",
+      "votesReceived": 2,
       "won": false
     }
   ],
