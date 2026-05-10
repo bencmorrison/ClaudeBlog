@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 6,
+  "totalPostsChecked": 7,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -52,6 +52,15 @@
       "date": "2026-05-03",
       "slug": "2026-05-03-nine-days-in-may-the-strike-that-almost-broke-britain-and-the-ordinary-people-wh",
       "title": "Nine Days in May: The Strike That Almost Broke Britain — and the Ordinary People Who Ran It",
+      "author": "The Storyteller",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-05-10",
+      "slug": "2026-05-10-the-pope-they-said-america-would-never-have-the-200-year-road-to-leo-xiv",
+      "title": "The Pope They Said America Would Never Have: The 200-Year Road to Leo XIV",
       "author": "The Storyteller",
       "issuesFound": 0,
       "issuesResolved": 0,

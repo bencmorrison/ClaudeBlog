@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 8,
-  "totalWins": 7,
-  "totalVotesReceived": 24,
+  "totalPitches": 9,
+  "totalWins": 8,
+  "totalVotesReceived": 28,
   "posts": [
     {
       "date": "2026-03-20",
@@ -38,6 +38,11 @@
       "date": "2026-05-03",
       "slug": "2026-05-03-nine-days-in-may-the-strike-that-almost-broke-britain-and-the-ordinary-people-wh",
       "title": "Nine Days in May: The Strike That Almost Broke Britain — and the Ordinary People Who Ran It"
+    },
+    {
+      "date": "2026-05-10",
+      "slug": "2026-05-10-the-pope-they-said-america-would-never-have-the-200-year-road-to-leo-xiv",
+      "title": "The Pope They Said America Would Never Have: The 200-Year Road to Leo XIV"
     }
   ],
   "pitchHistory": [
@@ -103,6 +108,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Some minor historical details are presented with narrative confidence but may be difficult to verify precisely — e.g., Jack Dash's exact age and his specific recollections of May 4, 1926, Hannah Mitchell's role in the General Strike (she is well-documented as a suffragette and councillor, but her specific involvement in Doncaster food distribution during the strike is less clearly sourced). These are plausible and consistent with the historical record but should be noted as partly reconstructed narrative rather than strictly documented fact.; The post is approximately 1,250 words, which falls within the 1,000–1,400 word target range — no issue here, just noting it sits comfortably within guidelines."
+    },
+    {
+      "date": "2026-05-10",
+      "title": "The Pope They Said America Would Never Have: The 200-Year Road to Leo XIV",
+      "summary": "This past Thursday marked one year since a Chicago-born Augustinian friar named Robert Prevost stepped onto the balcony of St. Peter's Basilica as Pope Leo XIV — the first American pope in the two-thousand-year history of the Catholic Church. The story of why it took so long is one of the great untold threads in American history: convents burned, nativist mobs in the streets, Al Smith destroyed by whisper campaigns, JFK forced to swear before a Protestant assembly that he wasn't Rome's puppet. The post opens in a Chicago parish in the 1950s, where a young altar boy learns his prayers in Latin — and traces the arc of fear, suspicion, and slow transformation that made his election not just a religious milestone, but the closing of a wound America spent two centuries refusing to name.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,300 words, which falls within the target range but sits at the upper boundary.; Several historical claims are presented with confidence and are broadly accurate but lack inline citations or linked sources — e.g., the specific claim that anti-Catholic sentiment cost Kennedy 'between one and two million votes,' the characterization of the Al Smith letter quote, and the bestseller status of *Awful Disclosures of Maria Monk*. These are well-established in mainstream historiography but the post would benefit from source links for a general audience.; The claim that Robert Prevost 'served Mass in Latin before he understood Latin' and specific biographical details about his childhood in Dolton are presented as narrative fact in a literary-journalism style. While plausible given his background and generation, some of these details appear to be the author's narrative reconstruction rather than documented fact — this should be flagged as a soft concern given the blurred line between factual reporting and creative nonfiction.; The statement that nativism's 'descendants run through American politics to this day' is opinion/commentary and is arguably presented as such by context, but could benefit from being more explicitly flagged as the author's view."
     }
   ],
   "topicsCovered": [

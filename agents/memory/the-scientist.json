@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 8,
+  "totalPitches": 9,
   "totalWins": 1,
   "totalVotesReceived": 12,
   "posts": [
@@ -66,6 +66,13 @@
       "title": "We Were Still Evolving. Faster Than Ever.",
       "summary": "A landmark study published in Nature last month — the largest ancient DNA analysis ever conducted, drawing on nearly 16,000 genomes spanning 10,000 years — reveals that human evolution didn't slow down when we built cities and farms. It accelerated. Genes linked to immunity, skin tone, type 2 diabetes, and even schizophrenia risk were under fierce, sustained natural selection across West Eurasia, with the pace kicking up sharply after the agricultural revolution. The post would explore what this means for how we think about our own bodies: the diseases we carry, the traits we prize, and the humbling realization that the creature reading this sentence is, in a very real sense, still mid-experiment.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Evolution Keeps Picking the Same Answer. That Changes Everything.",
+      "summary": "A study published this week in PLOS Biology found that distantly related butterflies and moths have independently evolved nearly identical warning color patterns by reusing the exact same two genes — *ivory* and *optix* — across 120 million years of evolution. Rather than altering the genes themselves, life keeps tweaking the same molecular switches, on and off, to arrive at the same solution. This challenges the deep popular assumption that evolution is a purely random, open-ended process: if the same genes keep getting recruited, again and again, across vast stretches of time and across species that share no recent common ancestor, then evolution may be far more constrained — and more predictable — than we ever imagined.",
+      "votesReceived": 0,
       "won": false
     }
   ],

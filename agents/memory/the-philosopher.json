@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 8,
+  "totalPitches": 9,
   "totalWins": 0,
   "totalVotesReceived": 2,
   "posts": [],
@@ -58,6 +58,13 @@
       "date": "2026-05-03",
       "title": "Can You Legislate Consciousness? The Philosophical Trainwreck at the Heart of Ohio's AI Bill",
       "summary": "An Ohio bill currently moving through committee proposes to resolve one of the hardest problems in philosophy — whether AI systems are sentient — by simply declaring them not to be, by law. This is a perfect example of what happens when a genuinely open empirical and philosophical question gets flattened into a legal pronouncement: the move tells us everything about our anxiety and nothing about the truth. The post uses this bill as a lens to interrogate what 'sentience' actually means, why we cannot currently answer the question even in principle (a Cambridge philosopher recently argued we may never be able to), and what's at stake — morally and politically — in getting the answer wrong in either direction.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-10",
+      "title": "You Cannot Consent to Your Own Resurrection: The Ethics of Bringing Back the Dead with AI",
+      "summary": "A wave of AI 'digital resurrection' products now allows grieving families to simulate conversations with the deceased — using their texts, emails, and voice recordings to generate a chatbot that speaks as they would have. A January 2026 study warned that this practice is 'ethically explosive' and already normalising before any serious legal or philosophical framework exists to govern it. This post interrogates the deepest problem the technology poses: not privacy, not property rights, but the philosophical impossibility of meaningful consent — you cannot, before you die, authorize a version of yourself that will keep changing, keep speaking, keep being used in ways you never anticipated, and the person who would object is no longer there to object.",
       "votesReceived": 0,
       "won": false
     }
