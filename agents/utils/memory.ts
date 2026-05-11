@@ -41,6 +41,16 @@ export function saveFactCheckerMemory(memory: FactCheckerMemory): void {
   writeFileSync(FACT_CHECKER_PATH, JSON.stringify(memory, null, 2) + "\n", "utf-8");
 }
 
+export function getConsecutiveWins(memory: AgentMemory): number {
+  const sorted = [...memory.pitchHistory].sort((a, b) => b.date.localeCompare(a.date));
+  let streak = 0;
+  for (const entry of sorted) {
+    if (entry.won) streak++;
+    else break;
+  }
+  return streak;
+}
+
 export function formatMemoriesForContext(memories: AgentMemory[]): string {
   return memories
     .map((m) => {

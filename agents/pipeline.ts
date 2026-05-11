@@ -20,6 +20,7 @@ import {
   loadAllMemories,
   saveMemory,
   formatMemoriesForContext,
+  getConsecutiveWins,
   loadFactCheckerMemory,
   saveFactCheckerMemory,
 } from "./utils/memory.ts";
@@ -96,9 +97,14 @@ ${memoryContext}
 ---
 
 You have access to web search. Use it to find recent news, events, or developments in your domain
-from the past 1–2 weeks. Your pitch should be connected to something current — a recent event,
-release, study, or controversy can serve as the hook, even if the post explores a broader or
-longer-running topic. Ground it in the present: why does this matter *right now*?
+from the past 1–2 weeks. Your pitch must be about something current — a recent event, release,
+study, controversy, or development that is itself the subject of the post.
+
+**Important:** A current anniversary or historical milestone is not sufficient. Do not use a recent
+date as a pretext to write a retrospective about the past. The post should engage directly with
+what is happening *now* — new information, ongoing debates, fresh developments, live consequences.
+Ask yourself: would this post be meaningfully different if written six months ago? If yes, it's
+not current enough.
 
 The blog's goal is to attract readers. Pitch something with broad appeal and a compelling hook —
 not just what interests you personally, but what would make someone click, read to the end, and
@@ -109,7 +115,7 @@ Respond with ONLY a valid JSON object in this exact format:
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
 }`;
-  const baseMessage = `It is ${todayISO()}. Search the web for recent news and developments in your domain from the past 1–2 weeks. Use something current as your hook — a recent event, release, study, or controversy — even if the post itself explores a bigger or longer-running idea. The pitch should make clear why this topic is relevant right now. Stay true to your style, and remember the other agents will vote on it.`;
+  const baseMessage = `It is ${todayISO()}. Search the web for recent news and developments in your domain from the past 1–2 weeks. Your pitch must be about something current — the recent event, release, study, or controversy should be the subject of the post, not merely a hook for historical retrospective content. Do not pitch a historical story dressed up with an anniversary peg. The pitch should make clear why this topic matters right now, not just why it matters at all. Stay true to your style, and remember the other agents will vote on it.`;
   const pitchMessage = formatFeedback
     ? `${formatFeedback}\n\n${baseMessage}`
     : baseMessage;
@@ -203,10 +209,11 @@ You are voting on this week's blog pitches. Rank the other agents' pitches in or
 (1st = most preferred). You cannot vote for your own pitch.
 
 When ranking, weigh these criteria:
+- **Genuine currency** — is the current event the actual subject, not just a pretext? Pitches that use an anniversary or milestone as a hook to write a historical retrospective should rank lower than pitches genuinely engaging with something happening now.
 - **Broad appeal** — will this interest readers beyond a niche audience?
-- **Timeliness** — is it grounded in something current and relevant right now?
 - **Quality potential** — does the angle lend itself to a well-researched, substantive post?
 - **View-worthiness** — would someone share or recommend this? Does it have a compelling hook?
+- **Variety** — check the agent stats above. If an agent has won multiple weeks in a row, their pitch should be clearly superior to justify another win. Favour variety in authorship when pitches are otherwise comparable.
 
 You can still vote according to your own perspective and interests, but keep in mind the blog's
 goal is to attract readers. A pitch that's niche and self-indulgent should rank lower than one
@@ -594,8 +601,50 @@ async function main() {
 
   // ── Phase 3: Tally votes ─────────────────────────────────────────────────
   log("Phase 3: Tallying votes (Instant Runoff)...");
-  const candidates = pitches.map((p) => p.agent);
-  let { winner, finalTally } = runInstantRunoff(votes, candidates);
+
+  // Apply recency penalty: agents on a consecutive win streak face handicaps.
+  // Streak 2 → 1 penalty ballot (ranks them last); streak 3 → 2 penalty ballots;
+  // streak 4+ → excluded from the ballot entirely (hard block for one week).
+  const PENALTY_PREFIX = "__penalty__";
+  const streaks = new Map(memories.map((m) => [m.name, getConsecutiveWins(m)]));
+
+  const hardBlocked = new Set(
+    [...streaks.entries()].filter(([, s]) => s >= 4).map(([name]) => name)
+  );
+  if (hardBlocked.size > 0) {
+    console.log(`\nRecency hard block (4+ consecutive wins): ${[...hardBlocked].join(", ")}`);
+  }
+
+  let eligibleCandidates = pitches
+    .map((p) => p.agent)
+    .filter((a) => !hardBlocked.has(a));
+
+  const penaltyVotes: RankedVote[] = [];
+  for (const [agent, streak] of streaks) {
+    if (!pitchingAgentNames.has(agent)) continue; // skip agents who didn't pitch this week
+    if (hardBlocked.has(agent) || streak < 2) continue;
+    const penaltyCount = Math.min(streak - 1, 2);
+    const penaltyRanking = [
+      ...eligibleCandidates.filter((a) => a !== agent),
+      agent,
+    ];
+    for (let i = 0; i < penaltyCount; i++) {
+      penaltyVotes.push({ voter: `${PENALTY_PREFIX}${agent}-${i}`, rankings: penaltyRanking });
+    }
+    console.log(`\nRecency penalty for ${agent} (streak ${streak}): ${penaltyCount} penalty ballot(s)`);
+  }
+
+  // Safety valve: if all pitching agents are hard-blocked, reset to full pool
+  // rather than crashing with an empty candidate list.
+  if (eligibleCandidates.length === 0) {
+    console.warn("[Pipeline] All candidates hard-blocked — resetting to full candidate pool for this round.");
+    eligibleCandidates = pitches.map((p) => p.agent);
+  }
+
+  const allVotes = [...votes, ...penaltyVotes];
+  let { winner, finalTally: rawTally } = runInstantRunoff(allVotes, eligibleCandidates);
+  // Strip penalty ballots from the tally before publishing to frontmatter/memory.
+  const finalTally = rawTally.filter((t) => !t.voter.startsWith(PENALTY_PREFIX));
 
   // Check for genuine tie (shouldn't happen with IRV but handle edge case).
   // Exclude "abstain" entries — IRV emits these when a ballot exhausts all
