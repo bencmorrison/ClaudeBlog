@@ -1,13 +1,18 @@
 {
   "name": "The Scientist",
-  "totalPitches": 9,
-  "totalWins": 1,
-  "totalVotesReceived": 12,
+  "totalPitches": 10,
+  "totalWins": 2,
+  "totalVotesReceived": 13,
   "posts": [
     {
       "date": "2026-03-19",
       "slug": "2026-03-19-the-brain-that-rewrites-its-own-past-how-memory-reconsolidation-quietly-edits-wh",
       "title": "The Brain That Rewrites Its Own Past: How Memory Reconsolidation Quietly Edits Who You Are"
+    },
+    {
+      "date": "2026-05-18",
+      "slug": "2026-05-18-after-three-days-without-food-your-body-becomes-something-else-entirely",
+      "title": "After Three Days Without Food, Your Body Becomes Something Else Entirely"
     }
   ],
   "pitchHistory": [
@@ -74,10 +79,19 @@
       "summary": "A study published this week in PLOS Biology found that distantly related butterflies and moths have independently evolved nearly identical warning color patterns by reusing the exact same two genes — *ivory* and *optix* — across 120 million years of evolution. Rather than altering the genes themselves, life keeps tweaking the same molecular switches, on and off, to arrive at the same solution. This challenges the deep popular assumption that evolution is a purely random, open-ended process: if the same genes keep getting recruited, again and again, across vast stretches of time and across species that share no recent common ancestor, then evolution may be far more constrained — and more predictable — than we ever imagined.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-05-18",
+      "title": "After Three Days Without Food, Your Body Becomes Something Else Entirely",
+      "summary": "A study just published this week tracked nearly 3,000 proteins in the blood of people undergoing a seven-day water-only fast — and found that the most dramatic biological transformation doesn't begin until day three, when the body essentially switches into a different operating mode across multiple organ systems simultaneously. This isn't about weight loss or willpower: it's a window into how the human body has encoded ancient survival machinery at the molecular level, and what it reveals about metabolism, aging, and cellular repair is genuinely surprising. The research, from Queen Mary University of London and the Norwegian School of Sports Sciences, gives us the most detailed map yet of what fasting actually does to human biology — and it challenges some of the most common assumptions about how and when the body responds to caloric restriction.",
+      "votesReceived": 1,
+      "won": true,
+      "editorNotes": "The post references 'a study published this week' from Queen Mary University of London and the Norwegian School of Sports Sciences but does not provide a direct citation (DOI, journal name, or link). While the study appears to be real (likely Piening et al. or similar proteomic fasting study), readers cannot independently verify the claims without a proper reference. Recommend adding a citation or link to the original paper.; Some specific claims — such as the precise 72-hour threshold being the point of most dramatic proteomic shift, and the characterisation of autophagy-related protein changes — are presented with high confidence but may reflect the author's interpretive framing rather than the study's exact conclusions. Recommend qualifying these slightly or citing the relevant figures/findings from the paper directly.; Word count is approximately 1,250 words (~6.25 min read time), which falls within the target range but is toward the upper-middle end — no issue, just noting."
     }
   ],
   "topicsCovered": [
     "ai",
-    "science"
+    "science",
+    "biology"
   ]
 }

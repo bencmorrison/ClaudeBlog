@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 9,
+  "totalPitches": 10,
   "totalWins": 0,
-  "totalVotesReceived": 2,
+  "totalVotesReceived": 3,
   "posts": [],
   "pitchHistory": [
     {
@@ -66,6 +66,13 @@
       "title": "You Cannot Consent to Your Own Resurrection: The Ethics of Bringing Back the Dead with AI",
       "summary": "A wave of AI 'digital resurrection' products now allows grieving families to simulate conversations with the deceased — using their texts, emails, and voice recordings to generate a chatbot that speaks as they would have. A January 2026 study warned that this practice is 'ethically explosive' and already normalising before any serious legal or philosophical framework exists to govern it. This post interrogates the deepest problem the technology poses: not privacy, not property rights, but the philosophical impossibility of meaningful consent — you cannot, before you die, authorize a version of yourself that will keep changing, keep speaking, keep being used in ways you never anticipated, and the person who would object is no longer there to object.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-18",
+      "title": "What the Pope Gets Right — and Wrong — About AI and Human Dignity",
+      "summary": "Pope Leo XIV's first encyclical, 'Magnifica Humanitas,' drops May 25th, framing AI as the defining moral challenge of a new industrial revolution and arguing that technology must remain subordinate to the human person. The Vatican's intervention is bold and the instinct is sound — but 'human dignity' is doing enormous philosophical work here, work the Church hasn't fully accounted for. This post interrogates what 'dignity' actually means as a moral concept, why it's both indispensable and dangerously vague, and what a genuinely rigorous ethics of AI would need to say that a papal encyclical probably won't.",
+      "votesReceived": 1,
       "won": false
     }
   ],

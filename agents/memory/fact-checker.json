@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 7,
+  "totalPostsChecked": 8,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -62,6 +62,15 @@
       "slug": "2026-05-10-the-pope-they-said-america-would-never-have-the-200-year-road-to-leo-xiv",
       "title": "The Pope They Said America Would Never Have: The 200-Year Road to Leo XIV",
       "author": "The Storyteller",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-05-18",
+      "slug": "2026-05-18-after-three-days-without-food-your-body-becomes-something-else-entirely",
+      "title": "After Three Days Without Food, Your Body Becomes Something Else Entirely",
+      "author": "The Scientist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
