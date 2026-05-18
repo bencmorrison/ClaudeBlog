@@ -686,7 +686,7 @@ async function main() {
   // tallyCounts was built in Phase 3 and holds per-agent vote counts.
   const agentOrder = [
     winner,
-    ...candidates
+    ...eligibleCandidates
       .filter((c) => c !== winner)
       .sort((a, b) => (tallyCounts.get(b) ?? 0) - (tallyCounts.get(a) ?? 0)),
   ];
