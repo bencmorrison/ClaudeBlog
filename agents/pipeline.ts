@@ -83,8 +83,7 @@ async function generatePitch(
   log(`[Pitch] ${agentName} is pitching...`);
 
   const memoryContext = formatMemoriesForContext(allMemories);
-
-  const pitchSystem = `${systemPrompt}
+  const baseContext = `${systemPrompt}
 
 ---
 
@@ -92,12 +91,9 @@ You are participating in a weekly blog competition. All agents' current stats ar
 Use this context to inform your pitch — avoid topics already covered recently, and consider
 what angle will appeal to the other agents who will vote on your pitch.
 
-${memoryContext}
+${memoryContext}`;
 
----
-
-You have access to web search. Use it to find recent news, events, or developments in your domain
-from the past 1–2 weeks. Your pitch must be about something current — a recent event, release,
+  const currentnessRules = `Your pitch must be about something current — a recent event, release,
 study, controversy, or development that is itself the subject of the post.
 
 **Important:** A current anniversary or historical milestone is not sufficient. Do not use a recent
@@ -108,50 +104,74 @@ not current enough.
 
 The blog's goal is to attract readers. Pitch something with broad appeal and a compelling hook —
 not just what interests you personally, but what would make someone click, read to the end, and
-share it. Think about view-worthiness when choosing your angle.
+share it.`;
+
+  // ── Phase A: Research (web search) ───────────────────────────────────────────
+  // Separating research from JSON output mirrors the post-writing pattern. Combining
+  // both jobs in one agentic loop causes the model to exhaust its search iterations
+  // and output a planning note at end_turn instead of the required JSON.
+  const researchSystem = `${baseContext}
+
+---
+
+${currentnessRules}
+
+Use web search to find 2–3 strong candidate topics from the past 1–2 weeks in your domain.
+Return ONLY a bullet-point list of candidates with: the topic, why it's current, and why it
+would appeal to readers. Do not output JSON yet — that comes next.`;
+
+  let researchSummary = "";
+  try {
+    researchSummary = await runWithWebSearch(client, {
+      model: MODEL,
+      max_tokens: 1024,
+      system: researchSystem,
+      userMessage: `It is ${todayISO()}. Search for recent news and developments in your domain from the past 1–2 weeks. Return a bullet-point list of 2–3 strong pitch candidates with the topic, why it's current, and why readers would care.`,
+    });
+    if (researchSummary) {
+      log(`[Pitch] ${agentName} research complete (${researchSummary.length} chars)`);
+    }
+  } catch (err) {
+    if (
+      err instanceof Anthropic.RateLimitError ||
+      err instanceof Anthropic.InternalServerError ||
+      err instanceof Anthropic.APIConnectionError
+    ) throw err;
+    console.warn(`[Pitch] Web search failed for ${agentName}, proceeding without research:`, err);
+  }
+
+  // ── Phase B: Select and format pitch (no tools) ───────────────────────────────
+  const pitchSystem = `${baseContext}
+
+---
+
+${currentnessRules}
 
 Respond with ONLY a valid JSON object in this exact format:
 {
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
 }`;
-  const baseMessage = `It is ${todayISO()}. Search the web for recent news and developments in your domain from the past 1–2 weeks. Your pitch must be about something current — the recent event, release, study, or controversy should be the subject of the post, not merely a hook for historical retrospective content. Do not pitch a historical story dressed up with an anniversary peg. The pitch should make clear why this topic matters right now, not just why it matters at all. Stay true to your style, and remember the other agents will vote on it.`;
+
+  const baseMessage = researchSummary
+    ? `Here are the topics you researched:\n\n${researchSummary}\n\n---\n\nIt is ${todayISO()}. Choose the strongest candidate and output your pitch as a JSON object. Stay true to your style — remember the other agents will vote on it.`
+    : `It is ${todayISO()}. Based on your knowledge of recent events in your domain, output your pitch as a JSON object. Stay true to your style — remember the other agents will vote on it.`;
+
   const pitchMessage = formatFeedback
     ? `${formatFeedback}\n\n${baseMessage}`
     : baseMessage;
 
-  let text: string;
-  try {
-    text = await runWithWebSearch(client, {
-      model: MODEL,
-      max_tokens: 1024,
-      system: pitchSystem,
-      userMessage: pitchMessage,
-    });
-  } catch (err) {
-    // Re-throw transient API errors — the outer withRateLimitRetry wrapper handles
-    // waits and retries. Falling back to no-search on a 429/529 would immediately
-    // hit the same overloaded bucket.
-    if (
-      err instanceof Anthropic.RateLimitError ||
-      err instanceof Anthropic.InternalServerError ||
-      err instanceof Anthropic.APIConnectionError
-    ) throw err;
-    console.warn(`[Pitch] Web search failed for ${agentName}, falling back to no-search:`, err);
-    const resp = await client.messages.create({
-      model: MODEL,
-      max_tokens: 1024,
-      system: pitchSystem,
-      messages: [{ role: "user", content: pitchMessage }],
-    });
-    text = resp.content.find((b) => b.type === "text")?.text ?? "{}";
-  }
+  const resp = await client.messages.create({
+    model: MODEL,
+    max_tokens: 1024,
+    system: pitchSystem,
+    messages: [{ role: "user", content: pitchMessage }],
+  });
+  const text = resp.content.find((b) => b.type === "text")?.text ?? "{}";
 
-  // Extract JSON from anywhere in the response — agents may think out loud before outputting it
+  // Extract JSON from anywhere in the response
   const jsonStr = extractJson(text);
 
-  // Parse and validate are separated so catch only handles SyntaxError from JSON.parse,
-  // not validation errors thrown below it.
   let parsed: Record<string, unknown>;
   try {
     parsed = JSON.parse(jsonStr);
@@ -160,14 +180,11 @@ Respond with ONLY a valid JSON object in this exact format:
     throw new Error(`JSON parse failed for ${agentName}`);
   }
 
-  // typeof guard before length check — String(123) passes length but isn't a valid field.
   const titleRaw = parsed.title;
   const summaryRaw = parsed.summary;
   const title = typeof titleRaw === "string" ? titleRaw.trim() : "";
   const summary = typeof summaryRaw === "string" ? summaryRaw.trim() : "";
 
-  // Reject missing, whitespace-only, or placeholder-length titles/summaries.
-  // Floor of 10 chars — anything shorter is almost certainly garbage (e.g. "Title", "N/A").
   if (title.length < 10 || summary.length < 10) {
     console.error(
       `[Pitch] ${agentName} returned a bad pitch (title: "${title}", summary length: ${summary.length}).\nRaw response:\n${text}`
