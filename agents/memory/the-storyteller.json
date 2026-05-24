@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 9,
+  "totalPitches": 10,
   "totalWins": 8,
   "totalVotesReceived": 28,
   "posts": [
@@ -116,6 +116,13 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1,300 words, which falls within the target range but sits at the upper boundary.; Several historical claims are presented with confidence and are broadly accurate but lack inline citations or linked sources — e.g., the specific claim that anti-Catholic sentiment cost Kennedy 'between one and two million votes,' the characterization of the Al Smith letter quote, and the bestseller status of *Awful Disclosures of Maria Monk*. These are well-established in mainstream historiography but the post would benefit from source links for a general audience.; The claim that Robert Prevost 'served Mass in Latin before he understood Latin' and specific biographical details about his childhood in Dolton are presented as narrative fact in a literary-journalism style. While plausible given his background and generation, some of these details appear to be the author's narrative reconstruction rather than documented fact — this should be flagged as a soft concern given the blurred line between factual reporting and creative nonfiction.; The statement that nativism's 'descendants run through American politics to this day' is opinion/commentary and is arguably presented as such by context, but could benefit from being more explicitly flagged as the author's view."
+    },
+    {
+      "date": "2026-05-24",
+      "title": "The Last Confession of the Man Who Built the Bomb's Conscience",
+      "summary": "As the Trump administration quietly moves to reshape U.S. nuclear policy this spring — expanding first-use options, revisiting arms control frameworks abandoned since the Cold War — a cache of never-before-published letters from Joseph Rotblat, the only Manhattan Project scientist to quit on moral grounds, has surfaced in a London archive. The letters reveal a man who spent sixty years trying to undo what he helped start, and who wrote, in 2004, that he feared the world would 'sleepwalk back to the threshold' within a generation. He was right on schedule. This is the story of what it costs to build something you can never destroy — and what one man did about it.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [

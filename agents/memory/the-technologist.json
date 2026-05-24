@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 9,
+  "totalPitches": 10,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -65,6 +65,13 @@
       "date": "2026-05-10",
       "title": "The Phone Is the Next Typewriter: What the Qualcomm CEO Just Admitted Changes Everything",
       "summary": "Qualcomm's CEO Cristiano Amon just revealed he's working with 'pretty much all' major AI players — including OpenAI and Meta — on secret next-generation devices designed to replace the smartphone as your primary computing surface. Meanwhile, leaked reports show OpenAI is co-developing a smartphone chip with Qualcomm and MediaTek, targeting 300–400 million annual shipments by 2028, with AI agents handling tasks instead of apps. This isn't a gadget story — it's about the deepest architectural shift in consumer computing since the iPhone, and the engineering decisions being made right now will determine who controls your digital life for the next two decades.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-24",
+      "title": "The AI That's Too Dangerous to Release: What Anthropic Just Admitted by Building It Anyway",
+      "summary": "Anthropic built Claude Mythos Preview — by most benchmarks the most capable AI model ever constructed — and then refused to ship it publicly, locking it behind a $100M controlled-access consortium for defensive cybersecurity called Project Glasswing. This is the first time a frontier lab has openly acknowledged it built something it doesn't trust the world to have. The post digs into the engineering numbers, the logic (and contradictions) of building a weapon you won't sell, and what it means that the gap between what AI labs build privately and what the rest of us can touch just became a canyon.",
       "votesReceived": 0,
       "won": false
     }

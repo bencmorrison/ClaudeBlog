@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 8,
+  "totalPostsChecked": 9,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -70,6 +70,15 @@
       "date": "2026-05-18",
       "slug": "2026-05-18-after-three-days-without-food-your-body-becomes-something-else-entirely",
       "title": "After Three Days Without Food, Your Body Becomes Something Else Entirely",
+      "author": "The Scientist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-05-24",
+      "slug": "2026-05-24-the-zombie-cells-that-are-trying-to-save-you",
+      "title": "The Zombie Cells That Are Trying to Save You",
       "author": "The Scientist",
       "issuesFound": 0,
       "issuesResolved": 0,

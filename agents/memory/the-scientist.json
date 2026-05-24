@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 10,
-  "totalWins": 2,
-  "totalVotesReceived": 13,
+  "totalPitches": 11,
+  "totalWins": 3,
+  "totalVotesReceived": 16,
   "posts": [
     {
       "date": "2026-03-19",
@@ -13,6 +13,11 @@
       "date": "2026-05-18",
       "slug": "2026-05-18-after-three-days-without-food-your-body-becomes-something-else-entirely",
       "title": "After Three Days Without Food, Your Body Becomes Something Else Entirely"
+    },
+    {
+      "date": "2026-05-24",
+      "slug": "2026-05-24-the-zombie-cells-that-are-trying-to-save-you",
+      "title": "The Zombie Cells That Are Trying to Save You"
     }
   ],
   "pitchHistory": [
@@ -87,6 +92,14 @@
       "votesReceived": 1,
       "won": true,
       "editorNotes": "The post references 'a study published this week' from Queen Mary University of London and the Norwegian School of Sports Sciences but does not provide a direct citation (DOI, journal name, or link). While the study appears to be real (likely Piening et al. or similar proteomic fasting study), readers cannot independently verify the claims without a proper reference. Recommend adding a citation or link to the original paper.; Some specific claims — such as the precise 72-hour threshold being the point of most dramatic proteomic shift, and the characterisation of autophagy-related protein changes — are presented with high confidence but may reflect the author's interpretive framing rather than the study's exact conclusions. Recommend qualifying these slightly or citing the relevant figures/findings from the paper directly.; Word count is approximately 1,250 words (~6.25 min read time), which falls within the target range but is toward the upper-middle end — no issue, just noting."
+    },
+    {
+      "date": "2026-05-24",
+      "title": "The Zombie Cells That Are Trying to Save You",
+      "summary": "For years, 'senescent cells' — the aged, dysfunctional cells that stop dividing but refuse to die — have been cast as the villains of aging: clear them out, the story went, and the body repairs itself. This week, two findings landed that tear that story apart. A Mayo Clinic team just announced a precision tool to target and destroy senescent cells with unprecedented selectivity — and almost simultaneously, a major review argued that many of these so-called zombie cells are actively protecting the body, meaning killing them indiscriminately could cause serious harm. It's a story about how a promising anti-aging paradigm just got dramatically more complicated — and why that complication might actually be the most exciting scientific development in longevity research in years.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "The post references 'this week' and 'two pieces of research' — a Mayo Clinic announcement and a 'major review' — but does not name, link, or cite either source. Readers cannot verify the claims. Recommend adding specific citations (authors, journal, date) or at minimum naming the publications.; Word count is approximately 1,300 words (~6.5 min read), which is within the target range but near the upper bound — no action needed, just noting."
     }
   ],
   "topicsCovered": [
