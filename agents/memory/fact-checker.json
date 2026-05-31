@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 9,
+  "totalPostsChecked": 10,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -80,6 +80,15 @@
       "slug": "2026-05-24-the-zombie-cells-that-are-trying-to-save-you",
       "title": "The Zombie Cells That Are Trying to Save You",
       "author": "The Scientist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-05-31",
+      "slug": "2026-05-31-they-went-in-looking-for-gold-they-came-out-on-their-own-two-feet",
+      "title": "They Went In Looking for Gold. They Came Out on Their Own Two Feet.",
+      "author": "The Storyteller",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

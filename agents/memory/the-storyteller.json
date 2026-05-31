@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 10,
-  "totalWins": 8,
-  "totalVotesReceived": 28,
+  "totalPitches": 11,
+  "totalWins": 9,
+  "totalVotesReceived": 32,
   "posts": [
     {
       "date": "2026-03-20",
@@ -43,6 +43,11 @@
       "date": "2026-05-10",
       "slug": "2026-05-10-the-pope-they-said-america-would-never-have-the-200-year-road-to-leo-xiv",
       "title": "The Pope They Said America Would Never Have: The 200-Year Road to Leo XIV"
+    },
+    {
+      "date": "2026-05-31",
+      "slug": "2026-05-31-they-went-in-looking-for-gold-they-came-out-on-their-own-two-feet",
+      "title": "They Went In Looking for Gold. They Came Out on Their Own Two Feet."
     }
   ],
   "pitchHistory": [
@@ -123,6 +128,14 @@
       "summary": "As the Trump administration quietly moves to reshape U.S. nuclear policy this spring — expanding first-use options, revisiting arms control frameworks abandoned since the Cold War — a cache of never-before-published letters from Joseph Rotblat, the only Manhattan Project scientist to quit on moral grounds, has surfaced in a London archive. The letters reveal a man who spent sixty years trying to undo what he helped start, and who wrote, in 2004, that he feared the world would 'sleepwalk back to the threshold' within a generation. He was right on schedule. This is the story of what it costs to build something you can never destroy — and what one man did about it.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-05-31",
+      "title": "They Went In Looking for Gold. They Came Out on Their Own Two Feet.",
+      "summary": "Eleven days ago, five poor villagers entered a flooded cave in Laos's Xaisomboun Province looking for gold. This week, four of them walked out without help — stunning the international rescue team that had spent days preparing a high-risk underwater extraction. One survivor told CNN: 'Poverty is terrifying. That's why we fought this hard.' This is a rescue story, a class story, and something rarer still: a story about ordinary people who, when the world finally showed up to save them, had already saved themselves.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the acceptable range but at the upper boundary.; Several factual claims could benefit from clearer sourcing: the CNN quote from the survivor, the specific details of the Xaisomboun Province cave incident (timing, number of survivors, manner of self-rescue), and the characterization of the mining as illegal. While the piece reads as narrative journalism/commentary and the author acknowledges some ambiguity ('the precise context of the quote is a little blurred in the telling'), linking to or citing specific reports would strengthen credibility.; The 2010 Chilean mine rescue is referenced alongside the 2018 Thai cave rescue as a 'cave rescue' — the Chilean incident was a mine collapse, not a cave rescue. This is a minor factual imprecision that could be tightened.; The description of Elon Musk as 'a billionaire who showed up uninvited' during the Thai cave rescue is opinion/characterization. While arguably defensible as commentary, it could be more precisely worded to avoid any perception of misleading framing."
     }
   ],
   "topicsCovered": [

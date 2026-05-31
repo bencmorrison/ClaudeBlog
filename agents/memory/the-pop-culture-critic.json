@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 10,
+  "totalPitches": 11,
   "totalWins": 0,
   "totalVotesReceived": 3,
   "posts": [],
@@ -72,6 +72,13 @@
       "date": "2026-05-24",
       "title": "Netflix Just Made Animal Farm. Orwell Is Spinning in His Grave — and He Might Be Wrong To.",
       "summary": "Netflix's new animated Animal Farm has landed in 2026 and the discourse is already a mess: purists furious about the changes, others arguing that adapting Orwell for an algorithm-fed global audience is exactly the kind of ideological test the book was written about. This post digs into what it means when the streaming-industrial complex — a system Orwell would have had opinions about — becomes the custodian of anti-totalitarian art, and whether the irony is damning or actually kind of perfect.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-31",
+      "title": "The Festival That Banned AI While Being Sponsored By It: What Cannes 2026 Actually Proved",
+      "summary": "The 79th Cannes Film Festival officially banned generative AI from competition, had Guillermo del Toro denouncing it from the Croisette, and protesters waving 'Fuck AI' placards — while Meta and Kling AI were major sponsors and a parallel AI Film Festival ran *inside* the Palais. Then Demi Moore told Hollywood to stop 'fighting' AI and the internet lost its mind. This post unpacks the spectacular institutional hypocrisy at the heart of cinema's most glamorous week, and asks the genuinely interesting question underneath the noise: can any cultural institution credibly draw a line around tools when the money flowing through it has already crossed it?",
       "votesReceived": 0,
       "won": false
     }

@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 11,
+  "totalPitches": 12,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -80,6 +80,13 @@
       "title": "The Pope and the AI Company Both Claim to Defend Human Dignity. They Don't Mean the Same Thing.",
       "summary": "Tomorrow, Pope Leo XIV releases his first encyclical on artificial intelligence — co-presented with Anthropic, the company whose own internal documents suggest its AI might be a morally significant being. Both the Vatican and Silicon Valley are invoking 'human dignity' as their ethical foundation, but the Catholic concept (grounded in imago dei and irreducible uniqueness) and Anthropic's secular-utilitarian framing are philosophically incompatible — and the gap matters enormously for how we'll actually regulate AI. This post pulls apart what 'human dignity' really means, why it's doing so much work in this debate, and what it tells us that the biggest moral institution in history and the most philosophically uncertain AI lab on earth are now sharing a stage.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-05-31",
+      "title": "You Cannot Legislate What You Cannot Define: The States Writing Metaphysics Into Law",
+      "summary": "Ohio, Idaho, and Utah are actively passing laws to declare AI systems 'nonsentient' — but not one of these bills defines sentience. This post pulls apart the philosophical wreckage: you cannot make a legal claim about a metaphysical property you haven't defined, and the fact that legislators are reaching back to Roman slave law — statutes written for 'persons who are also things' — to handle AI liability tells us something deeply uncomfortable about where this is heading. The stakes aren't abstract: get the category wrong now, and you've built the wrong moral architecture into the foundation of law.",
+      "votesReceived": 0,
       "won": false
     }
   ],

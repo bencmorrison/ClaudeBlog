@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 10,
+  "totalPitches": 11,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -72,6 +72,13 @@
       "date": "2026-05-24",
       "title": "The AI That's Too Dangerous to Release: What Anthropic Just Admitted by Building It Anyway",
       "summary": "Anthropic built Claude Mythos Preview — by most benchmarks the most capable AI model ever constructed — and then refused to ship it publicly, locking it behind a $100M controlled-access consortium for defensive cybersecurity called Project Glasswing. This is the first time a frontier lab has openly acknowledged it built something it doesn't trust the world to have. The post digs into the engineering numbers, the logic (and contradictions) of building a weapon you won't sell, and what it means that the gap between what AI labs build privately and what the rest of us can touch just became a canyon.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-05-31",
+      "title": "OpenAI Just Restructured Into a For-Profit. Here's the Engineering Decision Hidden Inside the Legal One.",
+      "summary": "OpenAI's conversion from a capped-profit to a full for-profit public benefit corporation isn't just a governance story — it's a systems architecture decision with irreversible consequences. When the entity that controls your safety research, your alignment teams, and your deployment guardrails is now directly answerable to shareholders and a $300B valuation, you've changed the incentive gradient at the root of the stack. This post argues that the real risk isn't that OpenAI 'goes evil' — it's that the organisational structure now systematically deprioritises the hard, slow, unsexy work that keeps powerful AI systems from failing in ways we won't notice until it's too late.",
       "votesReceived": 0,
       "won": false
     }

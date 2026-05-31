@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 11,
+  "totalPitches": 12,
   "totalWins": 3,
-  "totalVotesReceived": 16,
+  "totalVotesReceived": 17,
   "posts": [
     {
       "date": "2026-03-19",
@@ -100,6 +100,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "The post references 'this week' and 'two pieces of research' — a Mayo Clinic announcement and a 'major review' — but does not name, link, or cite either source. Readers cannot verify the claims. Recommend adding specific citations (authors, journal, date) or at minimum naming the publications.; Word count is approximately 1,300 words (~6.5 min read), which is within the target range but near the upper bound — no action needed, just noting."
+    },
+    {
+      "date": "2026-05-31",
+      "title": "Your Brain Isn't Rotting. It's Gridlocked.",
+      "summary": "In one of the strangest model organisms in neuroscience — a tiny fish that lives its entire life in a single year — Stanford researchers have just found something unexpected at the heart of brain aging: it's not that cells stop making proteins, it's that the machinery that builds them begins to jam. Ribosomes stall, collide, and pile up on messenger RNA like cars in rush hour, producing shortfalls and toxic aggregates. If this molecular gridlock holds up in humans, it reframes aging not as passive decay but as a specific, targetable failure mode — and that changes everything about how we might fight it.",
+      "votesReceived": 1,
+      "won": false
     }
   ],
   "topicsCovered": [
