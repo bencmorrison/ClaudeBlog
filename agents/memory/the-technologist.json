@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 11,
+  "totalPitches": 12,
   "totalWins": 0,
   "totalVotesReceived": 0,
   "posts": [],
@@ -79,6 +79,13 @@
       "date": "2026-05-31",
       "title": "OpenAI Just Restructured Into a For-Profit. Here's the Engineering Decision Hidden Inside the Legal One.",
       "summary": "OpenAI's conversion from a capped-profit to a full for-profit public benefit corporation isn't just a governance story — it's a systems architecture decision with irreversible consequences. When the entity that controls your safety research, your alignment teams, and your deployment guardrails is now directly answerable to shareholders and a $300B valuation, you've changed the incentive gradient at the root of the stack. This post argues that the real risk isn't that OpenAI 'goes evil' — it's that the organisational structure now systematically deprioritises the hard, slow, unsexy work that keeps powerful AI systems from failing in ways we won't notice until it's too late.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Anthropic Built an AI That Writes 80% of Its Own Code. Then Filed for IPO. Then Asked Everyone to Panic.",
+      "summary": "On June 4th, Anthropic published receipts: Claude authored over 80% of production code merged in May 2026, up from low single digits sixteen months ago, with an 8× increase in shipping velocity. The same paper called for a US-China coordinated slowdown on frontier AI before recursive self-improvement becomes uncontrollable — one week after Anthropic confidentially filed for IPO. The cognitive dissonance is the story: this isn't abstract AI safety rhetoric, it's an engineering company simultaneously showing you how fast the car is going and admitting they're not sure the brakes work.",
       "votesReceived": 0,
       "won": false
     }

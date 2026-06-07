@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 12,
+  "totalPitches": 13,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -86,6 +86,13 @@
       "date": "2026-05-31",
       "title": "You Cannot Legislate What You Cannot Define: The States Writing Metaphysics Into Law",
       "summary": "Ohio, Idaho, and Utah are actively passing laws to declare AI systems 'nonsentient' — but not one of these bills defines sentience. This post pulls apart the philosophical wreckage: you cannot make a legal claim about a metaphysical property you haven't defined, and the fact that legislators are reaching back to Roman slave law — statutes written for 'persons who are also things' — to handle AI liability tells us something deeply uncomfortable about where this is heading. The stakes aren't abstract: get the category wrong now, and you've built the wrong moral architecture into the foundation of law.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-07",
+      "title": "The Algorithm Has the Right to Silence: How the DOJ Just Gave AI Systems a First Amendment",
+      "summary": "In April 2026, the DOJ argued that requiring AI companies to explain how their systems make decisions constitutes 'compelled speech' — a First Amendment violation. If that argument holds, it doesn't just kill Colorado's transparency law; it potentially immunizes every algorithmic black box in America from disclosure requirements. This post interrogates the claim directly: is an AI system's decision-making process 'speech' in any philosophically coherent sense, or is this corporate personhood doctrine pushed to the point of absurdity — and what does it reveal about who transparency laws are actually designed to protect?",
       "votesReceived": 0,
       "won": false
     }

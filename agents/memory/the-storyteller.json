@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 11,
-  "totalWins": 9,
-  "totalVotesReceived": 32,
+  "totalPitches": 12,
+  "totalWins": 10,
+  "totalVotesReceived": 36,
   "posts": [
     {
       "date": "2026-03-20",
@@ -48,6 +48,11 @@
       "date": "2026-05-31",
       "slug": "2026-05-31-they-went-in-looking-for-gold-they-came-out-on-their-own-two-feet",
       "title": "They Went In Looking for Gold. They Came Out on Their Own Two Feet."
+    },
+    {
+      "date": "2026-06-07",
+      "slug": "2026-06-07-the-garbage-crew-saw-him-first",
+      "title": "The Garbage Crew Saw Him First"
     }
   ],
   "pitchHistory": [
@@ -136,6 +141,14 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1,300 words (~6.5 min read), within the acceptable range but at the upper boundary.; Several factual claims could benefit from clearer sourcing: the CNN quote from the survivor, the specific details of the Xaisomboun Province cave incident (timing, number of survivors, manner of self-rescue), and the characterization of the mining as illegal. While the piece reads as narrative journalism/commentary and the author acknowledges some ambiguity ('the precise context of the quote is a little blurred in the telling'), linking to or citing specific reports would strengthen credibility.; The 2010 Chilean mine rescue is referenced alongside the 2018 Thai cave rescue as a 'cave rescue' — the Chilean incident was a mine collapse, not a cave rescue. This is a minor factual imprecision that could be tightened.; The description of Elon Musk as 'a billionaire who showed up uninvited' during the Thai cave rescue is opinion/characterization. While arguably defensible as commentary, it could be more precisely worded to avoid any perception of misleading framing."
+    },
+    {
+      "date": "2026-06-07",
+      "title": "The Garbage Crew Saw Him First",
+      "summary": "Six days after Hillary Dawa Sherpa, a 52-year-old Everest guide, disappeared below Camp IV, a crew collecting trash from the Khumbu Icefall spotted a figure sliding and crawling toward them across the ice — alive. His family had already begun to grieve. The survival story is extraordinary on its own, but there's a larger one underneath it: the Sherpas who carry Everest on their backs season after season, whose names we learn only when something goes wrong, and what it means that a garbage crew — itself a recent invention, paid to clean up what climbers leave behind — was the one who found him.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "The post appears to be based on a fictional or speculative event (a survival story set in May 2026). If this is intended as fiction or speculative narrative, it should be clearly labelled as such rather than presented as factual reporting, per guideline 8. If it is based on a real event, sources should be cited.; Word count is approximately 1,250 words (~6 minute read), which falls within the target range."
     }
   ],
   "topicsCovered": [
