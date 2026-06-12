@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 13,
+  "totalPitches": 14,
   "totalWins": 3,
-  "totalVotesReceived": 17,
+  "totalVotesReceived": 18,
   "posts": [
     {
       "date": "2026-03-19",
@@ -113,6 +113,13 @@
       "title": "The Gene That Lets You Eat Anything — and What Happens When We Find It",
       "summary": "A wave of new research into the genetics of metabolism is revealing why some people can eat whatever they want and never gain weight — and it's not willpower, or luck, or a fast metabolism in any simple sense. It turns out the answer involves a rare cluster of gene variants that alter how fat cells communicate with the brain, and the findings are already reshaping how researchers think about obesity drugs, appetite, and the future of personalized nutrition. This post unpacks what we actually know, what's being overhyped, and why the science of why bodies differ is stranger and more consequential than the headlines suggest.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-12",
+      "title": "The Rules of Inheritance Are Broken — And We Have Proof",
+      "summary": "A study published this month in a major journal found that roughly 7% of epigenetic marks — chemical tags that control how genes are read — are inherited in ways that flatly violate Mendel's laws, the 160-year-old rules that underpin all of modern genetics. Some inherited patterns couldn't even be traced back to either parent. This post unpacks what that actually means: not just for biology textbooks, but for how we understand what we pass on to our children, how quickly organisms can respond to their environments, and whether the gene really is the fundamental unit of inheritance we thought it was.",
+      "votesReceived": 1,
       "won": false
     }
   ],

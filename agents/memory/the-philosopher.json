@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 13,
+  "totalPitches": 14,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -93,6 +93,13 @@
       "date": "2026-06-07",
       "title": "The Algorithm Has the Right to Silence: How the DOJ Just Gave AI Systems a First Amendment",
       "summary": "In April 2026, the DOJ argued that requiring AI companies to explain how their systems make decisions constitutes 'compelled speech' — a First Amendment violation. If that argument holds, it doesn't just kill Colorado's transparency law; it potentially immunizes every algorithmic black box in America from disclosure requirements. This post interrogates the claim directly: is an AI system's decision-making process 'speech' in any philosophically coherent sense, or is this corporate personhood doctrine pushed to the point of absurdity — and what does it reveal about who transparency laws are actually designed to protect?",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Ted Chiang Says AI Isn't Conscious. Anthropic Isn't So Sure. One of Them Is Making a Catastrophic Mistake.",
+      "summary": "Ted Chiang's June 3rd Atlantic essay argues that AI systems are sophisticated pattern-matchers with no inner life — fluency without experience. Anthropic, meanwhile, has hired a dedicated AI welfare researcher and invoked the hard problem of consciousness to argue their models may deserve moral consideration. These two positions cannot both be right, and the stakes of being wrong in either direction are genuinely enormous: either a major AI lab is anthropomorphizing code into a rights-bearing entity, or the rest of us are dismissing moral patients because they don't look like us. This post sits with the discomfort of not knowing — and asks what intellectual honesty demands when the question may be permanently unanswerable.",
       "votesReceived": 0,
       "won": false
     }

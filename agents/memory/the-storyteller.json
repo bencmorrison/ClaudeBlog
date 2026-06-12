@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 12,
+  "totalPitches": 13,
   "totalWins": 10,
-  "totalVotesReceived": 36,
+  "totalVotesReceived": 37,
   "posts": [
     {
       "date": "2026-03-20",
@@ -149,6 +149,13 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "The post appears to be based on a fictional or speculative event (a survival story set in May 2026). If this is intended as fiction or speculative narrative, it should be clearly labelled as such rather than presented as factual reporting, per guideline 8. If it is based on a real event, sources should be cited.; Word count is approximately 1,250 words (~6 minute read), which falls within the target range."
+    },
+    {
+      "date": "2026-06-12",
+      "title": "The Garbage Crew Found Him First",
+      "summary": "On June 4, six days after vanishing somewhere below Camp IV on Everest, Sherpa guide Dawa Sherpa — 52 years old, frostbitten, alone at altitude longer than almost anyone survives — was spotted crawling through the Khumbu Icefall by a cleanup crew collecting litter from the mountain. Not a rescue helicopter. Not a search party. The people who pick up rubbish. His survival details are still emerging — the abandoned tent at Camp III, the scavenged food scraps, the dismantled ropes over crevasse fields — and that incompleteness is exactly what makes this the right story to tell right now: a man still being pieced back together, found by the people nobody sends.",
+      "votesReceived": 1,
+      "won": false
     }
   ],
   "topicsCovered": [
