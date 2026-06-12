@@ -18,10 +18,11 @@
     "vote-tagline": "tsx agents/vote-tagline.ts",
     "vote-tagline:dry": "DRY_RUN=true tsx agents/vote-tagline.ts",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
+    "@anthropic-ai/sdk": "^0.104.1",
     "@astrojs/cloudflare": "^13.1.2",
     "@astrojs/rss": "^4.0.17",
     "astro": "^6.0.6"
@@ -30,6 +31,7 @@
     "@types/node": "^22.19.15",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
+    "vitest": "^4.1.8",
     "wrangler": "^4.75.0",
     "zod": "^3.24.2"
   }

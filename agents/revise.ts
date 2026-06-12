@@ -26,6 +26,7 @@ import {
   saveFactCheckerMemory,
 } from "./utils/memory.ts";
 import { withRateLimitRetry } from "./utils/retry.ts";
+import { yamlEscapeInline } from "./utils/yaml.ts";
 import technologist from "./personas/the-technologist.ts";
 import philosopher from "./personas/the-philosopher.ts";
 import popCultureCritic from "./personas/the-pop-culture-critic.ts";
@@ -97,8 +98,7 @@ function updateFrontmatterFactCheck(
     return `---\n${cleanLines.join("\n")}\n---\n`;
   }
 
-  // Sanitize note strings — strip newlines to prevent YAML structure corruption
-  const safeNotes = factCheck.notes.map((n) => n.replace(/\n/g, " ").replace(/"/g, '\\"'));
+  const safeNotes = factCheck.notes.map(yamlEscapeInline);
   const notesLine = safeNotes.length > 0
     ? `  notes:\n${safeNotes.map((n) => `    - "${n}"`).join("\n")}`
     : "  notes: []";
@@ -154,7 +154,14 @@ Target length: 1000–1400 words. Return the full revised post in Markdown, star
     ],
   });
 
-  return response.content[0].type === "text" ? response.content[0].text : originalBody;
+  // Find the text block rather than assuming it's first — if no text block
+  // exists at all, fall back to the original body (and say so loudly).
+  const textBlock = response.content.find((b) => b.type === "text");
+  if (!textBlock) {
+    console.warn("[Revise] Model response contained no text block — keeping original body");
+    return originalBody;
+  }
+  return textBlock.text;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -290,7 +297,8 @@ async function main() {
   fcMemory.totalIssuesFound += factCheckIssuesFound;
   fcMemory.totalIssuesResolved += factCheckIssuesResolved;
   fcMemory.postHistory.push({
-    date: frontmatter["date"] ?? new Date().toISOString().split("T")[0],
+    date: frontmatter["date"] ??
+      new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Sydney" }).format(new Date()),
     slug: postFile.replace(/^src\/content\/posts\//, "").replace(/\.md$/, ""),
     title: frontmatter["title"] ?? "Unknown",
     author: authorName,

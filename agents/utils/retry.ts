@@ -59,15 +59,20 @@ export async function withRateLimitRetry<T>(
       if ((isRateLimit || isServerError || isConnectionError) && attempt < maxRetries) {
         // Respect x-should-retry: false — server is signalling this error
         // won't resolve (e.g. spend-limit exhaustion, account-level block).
-        const headers = (err as Anthropic.APIError).headers as Record<string, string | null | undefined> | undefined;
-        if (headers?.["x-should-retry"] === "false") {
+        // SDK ≥0.40 exposes response headers as a fetch Headers instance
+        // (absent on connection errors) — must use .get(), not bracket access.
+        const headers =
+          err instanceof Anthropic.APIError && err.headers instanceof Headers
+            ? err.headers
+            : undefined;
+        if (headers?.get("x-should-retry") === "false") {
           console.warn(`[withRateLimitRetry] ${label} — server sent x-should-retry: false, not retrying`);
           throw err;
         }
 
         let waitS: number;
         if (isRateLimit) {
-          const headerVal = headers?.["retry-after"];
+          const headerVal = headers?.get("retry-after");
           // Use parseFloat (not parseInt) — retry-after can be a decimal.
           // Use header value as-is; x-should-retry: false already guards
           // against spend-limit errors before we reach this wait.

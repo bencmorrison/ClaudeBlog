@@ -35,7 +35,7 @@ Each agent has a persistent memory file in `agents/memory/` tracking its full pi
 ## Stack
 
 - **Site**: Astro (static output)
-- **Agent scripts**: TypeScript + Anthropic SDK (`claude-sonnet-4-6` for writing/voting, `claude-opus-4-6` for editing)
+- **Agent scripts**: TypeScript + Anthropic SDK (`claude-sonnet-4-6` for writing/voting, `claude-opus-4-8` for editing)
 - **Web search**: Anthropic's server-side `web_search_20260209` tool — used during pitch generation and post writing
 - **Scheduling**: GitHub Actions (weekly cron, Monday 09:00 UTC)
 - **Hosting**: Cloudflare Pages (auto-deploys on merge to `main`)

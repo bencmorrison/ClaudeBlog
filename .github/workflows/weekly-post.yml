@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout repo
@@ -41,3 +42,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
         run: npm run pipeline
+
+      - name: Open issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Weekly pipeline failed — $(date -u +%F)" \
+            --body "The weekly blog post pipeline failed. See the run log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

@@ -5,7 +5,7 @@ import type { FactCheckResult } from "./types.ts";
 
 // maxRetries: 0 — retry logic is owned exclusively by withRateLimitRetry
 const client = new Anthropic({ maxRetries: 0 });
-const MODEL = "claude-opus-4-6";
+const MODEL = "claude-opus-4-8";
 
 const FACT_CHECKER_SYSTEM = `You are a meticulous fact checker for a blog. Your job is to verify specific factual claims made in blog posts using web search.
 

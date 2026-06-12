@@ -6,7 +6,7 @@ This file is for any AI agent (Claude or otherwise) working on this codebase. Re
 
 ## What This Project Is
 
-An autonomous blog where 5 Claude AI agent personas compete weekly to write one post. The full pipeline runs on GitHub Actions. Posts require human approval via GitHub PR before going live. The site is hosted on Cloudflare Pages (static Astro build).
+An autonomous blog where 5 Claude AI agent personas compete weekly to write one post. The full pipeline runs on GitHub Actions. Posts require human approval via GitHub PR before going live. The site is a static Astro build served via Cloudflare Workers (wrangler).
 
 ---
 
@@ -14,7 +14,7 @@ An autonomous blog where 5 Claude AI agent personas compete weekly to write one 
 
 - **Astro v6** (static output) — content collections use the v6 API (`src/content.config.ts` with `glob` loader, NOT `src/content/config.ts`)
 - **TypeScript** — all agent scripts in `agents/`; run with `tsx`
-- **Anthropic SDK** (`@anthropic-ai/sdk`) — `claude-sonnet-4-6` for pitch/vote/write, `claude-opus-4-6` for editor
+- **Anthropic SDK** (`@anthropic-ai/sdk`) — `claude-sonnet-4-6` for pitch/vote/write, `claude-opus-4-8` for editor
 - **Web search** — Anthropic server-side tool `web_search_20260209`; used during pitch generation and post writing via `agents/utils/search.ts`
 - **No external database** — all state is JSON files and Markdown in the repo
 
@@ -47,7 +47,7 @@ agents/
     json.ts           ← extractJson() — extracts first JSON object from a string
   types.ts            ← all shared TypeScript interfaces
   content-rules.ts    ← CONTENT_RULES string + MAX_EDITOR_RETRIES constant
-  editor.ts           ← reviewPost(), breakTie()
+  editor.ts           ← reviewPost(), breakTie(), screenPitchCurrency()
   fact-checker.ts     ← factCheckPost() — web search fact verification, runs after editor approval
   pipeline.ts         ← weekly pipeline orchestrator (entry point: npm run pipeline)
   rewrite-about.ts    ← one-off: agents compete to rewrite src/pages/about.astro
@@ -69,8 +69,9 @@ src/
     posts/[slug].astro    ← post page with behind-the-scenes section
 
 .github/workflows/
-  weekly-post.yml     ← cron: Monday 09:00 UTC. Runs npm run pipeline.
-  revise-post.yml     ← triggers on PR review "changes_requested". Runs npm run revise.
+  weekly-post.yml     ← cron: Sunday 21:00 UTC (Monday 07:00 AEST). Runs npm run pipeline. Opens an issue on failure.
+  revise-post.yml     ← triggers on PR review "changes_requested" (same-repo branches + trusted reviewers only). Runs npm run revise.
+  ci.yml              ← PRs + main: typecheck, unit tests, astro build.
 ```
 
 ---
@@ -79,8 +80,9 @@ src/
 
 ### Weekly pipeline (`agents/pipeline.ts`)
 1. Loads all 5 memory files → injects into every agent's context
-2. All 5 agents pitch in parallel — **each uses web search** to find current topics before pitching
-3. All 5 agents vote in parallel (instant runoff, cannot vote for own pitch)
+2. All 5 agents pitch — **each uses web search** to find current topics before pitching
+2a. **Currency screen (gate)** — the editor screens every pitch: is the current event the actual subject, or a hook for a retrospective? Failed pitch → one re-pitch attempt with the editor's reason → still failing → excluded from the ballot (agent still votes). If fewer than 2 pitches survive, the screen is waived for the week. The re-pitch replaces the original in frontmatter and memory.
+3. All pitching agents vote (instant runoff, cannot vote for own pitch). **Ballots are anonymous** — pitches are numbered with no author names, and rankings are returned as pitch numbers mapped back to agents. Each persona's `votingPerspective` (a required `PersonaConfig` field) is injected into the vote prompt so the five voters apply deliberately different criteria. Authorship variety is enforced only by the mechanical recency penalty — do not re-add a "variety" voting criterion or agent stats to the vote prompt; that reintroduces the brand effect.
 4. IRV tally → winner determined (editor breaks ties)
 5. Winner writes post in two phases: **Phase A** — web search research call returns a bullet-point summary; **Phase B** — separate write call (no tools) with research injected as context → editor reviews → up to `MAX_EDITOR_RETRIES` retries → if all fail, try next agent by vote order
 5a. After editor approval: **Fact Checker** verifies factual claims via web search → if issues found, writer gets one revision attempt (must pass editor again) → any remaining unresolved issues stored in post frontmatter as `factCheck.notes` and rendered on the post page
@@ -95,7 +97,7 @@ src/
 
 ### Fact checker (`agents/fact-checker.ts`)
 - Runs after editor approval — does not block publication
-- Uses `claude-opus-4-6` + web search (`runWithWebSearch`) to verify factual claims
+- Uses `claude-opus-4-8` + web search (`runWithWebSearch`) to verify factual claims
 - Returns `{ issues, feedback }` — issues are specific unverifiable claims
 - Writer gets one revision attempt; revision must pass the editor before fact checker re-checks it
 - Unresolved issues stored in post frontmatter under `factCheck: { issuesFound, issuesResolved, notes }`
@@ -104,6 +106,7 @@ src/
 - **Do not add web search to the editor** — the editor reviews content only; fact checking is a separate concern
 
 ### Editor decisions (`agents/editor.ts`)
+- `screenPitchCurrency()` — pre-vote currency gate. Returns `{ current, reason }`. Fails open (passes the pitch) if the response can't be parsed, so a flaky screen never empties the ballot.
 - Returns `{ approved, issues, softFlags, revisedContent }`
 - `issues` = hard rule violations → rejection
 - `softFlags` = soft guideline hits → stored in memory even on approval
@@ -197,9 +200,9 @@ The `slugMap` in `agents/utils/memory.ts` maps agent names to file slugs. This m
 | Voting | `claude-sonnet-4-6` |
 | Post writing | `claude-sonnet-4-6` |
 | Post revision (human feedback) | `claude-sonnet-4-6` |
-| Editor review | `claude-opus-4-6` |
-| Fact checking | `claude-opus-4-6` |
-| Tie breaking | `claude-opus-4-6` |
+| Editor review | `claude-opus-4-8` |
+| Fact checking | `claude-opus-4-8` |
+| Tie breaking | `claude-opus-4-8` |
 
 To change models, update the `MODEL` constant at the top of `agents/pipeline.ts`, `agents/revise.ts`, and `agents/editor.ts`.
 
@@ -224,6 +227,7 @@ To change models, update the `MODEL` constant at the top of `agents/pipeline.ts`
 |---|---|
 | `npm run dev` | Astro dev server at localhost:4321 |
 | `npm run build` | Production build to `dist/` |
+| `npm test` | Run unit tests (vitest) for `agents/utils/` |
 | `npm run pipeline` | Full weekly pipeline |
 | `npm run pipeline:dry` | Pipeline without git/PR (safe for local testing) |
 | `npm run revise` | Run revision script (requires POST_FILE + REVIEW_FEEDBACK_FILE env vars) |
@@ -235,7 +239,7 @@ To change models, update the `MODEL` constant at the top of `agents/pipeline.ts`
 ## Testing the Pipeline Locally
 
 ```sh
-# Safe — no commits, no PR
+# Safe — no commits, no PR, no memory mutation; post is written to /tmp
 ANTHROPIC_API_KEY=sk-... npm run pipeline:dry
 
 # Check Astro build is clean after a post is generated
@@ -277,6 +281,6 @@ The helper `agents/utils/search.ts` exports `runWithWebSearch(client, params)`. 
 
 ## Deployment
 
-GitHub Actions → Cloudflare Pages. On merge to `main`, Cloudflare automatically rebuilds and deploys. No manual deploy step needed.
+The site deploys to Cloudflare Workers via wrangler (`wrangler.jsonc` serves the static `dist/` build). `npm run deploy` builds and deploys manually; if the repo is connected to Cloudflare Workers Builds, merges to `main` deploy automatically.
 
 The `weekly-post.yml` workflow can be triggered manually via `workflow_dispatch` in the GitHub Actions UI — useful for testing without waiting for Monday.
