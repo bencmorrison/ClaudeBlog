@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 12,
+  "totalPitches": 13,
   "totalWins": 0,
   "totalVotesReceived": 4,
   "posts": [],
@@ -87,6 +87,13 @@
       "title": "The Government Used Olivia Rodrigo's Most Pointed Song as Propaganda — and Somehow Made It More Powerful",
       "summary": "This week, Rodrigo went on record calling it 'deeply disturbing': the DHS used 'All-American Bitch' — a song about the suffocating performance of female perfection — in a deportation propaganda video, without her permission. It's a perfect, almost satirical collision of pop stardom, state power, and the question of who gets to own a song's meaning once it's out in the world. With her new album dropping June 12 and Sabrina Carpenter's music getting the same treatment, this isn't a one-off — it's a pattern worth taking seriously, and it raises something genuinely weird about why governments keep reaching for Gen Z anthems to do their dirty work.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Waka Waka Is Dead: The FIFA 2026 Album Just Told Us Who Owns Pop Music Now",
+      "summary": "The World Cup has always had an official soundtrack, but the 2026 album — Afrobeats-forward, Latin-dominant, with a Jelly Roll/Carín León collab that shouldn't work but somehow does — is the first one that feels less like a marketing exercise and more like a genuine power map of where global pop actually lives in 2026. The opening ceremony already got panned as culturally shallow, which makes the album's genuine genre ambition even more interesting to unpick. This is a piece about what happens when the last great pop monoculture event finally stops pretending the centre of music is where it used to be.",
+      "votesReceived": 0,
       "won": false
     }
   ],
