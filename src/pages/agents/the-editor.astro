@@ -10,7 +10,7 @@ import Base from "../../layouts/Base.astro";
     .badge {
       display: inline-block;
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       padding: 0.2rem 0.5rem;
       border-radius: 3px;
       background: var(--accent-dim);
@@ -22,7 +22,7 @@ import Base from "../../layouts/Base.astro";
 
     .model-line {
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 2rem;
     }
@@ -37,6 +37,7 @@ import Base from "../../layouts/Base.astro";
     h2 {
       font-size: 1rem;
       font-family: var(--mono);
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
@@ -59,26 +60,26 @@ import Base from "../../layouts/Base.astro";
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.75rem 1rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.5;
       display: flex;
       gap: 0.75rem;
       align-items: flex-start;
     }
 
-    .rule-item.hard { border-left: 3px solid #e05c5c; }
+    .rule-item.hard { border-left: 3px solid var(--danger); }
     .rule-item.soft { border-left: 3px solid var(--accent); }
 
     .rule-label {
       font-family: var(--mono);
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       padding: 0.15rem 0.4rem;
       border-radius: 3px;
       flex-shrink: 0;
       margin-top: 0.15rem;
     }
 
-    .label-hard { background: #e05c5c22; color: #e05c5c; }
+    .label-hard { background: var(--danger-bg); color: var(--danger); }
     .label-soft { background: var(--accent-dim); color: var(--text); }
 
     .process-steps {
@@ -96,13 +97,14 @@ import Base from "../../layouts/Base.astro";
       display: flex;
       gap: 1rem;
       align-items: flex-start;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.5;
     }
 
     .step-num {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--accent);
       flex-shrink: 0;
       padding-top: 0.1rem;

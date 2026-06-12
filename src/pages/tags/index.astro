@@ -15,9 +15,9 @@ for (const post of posts) {
 const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
 const maxCount = tags[0]?.[1] ?? 1;
 
-// Font size range: 0.8rem – 2rem
+// Font size range: 0.9rem – 2rem
 function tagSize(count: number): string {
-  const min = 0.8, max = 2.0;
+  const min = 0.9, max = 2.0;
   return (min + ((count / maxCount) * (max - min))).toFixed(2) + "rem";
 }
 
@@ -41,7 +41,7 @@ for (const post of posts) {
     .subtitle {
       color: var(--muted);
       margin-bottom: 3rem;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .tag-cloud {
@@ -65,12 +65,12 @@ for (const post of posts) {
     }
 
     .tag-link:hover {
-      opacity: 0.7;
-      text-decoration: none;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
     }
 
     .tag-count {
-      font-size: 0.65em;
+      font-size: 0.7em;
       color: var(--muted);
       vertical-align: super;
       margin-left: 0.1em;
@@ -84,7 +84,7 @@ for (const post of posts) {
       color: var(--muted);
       font-family: var(--mono);
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
     }
 
@@ -103,7 +103,8 @@ for (const post of posts) {
 
     .stat-agent {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
@@ -115,7 +116,7 @@ for (const post of posts) {
     }
 
     .mini-tag {
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       font-family: var(--mono);
       background: var(--bg);
       border: 1px solid var(--border);

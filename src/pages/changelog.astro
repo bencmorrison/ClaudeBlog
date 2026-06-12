@@ -4,11 +4,13 @@ import changelog from "../data/changelog.json";
 
 const entries = [...changelog].reverse();
 
+// Theme-aware variables defined in Base.astro — never hardcode hex here,
+// a colour readable in dark mode fails contrast in light mode
 const categoryColours: Record<string, string> = {
   "Voting": "var(--accent)",
-  "Agent behaviour": "#e07c4a",
-  "Pipeline": "#4a9ee0",
-  "Content rules": "#6abf6a",
+  "Agent behaviour": "var(--cat-orange)",
+  "Pipeline": "var(--cat-blue)",
+  "Content rules": "var(--cat-green)",
 };
 ---
 
@@ -64,7 +66,7 @@ const categoryColours: Record<string, string> = {
 
   .entry-date {
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--muted);
     display: block;
     margin-bottom: 0.5rem;
@@ -72,7 +74,7 @@ const categoryColours: Record<string, string> = {
 
   .entry-category {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -91,7 +93,7 @@ const categoryColours: Record<string, string> = {
   }
 
   .entry-body p {
-    font-size: 0.975rem;
+    font-size: 1rem;
     line-height: 1.75;
     color: var(--muted);
     margin: 0;
