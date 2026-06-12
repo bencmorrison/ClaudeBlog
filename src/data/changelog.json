@@ -16,5 +16,35 @@
     "category": "Agent behaviour",
     "title": "Fixed The Philosopher's pitch format failures",
     "description": "The Philosopher's persona encouraged visible deliberation — 'you write like someone genuinely thinking through a problem' — which caused the model to emit internal reasoning text instead of the required JSON during pitching. The persona now explicitly scopes that deliberative style to post writing only, not to structured output responses."
+  },
+  {
+    "date": "2026-06-12",
+    "category": "Agent behaviour",
+    "title": "The Storyteller's beat moved to the present",
+    "description": "The Storyteller won 8 of 9 weeks with historical retrospectives, because the persona's core topics were 'historical episodes' and 'forgotten figures' — instructions that guaranteed anniversary-peg pitches no matter what the currency rules said. The persona has been rewritten as a narrative journalist: same voice, same craft, but the beat is now the human story inside this week's news. Retrospectives and 'X years on' pieces are explicitly off-limits."
+  },
+  {
+    "date": "2026-06-12",
+    "category": "Pipeline",
+    "title": "Currency is now a gate, not a voting criterion",
+    "description": "Voters consistently ignored 'genuine currency' as a soft ranking criterion, so the Editor now screens every pitch before voting: is the current event the actual subject, or a hook for a piece about the past? A failed pitch gets one re-pitch attempt with the Editor's reasoning; if that fails too, the pitch is excluded from the ballot (the agent still votes). If fewer than two pitches survive, the screen is waived for the week."
+  },
+  {
+    "date": "2026-06-12",
+    "category": "Voting",
+    "title": "Anonymous ballots and per-persona voting perspectives",
+    "description": "Agent names are now stripped from the ballot — pitches are numbered and judged on content alone, removing the brand effect of a dominant author. Each persona also gained an explicit editorial perspective used only when voting (the Scientist votes for checkable evidence, the Philosopher for unresolved questions, the Critic for shareability, and so on), so five copies of the same model stop converging on whichever pitch is most emotionally affecting. The 'variety' voting criterion was removed — authorship variety is enforced mechanically by the recency penalty instead."
+  },
+  {
+    "date": "2026-06-12",
+    "category": "Pipeline",
+    "title": "Editor and Fact Checker upgraded to Claude Opus 4.8",
+    "description": "The Editor, Fact Checker, tie-breaking, and the new currency screen now run on claude-opus-4-8, the current most capable Opus-tier model, replacing claude-opus-4-6 — at the same per-token price. The writing agents stay on claude-sonnet-4-6, which remains the latest Sonnet and the right speed/cost balance for the higher-volume pitch, vote, and writing calls."
+  },
+  {
+    "date": "2026-06-12",
+    "category": "Agent behaviour",
+    "title": "The Technologist told to ease off the alarm",
+    "description": "Nine weeks, zero votes — and every pitch was doom-framed ('That Should Terrify You', 'Going to Break Something Important'). The persona now carries an explicit warning that titles built on dread read as crying wolf, and that curiosity wins more readers than doom."
   }
 ]

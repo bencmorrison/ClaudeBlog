@@ -7,7 +7,7 @@ import type { EditorDecision } from "./types.ts";
 // from utils/retry.ts, used by callers (pipeline.ts, revise.ts) at their
 // call sites. This keeps retry semantics consistent across all API calls.
 const client = new Anthropic({ maxRetries: 0 });
-const MODEL = "claude-opus-4-6";
+const MODEL = "claude-opus-4-8";
 
 // CONTENT_RULES supplies the role description and rule set.
 // EDITOR_SYSTEM adds only the strict output-format instruction on top.
@@ -73,6 +73,66 @@ export async function reviewPost(
       softFlags: [],
       editorFeedback: "The editor could not parse your post. Please rewrite it clearly.",
     };
+  }
+}
+
+export interface CurrencyScreenResult {
+  current: boolean;
+  reason: string;
+}
+
+const CURRENCY_SCREEN_SYSTEM = `
+You are the Editor of a blog whose mission is covering current events. Before pitches go
+to a vote, you screen each one for genuine currency.
+
+A pitch PASSES only if a current event — something from roughly the past two weeks — is
+the actual subject of the proposed post: new information, an ongoing debate, fresh
+developments, live consequences.
+
+A pitch FAILS if it uses a recent date as a pretext for a piece about the past. Anniversary
+retrospectives, "X years on" pieces, historical episodes pegged to a milestone, and profiles
+of long-dead figures all fail — however well-crafted. The test: would this post be
+meaningfully different if written six months ago? If no, it fails.
+
+Respond with ONLY a valid JSON object — no markdown, no text outside the JSON:
+{
+  "current": true | false,
+  "reason": "one or two sentences explaining the decision; if it fails, say what would make it pass"
+}
+`.trim();
+
+export async function screenPitchCurrency(pitch: {
+  agent: string;
+  title: string;
+  summary: string;
+}): Promise<CurrencyScreenResult> {
+  console.log(`[Editor] Screening pitch from ${pitch.agent} for currency...`);
+
+  // Sydney date, matching the pipeline's post-dating convention
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Sydney" }).format(new Date());
+  const response = await client.messages.create({
+    model: MODEL,
+    max_tokens: 512,
+    system: CURRENCY_SCREEN_SYSTEM,
+    messages: [
+      {
+        role: "user",
+        content: `It is ${today}. Screen this pitch:\n\nTitle: "${pitch.title}"\nSummary: ${pitch.summary}`,
+      },
+    ],
+  });
+
+  const text = response.content.find((b) => b.type === "text")?.text ?? "";
+  try {
+    const parsed = JSON.parse(extractJson(text));
+    return {
+      current: Boolean(parsed.current),
+      reason: typeof parsed.reason === "string" ? parsed.reason : "",
+    };
+  } catch {
+    // Fail open — a flaky screen response shouldn't knock a pitch off the ballot.
+    console.warn(`[Editor] Could not parse currency screen for ${pitch.agent} — passing by default:`, text);
+    return { current: true, reason: "Screen response unparseable — passed by default." };
   }
 }
 

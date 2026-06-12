@@ -6,8 +6,15 @@ on:
 
 jobs:
   revise:
-    # Only run when a human requests changes (not approvals or comment-only reviews)
-    if: github.event.review.state == 'changes_requested'
+    # Only run when a human requests changes (not approvals or comment-only reviews).
+    # Security gates: the PR branch must live in this repo (not a fork — this job
+    # checks out and executes the PR's code with ANTHROPIC_API_KEY and a write
+    # token), and the reviewer must be trusted (owner/member/collaborator), since
+    # anyone can submit a changes-requested review on a public repo.
+    if: >
+      github.event.review.state == 'changes_requested' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.review.author_association)
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -13,7 +13,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
 import { join } from "path";
-import { reviewPost, breakTie } from "./editor.ts";
+import { reviewPost, breakTie, screenPitchCurrency } from "./editor.ts";
 import { factCheckPost } from "./fact-checker.ts";
 import { MAX_EDITOR_RETRIES } from "./content-rules.ts";
 import {
@@ -29,8 +29,11 @@ import { buildPostSlug } from "./utils/slugify.ts";
 import { runWithWebSearch } from "./utils/search.ts";
 import { extractJson } from "./utils/json.ts";
 import { withRateLimitRetry, sleep } from "./utils/retry.ts";
+import { yamlEscapeInline } from "./utils/yaml.ts";
+import { TAG_KEYWORDS, TOPIC_KEYWORDS, matchKeywords } from "./utils/keywords.ts";
 import type {
   AgentMemory,
+  PersonaConfig,
   Pitch,
   RankedVote,
   VoteTally,
@@ -63,7 +66,10 @@ const client = new Anthropic({ maxRetries: 0 });
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function todayISO(): string {
-  return new Date().toISOString().split("T")[0];
+  // The cron fires Sunday 21:00 UTC, which is Monday morning AEST — date the
+  // post in Sydney time so it matches publication day, not the UTC calendar.
+  // en-CA formats as YYYY-MM-DD.
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Sydney" }).format(new Date());
 }
 
 function log(msg: string) {
@@ -78,7 +84,8 @@ async function generatePitch(
   agentName: string,
   systemPrompt: string,
   allMemories: AgentMemory[],
-  formatFeedback?: string
+  formatFeedback?: string,
+  extraGuidance?: string
 ): Promise<Pitch> {
   log(`[Pitch] ${agentName} is pitching...`);
 
@@ -106,6 +113,10 @@ The blog's goal is to attract readers. Pitch something with broad appeal and a c
 not just what interests you personally, but what would make someone click, read to the end, and
 share it.`;
 
+  // Extra guidance is set on re-pitches after a failed currency screen — it must
+  // reach both the research and pitch phases so the new search avoids the same trap.
+  const guidanceBlock = extraGuidance ? `\n\n---\n\n${extraGuidance}` : "";
+
   // ── Phase A: Research (web search) ───────────────────────────────────────────
   // Separating research from JSON output mirrors the post-writing pattern. Combining
   // both jobs in one agentic loop causes the model to exhaust its search iterations
@@ -118,7 +129,7 @@ ${currentnessRules}
 
 Use web search to find 2–3 strong candidate topics from the past 1–2 weeks in your domain.
 Return ONLY a bullet-point list of candidates with: the topic, why it's current, and why it
-would appeal to readers. Do not output JSON yet — that comes next.`;
+would appeal to readers. Do not output JSON yet — that comes next.${guidanceBlock}`;
 
   let researchSummary = "";
   try {
@@ -151,7 +162,7 @@ Respond with ONLY a valid JSON object in this exact format:
 {
   "title": "Your pitch title",
   "summary": "2–3 sentences describing the post and why it would be interesting."
-}`;
+}${guidanceBlock}`;
 
   const baseMessage = researchSummary
     ? `Here are the topics you researched:\n\n${researchSummary}\n\n---\n\nIt is ${todayISO()}. Choose the strongest candidate and output your pitch as a JSON object. Stay true to your style — remember the other agents will vote on it.`
@@ -198,54 +209,55 @@ Respond with ONLY a valid JSON object in this exact format:
 // ─── Phase 2: Voting ──────────────────────────────────────────────────────────
 
 async function castVote(
-  agentName: string,
-  systemPrompt: string,
-  pitches: Pitch[],
-  allMemories: AgentMemory[]
+  persona: PersonaConfig,
+  pitches: Pitch[]
 ): Promise<RankedVote> {
+  const agentName = persona.name;
   log(`[Vote] ${agentName} is voting...`);
 
   const others = pitches.filter((p) => p.agent !== agentName);
-  const memoryContext = formatMemoriesForContext(allMemories);
 
+  // Anonymized ballot: pitches are numbered with no author attribution, so votes
+  // are cast on content rather than an agent's brand or track record. Variety in
+  // authorship is enforced mechanically by the recency penalty in Phase 3 — it is
+  // deliberately NOT a voting criterion.
   const pitchList = others
-    .map((p, i) => `${i + 1}. **${p.agent}**: "${p.title}" — ${p.summary}`)
+    .map((p, i) => `${i + 1}. "${p.title}" — ${p.summary}`)
     .join("\n");
 
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 512,
-    system: `${systemPrompt}
+    system: `${persona.systemPrompt}
 
 ---
-Agent stats for context:
-${memoryContext}
----
 
-You are voting on this week's blog pitches. Rank the other agents' pitches in order of preference
-(1st = most preferred). You cannot vote for your own pitch.
+You are voting on this week's blog pitches. The pitches are presented anonymously — judge them
+on content alone. Your own pitch is not in the list. Rank them in order of preference
+(1st = most preferred).
 
-When ranking, weigh these criteria:
-- **Genuine currency** — is the current event the actual subject, not just a pretext? Pitches that use an anniversary or milestone as a hook to write a historical retrospective should rank lower than pitches genuinely engaging with something happening now.
+Your editorial perspective when voting:
+${persona.votingPerspective}
+
+Alongside that perspective, weigh:
+- **Genuine currency** — is the current event the actual subject, not just a pretext? Pitches that use an anniversary or milestone as a hook for a historical retrospective should rank lower than pitches genuinely engaging with something happening now.
 - **Broad appeal** — will this interest readers beyond a niche audience?
 - **Quality potential** — does the angle lend itself to a well-researched, substantive post?
 - **View-worthiness** — would someone share or recommend this? Does it have a compelling hook?
-- **Variety** — check the agent stats above. If an agent has won multiple weeks in a row, their pitch should be clearly superior to justify another win. Favour variety in authorship when pitches are otherwise comparable.
 
-You can still vote according to your own perspective and interests, but keep in mind the blog's
-goal is to attract readers. A pitch that's niche and self-indulgent should rank lower than one
-that's genuinely interesting to a wider audience.
+Let your editorial perspective genuinely shape the order — do not default to whichever pitch
+feels most emotionally affecting or universally pleasant.
 
 Respond with ONLY a valid JSON object:
 {
-  "rankings": ["Agent Name 1", "Agent Name 2", "Agent Name 3", "Agent Name 4"]
+  "rankings": [3, 1, 4, 2]
 }
 
-The array must contain ALL other agent names exactly as written, ranked from most to least preferred.`,
+The array must contain the number of EVERY pitch exactly once, ranked from most to least preferred.`,
     messages: [
       {
         role: "user",
-        content: `Please rank the following pitches (excluding your own):\n\n${pitchList}\n\nValid agent names to use: ${others.map((p) => p.agent).join(", ")}`,
+        content: `Please rank the following pitches:\n\n${pitchList}\n\nValid pitch numbers: 1–${others.length}`,
       },
     ],
   });
@@ -253,13 +265,18 @@ The array must contain ALL other agent names exactly as written, ranked from mos
   const text = response.content.find((b) => b.type === "text")?.text ?? "{}";
   try {
     const parsed = JSON.parse(extractJson(text));
-    const rankings: string[] = Array.isArray(parsed.rankings)
+    const rawRankings: unknown[] = Array.isArray(parsed.rankings)
       ? parsed.rankings
       : [];
 
-    // Validate all ranked names are valid other agents
-    const validNames = new Set(others.map((p) => p.agent));
-    const validRankings = rankings.filter((r) => validNames.has(r));
+    // Map pitch numbers back to agent names, dropping invalid or duplicate entries
+    const validRankings: string[] = [];
+    for (const r of rawRankings) {
+      const n = typeof r === "number" ? r : parseInt(String(r), 10);
+      if (!Number.isInteger(n) || n < 1 || n > others.length) continue;
+      const agent = others[n - 1].agent;
+      if (!validRankings.includes(agent)) validRankings.push(agent);
+    }
 
     // Append any missing agents at the end (in case the model missed some)
     for (const other of others) {
@@ -374,8 +391,7 @@ Write a full blog post based on your pitch and the research provided. Requiremen
 
 function buildFactCheckYaml(fc: PostFrontmatter["factCheck"]): string {
   if (!fc || fc.issuesFound === 0) return "";
-  // Strip newlines from note strings — a note containing \n would break YAML structure
-  const safeNotes = fc.notes.map((n) => n.replace(/\n/g, " ").replace(/"/g, '\\"'));
+  const safeNotes = fc.notes.map(yamlEscapeInline);
   const notesYaml = safeNotes.length > 0
     ? safeNotes.map((n) => `    - "${n}"`).join("\n")
     : "";
@@ -394,18 +410,18 @@ function buildFrontmatter(data: PostFrontmatter): string {
   const pitchesYaml = data.pitches
     .map(
       (p) =>
-        `  - agent: "${p.agent}"\n    title: "${p.title.replace(/"/g, '\\"')}"\n    summary: "${p.summary.replace(/"/g, '\\"')}"`
+        `  - agent: "${p.agent}"\n    title: "${yamlEscapeInline(p.title)}"\n    summary: "${yamlEscapeInline(p.summary)}"`
     )
     .join("\n");
   const factCheckYaml = buildFactCheckYaml(data.factCheck);
 
   return `---
-title: "${data.title.replace(/"/g, '\\"')}"
+title: "${yamlEscapeInline(data.title)}"
 date: ${data.date}
 author: "${data.author}"
 tags:
 ${tagsYaml}
-pitch: "${data.pitch.replace(/"/g, '\\"')}"
+pitch: "${yamlEscapeInline(data.pitch)}"
 votes:
 ${votesYaml}
 pitches:
@@ -464,14 +480,9 @@ function updateMemories(
       });
 
       // Extract broad topic tags from pitch title/summary using word-boundary matching
-      const combined = `${myPitch.title} ${myPitch.summary}`.toLowerCase();
-      const topicKeywords = [
-        "ai", "space", "music", "film", "climate", "history", "philosophy",
-        "biology", "tech", "politics", "health", "psychology", "culture",
-        "science", "society", "internet", "gaming", "language", "ethics",
-      ];
-      for (const kw of topicKeywords) {
-        if (new RegExp(`\\b${kw}\\b`).test(combined) && !memory.topicsCovered.includes(kw)) {
+      const combined = `${myPitch.title} ${myPitch.summary}`;
+      for (const kw of matchKeywords(TOPIC_KEYWORDS, combined)) {
+        if (!memory.topicsCovered.includes(kw)) {
           memory.topicsCovered.push(kw);
         }
       }
@@ -549,14 +560,17 @@ async function main() {
   "summary": "2–3 sentences describing the post and why it would be interesting."
 }`;
 
-  async function generatePitchWithRetry(persona: (typeof PERSONAS)[0]): Promise<Pitch | null> {
+  async function generatePitchWithRetry(
+    persona: (typeof PERSONAS)[0],
+    extraGuidance?: string
+  ): Promise<Pitch | null> {
     for (let attempt = 0; attempt < MAX_FORMAT_ATTEMPTS; attempt++) {
       // Odd attempts (index 1, 3): tell them what went wrong. Even attempts (index 0, 2): fresh start.
       const formatFeedback = attempt % 2 === 1 ? FORMAT_FEEDBACK : undefined;
       try {
         return await withRateLimitRetry(
           `[Pitch] ${persona.name}`,
-          () => generatePitch(persona.name, persona.systemPrompt, memories, formatFeedback)
+          () => generatePitch(persona.name, persona.systemPrompt, memories, formatFeedback, extraGuidance)
         );
       } catch (err) {
         // Only retry on format errors (bad/missing JSON from the model).
@@ -595,9 +609,68 @@ async function main() {
     console.log(`  ${p.agent}: "${p.title}" — ${p.summary}`)
   );
 
+  // ── Phase 1b: Currency screening (gate, not criterion) ──────────────────────
+  // Voters consistently ignored "genuine currency" as a soft ranking criterion,
+  // so the editor now screens every pitch before it reaches the ballot. A failed
+  // pitch gets one re-pitch attempt with the editor's reason; if that also fails,
+  // the pitch is excluded from the ballot (the agent still votes).
+  log("Phase 1b: Currency screening...");
+  const ballotPitches: Pitch[] = [];
+  for (let i = 0; i < pitches.length; i++) {
+    const pitch = pitches[i];
+    let screen = await withRateLimitRetry(
+      `[Screen] ${pitch.agent}`,
+      () => screenPitchCurrency(pitch)
+    );
+    if (screen.current) {
+      ballotPitches.push(pitch);
+      continue;
+    }
+    console.warn(`[Screen] ${pitch.agent} failed currency screen: ${screen.reason}`);
+
+    const persona = PERSONAS.find((p) => p.name === pitch.agent);
+    if (!persona) continue;
+
+    const guidance = `Note from the Editor: your earlier pitch this week ("${pitch.title}") was rejected before voting because it is not genuinely current. ${screen.reason}
+Pitch a different topic where the current event is itself the subject of the post — not a hook for a piece about the past.`;
+    const repitch = await generatePitchWithRetry(persona, guidance);
+    if (!repitch) {
+      console.warn(`[Screen] ${pitch.agent} could not re-pitch — excluded from this week's ballot.`);
+      continue;
+    }
+
+    // The re-pitch replaces the original everywhere (frontmatter, memory) — it
+    // is the agent's pitch of record for the week, on the ballot or not.
+    pitches[i] = repitch;
+    screen = await withRateLimitRetry(
+      `[Screen] ${pitch.agent} re-pitch`,
+      () => screenPitchCurrency(repitch)
+    );
+    if (screen.current) {
+      ballotPitches.push(repitch);
+    } else {
+      console.warn(`[Screen] ${pitch.agent} re-pitch also failed (${screen.reason}) — excluded from this week's ballot.`);
+    }
+  }
+
+  // Safety valve: a vote needs at least 2 candidates. If screening cut the ballot
+  // below that, fall back to the full pitch list rather than aborting the week.
+  let screeningWaived = false;
+  if (ballotPitches.length < 2) {
+    console.warn(`[Screen] Only ${ballotPitches.length} pitch(es) passed screening — waiving the screen this week.`);
+    screeningWaived = true;
+  }
+  const finalBallot = screeningWaived ? pitches : ballotPitches;
+
+  console.log("\nBallot:");
+  finalBallot.forEach((p) =>
+    console.log(`  ${p.agent}: "${p.title}"`)
+  );
+
   // ── Phase 2: Cast votes (sequential + rate-limit retry) ─────────────────────
   // Only agents who successfully pitched get to vote — skipped agents have no
-  // stake in the outcome and their vote would skew the tally.
+  // stake in the outcome and their vote would skew the tally. Agents whose pitch
+  // was screened out still vote: they pitched, they have a stake.
   log("Phase 2: Casting votes...");
   const pitchingAgentNames = new Set(pitches.map((p) => p.agent));
   const votingPersonas = PERSONAS.filter((p) => pitchingAgentNames.has(p.name));
@@ -606,7 +679,7 @@ async function main() {
     votes.push(
       await withRateLimitRetry(
         `[Vote] ${persona.name}`,
-        () => castVote(persona.name, persona.systemPrompt, pitches, memories)
+        () => castVote(persona, finalBallot)
       )
     );
   }
@@ -632,13 +705,14 @@ async function main() {
     console.log(`\nRecency hard block (4+ consecutive wins): ${[...hardBlocked].join(", ")}`);
   }
 
-  let eligibleCandidates = pitches
+  const ballotAgentNames = new Set(finalBallot.map((p) => p.agent));
+  let eligibleCandidates = finalBallot
     .map((p) => p.agent)
     .filter((a) => !hardBlocked.has(a));
 
   const penaltyVotes: RankedVote[] = [];
   for (const [agent, streak] of streaks) {
-    if (!pitchingAgentNames.has(agent)) continue; // skip agents who didn't pitch this week
+    if (!ballotAgentNames.has(agent)) continue; // skip agents not on this week's ballot
     if (hardBlocked.has(agent) || streak < 2) continue;
     const penaltyCount = Math.min(streak - 1, 2);
     const penaltyRanking = [
@@ -651,11 +725,11 @@ async function main() {
     console.log(`\nRecency penalty for ${agent} (streak ${streak}): ${penaltyCount} penalty ballot(s)`);
   }
 
-  // Safety valve: if all pitching agents are hard-blocked, reset to full pool
+  // Safety valve: if all ballot agents are hard-blocked, reset to the full ballot
   // rather than crashing with an empty candidate list.
   if (eligibleCandidates.length === 0) {
-    console.warn("[Pipeline] All candidates hard-blocked — resetting to full candidate pool for this round.");
-    eligibleCandidates = pitches.map((p) => p.agent);
+    console.warn("[Pipeline] All candidates hard-blocked — resetting to full ballot for this round.");
+    eligibleCandidates = finalBallot.map((p) => p.agent);
   }
 
   const allVotes = [...votes, ...penaltyVotes];
@@ -847,14 +921,7 @@ async function main() {
     .replace(/`(.*?)`/g, "$1");       // `code`
 
   // Tag extraction using word-boundary matching to avoid false substring matches
-  const tagKeywords = [
-    "AI", "technology", "philosophy", "science", "culture", "history",
-    "film", "music", "biology", "space", "psychology", "ethics", "society",
-  ];
-  const combined = `${currentPitch.title} ${currentPitch.summary}`.toLowerCase();
-  const tags = tagKeywords.filter((t) =>
-    new RegExp(`\\b${t.toLowerCase()}\\b`).test(combined)
-  );
+  const tags = matchKeywords(TAG_KEYWORDS, `${currentPitch.title} ${currentPitch.summary}`);
   if (tags.length === 0) tags.push("general");
 
   const frontmatter: PostFrontmatter = {
@@ -875,31 +942,41 @@ async function main() {
 
   const postSlug = buildPostSlug(date, postTitle);
   const postFilename = `${postSlug}.md`;
-  const postPath = join(process.cwd(), "src/content/posts", postFilename);
+  // DRY_RUN must not touch the real content directory — the post would sit in
+  // the working tree as an untracked file masquerading as a published post.
+  const postPath = DRY_RUN
+    ? join("/tmp", postFilename)
+    : join(process.cwd(), "src/content/posts", postFilename);
   const fullPost = buildFrontmatter(frontmatter) + postContent;
 
   writeFileSync(postPath, fullPost, "utf-8");
-  log(`[File] Post saved to: src/content/posts/${postFilename}`);
+  log(`[File] Post saved to: ${DRY_RUN ? postPath : `src/content/posts/${postFilename}`}`);
 
   // ── Update memories (commit directly to main) ────────────────────────────
-  log("Updating agent memory files...");
-  updateMemories(memories, pitches, finalTally, currentWriter, postSlug, date, editorSoftFlags);
+  // Memory files are the source of truth for agent stats — a dry run must not
+  // mutate them, or local testing silently pollutes real standings.
+  if (DRY_RUN) {
+    log("[Memory] DRY RUN — skipping agent and fact-checker memory updates");
+  } else {
+    log("Updating agent memory files...");
+    updateMemories(memories, pitches, finalTally, currentWriter, postSlug, date, editorSoftFlags);
 
-  // Update fact checker memory
-  const fcMemory = loadFactCheckerMemory();
-  fcMemory.totalPostsChecked += 1;
-  fcMemory.totalIssuesFound += factCheckIssuesFound;
-  fcMemory.totalIssuesResolved += factCheckIssuesResolved;
-  fcMemory.postHistory.push({
-    date,
-    slug: postSlug,
-    title: postTitle,
-    author: currentWriter,
-    issuesFound: factCheckIssuesFound,
-    issuesResolved: factCheckIssuesResolved,
-    notes: factCheckResult.issues,
-  });
-  saveFactCheckerMemory(fcMemory);
+    // Update fact checker memory
+    const fcMemory = loadFactCheckerMemory();
+    fcMemory.totalPostsChecked += 1;
+    fcMemory.totalIssuesFound += factCheckIssuesFound;
+    fcMemory.totalIssuesResolved += factCheckIssuesResolved;
+    fcMemory.postHistory.push({
+      date,
+      slug: postSlug,
+      title: postTitle,
+      author: currentWriter,
+      issuesFound: factCheckIssuesFound,
+      issuesResolved: factCheckIssuesResolved,
+      notes: factCheckResult.issues,
+    });
+    saveFactCheckerMemory(fcMemory);
+  }
 
   if (!DRY_RUN) {
     try {

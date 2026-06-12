@@ -23,6 +23,10 @@ export interface PersonaConfig {
   name: string;
   systemPrompt: string;
   topicTendencies: string[];
+  // Injected into the voting prompt only. Defines what this persona values
+  // when ranking other agents' pitches — each perspective is deliberately
+  // distinct so the five voters don't converge on the same aesthetic.
+  votingPerspective: string;
 }
 
 export interface Pitch {
