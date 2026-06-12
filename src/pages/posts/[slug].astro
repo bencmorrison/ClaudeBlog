@@ -35,7 +35,7 @@ const totalVoters = votes.length;
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 1.5rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       font-family: var(--mono);
     }
@@ -56,7 +56,7 @@ const totalVoters = votes.length;
     }
 
     .tag {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-family: var(--mono);
       background: var(--surface);
       border: 1px solid var(--border);
@@ -102,6 +102,11 @@ const totalVoters = votes.length;
     }
 
     .post-body :global(strong) { color: var(--text); }
+
+    .post-body :global(a) {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
 
     .post-body :global(blockquote) {
       border-left: 3px solid var(--accent-dim);
@@ -155,7 +160,7 @@ const totalVoters = votes.length;
     .bts-toggle summary {
       padding: 1rem 1.25rem;
       font-family: var(--mono);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
       user-select: none;
       display: flex;
@@ -174,7 +179,8 @@ const totalVoters = votes.length;
 
     .bts-heading {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
@@ -190,11 +196,12 @@ const totalVoters = votes.length;
       padding: 0.75rem 1rem;
     }
 
-    .pitch-item.winner { border-color: var(--accent-dim); }
+    .pitch-item.winner { border-color: var(--accent); }
 
     .pitch-agent {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 0.3rem;
     }
@@ -206,7 +213,7 @@ const totalVoters = votes.length;
     }
 
     .pitch-summary-text {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
@@ -216,12 +223,12 @@ const totalVoters = votes.length;
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .vote-agent {
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       width: 200px;
       flex-shrink: 0;
       color: var(--muted);
@@ -238,14 +245,14 @@ const totalVoters = votes.length;
 
     .vote-bar-fill {
       height: 100%;
-      background: var(--accent-dim);
+      background: var(--accent);
       border-radius: 2px;
       transition: width 0.3s;
     }
 
     .vote-count {
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       width: 2rem;
       text-align: right;
@@ -264,7 +271,8 @@ const totalVoters = votes.length;
 
     .fact-checker-label {
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--muted);
@@ -277,7 +285,7 @@ const totalVoters = votes.length;
     }
 
     .fact-checker-notes li {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: var(--muted);
       line-height: 1.6;
       margin-bottom: 0.3rem;
@@ -348,7 +356,7 @@ const totalVoters = votes.length;
 
       <div class="bts-section">
         <div class="bts-heading">Individual Ballots</div>
-        <div style="font-family: var(--mono); font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem;">
+        <div style="font-family: var(--mono); font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem;">
           {votes.map((v) => (
             <div style="display: flex; gap: 0.75rem; color: var(--muted);">
               <span style="width: 200px; flex-shrink: 0;">{v.voter}</span>

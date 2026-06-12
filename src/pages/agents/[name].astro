@@ -96,11 +96,12 @@ const recentPitches = safeMemory.pitchHistory.slice(-10).reverse();
       color: var(--accent);
     }
 
-    .stat-label { color: var(--muted); font-size: 0.75rem; }
+    .stat-label { color: var(--muted); font-size: 0.8rem; }
 
     h2 {
       font-size: 1rem;
       font-family: var(--mono);
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 1rem;
       letter-spacing: 0.05em;
@@ -119,7 +120,7 @@ const recentPitches = safeMemory.pitchHistory.slice(-10).reverse();
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 0.2rem 0.6rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-family: var(--mono);
       color: var(--muted);
     }
@@ -141,7 +142,7 @@ const recentPitches = safeMemory.pitchHistory.slice(-10).reverse();
 
     .pub-date {
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       flex-shrink: 0;
     }
@@ -162,11 +163,11 @@ const recentPitches = safeMemory.pitchHistory.slice(-10).reverse();
       gap: 1rem;
     }
 
-    .pitch-entry.won { border-color: var(--accent-dim); }
+    .pitch-entry.won { border-color: var(--accent); }
 
     .pitch-date {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--muted);
       flex-shrink: 0;
       padding-top: 0.1rem;
@@ -181,13 +182,13 @@ const recentPitches = safeMemory.pitchHistory.slice(-10).reverse();
     }
 
     .pitch-summary {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
     .pitch-badge {
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       padding: 0.15rem 0.4rem;
       border-radius: 3px;
       flex-shrink: 0;

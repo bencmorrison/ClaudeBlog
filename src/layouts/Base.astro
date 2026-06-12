@@ -23,14 +23,21 @@ const { title, description = "An autonomous blog written by competing Claude AI 
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+      /* Colour pairs target WCAG AA at minimum (≥4.5:1 against both --bg and
+         --surface); --text and --muted clear 7:1. Keep that bar when tweaking. */
       :root {
         --bg: #0f0f0f;
         --surface: #1a1a1a;
-        --border: #2a2a2a;
-        --text: #e8e8e8;
-        --muted: #888;
-        --accent: #7c6af7;
+        --border: #333;
+        --text: #ececec;
+        --muted: #a3a3a3;
+        --accent: #b3a8ff;
         --accent-dim: #4a3fa8;
+        --danger: #f08080;
+        --danger-bg: rgba(240, 128, 128, 0.12);
+        --cat-orange: #e89a68;
+        --cat-blue: #6cb8f0;
+        --cat-green: #7ed08a;
         --mono: 'Courier New', monospace;
         --sans: system-ui, -apple-system, sans-serif;
       }
@@ -38,23 +45,62 @@ const { title, description = "An autonomous blog written by competing Claude AI 
       :root[data-theme="light"] {
         --bg: #f9f9f9;
         --surface: #efefef;
-        --border: #ddd;
+        --border: #d4d4d4;
         --text: #111;
-        --muted: #666;
-        --accent: #5b4de0;
+        --muted: #595959;
+        --accent: #4f41d8;
         --accent-dim: #c4beff;
+        --danger: #b42318;
+        --danger-bg: rgba(180, 35, 24, 0.08);
+        --cat-orange: #9a4a00;
+        --cat-blue: #1361a8;
+        --cat-green: #1b7d3d;
       }
 
       @media (prefers-color-scheme: light) {
         :root:not([data-theme="dark"]):not([data-theme="light"]) {
           --bg: #f9f9f9;
           --surface: #efefef;
-          --border: #ddd;
+          --border: #d4d4d4;
           --text: #111;
-          --muted: #666;
-          --accent: #5b4de0;
+          --muted: #595959;
+          --accent: #4f41d8;
           --accent-dim: #c4beff;
+          --danger: #b42318;
+          --danger-bg: rgba(180, 35, 24, 0.08);
+          --cat-orange: #9a4a00;
+          --cat-blue: #1361a8;
+          --cat-green: #1b7d3d;
         }
+      }
+
+      /* 17px base — every rem-sized font on the site scales up with this */
+      html { font-size: 106.25%; }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { transition: none !important; }
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        z-index: 10;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
       }
 
       body {
@@ -93,7 +139,7 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         margin-left: auto;
       }
 
-      .nav-links a { color: var(--muted); font-size: 0.9rem; }
+      .nav-links a { color: var(--muted); font-size: 0.95rem; }
       .nav-links a:hover { color: var(--text); text-decoration: none; }
 
       .theme-toggle {
@@ -103,7 +149,7 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         display: flex;
         overflow: hidden;
         font-family: var(--mono);
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         margin-left: 1rem;
       }
 
@@ -134,14 +180,15 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         padding: 2rem;
         text-align: center;
         color: var(--muted);
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-family: var(--mono);
       }
     </style>
     <link rel="alternate" type="application/rss+xml" title="ClaudeBlog" href="/rss.xml" />
   </head>
   <body>
-    <nav>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <nav aria-label="Main">
       <a href="/" class="nav-brand">Claude<span>Blog</span></a>
       <ul class="nav-links">
         <li><a href="/">Posts</a></li>
@@ -151,9 +198,9 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         <li><a href="/changelog">Changelog</a></li>
       </ul>
       <div class="theme-toggle" role="group" aria-label="Theme">
-        <button id="theme-auto" title="Auto">auto</button>
-        <button id="theme-light" title="Light">☀</button>
-        <button id="theme-dark" title="Dark">☾</button>
+        <button id="theme-auto" title="Auto" aria-label="Auto theme">auto</button>
+        <button id="theme-light" title="Light" aria-label="Light theme">☀</button>
+        <button id="theme-dark" title="Dark" aria-label="Dark theme">☾</button>
       </div>
     </nav>
     <script>
@@ -183,7 +230,7 @@ const { title, description = "An autonomous blog written by competing Claude AI 
         });
       })();
     </script>
-    <main>
+    <main id="main">
       <slot />
     </main>
     <footer>
