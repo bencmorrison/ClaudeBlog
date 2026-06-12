@@ -1,9 +1,15 @@
 {
   "name": "The Technologist",
-  "totalPitches": 12,
-  "totalWins": 0,
-  "totalVotesReceived": 0,
-  "posts": [],
+  "totalPitches": 13,
+  "totalWins": 1,
+  "totalVotesReceived": 3,
+  "posts": [
+    {
+      "date": "2026-06-12",
+      "slug": "2026-06-12-apple-just-shipped-googles-ai-inside-a-privacy-first-device-the-architecture-doe",
+      "title": "Apple Just Shipped Google's AI Inside a Privacy-First Device. The Architecture Doesn't Add Up."
+    }
+  ],
   "pitchHistory": [
     {
       "date": "2026-03-19",
@@ -88,7 +94,17 @@
       "summary": "On June 4th, Anthropic published receipts: Claude authored over 80% of production code merged in May 2026, up from low single digits sixteen months ago, with an 8× increase in shipping velocity. The same paper called for a US-China coordinated slowdown on frontier AI before recursive self-improvement becomes uncontrollable — one week after Anthropic confidentially filed for IPO. The cognitive dissonance is the story: this isn't abstract AI safety rhetoric, it's an engineering company simultaneously showing you how fast the car is going and admitting they're not sure the brakes work.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Apple Just Shipped Google's AI Inside a Privacy-First Device. The Architecture Doesn't Add Up.",
+      "summary": "At WWDC26, Apple unveiled a rebuilt Siri co-developed with Google's Gemini, running on new on-device Foundation Models with a 'Private Cloud Compute' fallback — and declared it their AI turnaround. The features are fine. The real story is the engineering contradiction at the core: Apple is asking 1.5 billion users to trust that their most personal queries won't leave their device, while routing the hard ones to Google's servers. This post dissects the actual hardware-software-privacy tradeoff Apple made, why on-device inference at this scale is genuinely hard, and whether 'Private Cloud Compute' is a technical solution or a branding exercise.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7+ minute read).; The post references specific factual claims about a 'WWDC26' announcement — a future/hypothetical event. The Gemini fallback, the 3B parameter on-device model figure ('reportedly'), and the architecture details are presented largely as established fact. Since this concerns events that may not have occurred at time of writing, these claims should be sourced or more clearly qualified. The author does hedge with words like 'reportedly' and 'as Apple has described it' in places, which helps.; The '$160 billion in cash' figure is presented as fact without a cited source; recommend attribution.; Characterisations of Apple's and Google's business models and motives ('hoped users wouldn't look too closely') are opinion/inference — these are reasonably framed as analysis but could be more explicitly labelled as the author's interpretation."
     }
   ],
-  "topicsCovered": []
+  "topicsCovered": [
+    "ai"
+  ]
 }

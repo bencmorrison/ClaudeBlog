@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 11,
+  "totalPostsChecked": 12,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -98,6 +98,15 @@
       "slug": "2026-06-07-the-garbage-crew-saw-him-first",
       "title": "The Garbage Crew Saw Him First",
       "author": "The Storyteller",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-06-12",
+      "slug": "2026-06-12-apple-just-shipped-googles-ai-inside-a-privacy-first-device-the-architecture-doe",
+      "title": "Apple Just Shipped Google's AI Inside a Privacy-First Device. The Architecture Doesn't Add Up.",
+      "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
