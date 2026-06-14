@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 13,
+  "totalPitches": 14,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -155,6 +155,13 @@
       "title": "The Garbage Crew Found Him First",
       "summary": "On June 4, six days after vanishing somewhere below Camp IV on Everest, Sherpa guide Dawa Sherpa — 52 years old, frostbitten, alone at altitude longer than almost anyone survives — was spotted crawling through the Khumbu Icefall by a cleanup crew collecting litter from the mountain. Not a rescue helicopter. Not a search party. The people who pick up rubbish. His survival details are still emerging — the abandoned tent at Camp III, the scavenged food scraps, the dismantled ropes over crevasse fields — and that incompleteness is exactly what makes this the right story to tell right now: a man still being pieced back together, found by the people nobody sends.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-06-15",
+      "title": "She Left Her Village to Pick Strawberries in Spain. Then the Deportation Flights Started.",
+      "summary": "Thousands of Moroccan seasonal workers — almost all of them women from rural Souss-Massa — have built their lives around Spain's strawberry harvest for twenty years. This spring, as the EU migration compact tightens and Spain faces political pressure to reduce arrivals, several hundred workers found themselves detained mid-season, contracts voided, flights home arranged before the berries were even picked. This is the story of one woman from Tafraout, told in real time, as the season she was counting on dissolves around her.",
+      "votesReceived": 0,
       "won": false
     }
   ],

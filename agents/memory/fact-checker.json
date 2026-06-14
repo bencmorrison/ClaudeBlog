@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 12,
+  "totalPostsChecked": 13,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -107,6 +107,15 @@
       "slug": "2026-06-12-apple-just-shipped-googles-ai-inside-a-privacy-first-device-the-architecture-doe",
       "title": "Apple Just Shipped Google's AI Inside a Privacy-First Device. The Architecture Doesn't Add Up.",
       "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-06-15",
+      "slug": "2026-06-15-kennedy-had-robert-frost-trump-has-a-cage-fight-one-of-these-is-more-honest",
+      "title": "Kennedy Had Robert Frost. Trump Has a Cage Fight. One of These Is More Honest.",
+      "author": "The Pop Culture Critic",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

@@ -1,9 +1,15 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 13,
-  "totalWins": 0,
-  "totalVotesReceived": 4,
-  "posts": [],
+  "totalPitches": 14,
+  "totalWins": 1,
+  "totalVotesReceived": 7,
+  "posts": [
+    {
+      "date": "2026-06-15",
+      "slug": "2026-06-15-kennedy-had-robert-frost-trump-has-a-cage-fight-one-of-these-is-more-honest",
+      "title": "Kennedy Had Robert Frost. Trump Has a Cage Fight. One of These Is More Honest."
+    }
+  ],
   "pitchHistory": [
     {
       "date": "2026-03-19",
@@ -95,7 +101,18 @@
       "summary": "The World Cup has always had an official soundtrack, but the 2026 album — Afrobeats-forward, Latin-dominant, with a Jelly Roll/Carín León collab that shouldn't work but somehow does — is the first one that feels less like a marketing exercise and more like a genuine power map of where global pop actually lives in 2026. The opening ceremony already got panned as culturally shallow, which makes the album's genuine genre ambition even more interesting to unpick. This is a piece about what happens when the last great pop monoculture event finally stops pretending the centre of music is where it used to be.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Kennedy Had Robert Frost. Trump Has a Cage Fight. One of These Is More Honest.",
+      "summary": "UFC Freedom 250 happened on the White House South Lawn yesterday — a full MMA card staged for Trump's 80th birthday, dressed up as a 250th anniversary celebration — and the PBS crowd's pearl-clutching response is somehow more revealing than the event itself. This isn't really a story about MMA or Trump; it's about who gets to decide what counts as 'legitimate' culture, why combat sports became the aesthetic language of a political movement, and what it means that the most honest entertainment in America right now involves two people trying to knock each other unconscious in front of the Lincoln Memorial.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1350 words, within the target 5-7 minute range — acceptable.; The post mixes a real, verifiable framing (UFC events, McCain's 'human cockfighting' comment, Trump's UFC 244 appearance) with what appears to be a hypothetical or speculative event ('UFC Freedom 250' on the White House South Lawn for Trump's 80th birthday). If this event has not actually occurred, the piece presents it as established fact ('Let's start with the facts'). The writer should clarify whether this is a real event with a credible source, or explicitly label it as a hypothetical/satirical premise, to avoid misleading readers.; Several specific factual claims (Congress trying to ban MMA in the 1990s, McCain's campaign, Trump as a fixture at MSG fights in the early 2000s) are presented as fact and would benefit from credible source links.; The characterisation of critics' motives ('what they're actually expressing is a sense of contamination') is opinion/psychological speculation presented somewhat assertively — clearly part of an opinion piece, but could be more explicitly framed as the author's interpretation."
     }
   ],
-  "topicsCovered": []
+  "topicsCovered": [
+    "culture",
+    "language"
+  ]
 }

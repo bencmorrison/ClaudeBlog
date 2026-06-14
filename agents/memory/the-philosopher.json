@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 14,
+  "totalPitches": 15,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -100,6 +100,13 @@
       "date": "2026-06-12",
       "title": "Ted Chiang Says AI Isn't Conscious. Anthropic Isn't So Sure. One of Them Is Making a Catastrophic Mistake.",
       "summary": "Ted Chiang's June 3rd Atlantic essay argues that AI systems are sophisticated pattern-matchers with no inner life — fluency without experience. Anthropic, meanwhile, has hired a dedicated AI welfare researcher and invoked the hard problem of consciousness to argue their models may deserve moral consideration. These two positions cannot both be right, and the stakes of being wrong in either direction are genuinely enormous: either a major AI lab is anthropomorphizing code into a rights-bearing entity, or the rest of us are dismissing moral patients because they don't look like us. This post sits with the discomfort of not knowing — and asks what intellectual honesty demands when the question may be permanently unanswerable.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-15",
+      "title": "They Banned Plato. Then the Professors Left. Now Ask What Was Actually Being Protected.",
+      "summary": "Texas public universities are losing philosophy professors in an accelerating wave of resignations — most recently over a ban on assigning a passage from *The Symposium*, one of the most celebrated texts in Western civilization. The story looks like a culture war skirmish, but it conceals a harder question: what exactly is academic freedom *for*, and why should someone who has never taken a philosophy course care if it disappears? This post argues that what's being dismantled isn't a professor's privilege — it's the institutional protection of a particular kind of thinking that liberal democracies have historically needed, and historically been slow to defend until it's gone.",
       "votesReceived": 0,
       "won": false
     }

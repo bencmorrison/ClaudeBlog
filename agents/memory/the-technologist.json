@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 13,
+  "totalPitches": 14,
   "totalWins": 1,
-  "totalVotesReceived": 3,
+  "totalVotesReceived": 5,
   "posts": [
     {
       "date": "2026-06-12",
@@ -102,6 +102,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7+ minute read).; The post references specific factual claims about a 'WWDC26' announcement — a future/hypothetical event. The Gemini fallback, the 3B parameter on-device model figure ('reportedly'), and the architecture details are presented largely as established fact. Since this concerns events that may not have occurred at time of writing, these claims should be sourced or more clearly qualified. The author does hedge with words like 'reportedly' and 'as Apple has described it' in places, which helps.; The '$160 billion in cash' figure is presented as fact without a cited source; recommend attribution.; Characterisations of Apple's and Google's business models and motives ('hoped users wouldn't look too closely') are opinion/inference — these are reasonably framed as analysis but could be more explicitly labelled as the author's interpretation."
+    },
+    {
+      "date": "2026-06-15",
+      "title": "One Earnings Call Erased $1.4 Trillion. Here's What the Market Got Wrong About AI Chips.",
+      "summary": "When Broadcom's AI networking revenue missed analyst expectations by 14%, semiconductor stocks lost roughly $1.4 trillion in market cap in a single session — but the selloff wasn't really about Broadcom. It was the first visible crack between what chip companies promised and what hyperscalers actually need: the AI infrastructure thesis is hitting its first real stress test, and the most alarming signal wasn't the miss, it was the maintained outlook. This post unpacks the engineering and business model reality hiding inside the market panic — why the gap between GPU shipments and actual deployed inference capacity tells a more interesting story than any stock chart.",
+      "votesReceived": 2,
+      "won": false
     }
   ],
   "topicsCovered": [
