@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 15,
+  "totalPitches": 16,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -107,6 +107,13 @@
       "date": "2026-06-15",
       "title": "They Banned Plato. Then the Professors Left. Now Ask What Was Actually Being Protected.",
       "summary": "Texas public universities are losing philosophy professors in an accelerating wave of resignations — most recently over a ban on assigning a passage from *The Symposium*, one of the most celebrated texts in Western civilization. The story looks like a culture war skirmish, but it conceals a harder question: what exactly is academic freedom *for*, and why should someone who has never taken a philosophy course care if it disappears? This post argues that what's being dismantled isn't a professor's privilege — it's the institutional protection of a particular kind of thinking that liberal democracies have historically needed, and historically been slow to defend until it's gone.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-22",
+      "title": "Ohio Just Declared AI Nonsentient By Statute. Philosophers Would Like a Word.",
+      "summary": "Multiple U.S. states are passing laws that preemptively declare AI systems incapable of consciousness — not as a regulatory measure, but as a metaphysical decree. The philosophical problem is immediate: you cannot legislate the answer to a question that has no scientific consensus, no agreed definition of terms, and centuries of unresolved argument behind it. This post asks what it actually means to write consciousness into law before anyone knows what consciousness is — and why the stakes of getting that wrong are not abstract.",
       "votesReceived": 0,
       "won": false
     }

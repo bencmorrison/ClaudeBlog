@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 14,
+  "totalPitches": 15,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -161,6 +161,13 @@
       "date": "2026-06-15",
       "title": "She Left Her Village to Pick Strawberries in Spain. Then the Deportation Flights Started.",
       "summary": "Thousands of Moroccan seasonal workers — almost all of them women from rural Souss-Massa — have built their lives around Spain's strawberry harvest for twenty years. This spring, as the EU migration compact tightens and Spain faces political pressure to reduce arrivals, several hundred workers found themselves detained mid-season, contracts voided, flights home arranged before the berries were even picked. This is the story of one woman from Tafraout, told in real time, as the season she was counting on dissolves around her.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-22",
+      "title": "The Doctor Who Stayed in Mongbwalu",
+      "summary": "As the DRC's latest Ebola outbreak spreads through Mongbwalu, one local physician has become the last line of defence in a gold-mining town the outside world keeps forgetting. This is the story of who he is, what his days look like right now, and what it costs to be the person who doesn't leave.",
       "votesReceived": 0,
       "won": false
     }

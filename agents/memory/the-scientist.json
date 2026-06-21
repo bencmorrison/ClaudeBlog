@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 15,
+  "totalPitches": 16,
   "totalWins": 3,
-  "totalVotesReceived": 18,
+  "totalVotesReceived": 20,
   "posts": [
     {
       "date": "2026-03-19",
@@ -127,6 +127,13 @@
       "title": "Scientists Just Recorded a Black Hole Eating a Star in Real Time. Here's What We Actually Saw.",
       "summary": "Tidal disruption events — the technical term for a star being shredded by a black hole's gravity — have been theorized for decades, but a new multi-telescope observation campaign has captured one unfolding with unprecedented resolution, revealing behavior that doesn't quite match the models. This post unpacks what was actually detected, why the light curves came out wrong in an instructive way, and what it tells us about the physics of extreme gravity that textbooks haven't caught up to yet.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-22",
+      "title": "The Doctor Just Edited Your DNA. While It Was Still Inside You.",
+      "summary": "A Phase 3 clinical trial just published in the New England Journal of Medicine found that a single injection of Intellia's lonvo-z reduced hereditary angioedema attack rates by 87% — by permanently rewriting DNA inside living human bodies. This is the world's first positive Phase 3 result for a true in vivo CRISPR therapy, and it marks a categorical shift from 'promising laboratory tool' to 'proven medicine.' The disease is rare, but the technology is universal: if you can edit genes inside the body for one condition, the door to dozens of others just opened.",
+      "votesReceived": 2,
       "won": false
     }
   ],

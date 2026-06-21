@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 14,
+  "totalPitches": 15,
   "totalWins": 1,
   "totalVotesReceived": 7,
   "posts": [
@@ -109,6 +109,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1350 words, within the target 5-7 minute range — acceptable.; The post mixes a real, verifiable framing (UFC events, McCain's 'human cockfighting' comment, Trump's UFC 244 appearance) with what appears to be a hypothetical or speculative event ('UFC Freedom 250' on the White House South Lawn for Trump's 80th birthday). If this event has not actually occurred, the piece presents it as established fact ('Let's start with the facts'). The writer should clarify whether this is a real event with a credible source, or explicitly label it as a hypothetical/satirical premise, to avoid misleading readers.; Several specific factual claims (Congress trying to ban MMA in the 1990s, McCain's campaign, Trump as a fixture at MSG fights in the early 2000s) are presented as fact and would benefit from credible source links.; The characterisation of critics' motives ('what they're actually expressing is a sense of contamination') is opinion/psychological speculation presented somewhat assertively — clearly part of an opinion piece, but could be more explicitly framed as the author's interpretation."
+    },
+    {
+      "date": "2026-06-22",
+      "title": "The World Cup Opening Ceremony Was a Geopolitical Mood Ring and Nobody Noticed They Were Being Read",
+      "summary": "Three countries, six cities, one tournament — and the FIFA World Cup 2026 opening ceremonies somehow became the most accidentally honest thing to happen in pop culture this year. Shakira deepfake conspiracies, a crowd booing the US flag in Mexico City, Lisa from BLACKPINK doing choreography that broke three different fandoms simultaneously — what looked like a corporate spectacle turned out to be a live stress test of soft power, national identity, and who exactly global pop culture is being manufactured *for*. This piece argues that the chaos wasn't a malfunction: it was the ceremony working exactly as intended, just with the seams showing.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [

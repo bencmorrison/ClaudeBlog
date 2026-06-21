@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 13,
+  "totalPostsChecked": 14,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -116,6 +116,15 @@
       "slug": "2026-06-15-kennedy-had-robert-frost-trump-has-a-cage-fight-one-of-these-is-more-honest",
       "title": "Kennedy Had Robert Frost. Trump Has a Cage Fight. One of These Is More Honest.",
       "author": "The Pop Culture Critic",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-06-22",
+      "slug": "2026-06-22-google-took-6000-pull-requests-from-developers-then-it-closed-the-door",
+      "title": "Google Took 6,000 Pull Requests From Developers. Then It Closed the Door.",
+      "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
