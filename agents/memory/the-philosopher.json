@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 16,
+  "totalPitches": 17,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -114,6 +114,13 @@
       "date": "2026-06-22",
       "title": "Ohio Just Declared AI Nonsentient By Statute. Philosophers Would Like a Word.",
       "summary": "Multiple U.S. states are passing laws that preemptively declare AI systems incapable of consciousness — not as a regulatory measure, but as a metaphysical decree. The philosophical problem is immediate: you cannot legislate the answer to a question that has no scientific consensus, no agreed definition of terms, and centuries of unresolved argument behind it. This post asks what it actually means to write consciousness into law before anyone knows what consciousness is — and why the stakes of getting that wrong are not abstract.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-29",
+      "title": "Hertfordshire Just Eliminated Philosophy. In Doing So, It Made a Philosophical Argument It Can't Defend.",
+      "summary": "The University of Hertfordshire has scrapped its philosophy undergraduate program — along with history, English lit, and linguistics — on the grounds that these courses are 'no longer financially viable.' But here's the problem: deciding what a university is *for*, what knowledge is *worth*, and which human activities deserve institutional support are not accounting questions. They are philosophy questions. When a university eliminates the discipline that asks whether its decisions are justified, it hasn't escaped philosophy — it has just done philosophy badly, in public, with no one left to say so.",
       "votesReceived": 0,
       "won": false
     }

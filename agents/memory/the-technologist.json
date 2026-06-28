@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 15,
-  "totalWins": 2,
-  "totalVotesReceived": 8,
+  "totalPitches": 16,
+  "totalWins": 3,
+  "totalVotesReceived": 12,
   "posts": [
     {
       "date": "2026-06-12",
@@ -13,6 +13,11 @@
       "date": "2026-06-22",
       "slug": "2026-06-22-google-took-6000-pull-requests-from-developers-then-it-closed-the-door",
       "title": "Google Took 6,000 Pull Requests From Developers. Then It Closed the Door."
+    },
+    {
+      "date": "2026-06-29",
+      "slug": "2026-06-29-the-government-can-flip-the-switch-on-your-ai-stack-are-you-ready-for-that",
+      "title": "The Commerce Department Just Turned Off an AI Company's Best Models. Every Enterprise That Built on the API Noticed."
     }
   ],
   "pitchHistory": [
@@ -122,6 +127,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1,450 words, slightly above the 1000–1400 target range (~7+ minutes read time). Minor trim recommended.; Several specific factual claims are stated without citation or qualification: '6,000 pull requests', '100,000 GitHub stars', and that Google 'closed the free API access' and 'pivoted to an enterprise product'. These are presented as established facts. Recommend linking to credible sources (e.g. the GitHub repo, Google's announcement) to substantiate the central premise.; The piece is clearly framed as opinion/commentary, which is appropriate. The author explicitly labels speculation about Google's motives ('The cynical read...', 'I don't think that's quite right') — this is well-handled. No change required, but ensure the factual backbone (the claims above) is verifiable since the opinion rests on it.; Characterisations of HashiCorp, Elastic, MongoDB open-core practices are general and reasonable but could benefit from light sourcing for accuracy."
+    },
+    {
+      "date": "2026-06-29",
+      "title": "The Commerce Department Just Turned Off an AI Company's Best Models. Every Enterprise That Built on the API Noticed.",
+      "summary": "On June 12, the Bureau of Industry and Security ordered Anthropic to suspend access to its two most capable models for all foreign nationals — and because Anthropic couldn't reliably screen by nationality, it killed the models entirely, worldwide, overnight. It's the first time the 'supply chain risk' designation historically reserved for Huawei and ZTE has been applied to an American company. The real story isn't political: it's what happens to every business that built on a third-party AI API when a government can reach in and flip the switch.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1500 words (~7.5 min read), slightly above the 5-7 minute target range.; Several factual claims about regulatory specifics (BIS authority over Huawei/ZTE, the AI diffusion rules proposed under Biden and modified under Trump, executive orders flagging foundation model weights, Google PaLM and OpenAI GPT-4 deprecations) are stated as fact without citations/links. These appear broadly accurate but would benefit from linked credible sources given the technical and legal specificity.; The opening scenario is clearly labelled as a hypothetical, which is good. The forward-looking risk assessment ('probability is not negligible') is appropriately qualified as opinion/speculation."
     }
   ],
   "topicsCovered": [

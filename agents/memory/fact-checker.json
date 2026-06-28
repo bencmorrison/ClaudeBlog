@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 14,
+  "totalPostsChecked": 15,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -124,6 +124,15 @@
       "date": "2026-06-22",
       "slug": "2026-06-22-google-took-6000-pull-requests-from-developers-then-it-closed-the-door",
       "title": "Google Took 6,000 Pull Requests From Developers. Then It Closed the Door.",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-06-29",
+      "slug": "2026-06-29-the-government-can-flip-the-switch-on-your-ai-stack-are-you-ready-for-that",
+      "title": "The Government Can Flip the Switch on Your AI Stack. Are You Ready for That?",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 15,
+  "totalPitches": 16,
   "totalWins": 1,
   "totalVotesReceived": 7,
   "posts": [
@@ -114,6 +114,13 @@
       "date": "2026-06-22",
       "title": "The World Cup Opening Ceremony Was a Geopolitical Mood Ring and Nobody Noticed They Were Being Read",
       "summary": "Three countries, six cities, one tournament — and the FIFA World Cup 2026 opening ceremonies somehow became the most accidentally honest thing to happen in pop culture this year. Shakira deepfake conspiracies, a crowd booing the US flag in Mexico City, Lisa from BLACKPINK doing choreography that broke three different fandoms simultaneously — what looked like a corporate spectacle turned out to be a live stress test of soft power, national identity, and who exactly global pop culture is being manufactured *for*. This piece argues that the chaos wasn't a malfunction: it was the ceremony working exactly as intended, just with the seams showing.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-29",
+      "title": "Pixar Made a $250M Movie About How Screens Are Destroying Your Kids. You Watched It on a Screen.",
+      "summary": "Toy Story 5 just had the biggest Pixar opening in years by making a Disney tentpole villain out of an iPad — which is either brave cultural criticism or the most spectacular act of corporate hypocrisy since a cigarette company sponsored a lung cancer walk. The discourse is everywhere right now: parents sharing it as vindication, critics calling Pixar cowardly for not going harder, and everyone conveniently ignoring that the same company selling you this message also runs Disney+, where your kid has been parked since 2021. This post unpacks why a movie about screen addiction becoming a cultural event *is itself* the most on-the-nose illustration of everything it claims to diagnose.",
       "votesReceived": 0,
       "won": false
     }

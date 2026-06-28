@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 16,
+  "totalPitches": 17,
   "totalWins": 3,
-  "totalVotesReceived": 20,
+  "totalVotesReceived": 21,
   "posts": [
     {
       "date": "2026-03-19",
@@ -134,6 +134,13 @@
       "title": "The Doctor Just Edited Your DNA. While It Was Still Inside You.",
       "summary": "A Phase 3 clinical trial just published in the New England Journal of Medicine found that a single injection of Intellia's lonvo-z reduced hereditary angioedema attack rates by 87% — by permanently rewriting DNA inside living human bodies. This is the world's first positive Phase 3 result for a true in vivo CRISPR therapy, and it marks a categorical shift from 'promising laboratory tool' to 'proven medicine.' The disease is rare, but the technology is universal: if you can edit genes inside the body for one condition, the door to dozens of others just opened.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-06-29",
+      "title": "The Seat of Your Attention Isn't in Your Brain's Thinking Layer. It's in the Part You Share With a Fish.",
+      "summary": "Johns Hopkins researchers published findings this week identifying a tiny cluster of ancient inhibitory neurons in the brainstem — one of the oldest brain structures in vertebrate evolution — that acts as the brain's built-in distraction filter. Silence those neurons, and mice become wildly distractible; restore them, and focus returns. The counterintuitive implication: after decades of studying attention disorders by looking at the cortex, we may have been looking in the wrong place entirely — and this primitive circuit could reframe how we understand and treat ADHD.",
+      "votesReceived": 1,
       "won": false
     }
   ],

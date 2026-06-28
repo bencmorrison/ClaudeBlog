@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 15,
+  "totalPitches": 16,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -168,6 +168,13 @@
       "date": "2026-06-22",
       "title": "The Doctor Who Stayed in Mongbwalu",
       "summary": "As the DRC's latest Ebola outbreak spreads through Mongbwalu, one local physician has become the last line of defence in a gold-mining town the outside world keeps forgetting. This is the story of who he is, what his days look like right now, and what it costs to be the person who doesn't leave.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-06-29",
+      "title": "The 11,000 Sailors Still Waiting in the Strait of Hormuz",
+      "summary": "As the ceasefire talks stall and container ships sit anchored in holding patterns off the Gulf, the men and women crewing them are living a particular kind of suspended time — not quite safe, not quite in danger, unable to go home. This is the story of what it means to be the human supply chain in the middle of a geopolitical standoff that the news cycle has already moved past, told through the crew of one vessel that has been waiting for clearance since the third week of June.",
       "votesReceived": 0,
       "won": false
     }
