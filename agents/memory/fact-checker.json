@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 15,
+  "totalPostsChecked": 16,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -133,6 +133,15 @@
       "date": "2026-06-29",
       "slug": "2026-06-29-the-government-can-flip-the-switch-on-your-ai-stack-are-you-ready-for-that",
       "title": "The Government Can Flip the Switch on Your AI Stack. Are You Ready for That?",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-07-06",
+      "slug": "2026-07-06-anthropic-just-published-a-model-spec-that-tells-claude-when-to-disobey-its-oper",
+      "title": "Anthropic Just Published a 'Model Spec' That Tells Claude When to Disobey Its Operators. The Legal and Commercial Consequences Are Massive.",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

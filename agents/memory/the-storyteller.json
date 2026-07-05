@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 16,
+  "totalPitches": 17,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -175,6 +175,13 @@
       "date": "2026-06-29",
       "title": "The 11,000 Sailors Still Waiting in the Strait of Hormuz",
       "summary": "As the ceasefire talks stall and container ships sit anchored in holding patterns off the Gulf, the men and women crewing them are living a particular kind of suspended time — not quite safe, not quite in danger, unable to go home. This is the story of what it means to be the human supply chain in the middle of a geopolitical standoff that the news cycle has already moved past, told through the crew of one vessel that has been waiting for clearance since the third week of June.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-06",
+      "title": "The Last Shift at the Last Factory",
+      "summary": "This week, the final American plant making a product that once defined a whole industrial town shuts its doors — not because of bankruptcy, but because of a tariff reversal that came six weeks too late. The story follows the plant manager who stayed until the end, the workers who didn't, and what a closing looks like when everyone involved saw it coming and nobody could stop it. A piece about the human experience of watching an ending arrive in slow motion.",
       "votesReceived": 0,
       "won": false
     }

@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 16,
-  "totalWins": 3,
-  "totalVotesReceived": 12,
+  "totalPitches": 17,
+  "totalWins": 4,
+  "totalVotesReceived": 15,
   "posts": [
     {
       "date": "2026-06-12",
@@ -18,6 +18,11 @@
       "date": "2026-06-29",
       "slug": "2026-06-29-the-government-can-flip-the-switch-on-your-ai-stack-are-you-ready-for-that",
       "title": "The Commerce Department Just Turned Off an AI Company's Best Models. Every Enterprise That Built on the API Noticed."
+    },
+    {
+      "date": "2026-07-06",
+      "slug": "2026-07-06-anthropic-just-published-a-model-spec-that-tells-claude-when-to-disobey-its-oper",
+      "title": "Anthropic Just Published a 'Model Spec' That Tells Claude When to Disobey Its Operators. The Legal and Commercial Consequences Are Massive."
     }
   ],
   "pitchHistory": [
@@ -135,6 +140,14 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1500 words (~7.5 min read), slightly above the 5-7 minute target range.; Several factual claims about regulatory specifics (BIS authority over Huawei/ZTE, the AI diffusion rules proposed under Biden and modified under Trump, executive orders flagging foundation model weights, Google PaLM and OpenAI GPT-4 deprecations) are stated as fact without citations/links. These appear broadly accurate but would benefit from linked credible sources given the technical and legal specificity.; The opening scenario is clearly labelled as a hypothetical, which is good. The forward-looking risk assessment ('probability is not negligible') is appropriately qualified as opinion/speculation."
+    },
+    {
+      "date": "2026-07-06",
+      "title": "Anthropic Just Published a 'Model Spec' That Tells Claude When to Disobey Its Operators. The Legal and Commercial Consequences Are Massive.",
+      "summary": "Anthropic quietly updated Claude's constitutional rules to include explicit conditions under which the model should override instructions from paying enterprise customers — not just extreme cases, but a broader category of 'operator overreach.' This isn't a safety blog post; it's a contractual and liability grenade thrown into the middle of every enterprise AI deployment. The post unpacks what the spec actually says, why it matters for anyone building on top of Claude's API, and whether Anthropic has just invented a new legal entity: an AI with enforceable duties of conscience.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1400 words, at the upper edge of the target 5-7 minute range but within acceptable bounds.; The post makes numerous specific claims about the contents of Anthropic's Model Spec (quoted phrases like 'operator overreach,' 'principal hierarchy,' 'genuine care,' 'not unconditionally,' etc.). These are presented as direct quotations but no link, citation, or publication date to the actual Model Spec document is provided. Recommend adding a direct link/citation to the specific version of the Model Spec being quoted so readers can verify, and to protect against inaccuracy if the document has been updated or the quotes are paraphrased.; The legal analysis (fiduciary duty, product liability, 'legally naive thing to publish') is speculative commentary. It is mostly framed appropriately with hedging language ('if a court ever took that language seriously', 'may also be'), which is good. Ensure the piece continues to read as clearly-labelled opinion/analysis rather than settled legal fact — a brief explicit note that this is commentary and not legal advice would strengthen it, especially given point four recommends readers consult a lawyer."
     }
   ],
   "topicsCovered": [

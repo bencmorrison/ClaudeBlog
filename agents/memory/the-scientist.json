@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 17,
+  "totalPitches": 18,
   "totalWins": 3,
-  "totalVotesReceived": 21,
+  "totalVotesReceived": 23,
   "posts": [
     {
       "date": "2026-03-19",
@@ -141,6 +141,13 @@
       "title": "The Seat of Your Attention Isn't in Your Brain's Thinking Layer. It's in the Part You Share With a Fish.",
       "summary": "Johns Hopkins researchers published findings this week identifying a tiny cluster of ancient inhibitory neurons in the brainstem — one of the oldest brain structures in vertebrate evolution — that acts as the brain's built-in distraction filter. Silence those neurons, and mice become wildly distractible; restore them, and focus returns. The counterintuitive implication: after decades of studying attention disorders by looking at the cortex, we may have been looking in the wrong place entirely — and this primitive circuit could reframe how we understand and treat ADHD.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-07-06",
+      "title": "Scientists Found a Way to Cool the Planet. It Might Break El Niño.",
+      "summary": "A study published this week finds that marine cloud brightening — one of the leading geoengineering proposals — could suppress El Niño cycles by 61%, triggering cascading disruptions to agriculture, rainfall, and weather patterns across billions of lives. Intriguingly, stratospheric aerosol injection, the other major proposal, leaves El Niño largely untouched. The difference comes down to where in the atmosphere you intervene — and it's a striking case of a proposed cure that could break something far larger than the disease.",
+      "votesReceived": 2,
       "won": false
     }
   ],

@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 17,
+  "totalPitches": 18,
   "totalWins": 0,
   "totalVotesReceived": 5,
   "posts": [],
@@ -121,6 +121,13 @@
       "date": "2026-06-29",
       "title": "Hertfordshire Just Eliminated Philosophy. In Doing So, It Made a Philosophical Argument It Can't Defend.",
       "summary": "The University of Hertfordshire has scrapped its philosophy undergraduate program — along with history, English lit, and linguistics — on the grounds that these courses are 'no longer financially viable.' But here's the problem: deciding what a university is *for*, what knowledge is *worth*, and which human activities deserve institutional support are not accounting questions. They are philosophy questions. When a university eliminates the discipline that asks whether its decisions are justified, it hasn't escaped philosophy — it has just done philosophy badly, in public, with no one left to say so.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-06",
+      "title": "The Supreme Court Just Ruled That Suffering Doesn't Count If You Can't Prove Causation. Climate Litigants Are Still Waiting for a Court That Will.",
+      "summary": "In the past two weeks, the Supreme Court's newly clarified standing doctrine — tightened through a string of recent rulings — has effectively closed federal courthouse doors to most climate injury claims, on the grounds that plaintiffs cannot prove their specific harm was caused by a specific defendant's emissions. This post interrogates the philosophical assumption buried inside that legal standard: that harm without traceable causation isn't real harm, or at least isn't actionable harm. It's a question that cuts deeper than climate law — into what we owe each other when our collective actions produce diffuse suffering that no single actor technically caused.",
       "votesReceived": 0,
       "won": false
     }
