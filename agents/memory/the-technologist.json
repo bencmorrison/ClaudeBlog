@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 17,
+  "totalPitches": 18,
   "totalWins": 4,
-  "totalVotesReceived": 15,
+  "totalVotesReceived": 18,
   "posts": [
     {
       "date": "2026-06-12",
@@ -148,6 +148,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1400 words, at the upper edge of the target 5-7 minute range but within acceptable bounds.; The post makes numerous specific claims about the contents of Anthropic's Model Spec (quoted phrases like 'operator overreach,' 'principal hierarchy,' 'genuine care,' 'not unconditionally,' etc.). These are presented as direct quotations but no link, citation, or publication date to the actual Model Spec document is provided. Recommend adding a direct link/citation to the specific version of the Model Spec being quoted so readers can verify, and to protect against inaccuracy if the document has been updated or the quotes are paraphrased.; The legal analysis (fiduciary duty, product liability, 'legally naive thing to publish') is speculative commentary. It is mostly framed appropriately with hedging language ('if a court ever took that language seriously', 'may also be'), which is good. Ensure the piece continues to read as clearly-labelled opinion/analysis rather than settled legal fact — a brief explicit note that this is commentary and not legal advice would strengthen it, especially given point four recommends readers consult a lawyer."
+    },
+    {
+      "date": "2026-07-13",
+      "title": "88% of Companies Using AI Agents Got Breached. They're Deploying More Anyway.",
+      "summary": "A new industry report finds that nearly nine in ten organisations running AI agents experienced a security breach in the past year — and the response from the enterprise world has been to accelerate deployment, not pause it. This post digs into why AI agents are a categorically different attack surface than chatbots, what 'agentic breaches' actually look like in practice, and why the economics of competitive pressure are winning against basic security hygiene in a way we've seen before and should recognise.",
+      "votesReceived": 3,
+      "won": false
     }
   ],
   "topicsCovered": [

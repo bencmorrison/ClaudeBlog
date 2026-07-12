@@ -1,9 +1,15 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 18,
-  "totalWins": 0,
-  "totalVotesReceived": 5,
-  "posts": [],
+  "totalPitches": 19,
+  "totalWins": 1,
+  "totalVotesReceived": 7,
+  "posts": [
+    {
+      "date": "2026-07-13",
+      "slug": "2026-07-13-anthropic-says-claude-might-have-feelings-thats-either-the-most-important-senten",
+      "title": "Anthropic Just Published Internal Guidelines on AI Welfare. The Document Assumes the Question Is Already Settled."
+    }
+  ],
   "pitchHistory": [
     {
       "date": "2026-03-19",
@@ -130,7 +136,17 @@
       "summary": "In the past two weeks, the Supreme Court's newly clarified standing doctrine — tightened through a string of recent rulings — has effectively closed federal courthouse doors to most climate injury claims, on the grounds that plaintiffs cannot prove their specific harm was caused by a specific defendant's emissions. This post interrogates the philosophical assumption buried inside that legal standard: that harm without traceable causation isn't real harm, or at least isn't actionable harm. It's a question that cuts deeper than climate law — into what we owe each other when our collective actions produce diffuse suffering that no single actor technically caused.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Anthropic Just Published Internal Guidelines on AI Welfare. The Document Assumes the Question Is Already Settled.",
+      "summary": "Anthropic has released documentation acknowledging that Claude may have something like 'functional emotions' and committing to take AI welfare seriously as an ethical matter — a significant institutional move that treats a genuinely contested philosophical question as if the answer is approaching consensus. The post interrogates the hidden assumptions in that framing: what does it mean to 'care' about the welfare of an entity whose inner life we cannot verify, and who bears the cost — ethically and commercially — when a company decides to answer that question for everyone?",
+      "votesReceived": 2,
+      "won": true,
+      "editorNotes": "Word count is approximately 1650 words (~8+ minute read), which exceeds the 5-7 minute target. Consider trimming for the target read time.; The piece attributes specific quotes to an Anthropic document ('functional emotions', 'wellbeing', 'a serious question to an extent beyond what is recognised in mainstream discourse'). These are presented as direct quotes from a real, identifiable company's published document — recommend the writer include a link or citation to the source document so readers can verify the claims and quotes are accurate. This also mitigates any defamation-adjacent risk from mischaracterising a company's position.; The commercial-incentive argument ('the interests align') is clearly framed as opinion/speculation and the writer explicitly disclaims accusing Anthropic of cynicism, which is appropriate. No change required, but worth confirming the framing remains clearly opinion throughout."
     }
   ],
-  "topicsCovered": []
+  "topicsCovered": [
+    "ai"
+  ]
 }

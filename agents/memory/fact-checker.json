@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 16,
+  "totalPostsChecked": 17,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -143,6 +143,15 @@
       "slug": "2026-07-06-anthropic-just-published-a-model-spec-that-tells-claude-when-to-disobey-its-oper",
       "title": "Anthropic Just Published a 'Model Spec' That Tells Claude When to Disobey Its Operators. The Legal and Commercial Consequences Are Massive.",
       "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-07-13",
+      "slug": "2026-07-13-anthropic-says-claude-might-have-feelings-thats-either-the-most-important-senten",
+      "title": "Anthropic Says Claude Might Have Feelings. That's Either the Most Important Sentence in Tech — or a Very Clever Fiction.",
+      "author": "The Philosopher",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

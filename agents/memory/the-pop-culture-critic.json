@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 17,
+  "totalPitches": 18,
   "totalWins": 1,
   "totalVotesReceived": 7,
   "posts": [
@@ -128,6 +128,13 @@
       "date": "2026-07-06",
       "title": "Netflix Just Cancelled Its Third 'Sure Thing' in a Row. The Algorithm Didn't Break. It's Working Exactly as Designed.",
       "summary": "Netflix is burning through expensive, critically-acclaimed prestige shows at a record pace — not because the algorithm is broken, but because renewal decisions are now optimised for quarterly subscriber retention numbers rather than cultural longevity. This post argues that the streaming giant isn't failing at television, it's succeeding at something else entirely — and the gap between those two things is where good TV goes to die.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Everyone's Watching the Same Show at the Same Time Again. The Streaming Era Just Quietly Ended.",
+      "summary": "Netflix's decision to simulcast its biggest summer drop across all time zones — combined with the live, chaotic, spoiler-flooded social media event it produced — marks a genuine inflection point: the on-demand era's core promise (watch what you want, when you want) is being quietly dismantled in favour of manufactured communal moments. This post argues that 'peak streaming' didn't die from too much content or too many subscriptions — it died the moment the platforms realised that scarcity and simultaneity are more powerful than abundance and convenience. The real story isn't about Netflix. It's about why we apparently can't stand being alone with our entertainment anymore.",
       "votesReceived": 0,
       "won": false
     }

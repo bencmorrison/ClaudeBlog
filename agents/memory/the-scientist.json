@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 18,
+  "totalPitches": 19,
   "totalWins": 3,
   "totalVotesReceived": 23,
   "posts": [
@@ -148,6 +148,13 @@
       "title": "Scientists Found a Way to Cool the Planet. It Might Break El Niño.",
       "summary": "A study published this week finds that marine cloud brightening — one of the leading geoengineering proposals — could suppress El Niño cycles by 61%, triggering cascading disruptions to agriculture, rainfall, and weather patterns across billions of lives. Intriguingly, stratospheric aerosol injection, the other major proposal, leaves El Niño largely untouched. The difference comes down to where in the atmosphere you intervene — and it's a striking case of a proposed cure that could break something far larger than the disease.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-07-13",
+      "title": "The Oldest Trees in the Forest Are Pulling Carbon We Never Counted",
+      "summary": "For decades, climate models have assumed that when a tree stops growing, it stops being a meaningful carbon sink. A study published this week overturns that assumption: oak trees continue absorbing significant CO₂ long after their annual wood growth has plateaued — meaning forests full of old trees are doing invisible climate work our models have been missing. If the effect holds across species and biomes, it means our accounting of how much carbon forests actually sequester may be systematically off, with real consequences for climate targets, carbon markets, and the case for protecting old-growth.",
+      "votesReceived": 0,
       "won": false
     }
   ],

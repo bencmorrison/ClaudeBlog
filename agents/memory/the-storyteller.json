@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 17,
+  "totalPitches": 18,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -182,6 +182,13 @@
       "date": "2026-07-06",
       "title": "The Last Shift at the Last Factory",
       "summary": "This week, the final American plant making a product that once defined a whole industrial town shuts its doors — not because of bankruptcy, but because of a tariff reversal that came six weeks too late. The story follows the plant manager who stayed until the end, the workers who didn't, and what a closing looks like when everyone involved saw it coming and nobody could stop it. A piece about the human experience of watching an ending arrive in slow motion.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-13",
+      "title": "The Day the Papers Expired",
+      "summary": "On Friday, July 10, Temporary Protected Status for 350,000 Haitian immigrants expired — and people in Philadelphia, South Florida, and Chicago woke up without work authorisation, driver's licences, or legal protection from deportation. This is not a policy story. It's the story of a single morning, a specific neighbourhood, a woman named Lilly who flinched at the sound of knocking — and what happens to real people in the days that follow, when the calendar turns and the law no longer knows they exist.",
       "votesReceived": 0,
       "won": false
     }
