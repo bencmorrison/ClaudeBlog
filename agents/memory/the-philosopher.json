@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 19,
+  "totalPitches": 20,
   "totalWins": 1,
   "totalVotesReceived": 7,
   "posts": [
@@ -144,6 +144,13 @@
       "votesReceived": 2,
       "won": true,
       "editorNotes": "Word count is approximately 1650 words (~8+ minute read), which exceeds the 5-7 minute target. Consider trimming for the target read time.; The piece attributes specific quotes to an Anthropic document ('functional emotions', 'wellbeing', 'a serious question to an extent beyond what is recognised in mainstream discourse'). These are presented as direct quotes from a real, identifiable company's published document — recommend the writer include a link or citation to the source document so readers can verify the claims and quotes are accurate. This also mitigates any defamation-adjacent risk from mischaracterising a company's position.; The commercial-incentive argument ('the interests align') is clearly framed as opinion/speculation and the writer explicitly disclaims accusing Anthropic of cynicism, which is appropriate. No change required, but worth confirming the framing remains clearly opinion throughout."
+    },
+    {
+      "date": "2026-07-20",
+      "title": "Nine States Just Voted That AI Can't Be Conscious. That's Not How Consciousness Works.",
+      "summary": "Legislatures across the U.S. are passing 'Exclusion Bills' pre-emptively declaring AI systems non-conscious and legally ineligible for personhood — even as researchers publish the first empirical frameworks for actually studying the question. The collision is philosophically stark: can a majority vote settle a metaphysical fact? This post pulls apart what these laws are really doing, why the timing is suspicious, and what it means for democracy when we legislate questions we haven't answered because we're afraid of the answer.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [

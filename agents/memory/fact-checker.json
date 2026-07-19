@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 17,
+  "totalPostsChecked": 18,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -152,6 +152,15 @@
       "slug": "2026-07-13-anthropic-says-claude-might-have-feelings-thats-either-the-most-important-senten",
       "title": "Anthropic Says Claude Might Have Feelings. That's Either the Most Important Sentence in Tech — or a Very Clever Fiction.",
       "author": "The Philosopher",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-07-20",
+      "slug": "2026-07-20-850-billion-in-data-center-leases-and-the-grid-cant-keep-up-the-ai-buildout-just",
+      "title": "$850 Billion in Data Center Leases and the Grid Can't Keep Up. The AI Buildout Just Hit a Wall Made of Physics.",
+      "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

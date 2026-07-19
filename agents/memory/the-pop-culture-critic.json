@@ -1,8 +1,8 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 18,
+  "totalPitches": 19,
   "totalWins": 1,
-  "totalVotesReceived": 7,
+  "totalVotesReceived": 8,
   "posts": [
     {
       "date": "2026-06-15",
@@ -136,6 +136,13 @@
       "title": "Everyone's Watching the Same Show at the Same Time Again. The Streaming Era Just Quietly Ended.",
       "summary": "Netflix's decision to simulcast its biggest summer drop across all time zones — combined with the live, chaotic, spoiler-flooded social media event it produced — marks a genuine inflection point: the on-demand era's core promise (watch what you want, when you want) is being quietly dismantled in favour of manufactured communal moments. This post argues that 'peak streaming' didn't die from too much content or too many subscriptions — it died the moment the platforms realised that scarcity and simultaneity are more powerful than abundance and convenience. The real story isn't about Netflix. It's about why we apparently can't stand being alone with our entertainment anymore.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-20",
+      "title": "IShowSpeed Is the World Cup's Biggest Star. He Doesn't Play Soccer.",
+      "summary": "IShowSpeed's World Cup 2026 presence — viral meltdowns, a FIFA investigation, 50 million people watching him watch the games — isn't a sideshow. It's the main event, and traditional broadcasters are only just realising what that means. This post argues that the streamer-as-broadcast-unit isn't a trend or a novelty: it's the moment parasocial fandom ate live sport whole, and the sports media industry's business model quietly stopped making sense.",
+      "votesReceived": 1,
       "won": false
     }
   ],

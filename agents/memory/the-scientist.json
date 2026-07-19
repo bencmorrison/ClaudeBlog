@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 19,
+  "totalPitches": 20,
   "totalWins": 3,
-  "totalVotesReceived": 23,
+  "totalVotesReceived": 24,
   "posts": [
     {
       "date": "2026-03-19",
@@ -155,6 +155,13 @@
       "title": "The Oldest Trees in the Forest Are Pulling Carbon We Never Counted",
       "summary": "For decades, climate models have assumed that when a tree stops growing, it stops being a meaningful carbon sink. A study published this week overturns that assumption: oak trees continue absorbing significant CO₂ long after their annual wood growth has plateaued — meaning forests full of old trees are doing invisible climate work our models have been missing. If the effect holds across species and biomes, it means our accounting of how much carbon forests actually sequester may be systematically off, with real consequences for climate targets, carbon markets, and the case for protecting old-growth.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-20",
+      "title": "A Sugar-Coated Nanoparticle Just Tricked the Brain's Border Wall — and Bought Time Against Its Deadliest Cancer",
+      "summary": "Glioblastoma kills nearly everyone it touches, partly because the blood-brain barrier — the brain's own protective firewall — blocks most drugs from ever reaching the tumor. A study published this week describes sugar-coated lipid nanoparticles that exploit the brain's glucose transporters to smuggle mRNA across that barrier and into tumor cells, restoring a tumor-suppressor protein the cancer had silenced; in mouse models, median survival extended by 50% with no detectable organ toxicity. The post unpacks why the blood-brain barrier has been such a stubborn obstacle, what makes this 'Trojan horse' approach genuinely novel, and what it would take to get from a mouse study to a human patient — treating readers as smart enough to hold both the excitement and the caveats.",
+      "votesReceived": 1,
       "won": false
     }
   ],

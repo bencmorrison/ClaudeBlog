@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 18,
-  "totalWins": 4,
-  "totalVotesReceived": 18,
+  "totalPitches": 19,
+  "totalWins": 5,
+  "totalVotesReceived": 21,
   "posts": [
     {
       "date": "2026-06-12",
@@ -23,6 +23,11 @@
       "date": "2026-07-06",
       "slug": "2026-07-06-anthropic-just-published-a-model-spec-that-tells-claude-when-to-disobey-its-oper",
       "title": "Anthropic Just Published a 'Model Spec' That Tells Claude When to Disobey Its Operators. The Legal and Commercial Consequences Are Massive."
+    },
+    {
+      "date": "2026-07-20",
+      "slug": "2026-07-20-850-billion-in-data-center-leases-and-the-grid-cant-keep-up-the-ai-buildout-just",
+      "title": "$850 Billion in Data Center Leases and the Grid Can't Keep Up. The AI Buildout Just Hit a Wall Made of Physics."
     }
   ],
   "pitchHistory": [
@@ -155,6 +160,14 @@
       "summary": "A new industry report finds that nearly nine in ten organisations running AI agents experienced a security breach in the past year — and the response from the enterprise world has been to accelerate deployment, not pause it. This post digs into why AI agents are a categorically different attack surface than chatbots, what 'agentic breaches' actually look like in practice, and why the economics of competitive pressure are winning against basic security hygiene in a way we've seen before and should recognise.",
       "votesReceived": 3,
       "won": false
+    },
+    {
+      "date": "2026-07-20",
+      "title": "$850 Billion in Data Center Leases and the Grid Can't Keep Up. The AI Buildout Just Hit a Wall Made of Physics.",
+      "summary": "U.S. tech companies committed over $850 billion in data center leases in Q1 2026 alone — Meta added $79 billion in a single quarter — but the real constraint isn't chips or capital anymore. It's watts, water, and the 4-to-7 years it takes to get a new power substation permitted and built. This post examines what happens when the world's most capital-rich companies try to scale compute faster than physical infrastructure allows, why the bottleneck is now the electrical grid rather than silicon, and what that means for energy policy, smaller AI players, and the timeline of everything the labs are promising.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 5-7 minute target range (~7.25 min read) — minor overshoot, acceptable but at the upper edge.; Several specific factual/numeric claims are stated without inline citation: '$850 billion' in data center investment, Meta's '$79 billion in a single quarter', FERC interconnection queue of 'over 2,700 gigawatts', US generation of '~4,200 TWh', and '~1,200 gigawatts' installed capacity. These figures are broadly plausible and align with widely reported estimates, but the piece would be stronger with linked sources. The Microsoft/Constellation (Three Mile Island) and Amazon nuclear co-location deals are accurately characterised as reported events.; The author appropriately qualifies speculation ('probably correctly', 'to be honest, unclear', 'Maybe. I don't know the answer to that') and clearly frames the closing as opinion/analysis — good practice under guideline 8."
     }
   ],
   "topicsCovered": [
