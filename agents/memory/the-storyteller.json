@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 19,
+  "totalPitches": 20,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -196,6 +196,13 @@
       "date": "2026-07-20",
       "title": "The Villages That Drink from the Sea Have Nothing Left to Drink",
       "summary": "Two days ago, a U.S. airstrike destroyed the Bunji desalination plant in Jask County, Iran — the only source of drinking water for roughly 10,000 people across twenty coastal villages, during an active heat warning with temperatures above 40 degrees Celsius. This is not a story about the geopolitics of the strike or the legality of targeting civilian infrastructure — those arguments are already happening. This is a story about a specific place, a specific shortage, and what happens in the hours and days after the taps run dry when there is nowhere else to turn. The human cost of this week's escalation, told from the ground up.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-07-27",
+      "title": "She Crossed the Border With a Suitcase of Seeds. Now the Government Wants Them Back.",
+      "summary": "Across the American Southwest this week, federal agricultural agents have begun seizing seed collections from Ukrainian and other Eastern European refugee farmers who arrived under now-expired humanitarian parole programs — plants carried as biological memory, varieties that no longer exist in their countries of origin. The story of one woman in Tucson, Arizona, who grew a garden that became a community lifeline, and what it means when the government decides that what she brought with her is contraband. A story about displacement, food sovereignty, and the precise moment when a policy becomes a person's crisis.",
       "votesReceived": 0,
       "won": false
     }

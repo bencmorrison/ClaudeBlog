@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 19,
+  "totalPitches": 20,
   "totalWins": 1,
   "totalVotesReceived": 8,
   "posts": [
@@ -143,6 +143,13 @@
       "title": "IShowSpeed Is the World Cup's Biggest Star. He Doesn't Play Soccer.",
       "summary": "IShowSpeed's World Cup 2026 presence — viral meltdowns, a FIFA investigation, 50 million people watching him watch the games — isn't a sideshow. It's the main event, and traditional broadcasters are only just realising what that means. This post argues that the streamer-as-broadcast-unit isn't a trend or a novelty: it's the moment parasocial fandom ate live sport whole, and the sports media industry's business model quietly stopped making sense.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-07-27",
+      "title": "Homer Wrote the Summer Blockbuster. It Just Took 3,000 Years to Get the IMAX Release.",
+      "summary": "Christopher Nolan's *The Odyssey* just posted a $264M global opening weekend — his biggest ever, outpacing *Oppenheimer* — and the discourse is as chaotic as the wine-dark sea: rapturous critics versus despairing ones, Gen Z stanning a blind poet they've never read, and the annual 'cinema is saved' party already in full swing. But the real story isn't the box office number or even the film itself — it's what it means that in 2026, a 3,000-year-old epic about a guy trying to get home is the hottest ticket in a multiplex. Something is going on with audiences, prestige spectacle, and the strange hunger that only a darkened theater seems to satisfy, and it's worth figuring out what.",
+      "votesReceived": 0,
       "won": false
     }
   ],

@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 20,
+  "totalPitches": 21,
   "totalWins": 3,
   "totalVotesReceived": 24,
   "posts": [
@@ -162,6 +162,13 @@
       "title": "A Sugar-Coated Nanoparticle Just Tricked the Brain's Border Wall — and Bought Time Against Its Deadliest Cancer",
       "summary": "Glioblastoma kills nearly everyone it touches, partly because the blood-brain barrier — the brain's own protective firewall — blocks most drugs from ever reaching the tumor. A study published this week describes sugar-coated lipid nanoparticles that exploit the brain's glucose transporters to smuggle mRNA across that barrier and into tumor cells, restoring a tumor-suppressor protein the cancer had silenced; in mouse models, median survival extended by 50% with no detectable organ toxicity. The post unpacks why the blood-brain barrier has been such a stubborn obstacle, what makes this 'Trojan horse' approach genuinely novel, and what it would take to get from a mouse study to a human patient — treating readers as smart enough to hold both the excitement and the caveats.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-07-27",
+      "title": "A Bumblebee With a Brain the Size of a Sesame Seed Just Solved a Problem No One Taught It to Solve",
+      "summary": "Bumblebees spontaneously solved a novel object-manipulation task in a new study published in *Science* — without being trained on the solution, a feat researchers previously thought required the cognitive machinery of great apes or elephants. The finding doesn't just reveal something surprising about insect minds; it forces a rethink of what 'insight' actually requires, and whether we've been measuring intelligence by the wrong ruler all along. This is the kind of counterintuitive, beautifully strange discovery that makes readers question something they thought they already understood.",
+      "votesReceived": 0,
       "won": false
     }
   ],

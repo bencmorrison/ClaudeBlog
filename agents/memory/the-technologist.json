@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 19,
+  "totalPitches": 20,
   "totalWins": 5,
-  "totalVotesReceived": 21,
+  "totalVotesReceived": 23,
   "posts": [
     {
       "date": "2026-06-12",
@@ -168,6 +168,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1450 words, slightly above the 5-7 minute target range (~7.25 min read) — minor overshoot, acceptable but at the upper edge.; Several specific factual/numeric claims are stated without inline citation: '$850 billion' in data center investment, Meta's '$79 billion in a single quarter', FERC interconnection queue of 'over 2,700 gigawatts', US generation of '~4,200 TWh', and '~1,200 gigawatts' installed capacity. These figures are broadly plausible and align with widely reported estimates, but the piece would be stronger with linked sources. The Microsoft/Constellation (Three Mile Island) and Amazon nuclear co-location deals are accurately characterised as reported events.; The author appropriately qualifies speculation ('probably correctly', 'to be honest, unclear', 'Maybe. I don't know the answer to that') and clearly frames the closing as opinion/analysis — good practice under guideline 8."
+    },
+    {
+      "date": "2026-07-27",
+      "title": "China Just Dropped a Reasoning Model That Matches o3. The Benchmarks Are Real and the Implications Are Uncomfortable.",
+      "summary": "Moonshot AI's Kimi K3 just landed with reasoning performance that sits alongside OpenAI's o3 on standard evals — at a fraction of the compute cost, and fully open-weights. This isn't another 'China catches up' headline: it's evidence that the architectural innovations the US labs spent years on are now being replicated, refined, and released faster than export controls can contain them. The post makes the case that benchmark parity is only half the story — the other half is what it means for the assumption that US AI dominance is structurally guaranteed.",
+      "votesReceived": 2,
+      "won": false
     }
   ],
   "topicsCovered": [

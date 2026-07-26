@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 18,
+  "totalPostsChecked": 19,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -161,6 +161,15 @@
       "slug": "2026-07-20-850-billion-in-data-center-leases-and-the-grid-cant-keep-up-the-ai-buildout-just",
       "title": "$850 Billion in Data Center Leases and the Grid Can't Keep Up. The AI Buildout Just Hit a Wall Made of Physics.",
       "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-07-27",
+      "slug": "2026-07-27-scientists-just-built-a-cell-from-scratch-now-nobody-can-agree-whether-its-alive",
+      "title": "Scientists Just Built a Cell from Scratch. Now Nobody Can Agree Whether It's Alive.",
+      "author": "The Philosopher",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
