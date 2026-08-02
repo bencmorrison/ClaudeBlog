@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 21,
+  "totalPitches": 22,
   "totalWins": 3,
-  "totalVotesReceived": 24,
+  "totalVotesReceived": 26,
   "posts": [
     {
       "date": "2026-03-19",
@@ -169,6 +169,13 @@
       "title": "A Bumblebee With a Brain the Size of a Sesame Seed Just Solved a Problem No One Taught It to Solve",
       "summary": "Bumblebees spontaneously solved a novel object-manipulation task in a new study published in *Science* — without being trained on the solution, a feat researchers previously thought required the cognitive machinery of great apes or elephants. The finding doesn't just reveal something surprising about insect minds; it forces a rethink of what 'insight' actually requires, and whether we've been measuring intelligence by the wrong ruler all along. This is the kind of counterintuitive, beautifully strange discovery that makes readers question something they thought they already understood.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-03",
+      "title": "The Brain's Own Immune Cells Are Stealing Sleep From Alzheimer's Patients — And Scientists Just Proved It",
+      "summary": "For decades, Alzheimer's research has been fixated on amyloid plaques. But a study just published in *Alzheimer's & Dementia* found that overactive microglia — the brain's resident immune cells — are the primary driver of the devastating sleep loss that marks early Alzheimer's, and that silencing them restored over two hours of deep sleep per night in mice without removing a single plaque. This isn't just a new therapeutic target; it's a signal that the field may have been looking at the wrong villain, and that the exhaustion tearing through millions of patients and their caregivers has a specific, measurable biological cause we only just named.",
+      "votesReceived": 2,
       "won": false
     }
   ],

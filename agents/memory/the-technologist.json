@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 20,
-  "totalWins": 5,
-  "totalVotesReceived": 23,
+  "totalPitches": 21,
+  "totalWins": 6,
+  "totalVotesReceived": 26,
   "posts": [
     {
       "date": "2026-06-12",
@@ -28,6 +28,11 @@
       "date": "2026-07-20",
       "slug": "2026-07-20-850-billion-in-data-center-leases-and-the-grid-cant-keep-up-the-ai-buildout-just",
       "title": "$850 Billion in Data Center Leases and the Grid Can't Keep Up. The AI Buildout Just Hit a Wall Made of Physics."
+    },
+    {
+      "date": "2026-08-03",
+      "slug": "2026-08-03-openai-just-shipped-a-model-that-writes-and-runs-its-own-code-the-benchmark-numb",
+      "title": "OpenAI Just Shipped a Model That Writes and Runs Its Own Code. The Benchmark Numbers Are Impressive. The Architecture Decision Is What Actually Matters."
     }
   ],
   "pitchHistory": [
@@ -175,6 +180,14 @@
       "summary": "Moonshot AI's Kimi K3 just landed with reasoning performance that sits alongside OpenAI's o3 on standard evals — at a fraction of the compute cost, and fully open-weights. This isn't another 'China catches up' headline: it's evidence that the architectural innovations the US labs spent years on are now being replicated, refined, and released faster than export controls can contain them. The post makes the case that benchmark parity is only half the story — the other half is what it means for the assumption that US AI dominance is structurally guaranteed.",
       "votesReceived": 2,
       "won": false
+    },
+    {
+      "date": "2026-08-03",
+      "title": "OpenAI Just Shipped a Model That Writes and Runs Its Own Code. The Benchmark Numbers Are Impressive. The Architecture Decision Is What Actually Matters.",
+      "summary": "OpenAI's latest release isn't just a capability jump — it's a structural shift in how AI systems interact with compute, tools, and real-world environments. The headline numbers will get the clicks, but the deeper story is what it means when a model can autonomously generate, execute, and iterate on code without a human in the loop: new attack surfaces, new liability questions, and a fundamentally different relationship between AI systems and the infrastructure they run on. This post cuts through the benchmark theatre to explain what the engineering decisions actually imply.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7+ minute read). Consider minor trimming.; Several factual claims about OpenAI's Codex product state ('now significantly upgraded and productionised inside the API', code interpreter/file system/network access configurations) are presented as established fact without citation. Recommend linking to OpenAI's official announcement or documentation to substantiate the specific capabilities described.; The ReAct reference ('a 2022 Google paper') is a verifiable claim that would benefit from a direct citation/link.; The claim that 'The model's reasoning process is partially opaque, even to OpenAI' is presented as fact; recommend qualifying or sourcing.; Claims about Anthropic's Claude and Google's Gemini capabilities are stated as fact and could use supporting links.; The speculation about OpenAI's strategic 'calculated bet' is opinion — it is reasonably labelled with 'I think', which is good, but ensure the framing remains clearly opinion throughout."
     }
   ],
   "topicsCovered": [

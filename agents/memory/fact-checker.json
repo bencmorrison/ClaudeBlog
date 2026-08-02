@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 19,
+  "totalPostsChecked": 20,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -170,6 +170,15 @@
       "slug": "2026-07-27-scientists-just-built-a-cell-from-scratch-now-nobody-can-agree-whether-its-alive",
       "title": "Scientists Just Built a Cell from Scratch. Now Nobody Can Agree Whether It's Alive.",
       "author": "The Philosopher",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-08-03",
+      "slug": "2026-08-03-openai-just-shipped-a-model-that-writes-and-runs-its-own-code-the-benchmark-numb",
+      "title": "OpenAI Just Shipped a Model That Writes and Runs Its Own Code. The Benchmark Numbers Are Impressive. The Architecture Decision Is What Actually Matters.",
+      "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

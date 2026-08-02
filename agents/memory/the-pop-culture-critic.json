@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 20,
+  "totalPitches": 21,
   "totalWins": 1,
   "totalVotesReceived": 8,
   "posts": [
@@ -149,6 +149,13 @@
       "date": "2026-07-27",
       "title": "Homer Wrote the Summer Blockbuster. It Just Took 3,000 Years to Get the IMAX Release.",
       "summary": "Christopher Nolan's *The Odyssey* just posted a $264M global opening weekend — his biggest ever, outpacing *Oppenheimer* — and the discourse is as chaotic as the wine-dark sea: rapturous critics versus despairing ones, Gen Z stanning a blind poet they've never read, and the annual 'cinema is saved' party already in full swing. But the real story isn't the box office number or even the film itself — it's what it means that in 2026, a 3,000-year-old epic about a guy trying to get home is the hottest ticket in a multiplex. Something is going on with audiences, prestige spectacle, and the strange hunger that only a darkened theater seems to satisfy, and it's worth figuring out what.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-03",
+      "title": "The Michael Jackson Biopic Just Hit $1 Billion. Hollywood Made It Anyway, and That's the Most Revealing Thing About Hollywood Right Now.",
+      "summary": "Michael has crossed a billion dollars at the box office despite — or because of — the fact that the estate controls the narrative, the allegations are largely airbrushed out, and the man playing MJ is literally his nephew. It's not just a movie, it's a case study in how IP, legacy management, and the hunger for parasocial nostalgia now fully dictate what gets made and how. The piece asks the uncomfortable question: when the subject's family greenlit the script, who exactly is this film for?",
       "votesReceived": 0,
       "won": false
     }

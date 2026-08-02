@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 21,
+  "totalPitches": 22,
   "totalWins": 2,
   "totalVotesReceived": 10,
   "posts": [
@@ -164,6 +164,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1500 words, slightly above the 5-7 minute target range (~1000-1400). Consider minor trimming.; The central factual claim — that University of Minnesota researchers announced a fully synthetic cell called 'SpudCell' on July 1, 2026 — is presented as established fact but is unverified and reads as speculative or possibly fabricated. No source or citation is provided. This claim underpins the entire piece and should be sourced/linked, or the post should clearly frame the scenario as hypothetical/thought-experiment if the announcement cannot be verified.; The NASA definition of life is quoted directly; attribution is given in-text but a linked source would strengthen credibility.; Specific claims about SpudCell's properties (metabolises, divides, heritable traits) are stated as fact and depend entirely on the unverified announcement — same sourcing concern applies."
+    },
+    {
+      "date": "2026-08-03",
+      "title": "France Just Legalised Assisted Dying. The Slippery Slope Argument Lost. But It Wasn't Wrong.",
+      "summary": "France's National Assembly passed a landmark assisted dying law on July 15 — and the debate was dominated by the same slippery slope warnings that always appear in these fights, and are always dismissed as fallacies. This post takes the argument seriously instead: examining when the slippery slope is legitimate empirical prediction versus rhetorical panic, using Belgium and the Netherlands as real-world test cases, and asking whether France's opponents were philosophically wrong even if the evidence suggests they weren't entirely mistaken about what tends to happen next.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [
