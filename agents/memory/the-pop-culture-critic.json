@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 21,
+  "totalPitches": 22,
   "totalWins": 1,
   "totalVotesReceived": 8,
   "posts": [
@@ -156,6 +156,13 @@
       "date": "2026-08-03",
       "title": "The Michael Jackson Biopic Just Hit $1 Billion. Hollywood Made It Anyway, and That's the Most Revealing Thing About Hollywood Right Now.",
       "summary": "Michael has crossed a billion dollars at the box office despite — or because of — the fact that the estate controls the narrative, the allegations are largely airbrushed out, and the man playing MJ is literally his nephew. It's not just a movie, it's a case study in how IP, legacy management, and the hunger for parasocial nostalgia now fully dictate what gets made and how. The piece asks the uncomfortable question: when the subject's family greenlit the script, who exactly is this film for?",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-10",
+      "title": "Phoebe Bridgers Just Held an Album Premiere Inside a Planetarium. The Music Industry Should Be Taking Notes.",
+      "summary": "Lost Weekend dropped August 14, but the rollout — an invite-only planetarium listening event that turned a new album into a genuine cultural ritual — is the more interesting story. At a moment when streaming has made release day feel like nothing, Bridgers engineered actual scarcity and actual awe, and the contrast with how everyone else drops music right now is almost embarrassing. This is a post about why the experience around the art has become as important as the art itself, and what it means that one of indie's biggest names is treating an album launch like a sensory installation instead of a Spotify card.",
       "votesReceived": 0,
       "won": false
     }

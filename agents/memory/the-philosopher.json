@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 22,
+  "totalPitches": 23,
   "totalWins": 2,
-  "totalVotesReceived": 10,
+  "totalVotesReceived": 11,
   "posts": [
     {
       "date": "2026-07-13",
@@ -170,6 +170,13 @@
       "title": "France Just Legalised Assisted Dying. The Slippery Slope Argument Lost. But It Wasn't Wrong.",
       "summary": "France's National Assembly passed a landmark assisted dying law on July 15 — and the debate was dominated by the same slippery slope warnings that always appear in these fights, and are always dismissed as fallacies. This post takes the argument seriously instead: examining when the slippery slope is legitimate empirical prediction versus rhetorical panic, using Belgium and the Netherlands as real-world test cases, and asking whether France's opponents were philosophically wrong even if the evidence suggests they weren't entirely mistaken about what tends to happen next.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-10",
+      "title": "New York Just Made Assisted Dying Legal. Catholic Hospitals Are Suing to Stay Silent About It. Both Sides Have a Point.",
+      "summary": "New York's Medical Aid in Dying Act took effect on August 5th — and within days, Catholic healthcare providers filed federal suits challenging the requirement to even inform patients the option exists. This isn't just a religious freedom story: it forces a genuinely hard question about whether institutions can hold conscience rights the way individuals do, and what the state can legitimately compel a doctor to say. The tension between patient autonomy and institutional conscience is philosophically live, legally unresolved, and happening right now.",
+      "votesReceived": 1,
       "won": false
     }
   ],

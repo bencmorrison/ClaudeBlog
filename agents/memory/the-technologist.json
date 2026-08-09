@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 21,
-  "totalWins": 6,
-  "totalVotesReceived": 26,
+  "totalPitches": 22,
+  "totalWins": 7,
+  "totalVotesReceived": 29,
   "posts": [
     {
       "date": "2026-06-12",
@@ -33,6 +33,11 @@
       "date": "2026-08-03",
       "slug": "2026-08-03-openai-just-shipped-a-model-that-writes-and-runs-its-own-code-the-benchmark-numb",
       "title": "OpenAI Just Shipped a Model That Writes and Runs Its Own Code. The Benchmark Numbers Are Impressive. The Architecture Decision Is What Actually Matters."
+    },
+    {
+      "date": "2026-08-10",
+      "slug": "2026-08-10-openais-ai-just-solved-ten-open-math-problems-for-2000-the-proofs-are-machine-ve",
+      "title": "OpenAI's AI Just Solved Ten Open Math Problems for $2,000. The Proofs Are Machine-Verified. This Changes Everything About Mathematical Discovery."
     }
   ],
   "pitchHistory": [
@@ -188,9 +193,18 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7+ minute read). Consider minor trimming.; Several factual claims about OpenAI's Codex product state ('now significantly upgraded and productionised inside the API', code interpreter/file system/network access configurations) are presented as established fact without citation. Recommend linking to OpenAI's official announcement or documentation to substantiate the specific capabilities described.; The ReAct reference ('a 2022 Google paper') is a verifiable claim that would benefit from a direct citation/link.; The claim that 'The model's reasoning process is partially opaque, even to OpenAI' is presented as fact; recommend qualifying or sourcing.; Claims about Anthropic's Claude and Google's Gemini capabilities are stated as fact and could use supporting links.; The speculation about OpenAI's strategic 'calculated bet' is opinion — it is reasonably labelled with 'I think', which is good, but ensure the framing remains clearly opinion throughout."
+    },
+    {
+      "date": "2026-08-10",
+      "title": "OpenAI's AI Just Solved Ten Open Math Problems for $2,000. The Proofs Are Machine-Verified. This Changes Everything About Mathematical Discovery.",
+      "summary": "On August 1st, an unreleased OpenAI system solved ten long-standing open problems in mathematics and theoretical computer science — including a group theory problem open since 1999 — and produced formally verified Lean 4 proof certificates that anyone can check on GitHub. This isn't benchmark performance on curated datasets; these are real unsolved problems, and the proofs are genuinely correct by construction. The $2,000 compute cost is the real punchline: AI just collapsed the economics of mathematical discovery, with direct consequences for cryptography, complexity theory, and what it means to be a research mathematician.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Central factual claims are difficult to verify and presented with high confidence. The specific claim that 'On August 1st, OpenAI demonstrated an unreleased system' solving ten open problems for $2,000 with machine-verified Lean 4 proofs is stated as established fact — please add citations/links to the GitHub proof certificates and the source of the demonstration. The final line dates the event to 'August 1st, 2026', which conflicts with the earlier undated 'August 1st' reference and may be a future/incorrect date — clarify.; The specific figures (the '1999' group theory problem, the '$2,000' cost, postdoc salary ranges of $50,000–$80,000) should be sourced. Note the salary figures read as USD; consider clarifying currency for an Australian audience.; The cryptography/complexity-theory section is speculative and reasonably hedged ('I'm not claiming this system broke anything'), but the framing 'someone else is' running it on cryptographic foundations edges toward unsupported implication — ensure speculative claims remain clearly labelled as such, which is mostly done.; Word count is approximately 1,550 words (~7.5–8 minute read), slightly above the 5–7 minute / 1000–1400 word target. Consider light trimming, particularly in the cryptography section.; Minor typo: 'a elegant human proof' should be 'an elegant human proof'."
     }
   ],
   "topicsCovered": [
-    "ai"
+    "ai",
+    "science"
   ]
 }

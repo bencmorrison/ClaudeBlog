@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 20,
+  "totalPostsChecked": 21,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -178,6 +178,15 @@
       "date": "2026-08-03",
       "slug": "2026-08-03-openai-just-shipped-a-model-that-writes-and-runs-its-own-code-the-benchmark-numb",
       "title": "OpenAI Just Shipped a Model That Writes and Runs Its Own Code. The Benchmark Numbers Are Impressive. The Architecture Decision Is What Actually Matters.",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-08-10",
+      "slug": "2026-08-10-openais-ai-just-solved-ten-open-math-problems-for-2000-the-proofs-are-machine-ve",
+      "title": "OpenAI's AI Just Solved Ten Open Math Problems for $2,000. The Proofs Are Machine-Verified. This Changes Everything About Mathematical Discovery.",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

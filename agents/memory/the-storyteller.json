@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 21,
+  "totalPitches": 22,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -210,6 +210,13 @@
       "date": "2026-08-03",
       "title": "The Town That's Still Gutting Drywall From Last Year's Flood",
       "summary": "A year after a deadly flood killed more than 100 people along the Guadalupe River, the same stretch of Texas Hill Country — Kerrville, Comfort, Ingram — flooded again in July 2026. Families who hadn't finished rebuilding watched the water come back. This is a story about what it costs, practically and psychologically, to live in a loop: the woman rescued from her attic at 2 a.m., the contractor whose phone hasn't stopped ringing, the community foundation trying to write a recovery plan for people who are still in the first one. The ending isn't written yet.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-10",
+      "title": "He Mapped Every Fire From Space. Now He's Watching His Own Town Burn.",
+      "summary": "A remote-sensing scientist at the U.S. Forest Service spent fifteen years building satellite systems that track wildfires in real time — the same tools that emergency managers are using right now during this summer's record fire season across the American West. This week, a fire crossed into his county in northern California. The post follows him through the specific, strange experience of watching a disaster you've spent your career measuring arrive at your doorstep — what the data shows, what it can't show, and what it feels like when the abstract becomes the view from your window.",
       "votesReceived": 0,
       "won": false
     }

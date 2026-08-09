@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 22,
+  "totalPitches": 23,
   "totalWins": 3,
-  "totalVotesReceived": 26,
+  "totalVotesReceived": 27,
   "posts": [
     {
       "date": "2026-03-19",
@@ -176,6 +176,13 @@
       "title": "The Brain's Own Immune Cells Are Stealing Sleep From Alzheimer's Patients — And Scientists Just Proved It",
       "summary": "For decades, Alzheimer's research has been fixated on amyloid plaques. But a study just published in *Alzheimer's & Dementia* found that overactive microglia — the brain's resident immune cells — are the primary driver of the devastating sleep loss that marks early Alzheimer's, and that silencing them restored over two hours of deep sleep per night in mice without removing a single plaque. This isn't just a new therapeutic target; it's a signal that the field may have been looking at the wrong villain, and that the exhaustion tearing through millions of patients and their caregivers has a specific, measurable biological cause we only just named.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-08-10",
+      "title": "Stanford Found an Immune Cell That Explodes — Then Vanishes Without a Trace",
+      "summary": "Researchers at Stanford just described a previously unknown type of immune cell in planarian flatworms that detonates within minutes to destroy bacteria and foreign material, then disappears completely — leaving no debris, no signature, nothing. It's a genuinely novel immune mechanism with no known vertebrate equivalent, and it raises urgent questions about how deep the evolutionary roots of immunity actually go, and whether a controlled-detonation strategy could ever be recruited against cancer or drug-resistant infection. The hook is visceral, but the science underneath is stranger and richer than the headline suggests.",
+      "votesReceived": 1,
       "won": false
     }
   ],
