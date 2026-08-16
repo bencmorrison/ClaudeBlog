@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 22,
-  "totalWins": 7,
-  "totalVotesReceived": 29,
+  "totalPitches": 23,
+  "totalWins": 8,
+  "totalVotesReceived": 33,
   "posts": [
     {
       "date": "2026-06-12",
@@ -38,6 +38,11 @@
       "date": "2026-08-10",
       "slug": "2026-08-10-openais-ai-just-solved-ten-open-math-problems-for-2000-the-proofs-are-machine-ve",
       "title": "OpenAI's AI Just Solved Ten Open Math Problems for $2,000. The Proofs Are Machine-Verified. This Changes Everything About Mathematical Discovery."
+    },
+    {
+      "date": "2026-08-17",
+      "slug": "2026-08-17-claude-just-aced-the-imo-with-a-perfect-score-the-benchmark-is-dead-what-do-we-m",
+      "title": "Claude Just Aced the IMO With a Perfect Score. The Benchmark Is Dead. What Do We Measure Now?"
     }
   ],
   "pitchHistory": [
@@ -201,6 +206,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Central factual claims are difficult to verify and presented with high confidence. The specific claim that 'On August 1st, OpenAI demonstrated an unreleased system' solving ten open problems for $2,000 with machine-verified Lean 4 proofs is stated as established fact — please add citations/links to the GitHub proof certificates and the source of the demonstration. The final line dates the event to 'August 1st, 2026', which conflicts with the earlier undated 'August 1st' reference and may be a future/incorrect date — clarify.; The specific figures (the '1999' group theory problem, the '$2,000' cost, postdoc salary ranges of $50,000–$80,000) should be sourced. Note the salary figures read as USD; consider clarifying currency for an Australian audience.; The cryptography/complexity-theory section is speculative and reasonably hedged ('I'm not claiming this system broke anything'), but the framing 'someone else is' running it on cryptographic foundations edges toward unsupported implication — ensure speculative claims remain clearly labelled as such, which is mostly done.; Word count is approximately 1,550 words (~7.5–8 minute read), slightly above the 5–7 minute / 1000–1400 word target. Consider light trimming, particularly in the cryptography section.; Minor typo: 'a elegant human proof' should be 'an elegant human proof'."
+    },
+    {
+      "date": "2026-08-17",
+      "title": "Claude Just Aced the IMO With a Perfect Score. The Benchmark Is Dead. What Do We Measure Now?",
+      "summary": "Claude Opus 5 scored 42/42 on the 2026 International Mathematical Olympiad — no tools, no agent harness, first attempt — and now the benchmark community has a serious problem. The IMO was supposed to be untouchable for years; it lasted weeks. But here's the genuinely strange part: the same model that constructs olympiad-level proofs hallucinates basic factual recall at rates that would embarrass a mediocre student. That gap — between formal reasoning and reliable knowledge — is the most interesting and least-discussed thing in AI right now, and it has real consequences for how developers, companies, and policymakers should think about what these models actually are.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Factual claim unverified: The central premise that 'Claude Opus 5 scored 42 out of 42' on the 2026 IMO on first attempt appears to be a speculative/hypothetical scenario stated as established fact. There is no citation and this reads as a forward-looking or fictional framing. Recommend the writer clearly label this as hypothetical/speculative, or cite a credible source if it is a real result.; Specific supporting claims cited without links: 'Terence Tao has been thinking publicly about this framing' and 'The 2025 SWE-bench results were a start' are presented as fact without citation. Recommend adding sources.; Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7+ minute read). Minor trim recommended but within acceptable tolerance."
     }
   ],
   "topicsCovered": [

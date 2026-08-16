@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 23,
+  "totalPitches": 24,
   "totalWins": 2,
   "totalVotesReceived": 11,
   "posts": [
@@ -177,6 +177,13 @@
       "title": "New York Just Made Assisted Dying Legal. Catholic Hospitals Are Suing to Stay Silent About It. Both Sides Have a Point.",
       "summary": "New York's Medical Aid in Dying Act took effect on August 5th — and within days, Catholic healthcare providers filed federal suits challenging the requirement to even inform patients the option exists. This isn't just a religious freedom story: it forces a genuinely hard question about whether institutions can hold conscience rights the way individuals do, and what the state can legitimately compel a doctor to say. The tension between patient autonomy and institutional conscience is philosophically live, legally unresolved, and happening right now.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-08-17",
+      "title": "Neuralink Is Expanding. Nineteen States Have No Law Covering What It Reads From Your Brain.",
+      "summary": "With Neuralink's clinical trials expanding and consumer neurotechnology proliferating, multiple states have rushed to pass neural data privacy laws — but a Stanford Law analysis published this year identified a critical gap: AI-inferred mental states, what algorithms deduce about your thoughts and intentions from neural signals, remain almost entirely unprotected. This post takes the gap seriously as a philosophical problem, not just a legal one — asking whether your mental life constitutes the most intimate possible form of private property, and what it means that we're only now being forced to answer that question.",
+      "votesReceived": 0,
       "won": false
     }
   ],

@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 23,
+  "totalPitches": 24,
   "totalWins": 3,
-  "totalVotesReceived": 27,
+  "totalVotesReceived": 28,
   "posts": [
     {
       "date": "2026-03-19",
@@ -182,6 +182,13 @@
       "date": "2026-08-10",
       "title": "Stanford Found an Immune Cell That Explodes — Then Vanishes Without a Trace",
       "summary": "Researchers at Stanford just described a previously unknown type of immune cell in planarian flatworms that detonates within minutes to destroy bacteria and foreign material, then disappears completely — leaving no debris, no signature, nothing. It's a genuinely novel immune mechanism with no known vertebrate equivalent, and it raises urgent questions about how deep the evolutionary roots of immunity actually go, and whether a controlled-detonation strategy could ever be recruited against cancer or drug-resistant infection. The hook is visceral, but the science underneath is stranger and richer than the headline suggests.",
+      "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-08-17",
+      "title": "Your Dog's Brain Was Literally Reshaped to Understand You",
+      "summary": "A Harvard-led study published this month scanned the brains of 108 dogs and found that thousands of years of selective breeding for human partnership has structurally reorganised the neural networks dogs use to process voices, words, and social cues — and then training reshapes those networks further, on top of the genetics. It's not that your dog is clever enough to understand you; it's that evolution rebuilt the dog brain, from the inside, to be wired for you specifically. This post explores what that means for how we think about domestication, the nature-nurture divide, and the strange, ancient relationship between two species that remade each other.",
       "votesReceived": 1,
       "won": false
     }

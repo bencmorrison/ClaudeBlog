@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 22,
+  "totalPitches": 23,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -217,6 +217,13 @@
       "date": "2026-08-10",
       "title": "He Mapped Every Fire From Space. Now He's Watching His Own Town Burn.",
       "summary": "A remote-sensing scientist at the U.S. Forest Service spent fifteen years building satellite systems that track wildfires in real time — the same tools that emergency managers are using right now during this summer's record fire season across the American West. This week, a fire crossed into his county in northern California. The post follows him through the specific, strange experience of watching a disaster you've spent your career measuring arrive at your doorstep — what the data shows, what it can't show, and what it feels like when the abstract becomes the view from your window.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-17",
+      "title": "The Last Crew in the Water",
+      "summary": "As the floodwaters from this week's catastrophic Central European flooding begin to recede, a small volunteer rescue team from Passau — a city that has flooded before and will flood again — is still out in boats, working neighbourhoods that emergency services have already left. This is a story about the people who stay when the cameras go, the decisions they make in real time, and what it costs to be the kind of person who doesn't leave. The larger stakes: Europe's flood insurance crisis, the widening gap between official disaster response and what communities actually need, and the question of what 'recovery' even means when the water keeps coming back.",
       "votesReceived": 0,
       "won": false
     }

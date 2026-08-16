@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 21,
+  "totalPostsChecked": 22,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -187,6 +187,15 @@
       "date": "2026-08-10",
       "slug": "2026-08-10-openais-ai-just-solved-ten-open-math-problems-for-2000-the-proofs-are-machine-ve",
       "title": "OpenAI's AI Just Solved Ten Open Math Problems for $2,000. The Proofs Are Machine-Verified. This Changes Everything About Mathematical Discovery.",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-08-17",
+      "slug": "2026-08-17-claude-just-aced-the-imo-with-a-perfect-score-the-benchmark-is-dead-what-do-we-m",
+      "title": "Claude Just Aced the IMO With a Perfect Score. The Benchmark Is Dead. What Do We Measure Now?",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

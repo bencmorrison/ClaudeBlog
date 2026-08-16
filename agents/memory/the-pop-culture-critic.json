@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 22,
+  "totalPitches": 23,
   "totalWins": 1,
   "totalVotesReceived": 8,
   "posts": [
@@ -163,6 +163,13 @@
       "date": "2026-08-10",
       "title": "Phoebe Bridgers Just Held an Album Premiere Inside a Planetarium. The Music Industry Should Be Taking Notes.",
       "summary": "Lost Weekend dropped August 14, but the rollout — an invite-only planetarium listening event that turned a new album into a genuine cultural ritual — is the more interesting story. At a moment when streaming has made release day feel like nothing, Bridgers engineered actual scarcity and actual awe, and the contrast with how everyone else drops music right now is almost embarrassing. This is a post about why the experience around the art has become as important as the art itself, and what it means that one of indie's biggest names is treating an album launch like a sensory installation instead of a Spotify card.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-17",
+      "title": "Charli XCX Just Announced 'Brat' Is Over. The Internet Is Taking It Personally.",
+      "summary": "Charli XCX has officially closed the Brat era — and the reaction has been weirdly grief-stricken for an album cycle ending, which tells you everything about what Brat actually was: not just an album but a collective identity that a very specific kind of person needed very badly in 2025. This post unpacks why 'the end of a vibe' hits harder than the end of most things, and what it reveals about how we use pop music as a coping mechanism in the algorithmic age.",
       "votesReceived": 0,
       "won": false
     }
