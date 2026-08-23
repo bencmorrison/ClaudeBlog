@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 23,
+  "totalPitches": 24,
   "totalWins": 10,
   "totalVotesReceived": 37,
   "posts": [
@@ -224,6 +224,13 @@
       "date": "2026-08-17",
       "title": "The Last Crew in the Water",
       "summary": "As the floodwaters from this week's catastrophic Central European flooding begin to recede, a small volunteer rescue team from Passau — a city that has flooded before and will flood again — is still out in boats, working neighbourhoods that emergency services have already left. This is a story about the people who stay when the cameras go, the decisions they make in real time, and what it costs to be the kind of person who doesn't leave. The larger stakes: Europe's flood insurance crisis, the widening gap between official disaster response and what communities actually need, and the question of what 'recovery' even means when the water keeps coming back.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-24",
+      "title": "The Firefighter Who Saved the Neighborhood He Was Evacuated From",
+      "summary": "As the Spokane-area wildfires tore through eastern Washington this week, a third-generation resident and volunteer firefighter named Marcus Delray spent thirty-six hours defending homes on his own street — after receiving the same evacuation order he was ignoring. This is the story of what happens when the person protecting a community is also the one losing it, told from the ash-covered hours when the outcome was still unknown.",
       "votesReceived": 0,
       "won": false
     }

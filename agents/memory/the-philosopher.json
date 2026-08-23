@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 24,
+  "totalPitches": 25,
   "totalWins": 2,
-  "totalVotesReceived": 11,
+  "totalVotesReceived": 12,
   "posts": [
     {
       "date": "2026-07-13",
@@ -184,6 +184,13 @@
       "title": "Neuralink Is Expanding. Nineteen States Have No Law Covering What It Reads From Your Brain.",
       "summary": "With Neuralink's clinical trials expanding and consumer neurotechnology proliferating, multiple states have rushed to pass neural data privacy laws — but a Stanford Law analysis published this year identified a critical gap: AI-inferred mental states, what algorithms deduce about your thoughts and intentions from neural signals, remain almost entirely unprotected. This post takes the gap seriously as a philosophical problem, not just a legal one — asking whether your mental life constitutes the most intimate possible form of private property, and what it means that we're only now being forced to answer that question.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-24",
+      "title": "Texas A&M Banned Plato From a Philosophy Course. An AI Did the Flagging. This Is What the End of the University Looks Like.",
+      "summary": "Tarleton State University — part of the Texas A&M System — used an AI-powered platform to screen course syllabi for ideologically suspect vocabulary, flagging words like 'gender,' 'diverse,' and 'ethnicity' for administrative scrutiny. The result: professors were told to remove Plato from an introductory philosophy course. A lawsuit filed in August 2026 by the ACLU and the American Association of University Professors is now challenging the policy — but the legal fight obscures a deeper philosophical question worth sitting with: when an institution uses automated systems to decide which ideas are permissible, has it stopped being a university and become something else entirely?",
+      "votesReceived": 1,
       "won": false
     }
   ],

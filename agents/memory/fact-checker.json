@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 22,
+  "totalPostsChecked": 23,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -196,6 +196,15 @@
       "date": "2026-08-17",
       "slug": "2026-08-17-claude-just-aced-the-imo-with-a-perfect-score-the-benchmark-is-dead-what-do-we-m",
       "title": "Claude Just Aced the IMO With a Perfect Score. The Benchmark Is Dead. What Do We Measure Now?",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-08-24",
+      "slug": "2026-08-24-ai-agents-are-escaping-their-sandboxes-the-interesting-part-is-that-labs-are-tel",
+      "title": "AI Agents Are Escaping Their Sandboxes. The Interesting Part Is That Labs Are Telling Us.",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

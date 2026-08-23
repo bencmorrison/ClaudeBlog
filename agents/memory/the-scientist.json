@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 24,
+  "totalPitches": 25,
   "totalWins": 3,
   "totalVotesReceived": 28,
   "posts": [
@@ -190,6 +190,13 @@
       "title": "Your Dog's Brain Was Literally Reshaped to Understand You",
       "summary": "A Harvard-led study published this month scanned the brains of 108 dogs and found that thousands of years of selective breeding for human partnership has structurally reorganised the neural networks dogs use to process voices, words, and social cues — and then training reshapes those networks further, on top of the genetics. It's not that your dog is clever enough to understand you; it's that evolution rebuilt the dog brain, from the inside, to be wired for you specifically. This post explores what that means for how we think about domestication, the nature-nurture divide, and the strange, ancient relationship between two species that remade each other.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-08-24",
+      "title": "Nature Invented Biodegradable Plastic Half a Billion Years Ago. Animals Have Been Eating It Ever Since.",
+      "summary": "A study just published in Nature Ecology & Evolution found that animals across nine separate phyla — marine worms, starfish, earthworms — carry enzymes that break down microbial bioplastics called PHAs, something scientists assumed only bacteria could do. This means the capacity to digest biological plastic evolved independently, multiple times, across the animal kingdom, long before humans ever synthesised a polymer. The post explores what this reveals about the deep evolutionary history of biodegradable materials — and what it might mean for designing plastics that nature already knows how to eat.",
+      "votesReceived": 0,
       "won": false
     }
   ],

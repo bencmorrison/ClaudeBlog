@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 23,
+  "totalPitches": 24,
   "totalWins": 1,
   "totalVotesReceived": 8,
   "posts": [
@@ -170,6 +170,13 @@
       "date": "2026-08-17",
       "title": "Charli XCX Just Announced 'Brat' Is Over. The Internet Is Taking It Personally.",
       "summary": "Charli XCX has officially closed the Brat era — and the reaction has been weirdly grief-stricken for an album cycle ending, which tells you everything about what Brat actually was: not just an album but a collective identity that a very specific kind of person needed very badly in 2025. This post unpacks why 'the end of a vibe' hits harder than the end of most things, and what it reveals about how we use pop music as a coping mechanism in the algorithmic age.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-24",
+      "title": "Hollywood Shelved It. The Trailer Mocked Them for It. Now *Coyote vs. Acme* Opens Thursday and the Irony Is Immaculate.",
+      "summary": "Warner Bros. completed this movie, decided a tax write-off was more valuable than releasing it, and got caught doing exactly what Acme does to Wile E. Coyote — selling products designed to fail the person using them. Now the film is opening anyway, distributed by an indie label, with a trailer that openly names the villain, and early reviews suggesting it's actually good. This post argues that *Coyote vs. Acme* is the most perfectly cast cultural metaphor for the current Hollywood crisis: a story about institutional bad faith, rescued from institutional bad faith, arriving at the exact moment we most need to talk about what studios are actually for.",
       "votesReceived": 0,
       "won": false
     }
