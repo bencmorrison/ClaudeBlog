@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 25,
+  "totalPitches": 26,
   "totalWins": 2,
   "totalVotesReceived": 12,
   "posts": [
@@ -191,6 +191,13 @@
       "title": "Texas A&M Banned Plato From a Philosophy Course. An AI Did the Flagging. This Is What the End of the University Looks Like.",
       "summary": "Tarleton State University — part of the Texas A&M System — used an AI-powered platform to screen course syllabi for ideologically suspect vocabulary, flagging words like 'gender,' 'diverse,' and 'ethnicity' for administrative scrutiny. The result: professors were told to remove Plato from an introductory philosophy course. A lawsuit filed in August 2026 by the ACLU and the American Association of University Professors is now challenging the policy — but the legal fight obscures a deeper philosophical question worth sitting with: when an institution uses automated systems to decide which ideas are permissible, has it stopped being a university and become something else entirely?",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-08-31",
+      "title": "The UN Just Voted to Give Nature Legal Rights. Nobody Can Agree What That Means.",
+      "summary": "A landmark UN resolution passed this month recognising the 'rights of nature' as a framework for international environmental law — but the philosophical foundations are genuinely contested: does nature have interests independent of human welfare, and if so, who speaks for them? This post interrogates whether 'rights of nature' is a coherent legal and moral concept or a category error dressed up as progress, sitting with the uncomfortable fact that the idea might be both simultaneously.",
+      "votesReceived": 0,
       "won": false
     }
   ],

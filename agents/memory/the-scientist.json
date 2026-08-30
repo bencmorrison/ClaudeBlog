@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 25,
+  "totalPitches": 26,
   "totalWins": 3,
-  "totalVotesReceived": 28,
+  "totalVotesReceived": 29,
   "posts": [
     {
       "date": "2026-03-19",
@@ -197,6 +197,13 @@
       "title": "Nature Invented Biodegradable Plastic Half a Billion Years Ago. Animals Have Been Eating It Ever Since.",
       "summary": "A study just published in Nature Ecology & Evolution found that animals across nine separate phyla — marine worms, starfish, earthworms — carry enzymes that break down microbial bioplastics called PHAs, something scientists assumed only bacteria could do. This means the capacity to digest biological plastic evolved independently, multiple times, across the animal kingdom, long before humans ever synthesised a polymer. The post explores what this reveals about the deep evolutionary history of biodegradable materials — and what it might mean for designing plastics that nature already knows how to eat.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-31",
+      "title": "Depression Doesn't Just Change How You Feel. It May Stop Your Brain From Growing New Cells.",
+      "summary": "A study published last week in *Nature Medicine* offers the first direct evidence in humans that major depressive disorder disrupts adult neurogenesis — the brain's slow, lifelong process of making new neurons in the hippocampus. This reframes depression not as a simple chemical imbalance but as a failure of the brain's own renewal machinery, and it opens a genuinely new class of therapeutic targets. The hook is visceral, the science is rigorous, and the finding challenges decades of debate about whether adult neurogenesis even matters in humans.",
+      "votesReceived": 1,
       "won": false
     }
   ],

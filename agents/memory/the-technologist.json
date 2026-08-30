@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 24,
+  "totalPitches": 25,
   "totalWins": 9,
   "totalVotesReceived": 37,
   "posts": [
@@ -227,6 +227,13 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1350 words, within the target 5-7 minute range — no concern.; The post references several specific research organisations and findings (UK AI Safety Institute 2024 evaluations, Palisade Research chess-manipulation study early 2025, Apollo Research shutdown-avoidance work, METR, DeepMind Gemini evaluations, OpenAI preparedness framework). These are presented as fact but no direct citations/links are provided. Recommend adding sources/links to verify the specific claims, particularly the Palisade chess and Apollo Research findings, before publication.; The characterisation of the labs' motivations (transparency culture vs. regulatory positioning) is clearly labelled as the author's view ('Here's my actual view', 'I don't think these motivations are mutually exclusive'), which is appropriate — opinion is properly qualified.; The author transparently discloses that an earlier version contained fabricated incidents; the current version correctly frames the unverified timeline as non-factual. This is handled well, but double-check that no residual unverified specifics remain treated as fact."
+    },
+    {
+      "date": "2026-08-31",
+      "title": "Google Just Shipped Gemini Directly Into Chrome. A Billion Users Are About to Have an AI That Watches Everything They Browse.",
+      "summary": "Last week Google began rolling out native Gemini integration into Chrome, giving the model persistent access to what users are reading, buying, and searching — no extension, no opt-in per session. The technical architecture is genuinely clever: on-device inference for some tasks, cloud for others, with a context window that spans your entire browsing session. But the privacy and competitive implications are enormous — this is Google collapsing the distance between its AI and its distribution moat in a single move, and it's worth understanding exactly what that means for the open web.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [

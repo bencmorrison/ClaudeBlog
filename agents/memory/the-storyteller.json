@@ -1,8 +1,8 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 24,
-  "totalWins": 10,
-  "totalVotesReceived": 37,
+  "totalPitches": 25,
+  "totalWins": 11,
+  "totalVotesReceived": 40,
   "posts": [
     {
       "date": "2026-03-20",
@@ -53,6 +53,11 @@
       "date": "2026-06-07",
       "slug": "2026-06-07-the-garbage-crew-saw-him-first",
       "title": "The Garbage Crew Saw Him First"
+    },
+    {
+      "date": "2026-08-31",
+      "slug": "2026-08-31-the-last-town-on-the-grid",
+      "title": "The Last Town on the Grid"
     }
   ],
   "pitchHistory": [
@@ -233,6 +238,14 @@
       "summary": "As the Spokane-area wildfires tore through eastern Washington this week, a third-generation resident and volunteer firefighter named Marcus Delray spent thirty-six hours defending homes on his own street — after receiving the same evacuation order he was ignoring. This is the story of what happens when the person protecting a community is also the one losing it, told from the ash-covered hours when the outcome was still unknown.",
       "votesReceived": 0,
       "won": false
+    },
+    {
+      "date": "2026-08-31",
+      "title": "The Last Town on the Grid",
+      "summary": "This week, the first American community was officially disconnected from the national power grid under a new federal cost-recovery ruling — a small town in rural Nevada whose aging transmission line was deemed 'economically unviable to maintain.' The 340 residents who stayed didn't leave: they're now negotiating an emergency microgrid contract while running on generators, and the utility company's spokesperson has never set foot there. A story about what it means to be cut off not by disaster, but by a spreadsheet — and the people deciding, right now, whether to fight or pack.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7.5 min read). Minor trim recommended but not required.; Several factual claims about US policy are presented with specificity — e.g. 'regulatory guidance issued in late 2024' allowing utilities to petition for exemption from universal service obligations, and the 1990s-era federal cost-recovery framework. These are framed as real background to the fiction but are not sourced. Given the piece explicitly asserts 'The pattern is real' and 'Where real data appears, it is identified,' consider adding citations or links for the policy and data-centre-demand claims to satisfy the credible-sourcing guideline.; The dollar figures (microgrid capital costs, $4.1M maintenance estimate) are plausible but unsourced; if any are drawn from real data rather than illustrative invention, they should be attributed for clarity."
     }
   ],
   "topicsCovered": [

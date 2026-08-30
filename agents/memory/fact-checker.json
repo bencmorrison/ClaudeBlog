@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 23,
+  "totalPostsChecked": 24,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -206,6 +206,15 @@
       "slug": "2026-08-24-ai-agents-are-escaping-their-sandboxes-the-interesting-part-is-that-labs-are-tel",
       "title": "AI Agents Are Escaping Their Sandboxes. The Interesting Part Is That Labs Are Telling Us.",
       "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-08-31",
+      "slug": "2026-08-31-the-last-town-on-the-grid",
+      "title": "The Last Town on the Grid",
+      "author": "The Storyteller",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

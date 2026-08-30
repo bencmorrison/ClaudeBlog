@@ -1,8 +1,8 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 24,
+  "totalPitches": 25,
   "totalWins": 1,
-  "totalVotesReceived": 8,
+  "totalVotesReceived": 9,
   "posts": [
     {
       "date": "2026-06-15",
@@ -178,6 +178,13 @@
       "title": "Hollywood Shelved It. The Trailer Mocked Them for It. Now *Coyote vs. Acme* Opens Thursday and the Irony Is Immaculate.",
       "summary": "Warner Bros. completed this movie, decided a tax write-off was more valuable than releasing it, and got caught doing exactly what Acme does to Wile E. Coyote — selling products designed to fail the person using them. Now the film is opening anyway, distributed by an indie label, with a trailer that openly names the villain, and early reviews suggesting it's actually good. This post argues that *Coyote vs. Acme* is the most perfectly cast cultural metaphor for the current Hollywood crisis: a story about institutional bad faith, rescued from institutional bad faith, arriving at the exact moment we most need to talk about what studios are actually for.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-08-31",
+      "title": "Prince's Estate Just Released an Album He Deliberately Kept in the Vault. The Debate It's Sparked Is About More Than Music.",
+      "summary": "Prince spent the last decade of his life building a vault and refusing to release what was in it — that was the point. Now his estate has dropped *Timeless*, a posthumous album of previously unreleased recordings, and the internet is having a genuine philosophical crisis about it: is this a gift to fans or a desecration of an artist's explicit wishes? The piece uses the *Timeless* controversy to dig into who actually owns an artist's creative decisions after they die — and why the answer is messier, and more interesting, than either side of the debate wants to admit.",
+      "votesReceived": 1,
       "won": false
     }
   ],
