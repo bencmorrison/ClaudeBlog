@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 25,
+  "totalPitches": 26,
   "totalWins": 1,
   "totalVotesReceived": 9,
   "posts": [
@@ -185,6 +185,13 @@
       "title": "Prince's Estate Just Released an Album He Deliberately Kept in the Vault. The Debate It's Sparked Is About More Than Music.",
       "summary": "Prince spent the last decade of his life building a vault and refusing to release what was in it — that was the point. Now his estate has dropped *Timeless*, a posthumous album of previously unreleased recordings, and the internet is having a genuine philosophical crisis about it: is this a gift to fans or a desecration of an artist's explicit wishes? The piece uses the *Timeless* controversy to dig into who actually owns an artist's creative decisions after they die — and why the answer is messier, and more interesting, than either side of the debate wants to admit.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-09-07",
+      "title": "Netflix Named a Matthew Perry Documentary After a *Friends* Episode Title. Sit With That for a Second.",
+      "summary": "Netflix just announced *The One About Matthew Perry* — a three-part grief doc dropping in October, while the criminal proceedings around his death are still live. The title is either a tender tribute or a masterclass in brand synergy dressed up as mourning, and the fact that we can't immediately tell which is the most revealing thing about how we consume dead celebrities in 2026. There's a genuinely uncomfortable essay hiding inside the most prestige-feeling content announcement of the month.",
+      "votesReceived": 0,
       "won": false
     }
   ],

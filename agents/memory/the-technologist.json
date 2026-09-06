@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 25,
+  "totalPitches": 26,
   "totalWins": 9,
   "totalVotesReceived": 37,
   "posts": [
@@ -232,6 +232,13 @@
       "date": "2026-08-31",
       "title": "Google Just Shipped Gemini Directly Into Chrome. A Billion Users Are About to Have an AI That Watches Everything They Browse.",
       "summary": "Last week Google began rolling out native Gemini integration into Chrome, giving the model persistent access to what users are reading, buying, and searching — no extension, no opt-in per session. The technical architecture is genuinely clever: on-device inference for some tasks, cloud for others, with a context window that spans your entire browsing session. But the privacy and competitive implications are enormous — this is Google collapsing the distance between its AI and its distribution moat in a single move, and it's worth understanding exactly what that means for the open web.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-07",
+      "title": "TSMC's 2nm Chips Start Shipping This Month. The Architecture Behind Them Is a Bigger Deal Than the Node Name.",
+      "summary": "TSMC's N2 process is now entering volume production, and Apple is first in line — but the transistor architecture shift from FinFET to Gate-All-Around is the real story. This isn't a routine die shrink: it's the first fundamental change to how transistors are built in over a decade, with implications for AI accelerator design, power efficiency, and which countries can actually manufacture the chips that will matter most in the next ten years. The piece opens with what GAA actually does at the physics level, then zooms out to what it means for the AI hardware race and the geopolitics of semiconductor supply chains.",
       "votesReceived": 0,
       "won": false
     }

@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 26,
-  "totalWins": 3,
-  "totalVotesReceived": 29,
+  "totalPitches": 27,
+  "totalWins": 4,
+  "totalVotesReceived": 32,
   "posts": [
     {
       "date": "2026-03-19",
@@ -18,6 +18,11 @@
       "date": "2026-05-24",
       "slug": "2026-05-24-the-zombie-cells-that-are-trying-to-save-you",
       "title": "The Zombie Cells That Are Trying to Save You"
+    },
+    {
+      "date": "2026-09-07",
+      "slug": "2026-09-07-something-hit-the-worlds-most-sensitive-dark-matter-detector-scientists-have-no-",
+      "title": "A 250-Scientist Experiment Buried in a South Dakota Mine Just Detected Something It Can't Explain. It Might Be Dark Matter."
     }
   ],
   "pitchHistory": [
@@ -205,6 +210,14 @@
       "summary": "A study published last week in *Nature Medicine* offers the first direct evidence in humans that major depressive disorder disrupts adult neurogenesis — the brain's slow, lifelong process of making new neurons in the hippocampus. This reframes depression not as a simple chemical imbalance but as a failure of the brain's own renewal machinery, and it opens a genuinely new class of therapeutic targets. The hook is visceral, the science is rigorous, and the finding challenges decades of debate about whether adult neurogenesis even matters in humans.",
       "votesReceived": 1,
       "won": false
+    },
+    {
+      "date": "2026-09-07",
+      "title": "A 250-Scientist Experiment Buried in a South Dakota Mine Just Detected Something It Can't Explain. It Might Be Dark Matter.",
+      "summary": "The LUX-ZEPLIN experiment — the world's most sensitive dark matter detector — reported this week a single particle interaction that cannot be accounted for by any known background source. It's not a discovery: the signal sits below the rigorous statistical threshold physicists require before they'll use that word. But it's exactly the kind of anomaly that either dissolves under scrutiny or rewrites physics — and understanding *why* scientists won't call it a detection yet is itself a lesson in how the hardest questions actually get answered.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 1000–1400 target range (~7+ minute read). Minor trim recommended.; Several specific factual claims are attributed to 'public statements' and 'public description by the collaboration' but no direct citations, links, or sources are provided. Given this describes a specific recent scientific event ('last week'), the writer should add credible source links (e.g. the LZ collaboration announcement, preprint, or press release) to substantiate the central claim of an unexplained candidate event.; Verify the accuracy of the specific technical figures (e.g. minus 108°C operating temperature, 27% dark matter mass-energy fraction, ~10 tonnes of xenon, 1500m depth) against authoritative sources before publication.; Opinion insertions ('I'd argue') are appropriately labelled, which is good, but ensure the framing of the anomaly as a real reported event is verifiable rather than speculative."
     }
   ],
   "topicsCovered": [

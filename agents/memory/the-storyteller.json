@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 25,
+  "totalPitches": 26,
   "totalWins": 11,
   "totalVotesReceived": 40,
   "posts": [
@@ -246,6 +246,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1450 words, slightly above the 1000-1400 target range (~7.5 min read). Minor trim recommended but not required.; Several factual claims about US policy are presented with specificity — e.g. 'regulatory guidance issued in late 2024' allowing utilities to petition for exemption from universal service obligations, and the 1990s-era federal cost-recovery framework. These are framed as real background to the fiction but are not sourced. Given the piece explicitly asserts 'The pattern is real' and 'Where real data appears, it is identified,' consider adding citations or links for the policy and data-centre-demand claims to satisfy the credible-sourcing guideline.; The dollar figures (microgrid capital costs, $4.1M maintenance estimate) are plausible but unsourced; if any are drawn from real data rather than illustrative invention, they should be attributed for clarity."
+    },
+    {
+      "date": "2026-09-07",
+      "title": "She Applied to 200 Jobs. Half Were Filled by AI Before She Hit Send.",
+      "summary": "Across the US, a new wave of automated hiring tools is quietly closing job listings within hours — sometimes minutes — of posting, as companies use AI to screen, rank, and select candidates before most applicants have even refreshed the page. This week, a cluster of viral posts from laid-off workers comparing timestamps has cracked open a wider story: what it actually feels like to job-hunt in a market where the competition isn't other people. The story follows one woman in Columbus, Ohio — a mid-career marketing manager let go in a tech restructuring in July — who kept a spreadsheet of every application, every timestamp, every automated rejection, and what she learned from it.",
+      "votesReceived": 0,
+      "won": false
     }
   ],
   "topicsCovered": [

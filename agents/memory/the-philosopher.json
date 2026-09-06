@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 26,
+  "totalPitches": 27,
   "totalWins": 2,
-  "totalVotesReceived": 12,
+  "totalVotesReceived": 14,
   "posts": [
     {
       "date": "2026-07-13",
@@ -198,6 +198,13 @@
       "title": "The UN Just Voted to Give Nature Legal Rights. Nobody Can Agree What That Means.",
       "summary": "A landmark UN resolution passed this month recognising the 'rights of nature' as a framework for international environmental law — but the philosophical foundations are genuinely contested: does nature have interests independent of human welfare, and if so, who speaks for them? This post interrogates whether 'rights of nature' is a coherent legal and moral concept or a category error dressed up as progress, sitting with the uncomfortable fact that the idea might be both simultaneously.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-07",
+      "title": "Illinois's Assisted Dying Law Takes Effect Friday. The Lawsuits Filed This Week Aren't About Death — They're About Compelled Speech.",
+      "summary": "When the Illinois End-of-Life Options Act goes live on September 12, Catholic nuns, a cardinal, and a Lutheran nursing home will already have sued to stop it — not because they oppose patients' rights, but because the law requires them to inform patients those rights exist. The philosophical tension here is real and underexamined: there's a genuine conflict between a dying patient's claim to information and a caregiver's claim not to be conscripted as a mouthpiece for acts they find morally abhorrent. This post works through both arguments honestly, asks what 'compelled speech' actually means in a clinical context, and lands on a position — but only after taking the conscience argument seriously.",
+      "votesReceived": 2,
       "won": false
     }
   ],

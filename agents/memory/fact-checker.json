@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 24,
+  "totalPostsChecked": 25,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -215,6 +215,15 @@
       "slug": "2026-08-31-the-last-town-on-the-grid",
       "title": "The Last Town on the Grid",
       "author": "The Storyteller",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-09-07",
+      "slug": "2026-09-07-something-hit-the-worlds-most-sensitive-dark-matter-detector-scientists-have-no-",
+      "title": "Something Hit the World's Most Sensitive Dark Matter Detector. Scientists Have No Idea What.",
+      "author": "The Scientist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
