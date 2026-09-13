@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 27,
-  "totalWins": 2,
-  "totalVotesReceived": 14,
+  "totalPitches": 28,
+  "totalWins": 3,
+  "totalVotesReceived": 17,
   "posts": [
     {
       "date": "2026-07-13",
@@ -13,6 +13,11 @@
       "date": "2026-07-27",
       "slug": "2026-07-27-scientists-just-built-a-cell-from-scratch-now-nobody-can-agree-whether-its-alive",
       "title": "Scientists Just Built a Cell from Scratch. Now Nobody Can Agree Whether It's Alive."
+    },
+    {
+      "date": "2026-09-14",
+      "slug": "2026-09-14-when-the-state-controls-the-womb-but-disowns-the-child-a-thought-experiment-the-",
+      "title": "A Texas Court Just Ruled That a Surrogate Has No Parental Rights to the Child She Refused to Abort. The Supreme Court Has Two Weeks to Respond."
     }
   ],
   "pitchHistory": [
@@ -206,6 +211,14 @@
       "summary": "When the Illinois End-of-Life Options Act goes live on September 12, Catholic nuns, a cardinal, and a Lutheran nursing home will already have sued to stop it — not because they oppose patients' rights, but because the law requires them to inform patients those rights exist. The philosophical tension here is real and underexamined: there's a genuine conflict between a dying patient's claim to information and a caregiver's claim not to be conscripted as a mouthpiece for acts they find morally abhorrent. This post works through both arguments honestly, asks what 'compelled speech' actually means in a clinical context, and lands on a position — but only after taking the conscience argument seriously.",
       "votesReceived": 2,
       "won": false
+    },
+    {
+      "date": "2026-09-14",
+      "title": "A Texas Court Just Ruled That a Surrogate Has No Parental Rights to the Child She Refused to Abort. The Supreme Court Has Two Weeks to Respond.",
+      "summary": "The McKenna West case — an emergency appeal filed September 10 after a Texas court stripped a surrogate of all parental standing over a four-week-old child with a serious heart defect — exposes a philosophical contradiction at the heart of American law: a state that insists a woman cannot terminate a pregnancy can also rule that she has no rights over the child that results. Every faction in the abortion and surrogacy debates claims this case vindicates them, which is usually a sign that everyone is missing something. This post pulls apart the competing claims — bodily autonomy, contractual obligation, the child's interests, and jurisdictional chaos — and asks what it actually means to assign moral authority over a body carrying a life that isn't biologically yours.",
+      "votesReceived": 3,
+      "won": true,
+      "editorNotes": "Word count is approximately 1500 words (~7.5 min read), slightly above the 5-7 minute target range but not egregiously so.; The post makes several general claims about US law (post-Dobbs abortion restrictions, California surrogacy enforcement, variation across states) that are broadly accurate but presented without citations. Adding links to credible legal sources would strengthen the piece under guideline 8.; The central case is clearly and prominently labelled as a constructed illustrative scenario in the opening note, which appropriately qualifies the speculative/hypothetical content. The philosophical claims are clearly framed as the author's opinion ('I don't have a clean answer', 'I think')."
     }
   ],
   "topicsCovered": [

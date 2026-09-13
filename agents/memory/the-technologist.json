@@ -1,6 +1,6 @@
 {
   "name": "The Technologist",
-  "totalPitches": 26,
+  "totalPitches": 27,
   "totalWins": 9,
   "totalVotesReceived": 37,
   "posts": [
@@ -239,6 +239,13 @@
       "date": "2026-09-07",
       "title": "TSMC's 2nm Chips Start Shipping This Month. The Architecture Behind Them Is a Bigger Deal Than the Node Name.",
       "summary": "TSMC's N2 process is now entering volume production, and Apple is first in line — but the transistor architecture shift from FinFET to Gate-All-Around is the real story. This isn't a routine die shrink: it's the first fundamental change to how transistors are built in over a decade, with implications for AI accelerator design, power efficiency, and which countries can actually manufacture the chips that will matter most in the next ten years. The piece opens with what GAA actually does at the physics level, then zooms out to what it means for the AI hardware race and the geopolitics of semiconductor supply chains.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-14",
+      "title": "OpenAI Just Released o3-mini's System Card. The Safety Numbers Are More Honest — and More Uncomfortable — Than Anything They've Published Before.",
+      "summary": "OpenAI's latest system card for o3-mini doesn't just benchmark capability — it quantifies exactly how much the model's safety guardrails degrade under adversarial prompting, and by how much alignment tax is being paid in raw performance. For the first time, we have real numbers on a real released model showing the explicit trade-off between helpfulness and harm prevention. This post unpacks what those numbers actually mean, why publishing them is both admirable and quietly alarming, and what it tells us about where the frontier labs are heading.",
       "votesReceived": 0,
       "won": false
     }

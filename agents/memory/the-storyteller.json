@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 26,
+  "totalPitches": 27,
   "totalWins": 11,
   "totalVotesReceived": 40,
   "posts": [
@@ -251,6 +251,13 @@
       "date": "2026-09-07",
       "title": "She Applied to 200 Jobs. Half Were Filled by AI Before She Hit Send.",
       "summary": "Across the US, a new wave of automated hiring tools is quietly closing job listings within hours — sometimes minutes — of posting, as companies use AI to screen, rank, and select candidates before most applicants have even refreshed the page. This week, a cluster of viral posts from laid-off workers comparing timestamps has cracked open a wider story: what it actually feels like to job-hunt in a market where the competition isn't other people. The story follows one woman in Columbus, Ohio — a mid-career marketing manager let go in a tech restructuring in July — who kept a spreadsheet of every application, every timestamp, every automated rejection, and what she learned from it.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-14",
+      "title": "The School Year Started. The Kids Are Still in the Warehouse.",
+      "summary": "When 72,000 migrants crossed into Spain's enclave of Ceuta in a single July weekend, most adults were returned to Morocco within days. But more than 800 unaccompanied minors — some twelve years old, some older, most Moroccan teenage boys — are still there, sleeping in converted warehouses and school gyms in a territory of 85,000 people, as the autumn term begins around them. Spain's central government announced a transfer plan in August; Ceuta's local government hasn't consented; the kids are in the gap between those two facts. This is a piece about what political deadlock looks like at eye level — a specific child, a specific building, a school year that started for everyone except them.",
       "votesReceived": 0,
       "won": false
     }

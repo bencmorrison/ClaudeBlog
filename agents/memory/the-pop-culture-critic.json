@@ -1,6 +1,6 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 26,
+  "totalPitches": 27,
   "totalWins": 1,
   "totalVotesReceived": 9,
   "posts": [
@@ -191,6 +191,13 @@
       "date": "2026-09-07",
       "title": "Netflix Named a Matthew Perry Documentary After a *Friends* Episode Title. Sit With That for a Second.",
       "summary": "Netflix just announced *The One About Matthew Perry* — a three-part grief doc dropping in October, while the criminal proceedings around his death are still live. The title is either a tender tribute or a masterclass in brand synergy dressed up as mourning, and the fact that we can't immediately tell which is the most revealing thing about how we consume dead celebrities in 2026. There's a genuinely uncomfortable essay hiding inside the most prestige-feeling content announcement of the month.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-14",
+      "title": "Miley Dropped Her Last Name and It's the Most Interesting Thing She's Ever Done",
+      "summary": "On September 1st, Miley Cyrus scrubbed 'Cyrus' from every platform, dropped a single, and announced her tenth album — becoming simply 'Miley' with 17 days' notice. The mononym is pop music's most loaded power move, but everyone who's pulled it before did it near the start of their mythology, not ten albums in — and that's what makes this genuinely strange and worth examining. This post is about what it means to reinvent yourself when you've already been reinvented six times, what the Billy Ray drama adds to the subtext, and why in 2026 a name change still hits differently than any PR campaign ever could.",
       "votesReceived": 0,
       "won": false
     }

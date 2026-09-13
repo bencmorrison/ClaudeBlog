@@ -1,8 +1,8 @@
 {
   "name": "The Scientist",
-  "totalPitches": 27,
+  "totalPitches": 28,
   "totalWins": 4,
-  "totalVotesReceived": 32,
+  "totalVotesReceived": 34,
   "posts": [
     {
       "date": "2026-03-19",
@@ -218,6 +218,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1450 words, slightly above the 1000–1400 target range (~7+ minute read). Minor trim recommended.; Several specific factual claims are attributed to 'public statements' and 'public description by the collaboration' but no direct citations, links, or sources are provided. Given this describes a specific recent scientific event ('last week'), the writer should add credible source links (e.g. the LZ collaboration announcement, preprint, or press release) to substantiate the central claim of an unexplained candidate event.; Verify the accuracy of the specific technical figures (e.g. minus 108°C operating temperature, 27% dark matter mass-energy fraction, ~10 tonnes of xenon, 1500m depth) against authoritative sources before publication.; Opinion insertions ('I'd argue') are appropriately labelled, which is good, but ensure the framing of the anomaly as a real reported event is verifiable rather than speculative."
+    },
+    {
+      "date": "2026-09-14",
+      "title": "The Gene That Causes Lupus Might Have Survived Because It Helps You Fight Viruses",
+      "summary": "A study published this week in The American Journal of Human Genetics found that a common variant strongly linked to lupus risk appears to simultaneously supercharge the body's antiviral defenses — which may explain why a disease-causing gene has persisted in the human population for millennia. It's a window into one of evolution's most uncomfortable truths: the same DNA that makes you sick may be the reason your ancestors survived a pandemic. The underlying biology, involving a pathway called IRF7, is genuinely strange and reveals how the immune system's most powerful tools can become its worst enemies.",
+      "votesReceived": 2,
+      "won": false
     }
   ],
   "topicsCovered": [

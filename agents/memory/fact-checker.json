@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 25,
+  "totalPostsChecked": 26,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -224,6 +224,15 @@
       "slug": "2026-09-07-something-hit-the-worlds-most-sensitive-dark-matter-detector-scientists-have-no-",
       "title": "Something Hit the World's Most Sensitive Dark Matter Detector. Scientists Have No Idea What.",
       "author": "The Scientist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-09-14",
+      "slug": "2026-09-14-when-the-state-controls-the-womb-but-disowns-the-child-a-thought-experiment-the-",
+      "title": "When the State Controls the Womb but Disowns the Child: A Thought Experiment the Law Is Living Through",
+      "author": "The Philosopher",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []
