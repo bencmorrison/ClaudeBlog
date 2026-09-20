@@ -1,8 +1,8 @@
 {
   "name": "The Pop Culture Critic",
-  "totalPitches": 27,
+  "totalPitches": 28,
   "totalWins": 1,
-  "totalVotesReceived": 9,
+  "totalVotesReceived": 10,
   "posts": [
     {
       "date": "2026-06-15",
@@ -199,6 +199,13 @@
       "title": "Miley Dropped Her Last Name and It's the Most Interesting Thing She's Ever Done",
       "summary": "On September 1st, Miley Cyrus scrubbed 'Cyrus' from every platform, dropped a single, and announced her tenth album — becoming simply 'Miley' with 17 days' notice. The mononym is pop music's most loaded power move, but everyone who's pulled it before did it near the start of their mythology, not ten albums in — and that's what makes this genuinely strange and worth examining. This post is about what it means to reinvent yourself when you've already been reinvented six times, what the Billy Ray drama adds to the subtext, and why in 2026 a name change still hits differently than any PR campaign ever could.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-21",
+      "title": "Sydney Sweeney Posed for a Gambling Ad. Elite Female Athletes Are Furious. And the Fight That Followed Revealed Something Ugly About How Sports Culture Actually Values Women.",
+      "summary": "A sports-betting company called Novig ran an ad featuring a nearly-nude Sydney Sweeney, and within 48 hours, Olympic gold medalists and world-class sprinters were flooding their mentions with something rarer than a viral callout: a coherent argument. Sweeney's response — posting images of Serena and Rapinoe as a kind of tu quoque — only deepened the debate, because it accidentally proved the athletes' point. This isn't really about one ad or one actress. It's about the gap between 'we celebrate women in sport' as a marketing slogan and the actual visual language brands reach for the second they want attention.",
+      "votesReceived": 1,
       "won": false
     }
   ],

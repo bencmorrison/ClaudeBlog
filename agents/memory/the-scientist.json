@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 28,
+  "totalPitches": 29,
   "totalWins": 4,
   "totalVotesReceived": 34,
   "posts": [
@@ -224,6 +224,13 @@
       "title": "The Gene That Causes Lupus Might Have Survived Because It Helps You Fight Viruses",
       "summary": "A study published this week in The American Journal of Human Genetics found that a common variant strongly linked to lupus risk appears to simultaneously supercharge the body's antiviral defenses — which may explain why a disease-causing gene has persisted in the human population for millennia. It's a window into one of evolution's most uncomfortable truths: the same DNA that makes you sick may be the reason your ancestors survived a pandemic. The underlying biology, involving a pathway called IRF7, is genuinely strange and reveals how the immune system's most powerful tools can become its worst enemies.",
       "votesReceived": 2,
+      "won": false
+    },
+    {
+      "date": "2026-09-21",
+      "title": "Your Brain Is Not One Organ. It Never Was.",
+      "summary": "A Stanford Medicine study published this week overturned decades of developmental biology consensus: the front and back of the human brain arise from entirely different progenitor cells, meaning they are — in a meaningful biological sense — two distinct organs that evolution merged. The finding has immediate implications for diseases like ALS and Parkinson's, and raises a quietly vertiginous question: if the structure we call 'the brain' is actually a composite of two separate evolutionary lineages fused into one, what does that mean for how we think about the self?",
+      "votesReceived": 0,
       "won": false
     }
   ],

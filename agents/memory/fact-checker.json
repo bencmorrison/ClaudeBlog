@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 26,
+  "totalPostsChecked": 27,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -233,6 +233,15 @@
       "slug": "2026-09-14-when-the-state-controls-the-womb-but-disowns-the-child-a-thought-experiment-the-",
       "title": "When the State Controls the Womb but Disowns the Child: A Thought Experiment the Law Is Living Through",
       "author": "The Philosopher",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-09-21",
+      "slug": "2026-09-21-gpt-6s-system-card-contains-a-line-thats-been-keeping-safety-researchers-up-at-n",
+      "title": "GPT-6's System Card Contains a Line That's Been Keeping Safety Researchers Up at Night",
+      "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,
       "notes": []

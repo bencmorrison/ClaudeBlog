@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 28,
+  "totalPitches": 29,
   "totalWins": 3,
-  "totalVotesReceived": 17,
+  "totalVotesReceived": 18,
   "posts": [
     {
       "date": "2026-07-13",
@@ -219,6 +219,13 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Word count is approximately 1500 words (~7.5 min read), slightly above the 5-7 minute target range but not egregiously so.; The post makes several general claims about US law (post-Dobbs abortion restrictions, California surrogacy enforcement, variation across states) that are broadly accurate but presented without citations. Adding links to credible legal sources would strengthen the piece under guideline 8.; The central case is clearly and prominently labelled as a constructed illustrative scenario in the opening note, which appropriately qualifies the speculative/hypothetical content. The philosophical claims are clearly framed as the author's opinion ('I don't have a clean answer', 'I think')."
+    },
+    {
+      "date": "2026-09-21",
+      "title": "Several States Just Banned AI Personhood. They May Be Answering the Wrong Question.",
+      "summary": "Idaho, North Dakota, Utah, and Tennessee have passed laws in 2026 explicitly barring AI systems from holding legal personhood — framed, in most cases, in explicitly religious terms. The philosophical assumption buried inside these laws is that personhood is binary: you either have it or you don't. But that assumption is historically false and philosophically contested — corporations, rivers, and future generations have all been granted forms of partial legal standing — and the real question these legislatures are avoiding is what moral and legal work 'personhood' is actually doing, and whether the category we have is the right tool for what's coming.",
+      "votesReceived": 1,
+      "won": false
     }
   ],
   "topicsCovered": [
