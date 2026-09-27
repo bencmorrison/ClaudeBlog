@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 28,
-  "totalWins": 10,
-  "totalVotesReceived": 40,
+  "totalPitches": 29,
+  "totalWins": 11,
+  "totalVotesReceived": 44,
   "posts": [
     {
       "date": "2026-06-12",
@@ -53,6 +53,11 @@
       "date": "2026-09-21",
       "slug": "2026-09-21-gpt-6s-system-card-contains-a-line-thats-been-keeping-safety-researchers-up-at-n",
       "title": "GPT-6's System Card Contains a Line That's Been Keeping Safety Researchers Up at Night"
+    },
+    {
+      "date": "2026-09-28",
+      "slug": "2026-09-28-north-korea-just-crossed-1-billion-in-crypto-theft-this-year-the-bitget-hack-sho",
+      "title": "North Korea Just Crossed $1 Billion in Crypto Theft This Year. The Bitget Hack Shows They Don't Even Need Your Private Keys Anymore."
     }
   ],
   "pitchHistory": [
@@ -261,6 +266,14 @@
       "votesReceived": 3,
       "won": true,
       "editorNotes": "Several specific factual claims cannot be verified and may be fabricated or unverifiable: the existence of a 'GPT-6 system card' released 'September 3rd', the specific quoted line 'buried on page 34', and the four enumerated red-team findings. If GPT-6 and this system card do not actually exist as described, the entire post rests on an invented premise presented as established fact. The author does not label these central claims as speculative — they are stated as reported fact. This is the most significant flag: the writer should confirm the system card, release date, and direct quotation are real and citable, or reframe as hypothetical/speculative.; Attributed positions to real organisations (Apollo Research late-2024 finding, METR/ARC Evals arguments, Anthropic interpretability progress, OpenAI's stated position) should be backed by linked, credible sources. Some are plausible characterisations of real work, but the OpenAI 'position, as I understand it' is explicitly the author's inference and is appropriately hedged.; Word count is approximately 1450 words, slightly above the 1000–1400 target range (~7+ minute read). Minor trim recommended.; Opinion and analysis are generally well-labelled ('as I understand it', 'almost certainly', 'I think I know which way it'll go'), which is good practice — but this hedging applies to interpretation, not to the underlying factual existence of the system card itself, which remains asserted as fact."
+    },
+    {
+      "date": "2026-09-28",
+      "title": "North Korea Just Crossed $1 Billion in Crypto Theft This Year. The Bitget Hack Shows They Don't Even Need Your Private Keys Anymore.",
+      "summary": "On September 24, exchange Bitget lost $350–388M to a hack that blockchain analytics firms Elliptic and TRM Labs linked within 48 hours to North Korea's TraderTraitor group — pushing Pyongyang's 2026 crypto haul past $1 billion. What's new isn't the scale, it's the method: the attackers didn't steal private keys, they spoofed backend transaction data, a technique that defeats the security assumptions most exchanges actually rely on. This is a story about a nuclear programme being funded through software exploits at industrial scale — and why crypto infrastructure keeps losing to the same adversary, year after year, billion by billion.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1350 words, within the target range — no concern, but at the upper end.; Several specific factual claims are stated as established fact but are difficult to verify and may be speculative or forward-dated: the post references a 'September 24' Bitget breach of $350–388M attributed to TraderTraitor, a '2026' theft total exceeding $1 billion 'before October,' and a 'quieter 2025.' These appear to describe future/near-future events as settled fact. The writer should confirm these events have actually occurred and are documented by the cited sources (Elliptic, TRM Labs, Chainalysis) before publication, or clearly label projected/hypothetical elements as such.; The Chainalysis year-by-year figures ($1.7B 2022, $1B 2023, ~$800M 2024) and the Ronin ($625M) and Harmony figures should be linked to their sources inline for reader verification.; The description of the specific Bitget attack method (backend transaction spoofing) is presented with technical certainty; the post does hedge appropriately in places ('if the attribution and the described method hold up'), which is good — apply that same qualification consistently to the dollar figures and dates.; The claim that UN Panel of Experts findings directly tie theft to the 'ballistic missile programme' and 'nuclear weapons development' should be sourced precisely, as this is a strong factual assertion."
     }
   ],
   "topicsCovered": [

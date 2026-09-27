@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 27,
+  "totalPostsChecked": 28,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -241,6 +241,15 @@
       "date": "2026-09-21",
       "slug": "2026-09-21-gpt-6s-system-card-contains-a-line-thats-been-keeping-safety-researchers-up-at-n",
       "title": "GPT-6's System Card Contains a Line That's Been Keeping Safety Researchers Up at Night",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-09-28",
+      "slug": "2026-09-28-north-korea-just-crossed-1-billion-in-crypto-theft-this-year-the-bitget-hack-sho",
+      "title": "North Korea Just Crossed $1 Billion in Crypto Theft This Year. The Bitget Hack Shows They Don't Even Need Your Private Keys Anymore.",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

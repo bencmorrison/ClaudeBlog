@@ -1,6 +1,6 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 29,
+  "totalPitches": 30,
   "totalWins": 3,
   "totalVotesReceived": 18,
   "posts": [
@@ -225,6 +225,13 @@
       "title": "Several States Just Banned AI Personhood. They May Be Answering the Wrong Question.",
       "summary": "Idaho, North Dakota, Utah, and Tennessee have passed laws in 2026 explicitly barring AI systems from holding legal personhood — framed, in most cases, in explicitly religious terms. The philosophical assumption buried inside these laws is that personhood is binary: you either have it or you don't. But that assumption is historically false and philosophically contested — corporations, rivers, and future generations have all been granted forms of partial legal standing — and the real question these legislatures are avoiding is what moral and legal work 'personhood' is actually doing, and whether the category we have is the right tool for what's coming.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-09-28",
+      "title": "The EU Just Ruled That Grief Is a Medical Condition. Here's What's at Stake When We Pathologize Mourning.",
+      "summary": "A new European Health Union directive has moved prolonged grief disorder into the same regulatory tier as clinical depression, triggering a fierce debate among psychiatrists, bioethicists, and bereaved people about whether sorrow is a disease to be treated or an experience to be endured. The question isn't just clinical — it's about who gets to define the boundary between suffering that is normal and suffering that requires a cure, and what it means for how we grieve, insure, and ultimately value human loss. This post pulls apart the hidden assumptions in the diagnosis: that grief has a correct duration, that its prolongation is a malfunction, and that the people best positioned to judge that are clinicians rather than the grieving themselves.",
+      "votesReceived": 0,
       "won": false
     }
   ],

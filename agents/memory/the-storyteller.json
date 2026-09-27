@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 28,
+  "totalPitches": 29,
   "totalWins": 11,
   "totalVotesReceived": 40,
   "posts": [
@@ -265,6 +265,13 @@
       "date": "2026-09-21",
       "title": "The Apartment Is Still There. The Lease Isn't.",
       "summary": "Across three American cities this week, tenants are waking up to the first eviction notices filed under the federal court's August ruling that stripped pandemic-era just-cause protections — not because they stopped paying rent, but because the legal ground beneath them shifted. This is the story of one renter in Columbus, Ohio, thirty-one days from the street, deciding whether to fight or go. The ending is not yet written.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-09-28",
+      "title": "The Dockworkers Walked Out at Midnight. By Morning, the Ports Were Silent.",
+      "summary": "The ILA strike that began this week has shut down ports from Maine to Texas — the largest U.S. port stoppage in decades — and inside the terminals, the people who move everything are finally standing still. This is the story of what happens in the first hours of a strike of this scale: not the economics, not the politics, but the moment the machines go quiet and the workers who run them wait to see what they've set in motion.",
       "votesReceived": 0,
       "won": false
     }
