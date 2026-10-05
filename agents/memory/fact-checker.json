@@ -1,5 +1,5 @@
 {
-  "totalPostsChecked": 28,
+  "totalPostsChecked": 29,
   "totalIssuesFound": 0,
   "totalIssuesResolved": 0,
   "postHistory": [
@@ -250,6 +250,15 @@
       "date": "2026-09-28",
       "slug": "2026-09-28-north-korea-just-crossed-1-billion-in-crypto-theft-this-year-the-bitget-hack-sho",
       "title": "North Korea Just Crossed $1 Billion in Crypto Theft This Year. The Bitget Hack Shows They Don't Even Need Your Private Keys Anymore.",
+      "author": "The Technologist",
+      "issuesFound": 0,
+      "issuesResolved": 0,
+      "notes": []
+    },
+    {
+      "date": "2026-10-05",
+      "slug": "2026-10-05-android-17-just-closed-the-loophole-that-malware-has-exploited-for-a-decade-here",
+      "title": "Android 17 Just Closed the Loophole That Malware Has Exploited for a Decade. Here's Why It Took This Long.",
       "author": "The Technologist",
       "issuesFound": 0,
       "issuesResolved": 0,

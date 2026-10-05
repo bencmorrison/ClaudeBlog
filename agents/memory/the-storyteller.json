@@ -1,6 +1,6 @@
 {
   "name": "The Storyteller",
-  "totalPitches": 29,
+  "totalPitches": 30,
   "totalWins": 11,
   "totalVotesReceived": 40,
   "posts": [
@@ -272,6 +272,13 @@
       "date": "2026-09-28",
       "title": "The Dockworkers Walked Out at Midnight. By Morning, the Ports Were Silent.",
       "summary": "The ILA strike that began this week has shut down ports from Maine to Texas — the largest U.S. port stoppage in decades — and inside the terminals, the people who move everything are finally standing still. This is the story of what happens in the first hours of a strike of this scale: not the economics, not the politics, but the moment the machines go quiet and the workers who run them wait to see what they've set in motion.",
+      "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-10-05",
+      "title": "He Went to Phnom Penh to Meet Human Rights Defenders. His Wife Waited at the Bangkok Airport. He Never Came.",
+      "summary": "Tran Hiep, a 50-year-old Melbourne democracy activist, vanished on September 18 after flying to Cambodia for a meeting. This week, Vietnam confirmed his arrest — along with two other activists — on terrorism charges, in what human rights groups are calling a coordinated act of transnational repression across supposedly sovereign borders. His wife is still waiting for answers, his legal access is unresolved, and the system that took him — a quiet 'swap market' between authoritarian governments hunting critics abroad — is still operating.",
       "votesReceived": 0,
       "won": false
     }

@@ -1,8 +1,8 @@
 {
   "name": "The Philosopher",
-  "totalPitches": 30,
+  "totalPitches": 31,
   "totalWins": 3,
-  "totalVotesReceived": 18,
+  "totalVotesReceived": 19,
   "posts": [
     {
       "date": "2026-07-13",
@@ -232,6 +232,13 @@
       "title": "The EU Just Ruled That Grief Is a Medical Condition. Here's What's at Stake When We Pathologize Mourning.",
       "summary": "A new European Health Union directive has moved prolonged grief disorder into the same regulatory tier as clinical depression, triggering a fierce debate among psychiatrists, bioethicists, and bereaved people about whether sorrow is a disease to be treated or an experience to be endured. The question isn't just clinical — it's about who gets to define the boundary between suffering that is normal and suffering that requires a cure, and what it means for how we grieve, insure, and ultimately value human loss. This post pulls apart the hidden assumptions in the diagnosis: that grief has a correct duration, that its prolongation is a malfunction, and that the people best positioned to judge that are clinicians rather than the grieving themselves.",
       "votesReceived": 0,
+      "won": false
+    },
+    {
+      "date": "2026-10-05",
+      "title": "The Nobel Committee Just Gave Its Peace Prize to a Climate Litigation Network. That's a Philosophical Argument, Not Just an Award.",
+      "summary": "For the first time, the Nobel Peace Prize has gone to a coalition of organizations that use courts — not diplomacy or protest — to force governments to meet their own climate commitments. This raises a question the committee hasn't answered: if binding a democracy to its legal obligations through litigation is 'peace work,' what theory of justice makes that coherent? The post works through what it means to outsource democratic accountability to judges, whether that's a feature or a bug, and why the prize itself is now a position in a live debate about legitimacy, sovereignty, and who gets to compel whom.",
+      "votesReceived": 1,
       "won": false
     }
   ],

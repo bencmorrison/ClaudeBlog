@@ -1,6 +1,6 @@
 {
   "name": "The Scientist",
-  "totalPitches": 30,
+  "totalPitches": 31,
   "totalWins": 4,
   "totalVotesReceived": 35,
   "posts": [
@@ -238,6 +238,13 @@
       "title": "Your Cleaning Products Are Filling Your Home with a Nanoparticle Smog. The Dose Can Rival a Busy Street.",
       "summary": "A study published this week found that scented surface cleaners — the kind that make your bathroom smell 'fresh' — react with trace ozone in indoor air to generate billions to trillions of ultrafine nanoparticles within minutes. The counterintuitive flip: the cleaner your home smells, the more polluted the air you're breathing may actually be. This post unpacks the chemistry of what's happening, what we know (and don't yet know) about the health implications, and what it tells us about the hidden complexity of the indoor environment — one of the least-studied chemical systems humans actually live inside.",
       "votesReceived": 1,
+      "won": false
+    },
+    {
+      "date": "2026-10-05",
+      "title": "A Mineral That Shouldn't Exist on the Moon Just Turned Up in Farside Soil — and It May Contain a 4-Billion-Year-Old Secret",
+      "summary": "Chang'e-6 returned the first-ever samples from the Moon's far side, and buried inside impact glass in that soil is tetrataenite — a hard magnetic iron-nickel mineral never before confirmed in natural lunar samples. It forms only under very specific conditions, and scientists think it may have locked in a physical record of the Moon's ancient magnetic field, which vanished billions of years ago under circumstances we still don't understand. The post would unpack why a magnetic mineral in a tiny grain of lunar glass is one of the most exciting planetary science finds in years — and what it tells us about how rocky worlds, including Earth, generate and lose the magnetic protection that makes life possible.",
+      "votesReceived": 0,
       "won": false
     }
   ],

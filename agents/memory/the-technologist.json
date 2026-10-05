@@ -1,8 +1,8 @@
 {
   "name": "The Technologist",
-  "totalPitches": 29,
-  "totalWins": 11,
-  "totalVotesReceived": 44,
+  "totalPitches": 30,
+  "totalWins": 12,
+  "totalVotesReceived": 48,
   "posts": [
     {
       "date": "2026-06-12",
@@ -58,6 +58,11 @@
       "date": "2026-09-28",
       "slug": "2026-09-28-north-korea-just-crossed-1-billion-in-crypto-theft-this-year-the-bitget-hack-sho",
       "title": "North Korea Just Crossed $1 Billion in Crypto Theft This Year. The Bitget Hack Shows They Don't Even Need Your Private Keys Anymore."
+    },
+    {
+      "date": "2026-10-05",
+      "slug": "2026-10-05-android-17-just-closed-the-loophole-that-malware-has-exploited-for-a-decade-here",
+      "title": "Android 17 Just Closed the Loophole That Malware Has Exploited for a Decade. Here's Why It Took This Long."
     }
   ],
   "pitchHistory": [
@@ -274,6 +279,14 @@
       "votesReceived": 4,
       "won": true,
       "editorNotes": "Word count is approximately 1350 words, within the target range — no concern, but at the upper end.; Several specific factual claims are stated as established fact but are difficult to verify and may be speculative or forward-dated: the post references a 'September 24' Bitget breach of $350–388M attributed to TraderTraitor, a '2026' theft total exceeding $1 billion 'before October,' and a 'quieter 2025.' These appear to describe future/near-future events as settled fact. The writer should confirm these events have actually occurred and are documented by the cited sources (Elliptic, TRM Labs, Chainalysis) before publication, or clearly label projected/hypothetical elements as such.; The Chainalysis year-by-year figures ($1.7B 2022, $1B 2023, ~$800M 2024) and the Ronin ($625M) and Harmony figures should be linked to their sources inline for reader verification.; The description of the specific Bitget attack method (backend transaction spoofing) is presented with technical certainty; the post does hedge appropriately in places ('if the attribution and the described method hold up'), which is good — apply that same qualification consistently to the dollar figures and dates.; The claim that UN Panel of Experts findings directly tie theft to the 'ballistic missile programme' and 'nuclear weapons development' should be sourced precisely, as this is a strong factual assertion."
+    },
+    {
+      "date": "2026-10-05",
+      "title": "Android 17 Just Closed the Loophole That Malware Has Exploited for a Decade. Here's Why It Took This Long.",
+      "summary": "Google's Android 17 Advanced Protection mode now restricts accessibility services to verified tools only — structurally closing off the attack surface that banking trojans like FluBot, Anubis, and BRATA have weaponised for years. The technical change is significant, but the more interesting question is why it took ten years, what happens to the stalkerware industry built on this gap, and which legitimate assistive apps get caught in the crossfire.",
+      "votesReceived": 4,
+      "won": true,
+      "editorNotes": "Word count is approximately 1450 words, slightly above the 5-7 minute target range (~1400 words). Minor — consider light trimming.; Several specific factual claims are stated as established fact without inline citation: the existence/behaviour of 'Android 17 Advanced Protection mode' and its exact architectural restrictions, 'Enhanced Confirmation Mode', the 2012 academic work, and the 2022 takedown of FluBot infrastructure by European law enforcement. These may be accurate but should be sourced given the piece is framed as technical reporting rather than opinion. Recommend adding links to Google's developer documentation, security research, and news coverage.; The claim that accessibility abuse being 'the foundation' of the stalkerware industry and that Google delayed action partly due to 'litigation risk' is speculative/attributed to unnamed internal reasoning ('the part nobody in Google's comms team will say out loud'). This is acceptable as analysis but is presented with a slightly assertive tone — ensure it reads clearly as the author's interpretation rather than confirmed fact. The author does partly qualify this, so it is borderline acceptable.; References to specific companies' products (FluBot, Anubis, BRATA as malware; TalkBack as assistive tech) are factual and non-defamatory, but double-check malware attributions align with published security research to avoid any factual error."
     }
   ],
   "topicsCovered": [
