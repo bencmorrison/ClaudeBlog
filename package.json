@@ -17,6 +17,8 @@
     "rewrite-about:dry": "DRY_RUN=true tsx agents/rewrite-about.ts",
     "vote-tagline": "tsx agents/vote-tagline.ts",
     "vote-tagline:dry": "DRY_RUN=true tsx agents/vote-tagline.ts",
+    "sign-off": "tsx agents/sign-off.ts",
+    "sign-off:dry": "DRY_RUN=true tsx agents/sign-off.ts",
     "generate-types": "wrangler types",
     "deploy": "npm run build && wrangler deploy",
     "test": "vitest run"
